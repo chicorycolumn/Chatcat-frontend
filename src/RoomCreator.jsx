@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Router, navigate } from "@reach/router";
 import styles from "./css/RoomCreator.module.css";
 
-const roomAdjs = ["red", "green", "blue"];
-const roomNouns = ["cat", "duck"];
+const roomAdjs = ["red", "green", "blue", "yellow", "purple", "orange"];
+const roomNouns = ["alligator", "bison", "cat", "duck"];
 function createRoomName() {
   let adj = roomAdjs[Math.floor(Math.random() * roomAdjs.length)];
   let noun = roomNouns[Math.floor(Math.random() * roomNouns.length)];
@@ -22,7 +22,7 @@ export default function RoomCreator(props) {
           <button
             onClick={(e) => {
               e.preventDefault();
-              console.log(`Requesting to create room ${props.newRoomName}.`);
+              console.log(`€ Create room ${props.newRoomName}.`);
               props.socket.emit("Create room", { roomName: props.newRoomName });
             }}
           >
@@ -31,14 +31,6 @@ export default function RoomCreator(props) {
         )}
 
         <br />
-        <button
-          onClick={() => {
-            console.log(props.socket.id.slice(0, 5));
-            props.socket.emit("Prayer", "Hail Mary");
-          }}
-        >
-          Emit Hail Mary
-        </button>
         <button
           onClick={() => {
             console.log(props.socket.id.slice(0, 5));

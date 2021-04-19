@@ -9,7 +9,7 @@ export default function ClientComponent() {
     const socket = socketIOClient(ENDPOINT);
     socket.on("connect", (data) => {
       console.log(
-        `I am ${socket.id.slice(
+        `Ø connect. I am ${socket.id.slice(
           0,
           5
         )} and I connected to server at ${new Date()
@@ -18,13 +18,9 @@ export default function ClientComponent() {
       );
     });
 
-    socket.on("Greeting", (data) => {
-      setResponse(data);
-    });
-
     socket.on("disconnect", (data) => {
       console.log(
-        `I disconnected from server at ${new Date()
+        `Ø disconnect. I disconnected from server at ${new Date()
           .toUTCString()
           .slice(17, -4)}.`
       );

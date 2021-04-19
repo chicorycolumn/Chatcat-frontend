@@ -12,12 +12,10 @@ const ENDPOINT = "http://127.0.0.1:4002";
 export default function App() {
   const [newRoomName, setNewRoomName] = useState(null);
   const [socket, setSocket] = useState(null);
-  const [roomName, setRoomName] = useState(null);
-  const [playerList, setPlayerList] = useState(null);
   // const refContainer = useRef(null);
 
   useEffect(() => {
-    console.log("useEffect in App has been called.");
+    console.log("APP UE CALLED");
     let socket = socketIOClient(ENDPOINT);
     // refContainer.current = socket;
     setSocket(socket);
@@ -26,7 +24,7 @@ export default function App() {
 
     socket.on("connect", (data) => {
       console.log(
-        `I am ${socket.id.slice(
+        `Ø connect. I am ${socket.id.slice(
           0,
           5
         )} and I connected to server at ${new Date()
@@ -36,37 +34,33 @@ export default function App() {
     });
 
     socket.on("Room created", function (data) {
+      console.log("Ø Room created");
       navigate(`/${data.roomName}`);
     });
 
     socket.on("Room not created", function (data) {
-      navigate("/");
-      alert(data.message);
-    });
-
-    socket.on("Entry granted", function (data) {
-      setRoomName(data.roomName);
-      setPlayerList(data.playerList);
-    });
-
-    socket.on("Entry denied", function (data) {
+      console.log("Ø Room not created");
       navigate("/");
       alert(data.message);
     });
 
     socket.on("Dev queried rooms", function (data) {
-      console.log("roomList", data.roomList);
+      console.log("Ø Dev quieried rooms. roomList", data.roomList);
     });
 
     socket.on("disconnect", (data) => {
       console.log(
-        `I disconnected from server at ${new Date()
+        `Ø disconnect. I disconnected from server at ${new Date()
           .toUTCString()
           .slice(17, -4)}.`
       );
     });
 
-    return () => socket.disconnect();
+    return function cleanup() {
+      console.log("APP CLEANUP");
+      console.log("€ disconnect");
+      socket.disconnect();
+    };
   }, []);
 
   return (
@@ -83,12 +77,7 @@ export default function App() {
           />
           <Lemons path="/lemons" />
           <Contact path="/contact" />
-          <Room
-            path="/*"
-            socket={socket}
-            roomName={roomName}
-            playerList={playerList}
-          />
+          <Room path="/*" socket={socket} />
         </Router>
       </div>
     </>
