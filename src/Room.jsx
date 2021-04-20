@@ -15,15 +15,25 @@ export default function Room(props) {
       props.socket.on("Entry granted", function (data) {
         console.log("Ø Entry granted");
         console.log("Setting roomName.");
-        setRoomName(data.roomName);
+        setRoomName(data.roomData.roomName);
         console.log("Setting playerList.");
-        setPlayerList(data.playerList);
+        setPlayerList(data.roomData.players);
+      });
+
+      props.socket.on("Player entered your room", function (data) {
+        console.log(`Ø ${data.playerId.slice(0, 5)} entered your room`);
+        console.log("Updating playerList.");
+        setPlayerList(data.roomData.players);
       });
 
       props.socket.on("Entry denied", function (data) {
         console.log("Ø Entry denied");
         navigate("/");
         alert(data.message);
+      });
+
+      props.socket.on("Hello to all", function (data) {
+        console.log(`Ø ${data.msg}`);
       });
     }
 
@@ -37,7 +47,7 @@ export default function Room(props) {
         // navigate("/");
       }
     };
-  }, []);
+  }, [props.socket]);
 
   if (props.socket && !roomName) {
     setTimeout(() => {

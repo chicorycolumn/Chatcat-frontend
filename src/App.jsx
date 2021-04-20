@@ -45,7 +45,7 @@ export default function App() {
     });
 
     socket.on("Dev queried rooms", function (data) {
-      console.log("Ø Dev quieried rooms. roomList", data.roomList);
+      console.log("Ø Dev queried rooms. roomList", data.roomList);
     });
 
     socket.on("disconnect", (data) => {

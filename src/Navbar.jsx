@@ -16,6 +16,15 @@ const Navbar = (props) => {
       >
         Dev query rooms
       </button>
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          console.log("€ Hello to all.");
+          props.socket.emit("Hello to all");
+        }}
+      >
+        Hello to all
+      </button>
     </div>
   );
 };
