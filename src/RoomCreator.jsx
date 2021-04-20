@@ -31,14 +31,6 @@ export default function RoomCreator(props) {
         )}
 
         <br />
-        <button
-          onClick={() => {
-            console.log(props.socket.id.slice(0, 5));
-            props.socket.emit("Prayer", "Our Father");
-          }}
-        >
-          Emit Our Father
-        </button>
       </>
     </>
   );

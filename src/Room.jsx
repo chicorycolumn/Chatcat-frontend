@@ -26,6 +26,12 @@ export default function Room(props) {
         setPlayerList(data.roomData.players);
       });
 
+      props.socket.on("Player left your room", function (data) {
+        console.log(`Ø ${data.playerId.slice(0, 5)} left your room`);
+        console.log("Updating playerList.");
+        setPlayerList(data.roomData.players);
+      });
+
       props.socket.on("Entry denied", function (data) {
         console.log("Ø Entry denied");
         navigate("/");
