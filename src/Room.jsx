@@ -28,21 +28,17 @@ export default function Room(props) {
 
       props.socket.on("Entry granted", function (data) {
         console.log("Ø Entry granted");
-        console.log("Setting roomName.");
         setRoomName(data.room.roomName);
-        console.log("Setting playerList.");
         setPlayerList(data.room.players);
       });
 
       props.socket.on("Player entered your room", function (data) {
         console.log(`Ø ${data.player.playerName} entered your room`);
-        console.log("Updating playerList.");
         setPlayerList(data.room.players);
       });
 
       props.socket.on("Player left your room", function (data) {
         console.log(`Ø ${data.player.playerName} left your room`);
-        console.log("Updating playerList.");
         setPlayerList(data.room.players);
       });
 
