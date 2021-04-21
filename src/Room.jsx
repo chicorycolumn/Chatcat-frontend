@@ -1,57 +1,8 @@
 import styles from "./css/Room.module.css";
+import genericStyles from "./css/Generic.module.css";
 import React, { useEffect, useState } from "react";
 import { navigate, useLocation } from "@reach/router";
-
-function makeDummyName(id) {
-  let firstNames = [
-    "alexandra",
-    "billy",
-    "cameron",
-    "daniela",
-    "edward",
-    "frank",
-    "geraldine",
-    "helena",
-    "imogen",
-    "julia",
-    "katherine",
-    "leanne",
-    "michael",
-    "norbert",
-    "oscar",
-    "patricia",
-    "quentin",
-    "roberto",
-    "samantha",
-    "timothy",
-    "umberto",
-    "valerie",
-    "william",
-    "xanthia",
-    "yorkie",
-    "zoe",
-  ];
-  let firstName;
-  let prefix = "";
-  let lastIndex;
-
-  id.split("").forEach((char, index) => {
-    if (!firstName) {
-      if (!/\d/.test(char)) {
-        firstName = firstNames
-          .find((name) => name[0] === char.toLowerCase())
-          .split("");
-        firstName[0] = id[index];
-        firstName[1] = id[index + 1];
-        lastIndex = index + 2;
-      } else {
-        prefix += char.toString();
-      }
-    }
-  });
-
-  return `${prefix}${firstName.join("")} ${id.slice(lastIndex, lastIndex + 2)}`;
-}
+import PlayerNameCreator from "./PlayerNameCreator";
 
 export default function Room(props) {
   const [roomName, setRoomName] = useState(null);
@@ -112,7 +63,6 @@ export default function Room(props) {
         props.socket.emit("Leave room", {
           roomName: location.pathname.slice(1),
         });
-        // navigate("/");
       }
     };
   }, [props.socketNudge]);
@@ -122,37 +72,72 @@ export default function Room(props) {
       {roomName ? (
         <p>Welcome to {roomName}</p>
       ) : (
-        <>
-          <h1>Welcome player, what is your name?</h1>
-          <input
-            text
-            value={playerName}
-            onChange={(e) => {
-              setPlayerName(e.value);
-            }}
-          ></input>
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              console.log(
-                `€ Request entry with socket: ${props.socket.id}`,
-                props.socket
-              );
-              props.socket.emit("Request entry", {
-                roomName: location.pathname.slice(1),
-                playerName: playerName,
-              });
-            }}
-          >
-            Enter room
-          </button>
-        </>
+        <PlayerNameCreator
+          socket={props.socket}
+          playerName={playerName}
+          setPlayerName={setPlayerName}
+        />
       )}
-      <h1>Current Players:</h1>
-      {playerList &&
-        playerList.map((roomPlayer) => {
-          return <li>{roomPlayer.playerName}</li>;
-        })}
+      <div styles={`${genericStyles.genericBox1} ${styles.playerListBox}`}>
+        <h1>Current Players:</h1>
+        <ul>
+          {playerList &&
+            playerList.map((roomPlayer) => {
+              return <li>{roomPlayer.playerName}</li>;
+            })}
+        </ul>
+      </div>
     </div>
   );
+}
+
+function makeDummyName(id) {
+  let firstNames = [
+    "alexandra",
+    "billy",
+    "cameron",
+    "daniela",
+    "edward",
+    "frankie",
+    "geraldine",
+    "helena",
+    "imogen",
+    "julianne",
+    "katherine",
+    "leanne",
+    "michael",
+    "norbert",
+    "oliver",
+    "patricia",
+    "quentin",
+    "roberto",
+    "samantha",
+    "timothy",
+    "umberto",
+    "valerie",
+    "william",
+    "xanthia",
+    "yorkie",
+    "zachary",
+  ];
+  let firstName;
+  let prefix = "";
+  let lastIndex;
+
+  id.split("").forEach((char, index) => {
+    if (!firstName) {
+      if (!/\d/.test(char)) {
+        firstName = firstNames
+          .find((name) => name[0] === char.toLowerCase())
+          .split("");
+        firstName[0] = id[index];
+        firstName[1] = id[index + 1];
+        lastIndex = index + 2;
+      } else {
+        prefix += char.toString();
+      }
+    }
+  });
+
+  return `${prefix}${firstName.join("")} ${id.slice(lastIndex, lastIndex + 2)}`;
 }
