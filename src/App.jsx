@@ -38,12 +38,10 @@ export default function App() {
     });
 
     socket.on("Room created", function (data) {
-      console.log("Ø Room created");
       navigate(`/${data.room.roomName}`);
     });
 
     socket.on("Room not created", function (data) {
-      console.log("Ø Room not created");
       navigate("/");
       alert(data.msg);
     });

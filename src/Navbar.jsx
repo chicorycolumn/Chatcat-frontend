@@ -10,7 +10,6 @@ const Navbar = (props) => {
       <button
         onClick={(e) => {
           e.preventDefault();
-          console.log("€ Dev query rooms.");
           props.socket.emit("Dev query rooms");
         }}
       >
@@ -19,7 +18,6 @@ const Navbar = (props) => {
       <button
         onClick={(e) => {
           e.preventDefault();
-          console.log("€ Hello to all.");
           props.socket.emit("Hello to all");
         }}
       >

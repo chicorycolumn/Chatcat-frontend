@@ -22,7 +22,6 @@ export default function RoomCreator(props) {
           <button
             onClick={(e) => {
               e.preventDefault();
-              console.log(`€ Create room ${props.newRoomName}.`);
               props.socket.emit("Create room", { roomName: props.newRoomName });
             }}
           >
