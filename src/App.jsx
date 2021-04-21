@@ -12,6 +12,7 @@ const ENDPOINT = "http://127.0.0.1:4002";
 export default function App() {
   const [newRoomName, setNewRoomName] = useState(null);
   const [socket, setSocket] = useState(null);
+  const [socketNudge, setSocketNudge] = useState(false);
   // const refContainer = useRef(null);
 
   useEffect(() => {
@@ -23,6 +24,8 @@ export default function App() {
     console.log(`socket in useEffect in App is ${socket.id}.`);
 
     socket.on("connect", (data) => {
+      setSocketNudge(true);
+
       console.log(
         `Ø connect. I am ${socket.id.slice(
           0,
@@ -35,17 +38,17 @@ export default function App() {
 
     socket.on("Room created", function (data) {
       console.log("Ø Room created");
-      navigate(`/${data.roomName}`);
+      navigate(`/${data.room.roomName}`);
     });
 
     socket.on("Room not created", function (data) {
       console.log("Ø Room not created");
       navigate("/");
-      alert(data.message);
+      alert(data.msg);
     });
 
     socket.on("Dev queried rooms", function (data) {
-      console.log("Ø Dev queried rooms. roomList", data.roomList);
+      console.log("Ø Dev queried rooms. roomList", data.rooms);
     });
 
     socket.on("disconnect", (data) => {
@@ -77,7 +80,7 @@ export default function App() {
           />
           <Lemons path="/lemons" />
           <Contact path="/contact" />
-          <Room path="/*" socket={socket} />
+          <Room path="/*" socket={socket} socketNudge={socketNudge} />
         </Router>
       </div>
     </>
