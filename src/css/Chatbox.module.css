@@ -39,16 +39,24 @@
   justify-content: flex-start;
 }
 
-.chatItemPlayerName {
+.chatName {
   margin: 0px;
+  margin-left: 5px;
   color: green;
   width: 30%;
   min-width: 35%;
   max-width: 35%;
 }
 
-.chatItemText {
+.chatDialogue {
   margin: 0px;
   margin-left: 5px;
   color: crimson;
+}
+
+.chatAnnouncement {
+  margin: 0px;
+  margin-right: auto;
+  margin-left: auto;
+  color: purple;
 }

@@ -88,6 +88,7 @@ export default function Room(props) {
 
           <Chatbox
             socket={props.socket}
+            socketNudge={props.socketNudge}
             playerName={playerName}
             playerList={playerList}
           />

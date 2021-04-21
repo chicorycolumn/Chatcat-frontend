@@ -15,11 +15,23 @@ export default function Room(props) {
     }
   }
 
-  if (props.socket) {
+  function addToChatArray(chatItem) {
+    let newChatArray = chatArray.slice(0);
+    newChatArray.push(chatItem);
+    setChatArray(newChatArray);
+  }
+
+  if (props.socket && props.socketNudge) {
     props.socket.on("Chat message", function (data) {
-      let newChatArray = chatArray.slice(0);
-      newChatArray.push([data.sender.playerName, data.chatMsg]);
-      setChatArray(newChatArray);
+      addToChatArray([data.sender.playerName, data.chatMsg]);
+    });
+
+    props.socket.on("Player entered your room", function (data) {
+      addToChatArray(`${data.player.playerName} entered the room`);
+    });
+
+    props.socket.on("Player left your room", function (data) {
+      addToChatArray(`${data.player.playerName} left the room`);
     });
   }
 
@@ -28,26 +40,31 @@ export default function Room(props) {
       <h1>Chatbox</h1>
       <div className={`${styles.innerChatbox1}`}>
         {chatArray.map((chatItem) => {
-          return (
+          return typeof chatItem === "string" ? (
             <div className={`${styles.chatItem}`}>
-              <p className={`${styles.chatItemPlayerName}`}>
-                {chatItem[0]} says
-              </p>
-              <p className={`${styles.chatItemText}`}>{chatItem[1]}</p>
+              <p className={`${styles.chatAnnouncement}`}>{chatItem}</p>
+            </div>
+          ) : (
+            <div className={`${styles.chatItem}`}>
+              <p className={`${styles.chatName}`}>{chatItem[0]} says</p>
+              <p className={`${styles.chatDialogue}`}>{chatItem[1]}</p>
             </div>
           );
         })}
       </div>
-      <div className={`${styles.innerChatbox2}`}>
+      <form className={`${styles.innerChatbox2}`}>
         <textarea
           className={`${styles.chatboxInput}`}
           value={chatMsg}
+          maxLength="60"
+          type="text"
           onChange={(e) => {
             setChatMsg(e.target.value);
           }}
         ></textarea>
         <button
           className={`${styles.sendButton}`}
+          type="submit"
           onClick={(e) => {
             e.preventDefault();
             sendChat();
@@ -55,7 +72,7 @@ export default function Room(props) {
         >
           Send
         </button>
-      </div>
+      </form>
     </div>
   );
 }
