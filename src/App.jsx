@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import styles from "./css/App.module.css";
 import { Router, navigate, Link } from "@reach/router";
 import Lemons from "./Lemons.jsx";
 import RoomCreator from "./RoomCreator.jsx";
@@ -68,7 +69,7 @@ export default function App() {
 
   return (
     <>
-      <div>
+      <div className={`${styles.App}`}>
         <Navbar socket={socket}></Navbar>
         <header></header>
         <Router>

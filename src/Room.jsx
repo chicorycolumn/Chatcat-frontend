@@ -3,6 +3,7 @@ import genericStyles from "./css/Generic.module.css";
 import React, { useEffect, useState } from "react";
 import { navigate, useLocation } from "@reach/router";
 import PlayerNameCreator from "./PlayerNameCreator";
+import Chatbox from "./Chatbox";
 
 export default function Room(props) {
   const [roomName, setRoomName] = useState(null);
@@ -20,7 +21,7 @@ export default function Room(props) {
       throw "Error 45";
     }
 
-    if (props.socket) {
+    if (props.socket && props.socketNudge) {
       if (!playerName) {
         setPlayerName(makeDummyName(props.socket.id));
       }
@@ -68,9 +69,29 @@ export default function Room(props) {
   }, [props.socketNudge]);
 
   return (
-    <div className={styles.Room}>
+    <div className={`${styles.Room}`}>
       {roomName ? (
-        <p>Welcome to {roomName}</p>
+        <>
+          <h1>Welcome to {roomName}</h1>
+
+          <div
+            className={`${genericStyles.genericBox1} ${styles.playerListBox}`}
+          >
+            <h1>Current Players:</h1>
+            <ul>
+              {playerList &&
+                playerList.map((roomPlayer) => {
+                  return <li>{roomPlayer.playerName}</li>;
+                })}
+            </ul>
+          </div>
+
+          <Chatbox
+            socket={props.socket}
+            playerName={playerName}
+            playerList={playerList}
+          />
+        </>
       ) : (
         <PlayerNameCreator
           socket={props.socket}
@@ -78,15 +99,6 @@ export default function Room(props) {
           setPlayerName={setPlayerName}
         />
       )}
-      <div styles={`${genericStyles.genericBox1} ${styles.playerListBox}`}>
-        <h1>Current Players:</h1>
-        <ul>
-          {playerList &&
-            playerList.map((roomPlayer) => {
-              return <li>{roomPlayer.playerName}</li>;
-            })}
-        </ul>
-      </div>
     </div>
   );
 }
