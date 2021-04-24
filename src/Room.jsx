@@ -7,6 +7,7 @@ import roomUtils from "./utils/roomUtils.js";
 import Chatbox from "./Chatbox";
 
 export default function Room(props) {
+  console.log("Room fxn called.");
   const location = useLocation();
 
   useEffect(() => {
@@ -22,26 +23,6 @@ export default function Room(props) {
       if (!props.playerName) {
         props.setPlayerName(roomUtils.makeDummyName(props.socket.id));
       }
-
-      props.socket.on("Player entered your room", function (data) {
-        console.log(`Ø ${data.player.playerName} entered your room`);
-        props.setPlayerList(data.room.players);
-      });
-
-      props.socket.on("Player left your room", function (data) {
-        console.log(`Ø ${data.player.playerName} left your room`);
-        props.setPlayerList(data.room.players);
-      });
-
-      props.socket.on("Entry denied", function (data) {
-        console.log("Ø Entry denied");
-        navigate("/");
-        alert(data.msg);
-      });
-
-      props.socket.on("Hello to all", function (data) {
-        console.log(`Ø ${data.msg}`);
-      });
     }
 
     return function leaveRoom() {
@@ -63,23 +44,7 @@ export default function Room(props) {
             <div className={`${genStyles.minipanel1}`}>
               <h2>Players</h2>
               {props.playerList &&
-                [
-                  ...props.playerList,
-                  ...[
-                    { playerName: "lemon shambles" },
-                    { playerName: "lemon shambles" },
-                    { playerName: "lemon shambles" },
-                    { playerName: "lemon shambles" },
-                    { playerName: "lemon strhrthrhrthhambles" },
-                    { playerName: "lemon shambles" },
-                    { playerName: "lemon shambles" },
-                    { playerName: "lemon shambles" },
-                    { playerName: "lemon shambles" },
-                    { playerName: "lemon shambles" },
-                    { playerName: "lemon shambles" },
-                    { playerName: "lemon shambles" },
-                  ],
-                ].map((roomPlayer) => {
+                props.playerList.map((roomPlayer) => {
                   return (
                     <div className={`${styles.nameItem}`}>
                       {roomPlayer.playerName}

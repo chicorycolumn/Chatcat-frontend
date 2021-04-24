@@ -12,6 +12,7 @@ import socketIOClient from "socket.io-client";
 const ENDPOINT = "http://127.0.0.1:4002";
 
 export default function App() {
+  console.log("App fxn called.");
   const [newRoomName, setNewRoomName] = useState(null);
   const [playerName, setPlayerName] = useState(null);
   const [roomName, setRoomName] = useState(null);
@@ -62,6 +63,12 @@ export default function App() {
 
     socket.on("Dev queried rooms", function (data) {
       console.log("Ø Dev queried rooms. roomList", data.rooms);
+    });
+
+    socket.on("Entry denied", function (data) {
+      console.log("Ø Entry denied");
+      navigate("/");
+      alert(data.msg);
     });
 
     socket.on("disconnect", (data) => {

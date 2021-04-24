@@ -3,61 +3,61 @@ import genStyles from "./css/Generic.module.css";
 import React, { useEffect, useState } from "react";
 import { navigate, useLocation } from "@reach/router";
 import { scryRenderedDOMComponentsWithTag } from "react-dom/test-utils";
+import displayUtils from "./utils/displayUtils.js";
 
-export default function Room(props) {
+export default function Chatbox(props) {
+  console.log("Chatbox fxn called.");
+
   let [chatArray, setChatArray] = useState([]);
   let [chatMsg, setChatMsg] = useState("");
 
+  useEffect(() => {
+    console.log("CHATBOX UE CALLED");
+    if (props.socket && props.socketNudge) {
+      props.socket.on("Chat message", function (data) {
+        addToChatArray([data.sender.playerName, data.chatMsg]);
+      });
+
+      props.socket.on("Player entered your room", function (data) {
+        addToChatArray(`${data.player.playerName} entered the room`);
+      });
+
+      props.socket.on("Player left your room", function (data) {
+        addToChatArray(`${data.player.playerName} has left the room`);
+      });
+    }
+    function addToChatArray(chatItem) {
+      console.log(`addToChatArray called for ${chatItem}`);
+      console.log({ chatArray, chatItem });
+      let newChatArray = chatArray.slice(0);
+      newChatArray.push(chatItem);
+      setChatArray(newChatArray);
+      displayUtils.updateScroll("chatOutputContainer");
+    }
+    return function cleanup() {
+      console.log("APP CLEANUP");
+      props.socket.off("Chat message");
+      props.socket.off("Player entered your room");
+      props.socket.off("Player left your room");
+    };
+  }, [props.socket, props.socketNudge, chatArray]);
+
   function sendChat() {
+    console.log("sendChat fxn");
     if (chatMsg) {
       props.socket.emit("Chat message", { chatMsg: chatMsg });
       setChatMsg("");
     }
   }
 
-  function addToChatArray(chatItem) {
-    let newChatArray = chatArray.slice(0);
-    newChatArray.push(chatItem);
-    setChatArray(newChatArray);
-  }
-
-  if (props.socket && props.socketNudge) {
-    props.socket.on("Chat message", function (data) {
-      addToChatArray([data.sender.playerName, data.chatMsg]);
-    });
-
-    props.socket.on("Player entered your room", function (data) {
-      addToChatArray(`${data.player.playerName} entered the room`);
-    });
-
-    props.socket.on("Player left your room", function (data) {
-      addToChatArray(`${data.player.playerName} has left the room`);
-    });
-  }
-
   return (
     <div className={`${genStyles.box1} ${styles.chatboxSuper}`}>
       <h2>Chatbox</h2>
-      <div className={`${genStyles.minipanel1} ${styles.chatOutputContainer}`}>
-        {[
-          ...[
-            "boogieboo entered",
-            "pamflam entered",
-            ["boogieboo", "Hi there I'm B."],
-            ["pamflam", "Hi there I'm P."],
-            ["boogieboo", "Hi there I'm B."],
-            ["pamflam", "Hi there I'm P."],
-            ["boogieboo", "Hi there I'm B."],
-            ["pamflam", "Hi there I'm P."],
-            ["boogieboo", "Hi there I'm B."],
-            ["pamflam", "Hi there I'm P."],
-            ["boogieboo", "Hi there I'm B."],
-            ["pamflam", "Hi there I'm P."],
-            ["boogieboo", "Hi there I'm B."],
-            ["pamflam", "Hi there I'm P."],
-          ],
-          ...chatArray,
-        ].map((chatItem) => {
+      <div
+        id="chatOutputContainer"
+        className={`${genStyles.minipanel1} ${styles.chatOutputContainer}`}
+      >
+        {chatArray.map((chatItem) => {
           return typeof chatItem === "string" ? (
             <div className={`${styles.chatItem}`}>
               <p className={`${styles.chatAnnouncement}`}>{chatItem}</p>
