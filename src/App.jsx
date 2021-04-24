@@ -66,22 +66,20 @@ export default function App() {
   }, []);
 
   return (
-    <>
-      <div className={`${styles.App}`}>
-        <Navbar socket={socket}></Navbar>
-        <header></header>
-        <Router>
-          <RoomCreator
-            path="/"
-            socket={socket}
-            newRoomName={newRoomName}
-            setNewRoomName={setNewRoomName}
-          />
-          <Lemons path="/lemons" />
-          <Contact path="/contact" />
-          <Room path="/*" socket={socket} socketNudge={socketNudge} />
-        </Router>
-      </div>
-    </>
+    <div className={`${styles.App}`}>
+      <Navbar socket={socket}></Navbar>
+      <header></header>
+      <Router>
+        <RoomCreator
+          path="/"
+          socket={socket}
+          newRoomName={newRoomName}
+          setNewRoomName={setNewRoomName}
+        />
+        <Lemons path="/lemons" />
+        <Contact path="/contact" />
+        <Room path="/*" socket={socket} socketNudge={socketNudge} />
+      </Router>
+    </div>
   );
 }

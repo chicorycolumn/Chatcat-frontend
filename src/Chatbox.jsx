@@ -1,5 +1,5 @@
 import styles from "./css/Chatbox.module.css";
-import genericStyles from "./css/Generic.module.css";
+import genStyles from "./css/Generic.module.css";
 import React, { useEffect, useState } from "react";
 import { navigate, useLocation } from "@reach/router";
 import { scryRenderedDOMComponentsWithTag } from "react-dom/test-utils";
@@ -36,7 +36,7 @@ export default function Room(props) {
   }
 
   return (
-    <div className={`${genericStyles.genericBox1} ${styles.chatbox}`}>
+    <div className={`${genStyles.genericBox1} ${styles.chatbox}`}>
       <h1>Chatbox</h1>
       <div className={`${styles.innerChatbox1}`}>
         {chatArray.map((chatItem) => {

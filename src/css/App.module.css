@@ -1,4 +1,63 @@
-.App {
-  color: blue;
-  background-color: thistle;
+:root {
+  /*Base*/
+  --pPink: #ff1b8d;
+  --pYellow: #ffda00;
+  --pBlue: #1bb3ff;
+  /*Dark*/
+  --pPink_D1: #bd1468;
+  --pYellow_D1: #caac00;
+  --pBlue_D1: #158ac5;
+  --pPink_D2: #860c49;
+  --pYellow_D2: #8d7800;
+  --pBlue_D2: #106a97;
+  --pPink_D3: #460626;
+  --pYellow_D3: #4d4100;
+  --pBlue_D3: #093d57;
+  /*Light*/
+  --pPink_L1: #fa56a8;
+  --pYellow_L1: #fae35e;
+  --pBlue_L1: #59c4fa;
+  --pPink_L2: #f896c7;
+  --pYellow_L2: #f7eaa0;
+  --pBlue_L2: #a5dcf8;
+  --pPink_L3: #fce6f1;
+  --pYellow_L3: #fffcea;
+  --pBlue_L3: #dbf0fa;
 }
+
+textarea {
+  resize: none;
+  border-radius: 5px;
+  background-color: var(--pYellow_L3);
+}
+
+.App {
+  /* text-align: center;
+  background-color: var(--light-lilac);
+  margin: auto;
+  width: auto;
+  height: auto;
+  min-height: 87vh;
+  padding-top: 100px;
+  padding-bottom: 1px;
+  border-radius: 0px; */
+}
+
+/* .App-link {
+  color: #61dafb;
+} */
+
+/* div {
+  border-radius: var(--bradius1);
+} */
+
+/* button {
+  border-radius: var(--bradius2);
+  outline: none;
+} */
+
+/* input,
+textarea {
+  border-radius: var(--bradius1);
+  outline: none;
+} */

@@ -1,5 +1,5 @@
 import styles from "./css/Room.module.css";
-import genericStyles from "./css/Generic.module.css";
+import genStyles from "./css/Generic.module.css";
 import React, { useEffect, useState } from "react";
 import { navigate, useLocation } from "@reach/router";
 import PlayerNameCreator from "./PlayerNameCreator";
@@ -70,9 +70,7 @@ export default function Room(props) {
         <>
           <h1>Welcome to {roomName}</h1>
 
-          <div
-            className={`${genericStyles.genericBox1} ${styles.playerListBox}`}
-          >
+          <div className={`${genStyles.genericBox1} ${styles.playerListBox}`}>
             <h1>Current Players:</h1>
             <ul>
               {playerList &&

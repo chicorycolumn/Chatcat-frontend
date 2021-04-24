@@ -1,5 +1,5 @@
 import styles from "./css/PlayerNameCreator.module.css";
-import genericStyles from "./css/Generic.module.css";
+import genStyles from "./css/Generic.module.css";
 import React, { useEffect, useState } from "react";
 import { navigate, useLocation } from "@reach/router";
 
@@ -7,9 +7,7 @@ export default function PlayerNameCreator(props) {
   const location = useLocation();
 
   return (
-    <div
-      className={`${genericStyles.genericBox1} ${styles.playerNameInputForm}`}
-    >
+    <div className={`${genStyles.genericBox1} ${styles.playerNameInputForm}`}>
       <h1>Welcome player, what is your name?</h1>
       <input
         text
