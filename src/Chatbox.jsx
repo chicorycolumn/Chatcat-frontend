@@ -31,7 +31,7 @@ export default function Room(props) {
     });
 
     props.socket.on("Player left your room", function (data) {
-      addToChatArray(`${data.player.playerName} left the room`);
+      addToChatArray(`${data.player.playerName} has left the room`);
     });
   }
 

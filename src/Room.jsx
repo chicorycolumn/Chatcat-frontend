@@ -3,13 +3,10 @@ import genStyles from "./css/Generic.module.css";
 import React, { useEffect, useState } from "react";
 import { navigate, useLocation } from "@reach/router";
 import PlayerNameCreator from "./PlayerNameCreator";
+import roomUtils from "./utils/roomUtils.js";
 import Chatbox from "./Chatbox";
 
 export default function Room(props) {
-  const [roomName, setRoomName] = useState(null);
-  const [playerName, setPlayerName] = useState(null);
-  const [playerList, setPlayerList] = useState(null);
-
   const location = useLocation();
 
   useEffect(() => {
@@ -22,24 +19,18 @@ export default function Room(props) {
     }
 
     if (props.socket && props.socketNudge) {
-      if (!playerName) {
-        setPlayerName(makeDummyName(props.socket.id));
+      if (!props.playerName) {
+        props.setPlayerName(roomUtils.makeDummyName(props.socket.id));
       }
-
-      props.socket.on("Entry granted", function (data) {
-        console.log("Ø Entry granted");
-        setRoomName(data.room.roomName);
-        setPlayerList(data.room.players);
-      });
 
       props.socket.on("Player entered your room", function (data) {
         console.log(`Ø ${data.player.playerName} entered your room`);
-        setPlayerList(data.room.players);
+        props.setPlayerList(data.room.players);
       });
 
       props.socket.on("Player left your room", function (data) {
         console.log(`Ø ${data.player.playerName} left your room`);
-        setPlayerList(data.room.players);
+        props.setPlayerList(data.room.players);
       });
 
       props.socket.on("Entry denied", function (data) {
@@ -66,14 +57,14 @@ export default function Room(props) {
 
   return (
     <div className={`${styles.Room}`}>
-      {roomName ? (
+      {props.roomName ? (
         <div className={`${styles.superContainer}`}>
           <div className={`${styles.mainContainer}`}>
             <div className={`${genStyles.minipanel1}`}>
               <h2>Players</h2>
-              {playerList &&
+              {props.playerList &&
                 [
-                  ...playerList,
+                  ...props.playerList,
                   ...[
                     { playerName: "lemon shambles" },
                     { playerName: "lemon shambles" },
@@ -112,69 +103,18 @@ export default function Room(props) {
             <Chatbox
               socket={props.socket}
               socketNudge={props.socketNudge}
-              playerName={playerName}
-              playerList={playerList}
+              playerName={props.playerName}
+              playerList={props.playerList}
             />
           </div>
         </div>
       ) : (
         <PlayerNameCreator
           socket={props.socket}
-          playerName={playerName}
-          setPlayerName={setPlayerName}
+          playerName={props.playerName}
+          setPlayerName={props.setPlayerName}
         />
       )}
     </div>
   );
-}
-
-function makeDummyName(id) {
-  let firstNames = [
-    "alexandra",
-    "billy",
-    "cameron",
-    "daniela",
-    "edward",
-    "frankie",
-    "geraldine",
-    "helena",
-    "imogen",
-    "julianne",
-    "katherine",
-    "leanne",
-    "michael",
-    "norbert",
-    "oliver",
-    "patricia",
-    "quentin",
-    "roberto",
-    "samantha",
-    "timothy",
-    "umberto",
-    "valerie",
-    "william",
-    "xanthia",
-    "yorkie",
-    "zachary",
-  ];
-  let firstName;
-  let prefix = "";
-  let lastIndex;
-
-  id.split("").forEach((char, index) => {
-    if (!firstName) {
-      if (!/\d/.test(char)) {
-        firstName = firstNames
-          .find((name) => name[0] === char.toLowerCase())
-          .split("");
-        firstName[0] = id[index];
-        firstName[1] = id[index + 1];
-        lastIndex = index + 2;
-      } else {
-        prefix += char.toString();
-      }
-    }
-  });
-
-  return `${prefix}${firstName.join("")} ${id.slice(lastIndex, lastIndex + 2)}`;
 }

@@ -34,11 +34,12 @@
   align-items: center;
 }
 
-textarea {
+.textarea1 {
   width: 75%;
   font-size: 18px;
   height: 24px;
   text-align: center;
+  overflow: hidden;
 }
 
 .button1 {
@@ -47,7 +48,7 @@ textarea {
   border: var(--pPink_D2) solid 2px;
 }
 
-textarea:hover,
+.textarea1:hover,
 .button1:hover {
   background-color: var(--pBlue_L3);
 }

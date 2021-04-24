@@ -30,6 +30,15 @@
   box-sizing: border-box;
 }
 
+button:disabled {
+  background-color: rgb(231, 231, 231);
+  cursor: not-allowed;
+}
+
+button:disabled:hover {
+  background-color: rgb(231, 231, 231);
+}
+
 textarea {
   resize: none;
   border-radius: 5px;

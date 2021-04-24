@@ -1,19 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./css/App.module.css";
-import { Router, navigate, Link } from "@reach/router";
+import { Router, navigate, Link, useLocation } from "@reach/router";
 import Lemons from "./Lemons.jsx";
 import RoomCreator from "./RoomCreator.jsx";
 import Contact from "./Contact.jsx";
 import Room from "./Room.jsx";
 import Navbar from "./Navbar.jsx";
+import roomUtils from "./utils/roomUtils.js";
 
 import socketIOClient from "socket.io-client";
 const ENDPOINT = "http://127.0.0.1:4002";
 
 export default function App() {
   const [newRoomName, setNewRoomName] = useState(null);
+  const [playerName, setPlayerName] = useState(null);
+  const [roomName, setRoomName] = useState(null);
+  const [playerList, setPlayerList] = useState(null);
   const [socket, setSocket] = useState(null);
   const [socketNudge, setSocketNudge] = useState(false);
+
   // const refContainer = useRef(null);
 
   useEffect(() => {
@@ -26,6 +31,9 @@ export default function App() {
 
     socket.on("connect", (data) => {
       setSocketNudge(true);
+      if (!playerName) {
+        setPlayerName(roomUtils.makeDummyName(socket.id));
+      }
 
       console.log(
         `Ø connect. I am ${socket.id.slice(
@@ -37,8 +45,14 @@ export default function App() {
       );
     });
 
-    socket.on("Room created", function (data) {
-      navigate(`/${data.room.roomName}`);
+    socket.on("Entry granted", function (data) {
+      console.log("Ø Entry granted");
+      setRoomName(data.room.roomName);
+      setPlayerList(data.room.players);
+
+      if (data.pleaseChangeUrlToRoomUrl) {
+        navigate(`/${data.room.roomName}`);
+      }
     });
 
     socket.on("Room not created", function (data) {
@@ -75,10 +89,22 @@ export default function App() {
           socket={socket}
           newRoomName={newRoomName}
           setNewRoomName={setNewRoomName}
+          playerName={playerName}
+          setPlayerName={setPlayerName}
         />
         <Lemons path="/lemons" />
         <Contact path="/contact" />
-        <Room path="/*" socket={socket} socketNudge={socketNudge} />
+        <Room
+          path="/*"
+          socket={socket}
+          socketNudge={socketNudge}
+          playerName={playerName}
+          setPlayerName={setPlayerName}
+          playerList={playerList}
+          setPlayerList={setPlayerList}
+          roomName={roomName}
+          setRoomName={setRoomName}
+        />
       </Router>
     </div>
   );
