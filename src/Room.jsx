@@ -67,26 +67,56 @@ export default function Room(props) {
   return (
     <div className={`${styles.Room}`}>
       {roomName ? (
-        <>
-          <h1>Welcome to {roomName}</h1>
-
-          <div className={`${genStyles.genericBox1} ${styles.playerListBox}`}>
-            <h1>Current Players:</h1>
-            <ul>
+        <div className={`${styles.superContainer}`}>
+          <div className={`${styles.mainContainer}`}>
+            <div className={`${genStyles.minipanel1}`}>
+              <h2>Players</h2>
               {playerList &&
-                playerList.map((roomPlayer) => {
-                  return <li>{roomPlayer.playerName}</li>;
+                [
+                  ...playerList,
+                  ...[
+                    { playerName: "lemon shambles" },
+                    { playerName: "lemon shambles" },
+                    { playerName: "lemon shambles" },
+                    { playerName: "lemon shambles" },
+                    { playerName: "lemon strhrthrhrthhambles" },
+                    { playerName: "lemon shambles" },
+                    { playerName: "lemon shambles" },
+                    { playerName: "lemon shambles" },
+                    { playerName: "lemon shambles" },
+                    { playerName: "lemon shambles" },
+                    { playerName: "lemon shambles" },
+                    { playerName: "lemon shambles" },
+                  ],
+                ].map((roomPlayer) => {
+                  return (
+                    <div className={`${styles.nameItem}`}>
+                      {roomPlayer.playerName}
+                    </div>
+                  );
                 })}
-            </ul>
+            </div>
+            <div className={`${genStyles.minipanel1} ${styles.box1a}`}>
+              <h2>Instructions</h2>
+              <p>
+                This is chat app where you can converse with your friends.
+                <br />
+                <br /> You simply enter your text in the box below and send.
+                <br /> <br /> Then your friends will see and hopefully read it.
+                <br /> <br /> This is accomplished with SocketIO 4.
+              </p>
+            </div>
           </div>
-
-          <Chatbox
-            socket={props.socket}
-            socketNudge={props.socketNudge}
-            playerName={playerName}
-            playerList={playerList}
-          />
-        </>
+          <div className={`${styles.mainContainer}`}></div>
+          <div className={`${styles.box2}`}>
+            <Chatbox
+              socket={props.socket}
+              socketNudge={props.socketNudge}
+              playerName={playerName}
+              playerList={playerList}
+            />
+          </div>
+        </div>
       ) : (
         <PlayerNameCreator
           socket={props.socket}

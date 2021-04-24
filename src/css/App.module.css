@@ -23,6 +23,11 @@
   --pPink_L3: #fce6f1;
   --pYellow_L3: #fffcea;
   --pBlue_L3: #dbf0fa;
+  --pBlue_L2a: #cfebf8;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 textarea {

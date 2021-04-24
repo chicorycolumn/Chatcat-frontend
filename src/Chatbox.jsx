@@ -36,23 +36,41 @@ export default function Room(props) {
   }
 
   return (
-    <div className={`${genStyles.genericBox1} ${styles.chatbox}`}>
-      <h1>Chatbox</h1>
-      <div className={`${styles.innerChatbox1}`}>
-        {chatArray.map((chatItem) => {
+    <div className={`${genStyles.box1} ${styles.chatboxSuper}`}>
+      <h2>Chatbox</h2>
+      <div className={`${genStyles.minipanel1} ${styles.chatOutputContainer}`}>
+        {[
+          ...[
+            "boogieboo entered",
+            "pamflam entered",
+            ["boogieboo", "Hi there I'm B."],
+            ["pamflam", "Hi there I'm P."],
+            ["boogieboo", "Hi there I'm B."],
+            ["pamflam", "Hi there I'm P."],
+            ["boogieboo", "Hi there I'm B."],
+            ["pamflam", "Hi there I'm P."],
+            ["boogieboo", "Hi there I'm B."],
+            ["pamflam", "Hi there I'm P."],
+            ["boogieboo", "Hi there I'm B."],
+            ["pamflam", "Hi there I'm P."],
+            ["boogieboo", "Hi there I'm B."],
+            ["pamflam", "Hi there I'm P."],
+          ],
+          ...chatArray,
+        ].map((chatItem) => {
           return typeof chatItem === "string" ? (
             <div className={`${styles.chatItem}`}>
               <p className={`${styles.chatAnnouncement}`}>{chatItem}</p>
             </div>
           ) : (
             <div className={`${styles.chatItem}`}>
-              <p className={`${styles.chatName}`}>{chatItem[0]} says</p>
+              <p className={`${styles.chatName}`}>{chatItem[0]}:</p>
               <p className={`${styles.chatDialogue}`}>{chatItem[1]}</p>
             </div>
           );
         })}
       </div>
-      <form className={`${styles.innerChatbox2}`}>
+      <form className={`${styles.chatInputContainer}`}>
         <textarea
           className={`${styles.chatboxInput}`}
           value={chatMsg}
@@ -70,7 +88,7 @@ export default function Room(props) {
             sendChat();
           }}
         >
-          Send
+          SEND
         </button>
       </form>
     </div>
