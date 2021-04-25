@@ -21,10 +21,16 @@
   text-align: center;
   background-color: var(--pBlue_L3);
   height: 240px;
-  overflow: auto;
   width: 200px;
+}
+
+.overflowScroll {
+  overflow: auto;
   overflow-x: hidden;
-  /* word-break: break-all; */
+}
+
+.overflowHidden {
+  overflow: hidden;
 }
 
 .paddedBox1 {

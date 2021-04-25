@@ -7,3 +7,7 @@
 .nameItem:nth-child(even) {
   background-color: var(--pYellow_L3);
 }
+
+.innerBox {
+  height: 72.5%;
+}

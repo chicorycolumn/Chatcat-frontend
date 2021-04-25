@@ -7,14 +7,18 @@ export default function PlayerList(props) {
   console.log("((PlayerList))");
 
   return (
-    <div className={`${genStyles.minipanel1}`}>
+    <div className={`${genStyles.minipanel1} ${genStyles.overflowHidden}`}>
       <h2>Players</h2>
-      {props.playerList &&
-        props.playerList.map((roomPlayer) => {
-          return (
-            <div className={`${styles.nameItem}`}>{roomPlayer.playerName}</div>
-          );
-        })}
+      <div className={`${styles.innerBox} ${genStyles.overflowScroll}`}>
+        {props.playerList &&
+          props.playerList.map((roomPlayer) => {
+            return (
+              <div className={`${styles.nameItem}`}>
+                {roomPlayer.playerName}
+              </div>
+            );
+          })}
+      </div>
     </div>
   );
 }

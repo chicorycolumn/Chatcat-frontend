@@ -36,7 +36,7 @@ export default function Chatbox(props) {
       });
     }
     function addToChatArray(chatItem) {
-      let newChatArray = chatArray.slice(0, 50);
+      let newChatArray = chatArray.slice(chatArray.length - 50);
       newChatArray.push(chatItem);
       setChatArray(newChatArray);
       displayUtils.updateScroll("chatOutputContainer");
@@ -60,7 +60,7 @@ export default function Chatbox(props) {
       <h2>Chatbox</h2>
       <div
         id="chatOutputContainer"
-        className={`${genStyles.minipanel1} ${styles.chatOutputContainer}`}
+        className={`${genStyles.minipanel1} ${genStyles.overflowScroll} ${styles.chatOutputContainer}`}
       >
         {chatArray.map((chatItem) => {
           return typeof chatItem === "string" ? (
