@@ -12,20 +12,6 @@ export default function Room(props) {
   console.log("((Room))");
 
   useEffect(() => {
-    if (props.socket) {
-      console.log("rrr");
-
-      props.socket.on("Player entered your room", function (data) {
-        console.log("Ø Player entered --ROOM");
-        props.setRoomData(data.room);
-      });
-
-      props.socket.on("Player left your room", function (data) {
-        console.log("Ø Player left");
-        props.setRoomData(data.room);
-      });
-    }
-
     return function cleanup() {
       console.log("##Room##");
       if (props.socket) {

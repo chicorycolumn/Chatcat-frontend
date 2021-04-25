@@ -39,6 +39,16 @@ export default function RoomWrapper(props) {
       props.socket.on("Room data", function (data) {
         setRoomData(data.room);
       });
+
+      props.socket.on("Player entered your room", function (data) {
+        console.log("Ø Player entered --ROOM");
+        setRoomData(data.room);
+      });
+
+      props.socket.on("Player left your room", function (data) {
+        console.log("Ø Player left --ROOM");
+        setRoomData(data.room);
+      });
     }
 
     return function cleanup() {

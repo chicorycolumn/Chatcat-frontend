@@ -48,8 +48,6 @@ export default function Chatbox(props) {
     return function cleanup() {
       console.log("##Chatbox##");
       props.socket.off("Chat message");
-      props.socket.off("Player entered your room");
-      props.socket.off("Player left your room");
       $("#chatboxInput").off("keypress");
     };
   }, [props.socket, chatArray]);
