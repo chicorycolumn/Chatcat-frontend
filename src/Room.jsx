@@ -3,15 +3,26 @@ import genStyles from "./css/Generic.module.css";
 import React, { useEffect, useState } from "react";
 import { navigate, useLocation } from "@reach/router";
 import PlayerNameCreator from "./PlayerNameCreator";
+import PlayerList from "./PlayerList";
+import Instructions from "./Instructions";
 import roomUtils from "./utils/roomUtils.js";
 import Chatbox from "./Chatbox";
 
 export default function Room(props) {
-  console.log("Room fxn called.");
+  console.log("((Room))");
   const location = useLocation();
+  const [playerList, setPlayerList] = useState();
+  const [roomLoaded, setRoomLoaded] = useState();
+
+  console.log({
+    roomLoaded,
+    roomName: props.roomName,
+    socket: !!props.socket,
+    socketNudge: props.socketNudge,
+  });
 
   useEffect(() => {
-    console.log("ROOM UE CALLED");
+    console.log(`~~Room~~ props.socketNudge:${props.socketNudge}`);
 
     if (props.socket && !props.socket.id) {
       console.log("props.socket", props.socket);
@@ -19,16 +30,39 @@ export default function Room(props) {
       throw "Error 45";
     }
 
-    if (props.socket && props.socketNudge) {
+    if (props.socket && props.socketNudge && props.roomName) {
+      console.log("qqq");
       if (!props.playerName) {
         props.setPlayerName(roomUtils.makeDummyName(props.socket.id));
       }
+
+      if (!roomLoaded) {
+        props.socket.emit("Request room data", { roomName: props.roomName });
+      }
+
+      props.socket.on("Room data", function (data) {
+        setRoomLoaded(true);
+        setPlayerList(data.room.players);
+      });
+
+      props.socket.on("Player entered your room", function (data) {
+        console.log("Ø Player entered --ROOM");
+        setPlayerList(data.room.players);
+      });
+
+      props.socket.on("Player left your room", function (data) {
+        console.log("Ø Player left");
+        setPlayerList(data.room.players);
+      });
     }
 
-    return function leaveRoom() {
-      console.log("ROOM CLEANUP");
+    return function cleanup() {
+      console.log("##Room##");
       if (props.socket) {
         console.log("€ Leave room");
+        props.socket.off("Player entered your room");
+        props.socket.off("Player left your room");
+        props.setRoomName(null);
         props.socket.emit("Leave room", {
           roomName: location.pathname.slice(1),
         });
@@ -41,27 +75,8 @@ export default function Room(props) {
       {props.roomName ? (
         <div className={`${styles.superContainer}`}>
           <div className={`${styles.mainContainer}`}>
-            <div className={`${genStyles.minipanel1}`}>
-              <h2>Players</h2>
-              {props.playerList &&
-                props.playerList.map((roomPlayer) => {
-                  return (
-                    <div className={`${styles.nameItem}`}>
-                      {roomPlayer.playerName}
-                    </div>
-                  );
-                })}
-            </div>
-            <div className={`${genStyles.minipanel1} ${styles.box1a}`}>
-              <h2>Instructions</h2>
-              <p>
-                This is chat app where you can converse with your friends.
-                <br />
-                <br /> You simply enter your text in the box below and send.
-                <br /> <br /> Then your friends will see and hopefully read it.
-                <br /> <br /> This is accomplished with SocketIO 4.
-              </p>
-            </div>
+            <PlayerList playerList={playerList} />
+            <Instructions />
           </div>
           <div className={`${styles.mainContainer}`}></div>
           <div className={`${styles.box2}`}>
@@ -69,7 +84,6 @@ export default function Room(props) {
               socket={props.socket}
               socketNudge={props.socketNudge}
               playerName={props.playerName}
-              playerList={props.playerList}
             />
           </div>
         </div>

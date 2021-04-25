@@ -11,18 +11,18 @@ import socketIOClient from "socket.io-client";
 const ENDPOINT = "http://127.0.0.1:4002";
 
 export default function App() {
-  console.log("App fxn called.");
+  console.log("((App))");
   const [newRoomName, setNewRoomName] = useState(null);
   const [playerName, setPlayerName] = useState(null);
   const [roomName, setRoomName] = useState(null);
-  const [playerList, setPlayerList] = useState(null);
   const [socket, setSocket] = useState(null);
   const [socketNudge, setSocketNudge] = useState(false);
+  const [roomKey, setRoomKey] = useState();
 
   // const refContainer = useRef(null);
 
   useEffect(() => {
-    console.log("APP UE CALLED");
+    console.log("~~App~~");
     let socket = socketIOClient(ENDPOINT);
     // refContainer.current = socket;
     setSocket(socket);
@@ -31,6 +31,7 @@ export default function App() {
 
     socket.on("connect", (data) => {
       setSocketNudge(true);
+      console.log(`App socket connect. playerName:${playerName}.`);
       if (!playerName) {
         setPlayerName(roomUtils.makeDummyName(socket.id));
       }
@@ -48,11 +49,9 @@ export default function App() {
     socket.on("Entry granted", function (data) {
       console.log("Ø Entry granted");
       setRoomName(data.room.roomName);
-      setPlayerList(data.room.players);
-
-      if (data.pleaseChangeUrlToRoomUrl) {
-        navigate(`/${data.room.roomName}`);
-      }
+      // if (data.pleaseChangeUrlToRoomUrl) {
+      navigate(`/${data.room.roomName}`);
+      // }
     });
 
     socket.on("Room not created", function (data) {
@@ -71,6 +70,7 @@ export default function App() {
     });
 
     socket.on("disconnect", (data) => {
+      setRoomName(null);
       console.log(
         `Ø disconnect. I disconnected from server at ${new Date()
           .toUTCString()
@@ -79,8 +79,8 @@ export default function App() {
     });
 
     return function cleanup() {
-      console.log("APP CLEANUP");
-      console.log("€ disconnect");
+      console.log("##App##");
+      setRoomName(null);
       socket.disconnect();
     };
   }, []);
@@ -105,8 +105,7 @@ export default function App() {
           socketNudge={socketNudge}
           playerName={playerName}
           setPlayerName={setPlayerName}
-          playerList={playerList}
-          setPlayerList={setPlayerList}
+          setPlayerName={setPlayerName}
           roomName={roomName}
           setRoomName={setRoomName}
         />

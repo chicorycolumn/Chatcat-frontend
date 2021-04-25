@@ -4,16 +4,17 @@ import React, { useEffect, useState } from "react";
 import { navigate, useLocation } from "@reach/router";
 import { scryRenderedDOMComponentsWithTag } from "react-dom/test-utils";
 import displayUtils from "./utils/displayUtils.js";
-
 import $ from "jquery";
 
 export default function Chatbox(props) {
-  console.log("Chatbox fxn called.");
+  console.log("((Chatbox))");
 
   let [chatArray, setChatArray] = useState([]);
   let [chatMsg, setChatMsg] = useState("");
 
   useEffect(() => {
+    console.log("~~Chatbox~~");
+
     $("#chatboxInput").on("keypress", function (e) {
       console.log("$");
       if ((e.which === 13 || e.keyCode === 13) && !e.shiftKey) {
@@ -22,14 +23,13 @@ export default function Chatbox(props) {
       }
     });
 
-    console.log("CHATBOX UE CALLED");
-
     if (props.socket && props.socketNudge) {
       props.socket.on("Chat message", function (data) {
         addToChatArray([data.sender.playerName, data.chatMsg]);
       });
 
       props.socket.on("Player entered your room", function (data) {
+        console.log("Ø player entered --CHATBOX");
         addToChatArray(`${data.player.playerName} entered`);
       });
 
@@ -46,7 +46,7 @@ export default function Chatbox(props) {
       displayUtils.updateScroll("chatOutputContainer");
     }
     return function cleanup() {
-      console.log("APP CLEANUP");
+      console.log("##Chatbox##");
       props.socket.off("Chat message");
       props.socket.off("Player entered your room");
       props.socket.off("Player left your room");

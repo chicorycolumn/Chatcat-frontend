@@ -5,9 +5,9 @@ import { navigate, useLocation } from "@reach/router";
 import roomUtils from "./utils/roomUtils.js";
 
 export default function PlayerNameCreator(props) {
-  const location = useLocation();
+  console.log("((PlayerNameCreator))");
 
-  useEffect(() => {}, [props.playerName]);
+  const location = useLocation();
 
   return (
     <div className={`${genStyles.box1} ${panelStyles.mainPanel2}`}>

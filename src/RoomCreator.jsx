@@ -5,6 +5,7 @@ import panelStyles from "./css/Panel.module.css";
 import roomUtils from "./utils/roomUtils.js";
 
 export default function RoomCreator(props) {
+  console.log("((RoomCreator))");
   return (
     <div className={`${genStyles.box1} ${panelStyles.mainPanel1}`}>
       <div className={`${panelStyles.innerBox}`}>

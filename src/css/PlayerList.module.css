@@ -1,0 +1,9 @@
+.nameItem {
+  width: 100%;
+  background-color: var(--pPink_L3);
+  padding: 5px 10px;
+}
+
+.nameItem:nth-child(even) {
+  background-color: var(--pYellow_L3);
+}
