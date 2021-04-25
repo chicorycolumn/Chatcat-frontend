@@ -5,6 +5,8 @@ import { navigate, useLocation } from "@reach/router";
 import { scryRenderedDOMComponentsWithTag } from "react-dom/test-utils";
 import displayUtils from "./utils/displayUtils.js";
 
+import $ from "jquery";
+
 export default function Chatbox(props) {
   console.log("Chatbox fxn called.");
 
@@ -12,24 +14,33 @@ export default function Chatbox(props) {
   let [chatMsg, setChatMsg] = useState("");
 
   useEffect(() => {
+    $("#chatboxInput").on("keypress", function (e) {
+      console.log("$");
+      if ((e.which === 13 || e.keyCode === 13) && !e.shiftKey) {
+        e.preventDefault();
+        $("#chatboxSendButton").click();
+      }
+    });
+
     console.log("CHATBOX UE CALLED");
+
     if (props.socket && props.socketNudge) {
       props.socket.on("Chat message", function (data) {
         addToChatArray([data.sender.playerName, data.chatMsg]);
       });
 
       props.socket.on("Player entered your room", function (data) {
-        addToChatArray(`${data.player.playerName} entered the room`);
+        addToChatArray(`${data.player.playerName} entered`);
       });
 
       props.socket.on("Player left your room", function (data) {
-        addToChatArray(`${data.player.playerName} has left the room`);
+        addToChatArray(`${data.player.playerName} has left`);
       });
     }
     function addToChatArray(chatItem) {
       console.log(`addToChatArray called for ${chatItem}`);
       console.log({ chatArray, chatItem });
-      let newChatArray = chatArray.slice(0);
+      let newChatArray = chatArray.slice(0, 50);
       newChatArray.push(chatItem);
       setChatArray(newChatArray);
       displayUtils.updateScroll("chatOutputContainer");
@@ -39,6 +50,7 @@ export default function Chatbox(props) {
       props.socket.off("Chat message");
       props.socket.off("Player entered your room");
       props.socket.off("Player left your room");
+      $("#chatboxInput").off("keypress");
     };
   }, [props.socket, props.socketNudge, chatArray]);
 
@@ -72,6 +84,7 @@ export default function Chatbox(props) {
       </div>
       <form className={`${styles.chatInputContainer}`}>
         <textarea
+          id="chatboxInput"
           className={`${styles.chatboxInput}`}
           value={chatMsg}
           maxLength="60"
@@ -81,10 +94,12 @@ export default function Chatbox(props) {
           }}
         ></textarea>
         <button
+          id="chatboxSendButton"
           className={`${styles.sendButton}`}
           type="submit"
           onClick={(e) => {
             e.preventDefault();
+            console.log("chatboxSendButton clicked");
             sendChat();
           }}
         >

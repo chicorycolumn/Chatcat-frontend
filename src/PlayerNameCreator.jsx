@@ -7,6 +7,8 @@ import roomUtils from "./utils/roomUtils.js";
 export default function PlayerNameCreator(props) {
   const location = useLocation();
 
+  useEffect(() => {}, [props.playerName]);
+
   return (
     <div className={`${genStyles.box1} ${panelStyles.mainPanel2}`}>
       <div className={`${panelStyles.innerBox}`}>

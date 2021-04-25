@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./css/App.module.css";
 import { Router, navigate, Link, useLocation } from "@reach/router";
-import Lemons from "./Lemons.jsx";
 import RoomCreator from "./RoomCreator.jsx";
 import Contact from "./Contact.jsx";
 import Room from "./Room.jsx";
@@ -99,7 +98,6 @@ export default function App() {
           playerName={playerName}
           setPlayerName={setPlayerName}
         />
-        <Lemons path="/lemons" />
         <Contact path="/contact" />
         <Room
           path="/*"
