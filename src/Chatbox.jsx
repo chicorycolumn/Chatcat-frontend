@@ -23,7 +23,7 @@ export default function Chatbox(props) {
       }
     });
 
-    if (props.socket && props.socketNudge) {
+    if (props.socket) {
       props.socket.on("Chat message", function (data) {
         addToChatArray([data.sender.playerName, data.chatMsg]);
       });
@@ -52,7 +52,7 @@ export default function Chatbox(props) {
       props.socket.off("Player left your room");
       $("#chatboxInput").off("keypress");
     };
-  }, [props.socket, props.socketNudge, chatArray]);
+  }, [props.socket, chatArray]);
 
   function sendChat() {
     console.log("sendChat fxn");

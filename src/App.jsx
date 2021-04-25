@@ -3,7 +3,7 @@ import styles from "./css/App.module.css";
 import { Router, navigate, Link, useLocation } from "@reach/router";
 import RoomCreator from "./RoomCreator.jsx";
 import Contact from "./Contact.jsx";
-import Room from "./Room.jsx";
+import RoomWrapper from "./RoomWrapper.jsx";
 import Navbar from "./Navbar.jsx";
 import roomUtils from "./utils/roomUtils.js";
 
@@ -16,8 +16,7 @@ export default function App() {
   const [playerName, setPlayerName] = useState(null);
   const [roomName, setRoomName] = useState(null);
   const [socket, setSocket] = useState(null);
-  const [socketNudge, setSocketNudge] = useState(false);
-  const [roomKey, setRoomKey] = useState();
+  const [socketNudge, setSocketNudge] = useState();
 
   // const refContainer = useRef(null);
 
@@ -49,9 +48,7 @@ export default function App() {
     socket.on("Entry granted", function (data) {
       console.log("Ø Entry granted");
       setRoomName(data.room.roomName);
-      // if (data.pleaseChangeUrlToRoomUrl) {
       navigate(`/${data.room.roomName}`);
-      // }
     });
 
     socket.on("Room not created", function (data) {
@@ -99,15 +96,13 @@ export default function App() {
           setPlayerName={setPlayerName}
         />
         <Contact path="/contact" />
-        <Room
+        <RoomWrapper
           path="/*"
           socket={socket}
           socketNudge={socketNudge}
+          roomName={roomName}
           playerName={playerName}
           setPlayerName={setPlayerName}
-          setPlayerName={setPlayerName}
-          roomName={roomName}
-          setRoomName={setRoomName}
         />
       </Router>
     </div>

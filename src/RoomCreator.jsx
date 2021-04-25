@@ -48,7 +48,6 @@ export default function RoomCreator(props) {
             props.socket.emit("Create room", {
               roomName: props.newRoomName,
               playerName: props.playerName,
-              pleaseChangeUrlToRoomUrl: true,
             });
           }}
         >
