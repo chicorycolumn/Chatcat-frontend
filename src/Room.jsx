@@ -13,9 +13,8 @@ export default function Room(props) {
 
   useEffect(() => {
     return function cleanup() {
-      console.log("##Room##");
+      console.log("##Room## (will leave room)");
       if (props.socket) {
-        console.log("€ Leave room");
         props.socket.off("Player entered your room");
         props.socket.off("Player left your room");
         let rooName = props.roomData.roomName;

@@ -21,16 +21,14 @@ export default function App() {
   // const refContainer = useRef(null);
 
   useEffect(() => {
-    console.log("~~App~~");
     let socket = socketIOClient(ENDPOINT);
     // refContainer.current = socket;
     setSocket(socket);
 
-    console.log(`socket in useEffect in App is ${socket.id}.`);
+    console.log(`~~App~~ socket.id:${socket.id}`);
 
     socket.on("connect", (data) => {
       setSocketNudge(true);
-      console.log(`App socket connect. playerName:${playerName}.`);
       if (!playerName) {
         setPlayerName(roomUtils.makeDummyName(socket.id));
       }
@@ -57,11 +55,10 @@ export default function App() {
     });
 
     socket.on("Dev queried rooms", function (data) {
-      console.log("Ø Dev queried rooms. roomList", data.rooms);
+      console.log("roomList", data.rooms);
     });
 
     socket.on("Entry denied", function (data) {
-      console.log("Ø Entry denied");
       navigate("/");
       alert(data.msg);
     });

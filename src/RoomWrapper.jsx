@@ -14,18 +14,10 @@ export default function RoomWrapper(props) {
   const location = useLocation();
   const [roomData, setRoomData] = useState();
 
-  console.log({
-    roomData: !!roomData,
-    roomName: props.roomName,
-    socket: !!props.socket,
-    socketNudge: props.socketNudge,
-  });
-
   useEffect(() => {
     console.log(`~~RoomWrapper~~ props.socketNudge:${props.socketNudge}`);
 
     if (props.socket && props.socketNudge) {
-      console.log("qqq");
       if (!props.playerName) {
         props.setPlayerName(roomUtils.makeDummyName(props.socket.id));
       }
@@ -41,12 +33,10 @@ export default function RoomWrapper(props) {
       });
 
       props.socket.on("Player entered your room", function (data) {
-        console.log("Ø Player entered --ROOM");
         setRoomData(data.room);
       });
 
       props.socket.on("Player left your room", function (data) {
-        console.log("Ø Player left --ROOM");
         setRoomData(data.room);
       });
     }

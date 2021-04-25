@@ -16,7 +16,6 @@ export default function Chatbox(props) {
     console.log("~~Chatbox~~");
 
     $("#chatboxInput").on("keypress", function (e) {
-      console.log("$");
       if ((e.which === 13 || e.keyCode === 13) && !e.shiftKey) {
         e.preventDefault();
         $("#chatboxSendButton").click();
@@ -29,7 +28,6 @@ export default function Chatbox(props) {
       });
 
       props.socket.on("Player entered your room", function (data) {
-        console.log("Ø player entered --CHATBOX");
         addToChatArray(`${data.player.playerName} entered`);
       });
 
@@ -38,8 +36,6 @@ export default function Chatbox(props) {
       });
     }
     function addToChatArray(chatItem) {
-      console.log(`addToChatArray called for ${chatItem}`);
-      console.log({ chatArray, chatItem });
       let newChatArray = chatArray.slice(0, 50);
       newChatArray.push(chatItem);
       setChatArray(newChatArray);
@@ -53,7 +49,6 @@ export default function Chatbox(props) {
   }, [props.socket, chatArray]);
 
   function sendChat() {
-    console.log("sendChat fxn");
     if (chatMsg) {
       props.socket.emit("Chat message", { chatMsg: chatMsg });
       setChatMsg("");
@@ -97,7 +92,6 @@ export default function Chatbox(props) {
           type="submit"
           onClick={(e) => {
             e.preventDefault();
-            console.log("chatboxSendButton clicked");
             sendChat();
           }}
         >

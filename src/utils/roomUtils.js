@@ -1,6 +1,6 @@
 exports.requestEntry = (e, location, socket, playerName) => {
   e.preventDefault();
-  console.log(`€ Request entry with socket: ${socket.id}`, socket);
+  console.log(`€ Request entry with socket: ${socket.id}`);
   socket.emit("Request entry", {
     roomName: location.pathname.slice(1),
     playerName: playerName,
@@ -8,10 +8,14 @@ exports.requestEntry = (e, location, socket, playerName) => {
 };
 
 exports.createRoomName = () => {
-  // const roomAdjs = ["red", "green", "blue", "yellow", "purple", "orange"];
-  // const roomNouns = ["alligator", "bison", "cat", "duck", "eel", "fox", "goat"];
-  const roomAdjs = ["red", "green"];
-  const roomNouns = ["bison", "cat"];
+  const roomAdjs = ["red", "green", "blue", "yellow", "purple", "orange"].slice(
+    0,
+    2
+  );
+  const roomNouns = ["alligator", "bison", "cat", "duck", "eel", "fox"].slice(
+    0,
+    2
+  );
   let adj = roomAdjs[Math.floor(Math.random() * roomAdjs.length)];
   let noun = roomNouns[Math.floor(Math.random() * roomNouns.length)];
   return `${adj}${noun}`;
