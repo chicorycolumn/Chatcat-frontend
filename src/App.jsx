@@ -7,12 +7,12 @@ import RoomWrapper from "./RoomWrapper.jsx";
 import Navbar from "./Navbar.jsx";
 import roomUtils from "./utils/roomUtils.js";
 import gameUtils from "./utils/gameUtils.js";
-import browserUtils, { getCookieValue } from "./utils/browserUtils.js";
+import browserUtils, { getCookie } from "./utils/browserUtils.js";
 
 import socketIOClient from "socket.io-client";
 const ENDPOINT = "http://127.0.0.1:4002";
 
-browserUtils.setCookie("truePlayerName", "w1");
+browserUtils.setCookie("truePlayerName", "w");
 browserUtils.setCookie("playerName", "Will");
 
 export default function App() {
@@ -36,16 +36,11 @@ export default function App() {
 
     socket.on("connect", (data) => {
       socket.emit("Load player", {
-        truePlayerName: browserUtils.getCookieValue("truePlayerName"),
-        playerName: browserUtils.getCookieValue("playerName"),
+        truePlayerName: browserUtils.getCookie("truePlayerName"),
+        playerName: browserUtils.getCookie("playerName"),
       });
 
       setSocketNudge(true);
-      if (!playerData.playerName) {
-        socket.emit("Update player data", {
-          player: { playerName: roomUtils.makeDummyName(socket.id) },
-        });
-      }
 
       console.log(
         `Ø connect. I am ${socket.id.slice(
@@ -62,6 +57,12 @@ export default function App() {
       console.log(">>>> playerData before set:", playerData);
       setPlayerData(data.player);
       console.log(">>>> playerData after set:", playerData);
+
+      if (!data.player.playerName) {
+        socket.emit("Update player data", {
+          player: { playerName: roomUtils.makeDummyName(socket.id) },
+        });
+      }
 
       browserUtils.setCookie("playerName", data.player.playerName);
       browserUtils.setCookie("truePlayerName", data.player.truePlayerName);

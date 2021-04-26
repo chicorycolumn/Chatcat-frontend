@@ -12,7 +12,7 @@ exports.setCookie = (cookieName, cookieValue, expiryDays = 365) => {
   document.cookie = `${cookieName}=${cookieValue}; expires=${expiryTime}; path=/;`;
 };
 
-exports.getCookieValue = (cookieName) => {
+exports.getCookie = (cookieName) => {
   let cookieArr = decodeURIComponent(document.cookie).split(";");
 
   let cookie = cookieArr.find((cooki) => {
