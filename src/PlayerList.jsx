@@ -14,7 +14,15 @@ export default function PlayerList(props) {
           props.playerList.map((roomPlayer) => {
             return (
               <div className={`${styles.nameItem}`}>
-                {roomPlayer.playerName}
+                <span className={`${styles.awards}`}>
+                  {Math.floor(Math.random() * 10) % 2 ? "👑" : ""}
+                </span>
+                <span className={`${styles.name}`}>
+                  {roomPlayer.playerName}
+                </span>
+                <span className={`${styles.stars}`}>
+                  {`00${roomPlayer.stars.toString()}⭐`}
+                </span>
               </div>
             );
           })}

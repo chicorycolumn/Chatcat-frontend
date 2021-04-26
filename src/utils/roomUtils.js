@@ -22,6 +22,8 @@ exports.createRoomName = () => {
 };
 
 exports.makeDummyName = (id) => {
+  return id.slice(0, 3);
+
   if (!id) {
     throw "No id provided to makeDummyName.";
   }
@@ -73,5 +75,5 @@ exports.makeDummyName = (id) => {
     }
   });
 
-  return `${prefix}${firstName.join("")} ${id.slice(lastIndex, lastIndex + 2)}`;
+  return `${prefix}${firstName.join("")}_${id.slice(lastIndex, lastIndex + 2)}`;
 };

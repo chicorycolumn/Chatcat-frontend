@@ -5,6 +5,7 @@ import { navigate, useLocation } from "@reach/router";
 import { scryRenderedDOMComponentsWithTag } from "react-dom/test-utils";
 import displayUtils from "./utils/displayUtils.js";
 import $ from "jquery";
+import PlayerList from "./PlayerList";
 
 export default function Chatbox(props) {
   console.log("((Chatbox))");
@@ -49,10 +50,28 @@ export default function Chatbox(props) {
   }, [props.socket, chatArray]);
 
   function sendChat() {
-    if (chatMsg) {
-      props.socket.emit("Chat message", { chatMsg: chatMsg });
-      setChatMsg("");
+    if (!chatMsg) {
+      return;
     }
+
+    if (chatMsg.slice(0, 5).toLowerCase() === "star ") {
+      let playerNameToStar = chatMsg.split(" ")[1];
+      if (
+        props.playerList.find(
+          (player) => player.playerName === playerNameToStar
+        )
+      ) {
+        props.socket.emit("Give stars", {
+          playerNameToStar,
+          starIncrement: 1,
+        });
+        setChatMsg("");
+        return;
+      }
+    }
+
+    props.socket.emit("Chat message", { chatMsg: chatMsg });
+    setChatMsg("");
   }
 
   return (

@@ -2,6 +2,23 @@
   width: 100%;
   background-color: var(--pPink_L3);
   padding: 5px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.awards {
+  /* flex: 1; */
+  flex-basis: 25%;
+}
+.name {
+  /* flex: 5; */
+  flex-basis: 50%;
+}
+.stars {
+  /* flex: 1; */
+  flex-basis: 25%;
+  color: var(--pBlue);
 }
 
 .nameItem:nth-child(even) {

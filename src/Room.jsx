@@ -35,7 +35,11 @@ export default function Room(props) {
         </div>
         <div className={`${styles.mainContainer}`}></div>
         <div className={`${styles.box2}`}>
-          <Chatbox socket={props.socket} playerName={props.playerName} />
+          <Chatbox
+            socket={props.socket}
+            playerName={props.playerName}
+            playerList={props.roomData.players}
+          />
         </div>
       </div>
     </div>
