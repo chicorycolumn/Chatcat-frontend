@@ -25,10 +25,6 @@ export default function App() {
   const [socket, setSocket] = useState(null);
   const [socketNudge, setSocketNudge] = useState();
 
-  const updatePlayerData = (newProperties, socket) => {
-    socket.emit("Update player data", { player: newProperties });
-  };
-
   // const refContainer = useRef(null);
 
   useEffect(() => {
@@ -46,10 +42,9 @@ export default function App() {
 
       setSocketNudge(true);
       if (!playerData.playerName) {
-        updatePlayerData(
-          { playerName: roomUtils.makeDummyName(socket.id) },
-          socket
-        );
+        socket.emit("Update player data", {
+          player: { playerName: roomUtils.makeDummyName(socket.id) },
+        });
       }
 
       console.log(
@@ -121,7 +116,6 @@ export default function App() {
           newRoomName={newRoomName}
           setNewRoomName={setNewRoomName}
           playerData={playerData}
-          updatePlayerData={updatePlayerData}
         />
         <Contact path="/contact" />
         <RoomWrapper
@@ -130,7 +124,6 @@ export default function App() {
           socketNudge={socketNudge}
           roomName={roomName}
           playerData={playerData}
-          updatePlayerData={updatePlayerData}
         />
       </Router>
     </div>

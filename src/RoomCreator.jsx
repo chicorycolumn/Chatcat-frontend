@@ -34,10 +34,9 @@ export default function RoomCreator(props) {
           className={`${panelStyles.textarea1}`}
           maxLength={16}
           onChange={(e) => {
-            props.updatePlayerData(
-              { playerName: e.target.value },
-              props.socket
-            );
+            props.socket.emit("Update player data", {
+              player: { playerName: e.target.value },
+            });
           }}
         ></textarea>
       </div>

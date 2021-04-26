@@ -20,7 +20,9 @@ export default function PlayerNameCreator(props) {
           className={`${panelStyles.textarea1}`}
           maxLength={16}
           onChange={(e) => {
-            props.updatePlayerData({ playerName: e.value }, props.socket);
+            props.socket.emit("Update player data", {
+              player: { playerName: e.value },
+            });
           }}
         ></textarea>
       </div>
