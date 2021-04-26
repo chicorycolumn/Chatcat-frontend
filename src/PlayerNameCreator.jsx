@@ -6,6 +6,9 @@ import roomUtils from "./utils/roomUtils.js";
 
 export default function PlayerNameCreator(props) {
   console.log("((PlayerNameCreator))");
+  const [playerNameInput, setPlayerNameInput] = useState(
+    props.playerData.playerName
+  );
 
   const location = useLocation();
 
@@ -16,13 +19,11 @@ export default function PlayerNameCreator(props) {
           Your name
         </h2>
         <textarea
-          value={props.playerData.playerName}
+          value={playerNameInput}
           className={`${panelStyles.textarea1}`}
           maxLength={16}
           onChange={(e) => {
-            props.socket.emit("Update player data", {
-              player: { playerName: e.value },
-            });
+            setPlayerNameInput(e.value);
           }}
         ></textarea>
       </div>
@@ -32,6 +33,12 @@ export default function PlayerNameCreator(props) {
           disabled={!props.playerData.playerName}
           className={`${genStyles.button1} ${panelStyles.button1}`}
           onClick={(e) => {
+            if (playerNameInput !== props.playerData.playerName) {
+              props.socket.emit("Update player data", {
+                player: { playerName: playerNameInput },
+              });
+            }
+
             roomUtils.requestEntry(e, location, props.socket, props.playerData);
           }}
         >

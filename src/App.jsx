@@ -12,9 +12,6 @@ import browserUtils, { getCookie } from "./utils/browserUtils.js";
 import socketIOClient from "socket.io-client";
 const ENDPOINT = "http://127.0.0.1:4002";
 
-browserUtils.setCookie("truePlayerName", "w");
-browserUtils.setCookie("playerName", "Will");
-
 export default function App() {
   console.log("((App))");
 

@@ -5,6 +5,10 @@ import panelStyles from "./css/Panel.module.css";
 import roomUtils from "./utils/roomUtils.js";
 
 export default function RoomCreator(props) {
+  const [playerNameInput, setPlayerNameInput] = useState(
+    props.playerData.playerName
+  );
+
   console.log("((RoomCreator))");
   return (
     <div className={`${genStyles.box1} ${panelStyles.mainPanel1}`}>
@@ -30,13 +34,11 @@ export default function RoomCreator(props) {
       <div className={`${panelStyles.innerBox}`}>
         <h2>Your name</h2>
         <textarea
-          value={props.playerData.playerName}
+          value={playerNameInput}
           className={`${panelStyles.textarea1}`}
           maxLength={16}
           onChange={(e) => {
-            props.socket.emit("Update player data", {
-              player: { playerName: e.target.value },
-            });
+            setPlayerNameInput(e.target.value);
           }}
         ></textarea>
       </div>
@@ -47,6 +49,13 @@ export default function RoomCreator(props) {
           className={`${genStyles.button1} ${panelStyles.button1}`}
           onClick={(e) => {
             e.preventDefault();
+
+            if (playerNameInput !== props.playerData.playerName) {
+              props.socket.emit("Update player data", {
+                player: { playerName: playerNameInput },
+              });
+            }
+
             props.socket.emit("Create room", {
               roomName: props.newRoomName,
               playerName: props.playerData.playerName,
