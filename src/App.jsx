@@ -6,14 +6,20 @@ import Contact from "./Contact.jsx";
 import RoomWrapper from "./RoomWrapper.jsx";
 import Navbar from "./Navbar.jsx";
 import roomUtils from "./utils/roomUtils.js";
+import browserUtils, { getCookieValue } from "./utils/browserUtils.js";
 
 import socketIOClient from "socket.io-client";
 const ENDPOINT = "http://127.0.0.1:4002";
 
+browserUtils.setCookie("truePlayerName", "w1");
+browserUtils.setCookie("playerName", "Will");
+
 export default function App() {
   console.log("((App))");
+
   const [newRoomName, setNewRoomName] = useState(null);
   const [playerName, setPlayerName] = useState(null);
+  const [truePlayerName, setTruePlayerName] = useState(null);
   const [roomName, setRoomName] = useState(null);
   const [socket, setSocket] = useState(null);
   const [socketNudge, setSocketNudge] = useState();
@@ -28,6 +34,11 @@ export default function App() {
     console.log(`~~App~~ socket.id:${socket.id}`);
 
     socket.on("connect", (data) => {
+      socket.emit("Load player", {
+        truePlayerName: browserUtils.getCookieValue("truePlayerName"),
+        playerName: browserUtils.getCookieValue("playerName"),
+      });
+
       setSocketNudge(true);
       if (!playerName) {
         setPlayerName(roomUtils.makeDummyName(socket.id));
@@ -41,6 +52,16 @@ export default function App() {
           .toUTCString()
           .slice(17, -4)}.`
       );
+    });
+
+    socket.on("Player loaded", function (data) {
+      let { truePlayerName, playerName } = data.playerName;
+
+      setPlayerName(playerName);
+      browserUtils.setCookie("playerName", playerName);
+
+      setTruePlayerName(truePlayerName);
+      browserUtils.setCookie("truePlayerName", truePlayerName);
     });
 
     socket.on("Entry granted", function (data) {
