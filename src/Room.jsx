@@ -37,7 +37,7 @@ export default function Room(props) {
         <div className={`${styles.box2}`}>
           <Chatbox
             socket={props.socket}
-            playerName={props.playerName}
+            playerName={props.playerData.playerName}
             playerList={props.roomData.players}
           />
         </div>

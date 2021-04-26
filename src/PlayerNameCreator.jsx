@@ -16,21 +16,21 @@ export default function PlayerNameCreator(props) {
           Your name
         </h2>
         <textarea
-          value={props.playerName}
+          value={props.playerData.playerName}
           className={`${panelStyles.textarea1}`}
           maxLength={16}
           onChange={(e) => {
-            props.setPlayerName(e.value);
+            props.updatePlayerData({ playerName: e.value }, props.socket);
           }}
         ></textarea>
       </div>
 
       <div className={`${panelStyles.innerBox}`}>
         <button
-          disabled={!props.playerName}
+          disabled={!props.playerData.playerName}
           className={`${genStyles.button1} ${panelStyles.button1}`}
           onClick={(e) => {
-            roomUtils.requestEntry(e, location, props.socket, props.playerName);
+            roomUtils.requestEntry(e, location, props.socket, props.playerData);
           }}
         >
           ENTER

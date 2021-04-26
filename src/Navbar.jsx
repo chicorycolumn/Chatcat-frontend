@@ -23,10 +23,10 @@ const Navbar = (props) => {
           className={`${styles.navbarItem}`}
           onClick={(e) => {
             e.preventDefault();
-            props.socket.emit("Dev query rooms");
+            props.socket.emit("Dev query");
           }}
         >
-          DQR
+          DQ
         </button>
       </div>
       {devSwitch && (

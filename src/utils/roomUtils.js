@@ -1,9 +1,9 @@
-exports.requestEntry = (e, location, socket, playerName) => {
+exports.requestEntry = (e, location, socket, playerData) => {
   e.preventDefault();
   console.log(`€ Request entry with socket: ${socket.id}`);
   socket.emit("Request entry", {
     roomName: location.pathname.slice(1),
-    playerName: playerName,
+    playerName: playerData.playerName,
   });
 };
 

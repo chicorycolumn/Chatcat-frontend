@@ -18,8 +18,13 @@ export default function RoomWrapper(props) {
     console.log(`~~RoomWrapper~~ props.socketNudge:${props.socketNudge}`);
 
     if (props.socket && props.socketNudge) {
-      if (!props.playerName) {
-        props.setPlayerName(roomUtils.makeDummyName(props.socket.id));
+      if (!props.playerData.playerName) {
+        props.updatePlayerData(
+          {
+            playerName: roomUtils.makeDummyName(props.socket.id),
+          },
+          props.socket
+        );
       }
 
       if (!roomData) {
@@ -49,15 +54,16 @@ export default function RoomWrapper(props) {
   return roomData ? (
     <Room
       socket={props.socket}
-      playerName={props.playerName}
+      playerData={props.playerData}
+      updatePlayerData={props.updatePlayerData}
       roomData={roomData}
       setRoomData={setRoomData}
     />
   ) : (
     <PlayerNameCreator
       socket={props.socket}
-      playerName={props.playerName}
-      setPlayerName={props.setPlayerName}
+      playerData={props.playerData}
+      updatePlayerData={props.updatePlayerData}
     />
   );
 }

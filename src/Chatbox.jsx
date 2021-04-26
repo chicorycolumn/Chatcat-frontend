@@ -2,7 +2,6 @@ import styles from "./css/Chatbox.module.css";
 import genStyles from "./css/Generic.module.css";
 import React, { useEffect, useState } from "react";
 import { navigate, useLocation } from "@reach/router";
-import { scryRenderedDOMComponentsWithTag } from "react-dom/test-utils";
 import displayUtils from "./utils/displayUtils.js";
 import $ from "jquery";
 import PlayerList from "./PlayerList";

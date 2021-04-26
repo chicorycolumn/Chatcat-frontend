@@ -6,6 +6,7 @@ import Contact from "./Contact.jsx";
 import RoomWrapper from "./RoomWrapper.jsx";
 import Navbar from "./Navbar.jsx";
 import roomUtils from "./utils/roomUtils.js";
+import gameUtils from "./utils/gameUtils.js";
 import browserUtils, { getCookieValue } from "./utils/browserUtils.js";
 
 import socketIOClient from "socket.io-client";
@@ -18,11 +19,15 @@ export default function App() {
   console.log("((App))");
 
   const [newRoomName, setNewRoomName] = useState(null);
-  const [playerName, setPlayerName] = useState(null);
-  const [truePlayerName, setTruePlayerName] = useState(null);
+  const [playerData, setPlayerData] = useState({});
+  console.log("((So playerData is)))", playerData);
   const [roomName, setRoomName] = useState(null);
   const [socket, setSocket] = useState(null);
   const [socketNudge, setSocketNudge] = useState();
+
+  const updatePlayerData = (newProperties, socket) => {
+    socket.emit("Update player data", { player: newProperties });
+  };
 
   // const refContainer = useRef(null);
 
@@ -40,8 +45,11 @@ export default function App() {
       });
 
       setSocketNudge(true);
-      if (!playerName) {
-        setPlayerName(roomUtils.makeDummyName(socket.id));
+      if (!playerData.playerName) {
+        updatePlayerData(
+          { playerName: roomUtils.makeDummyName(socket.id) },
+          socket
+        );
       }
 
       console.log(
@@ -55,13 +63,13 @@ export default function App() {
     });
 
     socket.on("Player loaded", function (data) {
-      let { truePlayerName, playerName } = data.playerName;
+      console.log(">>>> data.player:", data.player);
+      console.log(">>>> playerData before set:", playerData);
+      setPlayerData(data.player);
+      console.log(">>>> playerData after set:", playerData);
 
-      setPlayerName(playerName);
-      browserUtils.setCookie("playerName", playerName);
-
-      setTruePlayerName(truePlayerName);
-      browserUtils.setCookie("truePlayerName", truePlayerName);
+      browserUtils.setCookie("playerName", data.player.playerName);
+      browserUtils.setCookie("truePlayerName", data.player.truePlayerName);
     });
 
     socket.on("Entry granted", function (data) {
@@ -75,8 +83,8 @@ export default function App() {
       alert(data.msg);
     });
 
-    socket.on("Dev queried rooms", function (data) {
-      console.log("roomList", data.rooms);
+    socket.on("Dev queried", function (data) {
+      console.log(data);
     });
 
     socket.on("Entry denied", function (data) {
@@ -100,6 +108,8 @@ export default function App() {
     };
   }, []);
 
+  console.log(`pre-R ${Object.keys(playerData).length}`, playerData);
+
   return (
     <div className={`${styles.App}`}>
       <Navbar socket={socket}></Navbar>
@@ -110,8 +120,8 @@ export default function App() {
           socket={socket}
           newRoomName={newRoomName}
           setNewRoomName={setNewRoomName}
-          playerName={playerName}
-          setPlayerName={setPlayerName}
+          playerData={playerData}
+          updatePlayerData={updatePlayerData}
         />
         <Contact path="/contact" />
         <RoomWrapper
@@ -119,8 +129,8 @@ export default function App() {
           socket={socket}
           socketNudge={socketNudge}
           roomName={roomName}
-          playerName={playerName}
-          setPlayerName={setPlayerName}
+          playerData={playerData}
+          updatePlayerData={updatePlayerData}
         />
       </Router>
     </div>

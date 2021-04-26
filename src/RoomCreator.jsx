@@ -30,24 +30,27 @@ export default function RoomCreator(props) {
       <div className={`${panelStyles.innerBox}`}>
         <h2>Your name</h2>
         <textarea
-          value={props.playerName}
+          value={props.playerData.playerName}
           className={`${panelStyles.textarea1}`}
           maxLength={16}
           onChange={(e) => {
-            props.setPlayerName(e.target.value);
+            props.updatePlayerData(
+              { playerName: e.target.value },
+              props.socket
+            );
           }}
         ></textarea>
       </div>
 
       <div className={`${panelStyles.innerBox}`}>
         <button
-          disabled={!props.playerName || !props.newRoomName}
+          disabled={!props.playerData.playerName || !props.newRoomName}
           className={`${genStyles.button1} ${panelStyles.button1}`}
           onClick={(e) => {
             e.preventDefault();
             props.socket.emit("Create room", {
               roomName: props.newRoomName,
-              playerName: props.playerName,
+              playerName: props.playerData.playerName,
             });
           }}
         >
