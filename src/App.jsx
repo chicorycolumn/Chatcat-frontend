@@ -16,10 +16,13 @@ const ENDPOINT = "http://127.0.0.1:4002";
 export default function App() {
   console.log("((App))");
 
-  const [newRoomName, setNewRoomName] = useState(null);
+  const [roomNameInput, setRoomNameInput] = useState(null);
   const [playerData, setPlayerData] = useState({});
   console.log("((So playerData is)))", playerData);
-  const [roomName, setRoomName] = useState(null);
+  const [
+    successfullyEnteredRoomName,
+    setSuccessfullyEnteredRoomName,
+  ] = useState(null);
   const [socket, setSocket] = useState(null);
   const [socketNudge, setSocketNudge] = useState();
   const [showInvitePanel, setShowInvitePanel] = useState();
@@ -72,7 +75,7 @@ export default function App() {
 
     socket.on("Entry granted", function (data) {
       console.log("Ø Entry granted");
-      setRoomName(data.room.roomName);
+      setSuccessfullyEnteredRoomName(data.room.roomName);
       navigate(`/${data.room.roomName}`);
     });
 
@@ -91,7 +94,7 @@ export default function App() {
     });
 
     socket.on("disconnect", (data) => {
-      setRoomName(null);
+      setSuccessfullyEnteredRoomName(null);
       console.log(
         `Ø disconnect. I disconnected from server at ${new Date()
           .toUTCString()
@@ -101,7 +104,7 @@ export default function App() {
 
     return function cleanup() {
       console.log("##App##");
-      setRoomName(null);
+      setSuccessfullyEnteredRoomName(null);
       socket.disconnect();
     };
   }, []);
@@ -110,7 +113,11 @@ export default function App() {
 
   return (
     <div className={`${styles.App}`}>
-      <Navbar socket={socket} setShowInvitePanel={setShowInvitePanel} />
+      <Navbar
+        socket={socket}
+        setShowInvitePanel={setShowInvitePanel}
+        successfullyEnteredRoomName={successfullyEnteredRoomName}
+      />
       <header></header>
       {showInvitePanel && (
         <InvitePanel setShowInvitePanel={setShowInvitePanel} />
@@ -119,8 +126,8 @@ export default function App() {
         <RoomCreator
           path="/"
           socket={socket}
-          newRoomName={newRoomName}
-          setNewRoomName={setNewRoomName}
+          roomNameInput={roomNameInput}
+          setRoomNameInput={setRoomNameInput}
           playerData={playerData}
         />
         <Contact path="/contact" />
@@ -128,7 +135,8 @@ export default function App() {
           path="/*"
           socket={socket}
           socketNudge={socketNudge}
-          roomName={roomName}
+          successfullyEnteredRoomName={successfullyEnteredRoomName}
+          setSuccessfullyEnteredRoomName={setSuccessfullyEnteredRoomName}
           playerData={playerData}
         />
       </Router>

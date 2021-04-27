@@ -29,7 +29,7 @@ export default function RoomWrapper(props) {
 
       if (!roomData) {
         props.socket.emit("Request room data", {
-          roomName: props.roomName,
+          roomName: props.successfullyEnteredRoomName,
         });
       }
 
@@ -47,6 +47,7 @@ export default function RoomWrapper(props) {
 
       props.socket.on("You're booted", function (data) {
         console.log(`Ø You're booted from ${data.roomName}.`);
+        props.setSuccessfullyEnteredRoomName(null);
         if (roomData && roomData.roomName === data.roomName) {
           navigate("/");
           alert(data.msg);
@@ -57,7 +58,7 @@ export default function RoomWrapper(props) {
     return function cleanup() {
       console.log("##RoomWrapper##");
     };
-  }, [props.roomName]);
+  }, [props.successfullyEnteredRoomName]);
 
   return roomData ? (
     <Room

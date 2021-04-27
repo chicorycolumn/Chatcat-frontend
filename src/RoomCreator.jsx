@@ -24,18 +24,18 @@ export default function RoomCreator(props) {
         <h2
           className={`${genStyles.noselect} ${panelStyles.title1}`}
           onClick={() => {
-            props.setNewRoomName(roomUtils.createRoomName());
+            props.setRoomNameInput(roomUtils.createRoomName());
           }}
         >
           Create room
         </h2>
         <textarea
-          id="newRoomName_RoomCreator"
-          value={props.newRoomName}
+          id="roomNameInput_RoomCreator"
+          value={props.roomNameInput}
           className={`${panelStyles.textarea1}`}
           maxLength={16}
           onChange={(e) => {
-            props.setNewRoomName(e.target.value);
+            props.setRoomNameInput(e.target.value);
           }}
         ></textarea>
       </div>
@@ -55,14 +55,14 @@ export default function RoomCreator(props) {
 
       <div className={`${panelStyles.innerBox}`}>
         <button
-          disabled={!props.playerData.playerName || !props.newRoomName}
+          disabled={!props.playerData.playerName || !props.roomNameInput}
           className={`${genStyles.button1} ${panelStyles.button1}`}
           onClick={(e) => {
             e.preventDefault();
 
             console.log("N17", {
               playerNameInput,
-              newRoomName: props.newRoomName,
+              roomNameInput: props.roomNameInput,
             });
 
             if (playerNameInput !== props.playerData.playerName) {
@@ -76,7 +76,7 @@ export default function RoomCreator(props) {
             }
 
             props.socket.emit("Create room", {
-              roomName: props.newRoomName,
+              roomName: props.roomNameInput,
               truePlayerName: props.playerData.truePlayerName, //swde unnec
             });
           }}

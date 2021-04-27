@@ -17,17 +17,19 @@ const Navbar = (props) => {
       </Link>
 
       <div className={`${styles.navbarInnerBoxRight}`}>
-        <Link
-          className={`${styles.navbarItem} ${styles.hoverable1}`}
-          onClick={(e) => {
-            e.preventDefault();
-            console.log("Invite!");
-            props.setShowInvitePanel(true);
-          }}
-          to=""
-        >
-          Invite
-        </Link>
+        {props.successfullyEnteredRoomName && (
+          <Link
+            className={`${styles.navbarItem} ${styles.hoverable1}`}
+            onClick={(e) => {
+              e.preventDefault();
+              console.log("Invite!");
+              props.setShowInvitePanel(true);
+            }}
+            to=""
+          >
+            Invite
+          </Link>
+        )}
         <Link
           className={`${styles.navbarItem} ${styles.hoverable1}`}
           to="/contact"
