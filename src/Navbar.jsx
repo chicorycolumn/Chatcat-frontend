@@ -26,7 +26,17 @@ const Navbar = (props) => {
             props.socket.emit("Dev query");
           }}
         >
-          DQ
+          dQ
+        </button>
+        <button
+          className={`${styles.navbarItem}`}
+          onDoubleClick={(e) => {
+            e.preventDefault();
+            console.log("DESTROY");
+            props.socket.emit("Dev destroy all");
+          }}
+        >
+          dD
         </button>
       </div>
       {devSwitch && (

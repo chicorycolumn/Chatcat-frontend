@@ -35,7 +35,10 @@ export default function PlayerNameCreator(props) {
           onClick={(e) => {
             if (playerNameInput !== props.playerData.playerName) {
               props.socket.emit("Update player data", {
-                player: { playerName: playerNameInput },
+                player: {
+                  truePlayerName: props.playerData.truePlayerName, //swde unnec
+                  playerName: playerNameInput,
+                },
               });
             }
 

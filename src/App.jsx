@@ -57,7 +57,10 @@ export default function App() {
 
       if (!data.player.playerName) {
         socket.emit("Update player data", {
-          player: { playerName: roomUtils.makeDummyName(socket.id) },
+          player: {
+            truePlayerName: playerData.truePlayerName, //swde unnec
+            playerName: roomUtils.makeDummyName(socket.id),
+          },
         });
       }
 

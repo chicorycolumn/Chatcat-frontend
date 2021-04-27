@@ -21,6 +21,7 @@ export default function RoomWrapper(props) {
       if (!props.playerData.playerName) {
         props.socket.emit("Update player data", {
           player: {
+            truePlayerName: props.playerData.truePlayerName, //swde unnec
             playerName: roomUtils.makeDummyName(props.socket.id),
           },
         });

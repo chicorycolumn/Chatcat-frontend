@@ -50,15 +50,24 @@ export default function RoomCreator(props) {
           onClick={(e) => {
             e.preventDefault();
 
+            console.log("N17", {
+              playerNameInput,
+              newRoomName: props.newRoomName,
+            });
+
             if (playerNameInput !== props.playerData.playerName) {
+              console.log(
+                `Hey! € Update player data with playerName:${playerNameInput}.`
+              );
               props.socket.emit("Update player data", {
+                truePlayerName: props.playerData.truePlayerName, //swde unnec
                 player: { playerName: playerNameInput },
               });
             }
 
             props.socket.emit("Create room", {
               roomName: props.newRoomName,
-              playerName: props.playerData.playerName,
+              truePlayerName: props.playerData.truePlayerName, //swde unnec
             });
           }}
         >
