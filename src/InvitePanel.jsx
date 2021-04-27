@@ -8,7 +8,9 @@ export default function InvitePanel(props) {
   console.log("((InvitePanel))");
 
   return (
-    <div className={`${genStyles.box1} ${panelStyles.mainPanel3}`}>
+    <div
+      className={`${genStyles.box1} ${panelStyles.panelSize1} ${panelStyles.panelColorB1}`}
+    >
       <button
         onClick={(e) => {
           props.setShowInvitePanel(false);

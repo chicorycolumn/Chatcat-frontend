@@ -1,42 +1,31 @@
-.mainPanel1 {
-  background-color: var(--pYellow);
+.panelSize1 {
   height: 400px;
   width: 300px;
   margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.panelColorY1 {
+  background-color: var(--pYellow);
   box-shadow: 5px 5px 5px var(--pYellow_D2);
   border: var(--pYellow_D2) solid 2px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
   color: var(--pPink_D2);
 }
 
-.mainPanel2 {
+.panelColorP1 {
   background-color: var(--pPink_L2);
-  height: 400px;
-  width: 300px;
-  margin-top: 50px;
   box-shadow: 5px 5px 5px var(--pPink);
   border: var(--pPink) solid 2px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
   color: var(--pPink_D2);
 }
 
-.mainPanel3 {
+.panelColorB1 {
   background-color: var(--pBlue_L2);
-  height: 400px;
-  width: 300px;
-  margin-top: 50px;
   box-shadow: 5px 5px 5px var(--pPink);
   border: var(--pPink) solid 2px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
   color: var(--pPink_D2);
 }
 

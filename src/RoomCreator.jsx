@@ -17,7 +17,9 @@ export default function RoomCreator(props) {
 
   console.log("((RoomCreator))");
   return (
-    <div className={`${genStyles.box1} ${panelStyles.mainPanel1}`}>
+    <div
+      className={`${genStyles.box1} ${panelStyles.panelSize1} ${panelStyles.panelColorY1}`}
+    >
       <div className={`${panelStyles.innerBox}`}>
         <h2
           className={`${genStyles.noselect} ${panelStyles.title1}`}

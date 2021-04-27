@@ -19,7 +19,9 @@ export default function PlayerNameCreator(props) {
   }, [props.playerData]);
 
   return (
-    <div className={`${genStyles.box1} ${panelStyles.mainPanel2}`}>
+    <div
+      className={`${genStyles.box1} ${panelStyles.panelSize1} ${panelStyles.panelColorP1}`}
+    >
       <div className={`${panelStyles.innerBox}`}>
         <h2 className={`${genStyles.noselect} ${panelStyles.title1}`}>
           Your name
