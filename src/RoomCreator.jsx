@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Router, navigate } from "@reach/router";
 import genStyles from "./css/Generic.module.css";
 import panelStyles from "./css/Panel.module.css";
@@ -8,6 +8,12 @@ export default function RoomCreator(props) {
   const [playerNameInput, setPlayerNameInput] = useState(
     props.playerData.playerName
   );
+
+  useEffect(() => {
+    if (props.playerData.playerName) {
+      setPlayerNameInput(props.playerData.playerName);
+    }
+  }, [props.playerData]);
 
   console.log("((RoomCreator))");
   return (
@@ -22,6 +28,7 @@ export default function RoomCreator(props) {
           Create room
         </h2>
         <textarea
+          id="newRoomName_RoomCreator"
           value={props.newRoomName}
           className={`${panelStyles.textarea1}`}
           maxLength={16}
@@ -34,6 +41,7 @@ export default function RoomCreator(props) {
       <div className={`${panelStyles.innerBox}`}>
         <h2>Your name</h2>
         <textarea
+          id="playerNameInput_RoomCreator"
           value={playerNameInput}
           className={`${panelStyles.textarea1}`}
           maxLength={16}

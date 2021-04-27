@@ -46,6 +46,7 @@ textarea {
 }
 
 .App {
+  padding-top: 50px;
   /* text-align: center;
   background-color: var(--light-lilac);
   margin: auto;

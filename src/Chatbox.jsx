@@ -15,10 +15,10 @@ export default function Chatbox(props) {
   useEffect(() => {
     console.log("~~Chatbox~~");
 
-    $("#chatboxInput").on("keypress", function (e) {
+    $("#chatboxInput_Chatbox").on("keypress", function (e) {
       if ((e.which === 13 || e.keyCode === 13) && !e.shiftKey) {
         e.preventDefault();
-        $("#chatboxSendButton").click();
+        $("#chatboxSendButton_Chatbox").click();
       }
     });
 
@@ -44,7 +44,7 @@ export default function Chatbox(props) {
     return function cleanup() {
       console.log("##Chatbox##");
       props.socket.off("Chat message");
-      $("#chatboxInput").off("keypress");
+      $("#chatboxInput_Chatbox").off("keypress");
     };
   }, [props.socket, chatArray]);
 
@@ -95,7 +95,7 @@ export default function Chatbox(props) {
       </div>
       <form className={`${styles.chatInputContainer}`}>
         <textarea
-          id="chatboxInput"
+          id="chatboxInput_Chatbox"
           className={`${styles.chatboxInput}`}
           value={chatMsg}
           maxLength="60"
@@ -105,7 +105,7 @@ export default function Chatbox(props) {
           }}
         ></textarea>
         <button
-          id="chatboxSendButton"
+          id="chatboxSendButton_Chatbox"
           className={`${styles.sendButton}`}
           type="submit"
           onClick={(e) => {

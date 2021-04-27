@@ -12,6 +12,12 @@ export default function PlayerNameCreator(props) {
 
   const location = useLocation();
 
+  useEffect(() => {
+    if (props.playerData.playerName) {
+      setPlayerNameInput(props.playerData.playerName);
+    }
+  }, [props.playerData]);
+
   return (
     <div className={`${genStyles.box1} ${panelStyles.mainPanel2}`}>
       <div className={`${panelStyles.innerBox}`}>
@@ -19,6 +25,7 @@ export default function PlayerNameCreator(props) {
           Your name
         </h2>
         <textarea
+          id="playerNameInput_PlayerNameCreator"
           value={playerNameInput}
           className={`${panelStyles.textarea1}`}
           maxLength={16}
