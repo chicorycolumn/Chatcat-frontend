@@ -44,6 +44,14 @@ export default function RoomWrapper(props) {
       props.socket.on("Player left your room", function (data) {
         setRoomData(data.room);
       });
+
+      props.socket.on("You're booted", function (data) {
+        console.log(`Ø You're booted from ${data.roomName}.`);
+        if (roomData && roomData.roomName === data.roomName) {
+          navigate("/");
+          alert(data.msg);
+        }
+      });
     }
 
     return function cleanup() {

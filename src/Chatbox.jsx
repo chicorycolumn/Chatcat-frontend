@@ -32,6 +32,12 @@ export default function Chatbox(props) {
       });
 
       props.socket.on("Player left your room", function (data) {
+        if (data.player.truePlayerName === props.playerData.truePlayerName) {
+          navigate("/");
+          alert(
+            `You're being booted from this room. Perhaps you entered this room in another window and then closed it?`
+          );
+        }
         addToChatArray(`${data.player.playerName} has left`);
       });
     }
@@ -75,7 +81,7 @@ export default function Chatbox(props) {
 
   return (
     <div className={`${genStyles.box1} ${styles.chatboxSuper}`}>
-      <h2>Chatbox</h2>
+      <h2>Chatbox: You are {props.playerData.playerName}</h2>
       <div
         id="chatOutputContainer"
         className={`${genStyles.minipanel1} ${genStyles.overflowScroll} ${styles.chatOutputContainer}`}
