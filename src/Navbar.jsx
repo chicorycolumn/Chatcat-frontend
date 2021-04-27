@@ -2,25 +2,39 @@ import React from "react";
 import { Router, navigate, Link } from "@reach/router";
 import genStyles from "./css/Generic.module.css";
 import styles from "./css/Navbar.module.css";
-import catlogo1 from "./images/catlogo1.png";
+import catlogo from "./images/cat_logo2a.png";
 let devSwitch = false;
 
 const Navbar = (props) => {
   return (
     <div className={`${styles.navbar}`}>
-      <div className={`${styles.navbarInnerBox}`}>
-        <img className={`${styles.navbarLogo}`} src={catlogo1} />
+      <Link
+        className={`${styles.navbarInnerBoxLeft} ${styles.hoverable1}`}
+        to="/"
+      >
+        <img className={`${styles.navbarLogo}`} src={catlogo} />
         <h1 className={`${styles.navbarTitle}`}>Chatcat</h1>{" "}
-      </div>{" "}
-      <div className={`${styles.navbarInnerBox}`}>
-        <Link className={`${styles.navbarItem}`} to="/">
-          Main
+      </Link>
+
+      <div className={`${styles.navbarInnerBoxRight}`}>
+        <Link
+          className={`${styles.navbarItem} ${styles.hoverable1}`}
+          onClick={(e) => {
+            e.preventDefault();
+            console.log("Invite!");
+          }}
+          to=""
+        >
+          Invite
         </Link>
-        <Link className={`${styles.navbarItem}`} to="/contact">
+        <Link
+          className={`${styles.navbarItem} ${styles.hoverable1}`}
+          to="/contact"
+        >
           Contact
         </Link>
         <button
-          className={`${styles.navbarItem}`}
+          className={`${styles.navbarItem} ${styles.hoverable1}`}
           onClick={(e) => {
             e.preventDefault();
             props.socket.emit("Dev query");
@@ -29,7 +43,7 @@ const Navbar = (props) => {
           dQ
         </button>
         <button
-          className={`${styles.navbarItem}`}
+          className={`${styles.navbarItem} ${styles.hoverable1}`}
           onDoubleClick={(e) => {
             e.preventDefault();
             console.log("DESTROY");
