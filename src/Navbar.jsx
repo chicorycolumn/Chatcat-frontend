@@ -22,6 +22,7 @@ const Navbar = (props) => {
           onClick={(e) => {
             e.preventDefault();
             console.log("Invite!");
+            props.setShowInvitePanel(true);
           }}
           to=""
         >
