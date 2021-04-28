@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Router, navigate } from "@reach/router";
-import genStyles from "./css/Generic.module.css";
+import g from "./css/Generic.module.css";
 import panelStyles from "./css/Panel.module.css";
 import roomUtils from "./utils/roomUtils.js";
 
@@ -18,11 +18,11 @@ export default function RoomCreator(props) {
   console.log("((RoomCreator))");
   return (
     <div
-      className={`${genStyles.box1} ${panelStyles.panelSize1} ${panelStyles.panelColorY1}`}
+      className={`${g.box1} ${panelStyles.panelSize1} ${panelStyles.panelColorY1}`}
     >
       <div className={`${panelStyles.innerBox1}`}>
         <h2
-          className={`${genStyles.noselect} ${panelStyles.title1}`}
+          className={`${g.noselect} ${panelStyles.title1}`}
           onClick={() => {
             props.setRoomNameInput(roomUtils.createRoomName());
           }}
@@ -56,7 +56,7 @@ export default function RoomCreator(props) {
       <div className={`${panelStyles.innerBox1}`}>
         <button
           disabled={!props.playerData.playerName || !props.roomNameInput}
-          className={`${genStyles.button1} ${panelStyles.button1}`}
+          className={`${g.button1} ${panelStyles.button1}`}
           onClick={(e) => {
             e.preventDefault();
 

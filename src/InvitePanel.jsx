@@ -1,5 +1,5 @@
 import panelStyles from "./css/Panel.module.css";
-import genStyles from "./css/Generic.module.css";
+import g from "./css/Generic.module.css";
 import styles from "./css/InvitePanel.module.css";
 import s from "./css/s.module.css";
 import React, { useEffect, useState } from "react";
@@ -39,7 +39,7 @@ export default function InvitePanel(props) {
 
   return (
     <div
-      className={`${genStyles.box1} ${panelStyles.panelSize2a} ${panelStyles.panelColorB1a}`}
+      className={`${g.box1} ${panelStyles.panelSize2a} ${panelStyles.panelColorB1a}`}
     >
       <button
         onClick={(e) => {
@@ -51,7 +51,7 @@ export default function InvitePanel(props) {
       </button>
       <div className={`${panelStyles.innerBox1}`}>
         <div className={`${styles.box1}`}>
-          <h4 className={`${genStyles.noselect} ${panelStyles.title1}`}>
+          <h4 className={`${g.noselect} ${panelStyles.title1}`}>
             Share this url with your friends
           </h4>
           <div className={`${styles.box2}`}>
@@ -74,9 +74,7 @@ export default function InvitePanel(props) {
           </div>
         </div>
         <div className={`${styles.box1}`}>
-          <h4 className={`${genStyles.noselect} ${panelStyles.title1}`}>
-            Password
-          </h4>
+          <h4 className={`${g.noselect} ${panelStyles.title1}`}>Password</h4>
           <div className={`${styles.box2}`}>
             <textarea
               className={`${styles.pseudoInput}`}

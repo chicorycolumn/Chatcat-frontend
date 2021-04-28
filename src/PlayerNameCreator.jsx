@@ -1,5 +1,5 @@
 import panelStyles from "./css/Panel.module.css";
-import genStyles from "./css/Generic.module.css";
+import g from "./css/Generic.module.css";
 import React, { useEffect, useState } from "react";
 import { navigate, useLocation } from "@reach/router";
 import roomUtils from "./utils/roomUtils.js";
@@ -20,12 +20,10 @@ export default function PlayerNameCreator(props) {
 
   return (
     <div
-      className={`${genStyles.box1} ${panelStyles.panelSize1} ${panelStyles.panelColorP1}`}
+      className={`${g.box1} ${panelStyles.panelSize1} ${panelStyles.panelColorP1}`}
     >
       <div className={`${panelStyles.innerBox1}`}>
-        <h2 className={`${genStyles.noselect} ${panelStyles.title1}`}>
-          Your name
-        </h2>
+        <h2 className={`${g.noselect} ${panelStyles.title1}`}>Your name</h2>
         <textarea
           id="playerNameInput_PlayerNameCreator"
           value={playerNameInput}
@@ -40,7 +38,7 @@ export default function PlayerNameCreator(props) {
       <div className={`${panelStyles.innerBox1}`}>
         <button
           disabled={!props.playerData.playerName}
-          className={`${genStyles.button1} ${panelStyles.button1}`}
+          className={`${g.button1} ${panelStyles.button1}`}
           onClick={(e) => {
             if (playerNameInput !== props.playerData.playerName) {
               props.socket.emit("Update player data", {

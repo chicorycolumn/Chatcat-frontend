@@ -1,6 +1,6 @@
 import React from "react";
 import { Router, navigate, Link } from "@reach/router";
-import genStyles from "./css/Generic.module.css";
+import g from "./css/Generic.module.css";
 import styles from "./css/Navbar.module.css";
 import navlogo from "./images/logo_cat3b_pY1.png";
 let devSwitch = false;
@@ -37,7 +37,7 @@ const Navbar = (props) => {
           Contact
         </Link>
         <button
-          className={`${genStyles.devButton} ${styles.navbarItem} ${styles.hoverable1}`}
+          className={`${g.devButton} ${styles.navbarItem} ${styles.hoverable1}`}
           onClick={(e) => {
             e.preventDefault();
             props.socket.emit("Dev query");
@@ -46,7 +46,7 @@ const Navbar = (props) => {
           dQ
         </button>
         <button
-          className={`${genStyles.devButton} ${styles.navbarItem} ${styles.hoverable1}`}
+          className={`${g.devButton} ${styles.navbarItem} ${styles.hoverable1}`}
           onDoubleClick={(e) => {
             e.preventDefault();
             console.log("DESTROY");

@@ -1,5 +1,5 @@
 import styles from "./css/Room.module.css";
-import genStyles from "./css/Generic.module.css";
+import g from "./css/Generic.module.css";
 import React, { useEffect, useState } from "react";
 import { navigate, useLocation } from "@reach/router";
 import PlayerNameCreator from "./PlayerNameCreator";

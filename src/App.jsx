@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./css/App.module.css";
-import genStyles from "./css/Generic.module.css";
+import g from "./css/Generic.module.css";
 import { Router, navigate, Link, useLocation } from "@reach/router";
 import RoomCreator from "./RoomCreator.jsx";
 import Contact from "./Contact.jsx";
@@ -125,7 +125,7 @@ export default function App() {
       />
 
       {showInvitePanel && (
-        <div className={`${genStyles.obscurus}`}>
+        <div className={`${g.obscurus}`}>
           <InvitePanel setShowInvitePanel={setShowInvitePanel} />
         </div>
       )}
