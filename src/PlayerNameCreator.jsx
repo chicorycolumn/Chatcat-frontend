@@ -22,7 +22,7 @@ export default function PlayerNameCreator(props) {
     <div
       className={`${genStyles.box1} ${panelStyles.panelSize1} ${panelStyles.panelColorP1}`}
     >
-      <div className={`${panelStyles.innerBox}`}>
+      <div className={`${panelStyles.innerBox1}`}>
         <h2 className={`${genStyles.noselect} ${panelStyles.title1}`}>
           Your name
         </h2>
@@ -37,7 +37,7 @@ export default function PlayerNameCreator(props) {
         ></textarea>
       </div>
 
-      <div className={`${panelStyles.innerBox}`}>
+      <div className={`${panelStyles.innerBox1}`}>
         <button
           disabled={!props.playerData.playerName}
           className={`${genStyles.button1} ${panelStyles.button1}`}

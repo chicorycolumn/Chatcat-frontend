@@ -113,12 +113,13 @@ export default function App() {
 
   return (
     <div className={`${styles.App}`}>
+      <header></header>
       <Navbar
         socket={socket}
         setShowInvitePanel={setShowInvitePanel}
         successfullyEnteredRoomName={successfullyEnteredRoomName}
       />
-      <header></header>
+
       {showInvitePanel && (
         <InvitePanel setShowInvitePanel={setShowInvitePanel} />
       )}

@@ -20,7 +20,7 @@ export default function RoomCreator(props) {
     <div
       className={`${genStyles.box1} ${panelStyles.panelSize1} ${panelStyles.panelColorY1}`}
     >
-      <div className={`${panelStyles.innerBox}`}>
+      <div className={`${panelStyles.innerBox1}`}>
         <h2
           className={`${genStyles.noselect} ${panelStyles.title1}`}
           onClick={() => {
@@ -40,7 +40,7 @@ export default function RoomCreator(props) {
         ></textarea>
       </div>
 
-      <div className={`${panelStyles.innerBox}`}>
+      <div className={`${panelStyles.innerBox1}`}>
         <h2>Your name</h2>
         <textarea
           id="playerNameInput_RoomCreator"
@@ -53,7 +53,7 @@ export default function RoomCreator(props) {
         ></textarea>
       </div>
 
-      <div className={`${panelStyles.innerBox}`}>
+      <div className={`${panelStyles.innerBox1}`}>
         <button
           disabled={!props.playerData.playerName || !props.roomNameInput}
           className={`${genStyles.button1} ${panelStyles.button1}`}

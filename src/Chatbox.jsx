@@ -1,5 +1,6 @@
 import styles from "./css/Chatbox.module.css";
 import genStyles from "./css/Generic.module.css";
+import s from "./css/s.module.css";
 import React, { useEffect, useState } from "react";
 import { navigate, useLocation } from "@reach/router";
 import displayUtils from "./utils/displayUtils.js";
@@ -84,7 +85,7 @@ export default function Chatbox(props) {
       <h2>Chatbox: You are {props.playerData.playerName}</h2>
       <div
         id="chatOutputContainer"
-        className={`${genStyles.minipanel1} ${genStyles.overflowScroll} ${styles.chatOutputContainer}`}
+        className={`${genStyles.minipanel1} ${s.overflowScroll} ${styles.chatOutputContainer}`}
       >
         {chatArray.map((chatItem) => {
           return typeof chatItem === "string" ? (

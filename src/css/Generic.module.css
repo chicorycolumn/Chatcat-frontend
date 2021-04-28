@@ -24,19 +24,6 @@
   width: 200px;
 }
 
-.overflowScroll {
-  overflow: auto;
-  overflow-x: hidden;
-}
-
-.overflowHidden {
-  overflow: hidden;
-}
-
-.invisible {
-  opacity: 0;
-}
-
 .paddedBox1 {
   padding: 0px 10px;
 }

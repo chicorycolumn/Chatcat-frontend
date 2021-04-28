@@ -1,0 +1,19 @@
+.box1 {
+  /* border: red solid 1px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.box2 {
+  /* border: red solid 1px; */
+  display: flex;
+  flex-direction: row;
+  margin-left: 20px;
+}
+
+.pseudoInput {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  text-align: center;
+}

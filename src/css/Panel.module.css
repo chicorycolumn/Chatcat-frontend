@@ -8,6 +8,16 @@
   justify-content: space-around;
 }
 
+.panelSize2 {
+  height: 250px;
+  width: 300px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
 .panelColorY1 {
   background-color: var(--pYellow);
   box-shadow: 5px 5px 5px var(--pYellow_D2);
@@ -24,16 +34,24 @@
 
 .panelColorB1 {
   background-color: var(--pBlue_L2);
-  box-shadow: 5px 5px 5px var(--pPink);
-  border: var(--pPink) solid 2px;
-  color: var(--pPink_D2);
+  box-shadow: 5px 5px 5px var(--pBlue);
+  border: var(--pBlue) solid 2px;
+  color: var(--pBlue_D3);
 }
 
-.innerBox {
+.innerBox1 {
   flex-basis: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+.innerBox2 {
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -54,4 +72,40 @@
 .textarea1:hover,
 .button1:hover {
   background-color: var(--pBlue_L3);
+}
+
+.exitButton1 {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  top: -0.5px;
+  right: -0.5px;
+  background: none;
+  border: none;
+  border-top-right-radius: inherit;
+  color: var(--pPink);
+  border: var(--pBlue_L2) solid 2px;
+}
+
+.exitButton1:hover {
+  background-color: var(--pBlue_L1);
+  border: var(--pBlue_D1) solid 2px;
+}
+
+.copyButton {
+  border-radius: 5px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  width: 35px;
+  height: 37.5px;
+  background: none;
+  border: none;
+  color: var(--pPink);
+  border: var(--pBlue_L1) solid 2px;
+}
+
+.copyButton:hover {
+  background-color: var(--pBlue_L1);
+  color: var(--pPink_D3);
+  border: var(--pBlue_D1) solid 2px;
 }
