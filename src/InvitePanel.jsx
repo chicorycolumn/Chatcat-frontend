@@ -24,7 +24,7 @@ const copyText = (id) => {
       }, 500);
     })
     .catch((error) => {
-      // alert(`Sorry, failed to copy text. ${error}`);
+      alert(`Sorry, failed to copy text. ${error}`);
     });
 };
 
@@ -39,7 +39,7 @@ export default function InvitePanel(props) {
 
   return (
     <div
-      className={`${genStyles.box1} ${panelStyles.panelSize2} ${panelStyles.panelColorB1} ${s.absoluteCentered}`}
+      className={`${genStyles.box1} ${panelStyles.panelSize2a} ${panelStyles.panelColorB1a}`}
     >
       <button
         onClick={(e) => {
@@ -56,9 +56,11 @@ export default function InvitePanel(props) {
           </h4>
           <div className={`${styles.box2}`}>
             <textarea
-              className={`${styles.pseudoInput}`}
+              className={`${styles.pseudoInput2}`}
               type="text"
-              value={window.location.href}
+              value={
+                window.location.href && window.location.href.split("http://")[1]
+              }
               id="currentUrl"
             />
             <button

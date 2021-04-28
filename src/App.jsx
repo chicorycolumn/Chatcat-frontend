@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./css/App.module.css";
+import genStyles from "./css/Generic.module.css";
 import { Router, navigate, Link, useLocation } from "@reach/router";
 import RoomCreator from "./RoomCreator.jsx";
 import Contact from "./Contact.jsx";
@@ -114,6 +115,9 @@ export default function App() {
   return (
     <div className={`${styles.App}`}>
       <header></header>
+      <div id="background" className={styles.background}></div>
+      <div id="backgroundShroud" className={styles.backgroundShroud}></div>
+
       <Navbar
         socket={socket}
         setShowInvitePanel={setShowInvitePanel}
@@ -121,7 +125,9 @@ export default function App() {
       />
 
       {showInvitePanel && (
-        <InvitePanel setShowInvitePanel={setShowInvitePanel} />
+        <div className={`${genStyles.obscurus}`}>
+          <InvitePanel setShowInvitePanel={setShowInvitePanel} />
+        </div>
       )}
       <Router>
         <RoomCreator

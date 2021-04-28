@@ -12,6 +12,21 @@
   height: 250px;
   width: 300px;
   margin-top: 50px;
+  padding-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.panelSize2a {
+  position: absolute;
+  left: 50%;
+  margin-left: -200px;
+  width: 400px;
+  height: 250px;
+  margin-top: 50px;
+  padding-bottom: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,6 +50,13 @@
 .panelColorB1 {
   background-color: var(--pBlue_L2);
   box-shadow: 5px 5px 5px var(--pBlue);
+  border: var(--pBlue) solid 2px;
+  color: var(--pBlue_D3);
+}
+
+.panelColorB1a {
+  background-color: var(--pBlue_L2);
+  /* box-shadow: 5px 5px 5px var(--pBlue); */
   border: var(--pBlue) solid 2px;
   color: var(--pBlue_D3);
 }
@@ -75,6 +97,7 @@
 }
 
 .exitButton1 {
+  font-size: 20px;
   position: absolute;
   width: 35px;
   height: 35px;
@@ -83,13 +106,15 @@
   background: none;
   border: none;
   border-top-right-radius: inherit;
+  border-top: none;
+  border-right: none;
   color: var(--pPink);
   border: var(--pBlue_L2) solid 2px;
 }
 
 .exitButton1:hover {
-  background-color: var(--pBlue_L1);
-  border: var(--pBlue_D1) solid 2px;
+  background-color: var(--pBlue_L3);
+  border: var(--pBlue_L1) solid 2px;
 }
 
 .copyButton {
@@ -97,15 +122,16 @@
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
   width: 35px;
-  height: 37.5px;
+  height: 30px;
   background: none;
   border: none;
   color: var(--pPink);
   border: var(--pBlue_L1) solid 2px;
+  padding-bottom: 5px;
 }
 
 .copyButton:hover {
-  background-color: var(--pBlue_L1);
+  background-color: var(--pBlue_L3);
   color: var(--pPink_D3);
   border: var(--pBlue_D1) solid 2px;
 }

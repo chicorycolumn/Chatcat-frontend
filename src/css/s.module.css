@@ -10,9 +10,3 @@
 .invisible {
   opacity: 0;
 }
-
-.absoluteCentered {
-  position: absolute;
-  left: 50%;
-  margin-left: -150px;
-}

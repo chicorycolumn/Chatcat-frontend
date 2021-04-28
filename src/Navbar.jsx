@@ -2,7 +2,7 @@ import React from "react";
 import { Router, navigate, Link } from "@reach/router";
 import genStyles from "./css/Generic.module.css";
 import styles from "./css/Navbar.module.css";
-import catlogo from "./images/cat_logo2a.png";
+import navlogo from "./images/logo_cat3b_pY1.png";
 let devSwitch = false;
 
 const Navbar = (props) => {
@@ -12,7 +12,7 @@ const Navbar = (props) => {
         className={`${styles.navbarInnerBoxLeft} ${styles.hoverable1}`}
         to="/"
       >
-        <img className={`${styles.navbarLogo}`} src={catlogo} />
+        <img className={`${styles.navbarLogo}`} src={navlogo} />
         <h1 className={`${styles.navbarTitle}`}>Chatcat</h1>{" "}
       </Link>
 
@@ -37,7 +37,7 @@ const Navbar = (props) => {
           Contact
         </Link>
         <button
-          className={`${styles.navbarItem} ${styles.hoverable1}`}
+          className={`${genStyles.devButton} ${styles.navbarItem} ${styles.hoverable1}`}
           onClick={(e) => {
             e.preventDefault();
             props.socket.emit("Dev query");
@@ -46,7 +46,7 @@ const Navbar = (props) => {
           dQ
         </button>
         <button
-          className={`${styles.navbarItem} ${styles.hoverable1}`}
+          className={`${genStyles.devButton} ${styles.navbarItem} ${styles.hoverable1}`}
           onDoubleClick={(e) => {
             e.preventDefault();
             console.log("DESTROY");

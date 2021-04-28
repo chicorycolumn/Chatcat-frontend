@@ -30,3 +30,8 @@
 .innerBox {
   height: 72.5%;
 }
+
+.innerBox2 {
+  height: 72.5%;
+  border-top: var(--pBlue_L2) solid 2px;
+}

@@ -28,6 +28,12 @@
 
 * {
   box-sizing: border-box;
+  /* font-family: "Roboto" sans-serif; */
+  font-family: "Open Sans" sans-serif;
+}
+
+p {
+  font-size: 15px;
 }
 
 button:disabled {
@@ -57,6 +63,51 @@ textarea {
   padding-top: 100px;
   padding-bottom: 1px;
   border-radius: 0px; */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  /* font-family: "Sail", cursive; */
+  /* font-family: "Courgette", cursive; */
+  /* font-family: "Darker Grotesque", sans-serif; */
+  font-family: "Cambay", sans-serif;
+  font-weight: 700;
+}
+
+button {
+  font-family: "Open Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin-bottom: 7.5px;
+}
+
+.background {
+  background-image: url(../images/tile_cat1c.png);
+  background-size: 250px;
+  background-repeat: repeat;
+  position: fixed;
+  width: 100%;
+  z-index: -2;
+  height: 110%;
+  margin-top: -20px;
+}
+
+.backgroundShroud {
+  position: fixed;
+  width: 100%;
+  background-color: var(--pBlue_D1);
+  opacity: 0.85;
+  z-index: -1;
+  height: 110%;
+  margin-top: -20px;
 }
 
 /* .App-link {
