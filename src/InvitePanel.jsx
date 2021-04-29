@@ -5,6 +5,7 @@ import s from "./css/s.module.css";
 import React, { useEffect, useState } from "react";
 import { navigate, useLocation } from "@reach/router";
 import roomUtils from "./utils/roomUtils.js";
+import browserUtils from "./utils/browserUtils.js";
 
 const copyText = (id) => {
   const element = document.getElementById(id);
@@ -31,6 +32,10 @@ const copyText = (id) => {
 
 export default function InvitePanel(props) {
   console.log("((InvitePanel))");
+
+  let rpw = browserUtils.getCookie("roomPassword");
+
+  const [roomPassword, setRoomPassword] = useState(rpw && rpw.split("-")[0]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -82,7 +87,14 @@ export default function InvitePanel(props) {
             <button
               className={`${panelStyles.copyButton}`}
               onClick={() => {
-                copyText("currentPassword");
+                let newRoomPassword = roomUtils.fourLetterWord(roomPassword);
+
+                setRoomPassword(newRoomPassword);
+
+                props.socket.emit("Update room password", {
+                  roomName: props.successfullyEnteredRoomName,
+                  roomPassword: newRoomPassword,
+                });
               }}
             >
               🆕
@@ -90,7 +102,7 @@ export default function InvitePanel(props) {
             <textarea
               className={`${styles.pseudoInput}`}
               type="text"
-              value="ABCD"
+              value={roomPassword}
               id="currentPassword"
             />
             <button

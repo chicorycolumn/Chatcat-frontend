@@ -129,7 +129,11 @@ export default function App() {
 
       {showInvitePanel && (
         <div className={`${g.obscurus}`}>
-          <InvitePanel setShowInvitePanel={setShowInvitePanel} />
+          <InvitePanel
+            socket={socket}
+            setShowInvitePanel={setShowInvitePanel}
+            successfullyEnteredRoomName={successfullyEnteredRoomName}
+          />
         </div>
       )}
       {showOptionsPanel && (

@@ -14,7 +14,7 @@ export default function DoorPanel(props) {
   let rpw = browserUtils.getCookie("roomPassword");
 
   const [roomPasswordInput, setRoomPasswordInput] = useState(
-    rpw && rpw.split("-")[0]
+    rpw ? rpw.split("-")[0] : ""
   );
 
   const location = useLocation();
