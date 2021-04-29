@@ -9,12 +9,12 @@ exports.requestEntry = (e, location, socket, playerData) => {
 
 exports.createRoomName = () => {
   const roomAdjs = ["red", "green", "blue", "yellow", "purple", "orange"].slice(
-    0,
-    2
+    2,
+    4
   );
   const roomNouns = ["alligator", "bison", "cat", "duck", "eel", "fox"].slice(
-    0,
-    2
+    2,
+    4
   );
   let adj = roomAdjs[Math.floor(Math.random() * roomAdjs.length)];
   let noun = roomNouns[Math.floor(Math.random() * roomNouns.length)];

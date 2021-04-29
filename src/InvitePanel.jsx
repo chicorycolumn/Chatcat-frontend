@@ -24,7 +24,8 @@ const copyText = (id) => {
       }, 500);
     })
     .catch((error) => {
-      alert(`Sorry, failed to copy text. ${error}`);
+      console.log(`Sorry, failed to copy text. ${error}`);
+      // alert(`Sorry, failed to copy text. ${error}`);
     });
 };
 
@@ -74,8 +75,18 @@ export default function InvitePanel(props) {
           </div>
         </div>
         <div className={`${styles.box1}`}>
-          <h4 className={`${g.noselect} ${panelStyles.title1}`}>Password</h4>
+          <h4 className={`${g.noselect} ${panelStyles.title1}`}>
+            Room is password protected
+          </h4>
           <div className={`${styles.box2}`}>
+            <button
+              className={`${panelStyles.copyButton}`}
+              onClick={() => {
+                copyText("currentPassword");
+              }}
+            >
+              🆕
+            </button>
             <textarea
               className={`${styles.pseudoInput}`}
               type="text"

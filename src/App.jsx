@@ -7,6 +7,7 @@ import ContactPage from "./ContactPage.jsx";
 import RoomWrapper from "./RoomWrapper.jsx";
 import Navbar from "./Navbar.jsx";
 import InvitePanel from "./InvitePanel.jsx";
+import OptionsPanel from "./OptionsPanel.jsx";
 import roomUtils from "./utils/roomUtils.js";
 import gameUtils from "./utils/gameUtils.js";
 import browserUtils, { getCookie } from "./utils/browserUtils.js";
@@ -26,7 +27,8 @@ export default function App() {
   ] = useState(null);
   const [socket, setSocket] = useState(null);
   const [socketNudge, setSocketNudge] = useState();
-  const [showInvitePanel, setShowInvitePanel] = useState();
+  const [showInvitePanel, setShowInvitePanel] = useState(true);
+  const [showOptionsPanel, setShowOptionsPanel] = useState();
 
   // const refContainer = useRef(null);
 
@@ -121,12 +123,18 @@ export default function App() {
       <Navbar
         socket={socket}
         setShowInvitePanel={setShowInvitePanel}
+        setShowOptionsPanel={setShowOptionsPanel}
         successfullyEnteredRoomName={successfullyEnteredRoomName}
       />
 
       {showInvitePanel && (
         <div className={`${g.obscurus}`}>
           <InvitePanel setShowInvitePanel={setShowInvitePanel} />
+        </div>
+      )}
+      {showOptionsPanel && (
+        <div className={`${g.obscurus}`}>
+          <OptionsPanel setShowOptionsPanel={setShowOptionsPanel} />
         </div>
       )}
       <Router>

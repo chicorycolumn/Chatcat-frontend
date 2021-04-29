@@ -22,7 +22,18 @@ const Navbar = (props) => {
             className={`${styles.navbarItem} ${styles.hoverable1}`}
             onClick={(e) => {
               e.preventDefault();
-              console.log("Invite!");
+              props.setShowOptionsPanel(true);
+            }}
+            to=""
+          >
+            Options
+          </Link>
+        )}
+        {props.successfullyEnteredRoomName && (
+          <Link
+            className={`${styles.navbarItem} ${styles.hoverable1}`}
+            onClick={(e) => {
+              e.preventDefault();
               props.setShowInvitePanel(true);
             }}
             to=""
