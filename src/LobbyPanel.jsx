@@ -4,7 +4,7 @@ import g from "./css/Generic.module.css";
 import panelStyles from "./css/Panel.module.css";
 import roomUtils from "./utils/roomUtils.js";
 
-export default function RoomCreator(props) {
+export default function LobbyPanel(props) {
   const [playerNameInput, setPlayerNameInput] = useState(
     props.playerData.playerName
   );
@@ -15,7 +15,7 @@ export default function RoomCreator(props) {
     }
   }, [props.playerData]);
 
-  console.log("((RoomCreator))");
+  console.log("((LobbyPanel))");
   return (
     <div
       className={`${g.box1} ${panelStyles.panelSize1} ${panelStyles.panelColorY1}`}
@@ -30,7 +30,7 @@ export default function RoomCreator(props) {
           Create room
         </h2>
         <textarea
-          id="roomNameInput_RoomCreator"
+          id="roomNameInput_LobbyPanel"
           value={props.roomNameInput}
           className={`${panelStyles.textarea1}`}
           maxLength={16}
@@ -43,7 +43,7 @@ export default function RoomCreator(props) {
       <div className={`${panelStyles.innerBox1}`}>
         <h2>Your name</h2>
         <textarea
-          id="playerNameInput_RoomCreator"
+          id="playerNameInput_LobbyPanel"
           value={playerNameInput}
           className={`${panelStyles.textarea1}`}
           maxLength={16}

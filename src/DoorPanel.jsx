@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 import { navigate, useLocation } from "@reach/router";
 import roomUtils from "./utils/roomUtils.js";
 
-export default function PlayerNameCreator(props) {
-  console.log("((PlayerNameCreator))");
+export default function DoorPanel(props) {
+  console.log("((DoorPanel))");
   const [playerNameInput, setPlayerNameInput] = useState(
     props.playerData.playerName
   );
@@ -25,12 +25,15 @@ export default function PlayerNameCreator(props) {
       <div className={`${panelStyles.innerBox1}`}>
         <h2 className={`${g.noselect} ${panelStyles.title1}`}>Your name</h2>
         <textarea
-          id="playerNameInput_PlayerNameCreator"
+          id="playerNameInput_DoorPanel"
           value={playerNameInput}
           className={`${panelStyles.textarea1}`}
           maxLength={16}
           onChange={(e) => {
-            setPlayerNameInput(e.value);
+            setPlayerNameInput(e.target.value);
+            console.log(
+              `playerNameInput_DoorPanel. playerNameInput:${playerNameInput}.`
+            );
           }}
         ></textarea>
       </div>
@@ -41,6 +44,9 @@ export default function PlayerNameCreator(props) {
           className={`${g.button1} ${panelStyles.button1}`}
           onClick={(e) => {
             if (playerNameInput !== props.playerData.playerName) {
+              console.log(
+                `€ Update player data. playerNameInput:${playerNameInput}.`
+              );
               props.socket.emit("Update player data", {
                 player: {
                   truePlayerName: props.playerData.truePlayerName, //swde unnec

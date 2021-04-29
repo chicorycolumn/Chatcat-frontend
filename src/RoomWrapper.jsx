@@ -2,7 +2,7 @@ import styles from "./css/Room.module.css";
 import g from "./css/Generic.module.css";
 import React, { useEffect, useState } from "react";
 import { navigate, useLocation } from "@reach/router";
-import PlayerNameCreator from "./PlayerNameCreator";
+import DoorPanel from "./DoorPanel";
 import PlayerList from "./PlayerList";
 import Room from "./Room";
 import Instructions from "./Instructions";
@@ -68,6 +68,6 @@ export default function RoomWrapper(props) {
       setRoomData={setRoomData}
     />
   ) : (
-    <PlayerNameCreator socket={props.socket} playerData={props.playerData} />
+    <DoorPanel socket={props.socket} playerData={props.playerData} />
   );
 }

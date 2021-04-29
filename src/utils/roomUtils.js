@@ -3,7 +3,7 @@ exports.requestEntry = (e, location, socket, playerData) => {
   console.log(`€ Request entry with socket: ${socket.id}`);
   socket.emit("Request entry", {
     roomName: location.pathname.slice(1),
-    playerName: playerData.playerName,
+    truePlayerName: playerData.truePlayerName,
   });
 };
 

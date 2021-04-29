@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import styles from "./css/App.module.css";
 import g from "./css/Generic.module.css";
 import { Router, navigate, Link, useLocation } from "@reach/router";
-import RoomCreator from "./RoomCreator.jsx";
-import Contact from "./Contact.jsx";
+import LobbyPanel from "./LobbyPanel.jsx";
+import ContactPage from "./ContactPage.jsx";
 import RoomWrapper from "./RoomWrapper.jsx";
 import Navbar from "./Navbar.jsx";
 import InvitePanel from "./InvitePanel.jsx";
@@ -130,14 +130,14 @@ export default function App() {
         </div>
       )}
       <Router>
-        <RoomCreator
+        <LobbyPanel
           path="/"
           socket={socket}
           roomNameInput={roomNameInput}
           setRoomNameInput={setRoomNameInput}
           playerData={playerData}
         />
-        <Contact path="/contact" />
+        <ContactPage path="/contact" />
         <RoomWrapper
           path="/*"
           socket={socket}
