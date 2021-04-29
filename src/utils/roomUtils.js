@@ -1,8 +1,10 @@
-exports.requestEntry = (e, location, socket, playerData) => {
-  e.preventDefault();
+const { firstNames, fourLetterWords } = require("./text.js");
+
+exports.requestEntry = (socket, playerData, roomName, roomPassword) => {
   console.log(`€ Request entry with socket: ${socket.id}`);
   socket.emit("Request entry", {
-    roomName: location.pathname.slice(1),
+    roomName,
+    roomPassword,
     truePlayerName: playerData.truePlayerName,
   });
 };
@@ -28,34 +30,6 @@ exports.makeDummyName = (id) => {
     throw "No id provided to makeDummyName.";
   }
 
-  const firstNames = [
-    "alexandra",
-    "billy",
-    "cameron",
-    "daniela",
-    "edward",
-    "frankie",
-    "geraldine",
-    "helena",
-    "imogen",
-    "julianne",
-    "katherine",
-    "leanne",
-    "michael",
-    "norbert",
-    "oliver",
-    "patricia",
-    "quentin",
-    "roberto",
-    "samantha",
-    "timothy",
-    "ulysses",
-    "valerie",
-    "william",
-    "xanthia",
-    "yorkie",
-    "zachary",
-  ];
   let firstName;
   let prefix = "";
   let lastIndex;
@@ -76,4 +50,16 @@ exports.makeDummyName = (id) => {
   });
 
   return `${prefix}${firstName.join("")}_${id.slice(lastIndex, lastIndex + 2)}`;
+};
+
+exports.fourLetterWord = (currentWord) => {
+  let newWord =
+    fourLetterWords[Math.floor(Math.random() * fourLetterWords.length)];
+
+  while (newWord === currentWord) {
+    newWord =
+      fourLetterWords[Math.floor(Math.random() * fourLetterWords.length)];
+  }
+
+  return newWord;
 };

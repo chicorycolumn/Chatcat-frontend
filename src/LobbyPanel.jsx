@@ -3,6 +3,7 @@ import { Router, navigate } from "@reach/router";
 import g from "./css/Generic.module.css";
 import panelStyles from "./css/Panel.module.css";
 import roomUtils from "./utils/roomUtils.js";
+import browserUtils from "./utils/browserUtils.js";
 
 export default function LobbyPanel(props) {
   const [playerNameInput, setPlayerNameInput] = useState(
@@ -75,8 +76,16 @@ export default function LobbyPanel(props) {
               });
             }
 
+            let roomPassword = roomUtils.fourLetterWord();
+
+            browserUtils.setCookie(
+              "roomPassword",
+              `${roomPassword}-${props.roomNameInput}`
+            );
+
             props.socket.emit("Create room", {
               roomName: props.roomNameInput,
+              roomPassword,
               truePlayerName: props.playerData.truePlayerName, //swde unnec
             });
           }}

@@ -8,6 +8,7 @@ import Room from "./Room";
 import Instructions from "./Instructions";
 import roomUtils from "./utils/roomUtils.js";
 import Chatbox from "./Chatbox";
+import browserUtils, { getCookie } from "./utils/browserUtils.js";
 
 export default function RoomWrapper(props) {
   console.log("((RoomWrapper))");
@@ -35,6 +36,20 @@ export default function RoomWrapper(props) {
 
       props.socket.on("Room data", function (data) {
         setRoomData(data.room);
+      });
+
+      props.socket.on("Room password updated", function (data) {
+        if (data.roomName !== props.successfullyEnteredRoomName) {
+          console.log(
+            `D55 Why do these roomnames not match? data.roomName:"${data.roomName}", props.successfullyEnteredRoomName:"${props.successfullyEnteredRoomName}".`
+          );
+          return;
+        }
+
+        browserUtils.setCookie(
+          "roomPassword",
+          `${data.roomPassword}-${data.roomName}`
+        );
       });
 
       props.socket.on("Player entered your room", function (data) {
