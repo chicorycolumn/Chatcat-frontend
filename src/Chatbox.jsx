@@ -16,12 +16,11 @@ export default function Chatbox(props) {
   useEffect(() => {
     console.log("~~Chatbox~~");
 
-    $("#chatboxInput_Chatbox").on("keypress", function (e) {
-      if ((e.which === 13 || e.keyCode === 13) && !e.shiftKey) {
-        e.preventDefault();
-        $("#chatboxSendButton_Chatbox").click();
-      }
-    });
+    displayUtils.addListenerForEnterToSend(
+      $,
+      "chatboxInput_Chatbox",
+      "chatboxSendButton_Chatbox"
+    );
 
     if (props.socket) {
       props.socket.on("Chat message", function (data) {
