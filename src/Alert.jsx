@@ -9,20 +9,17 @@ import $ from "jquery";
 import s from "./css/s.module.css";
 import g from "./css/Generic.module.css";
 import panelStyles from "./css/Panel.module.css";
-import styles from "./css/OptionsPanel.module.css";
+import styles from "./css/Alert.module.css";
 
-export default function OptionsPanel(props) {
-  console.log("((OptionsPanel))");
+import alertcat from "./images/witchcat_sad_exclam.png";
+
+export default function Alert(props) {
+  console.log("((Alert))");
 
   useEffect(() => {
     $(document).on("click", function () {
-      if (
-        !(
-          $("#OptionsPanel").is(":focus") ||
-          $("#OptionsPanel").find(":focus").length
-        )
-      ) {
-        props.setShowOptionsPanel(false);
+      if (!($("#Alert").is(":focus") || $("#Alert").find(":focus").length)) {
+        props.setShowAlert(false);
       }
     });
 
@@ -34,19 +31,19 @@ export default function OptionsPanel(props) {
   return (
     <div
       tabindex="0"
-      id="OptionsPanel"
-      className={`${g.box1} ${panelStyles.panelSize2a} ${panelStyles.panelColorB1a} ${s.noOutline}`}
+      id="Alert"
+      className={`${g.box1} ${panelStyles.panelSize3} ${panelStyles.panelColorP2} ${s.noOutline} ${s.posRel}`}
     >
-      {" "}
+      <img src={alertcat} className={`${styles.bg_img}`} />
       <button
         onClick={(e) => {
-          props.setShowOptionsPanel(false);
+          props.setShowAlert(false);
         }}
-        className={`${panelStyles.exitButton} ${panelStyles.exitButtonBlue}`}
+        className={`${panelStyles.exitButton} ${panelStyles.exitButtonPink}`}
       >
         &times;
       </button>
-      Options would go here.
+      <p className={`${styles.alertText}`}> {props.showAlert}</p>
     </div>
   );
 }

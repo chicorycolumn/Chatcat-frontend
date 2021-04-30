@@ -76,7 +76,7 @@ export default function InvitePanel(props) {
         onClick={(e) => {
           props.setShowInvitePanel(false);
         }}
-        className={`${panelStyles.exitButton1}`}
+        className={`${panelStyles.exitButton} ${panelStyles.exitButtonBlue}`}
       >
         &times;
       </button>

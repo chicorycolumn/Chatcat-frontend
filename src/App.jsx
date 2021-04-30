@@ -17,6 +17,7 @@ import RoomWrapper from "./RoomWrapper.jsx";
 import Navbar from "./Navbar.jsx";
 import InvitePanel from "./InvitePanel.jsx";
 import OptionsPanel from "./OptionsPanel.jsx";
+import Alert from "./Alert.jsx";
 
 import socketIOClient from "socket.io-client";
 const ENDPOINT = "http://127.0.0.1:4002";
@@ -35,6 +36,7 @@ export default function App() {
   const [socketNudge, setSocketNudge] = useState();
   const [showInvitePanel, setShowInvitePanel] = useState();
   const [showOptionsPanel, setShowOptionsPanel] = useState();
+  const [showAlert, setShowAlert] = useState();
 
   // const refContainer = useRef(null);
 
@@ -98,8 +100,8 @@ export default function App() {
     });
 
     socket.on("Entry denied", function (data) {
-      navigate("/");
-      alert(data.msg);
+      // navigate("/");
+      setShowAlert(data.msg);
     });
 
     socket.on("disconnect", (data) => {
@@ -145,6 +147,11 @@ export default function App() {
       {showOptionsPanel && (
         <div className={`${g.obscurus}`}>
           <OptionsPanel setShowOptionsPanel={setShowOptionsPanel} />
+        </div>
+      )}
+      {showAlert && (
+        <div className={`${g.obscurus}`}>
+          <Alert showAlert={showAlert} setShowAlert={setShowAlert} />
         </div>
       )}
       <Router>

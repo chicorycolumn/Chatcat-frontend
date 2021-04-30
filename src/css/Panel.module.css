@@ -33,6 +33,18 @@
   justify-content: space-around;
 }
 
+.panelSize3 {
+  height: 150px;
+  width: 220px;
+  padding: 25px;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+}
+
 .panelColorY1 {
   background-color: var(--pYellow);
   box-shadow: 5px 5px 5px var(--pYellow_D2);
@@ -45,6 +57,13 @@
   box-shadow: 5px 5px 5px var(--pPink);
   border: var(--pPink) solid 2px;
   color: var(--pPink_D2);
+}
+
+.panelColorP2 {
+  background-color: var(--pPink_L2);
+  /* box-shadow: 5px 5px 5px var(--pPink); */
+  border: var(--pPink) solid 2px;
+  color: var(--pPink_D3);
 }
 
 .panelColorB1 {
@@ -96,7 +115,7 @@
   background-color: var(--pBlue_L3);
 }
 
-.exitButton1 {
+.exitButton {
   outline: none;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -104,25 +123,40 @@
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
-
   font-size: 20px;
   position: absolute;
   width: 35px;
   height: 35px;
   top: -0.5px;
   right: -0.5px;
+}
+
+.exitButtonBlue {
   background: none;
   border: none;
   border-top-right-radius: inherit;
   border-top: none;
   border-right: none;
   color: var(--pPink);
-  border: var(--pBlue_L2) solid 2px;
 }
 
-.exitButton1:hover {
+.exitButtonBlue:hover {
   background-color: var(--pBlue_L3);
   border: var(--pBlue_L1) solid 2px;
+}
+
+.exitButtonPink {
+  background: none;
+  border: none;
+  border-top-right-radius: inherit;
+  border-top: none;
+  border-right: none;
+  color: var(--pPink_D1);
+}
+
+.exitButtonPink:hover {
+  background-color: var(--pPink_L3);
+  border: var(--pPink_L1) solid 2px;
 }
 
 .littleButtonRight {

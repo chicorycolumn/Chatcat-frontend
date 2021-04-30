@@ -63,3 +63,7 @@
 .borderK:focus {
   border: black dotted 4px !important;
 }
+
+.posRel {
+  position: relative;
+}

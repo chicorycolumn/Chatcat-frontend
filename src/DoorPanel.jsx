@@ -29,6 +29,8 @@ export default function DoorPanel(props) {
       setPlayerNameInput(props.playerData.playerName);
     }
 
+    $("#DoorPanel").focus();
+
     displayUtils.addListenerForEnterToSend(
       $,
       document,
@@ -81,7 +83,7 @@ export default function DoorPanel(props) {
       <div className={`${panelStyles.innerBox1}`}>
         <button
           id="enterButton_DoorPanel"
-          disabled={!props.playerData.playerName}
+          disabled={!playerNameInput || !roomPasswordInput}
           className={`${g.button1} ${panelStyles.button1}`}
           onClick={(e) => {
             e.preventDefault();
