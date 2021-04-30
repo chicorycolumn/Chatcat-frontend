@@ -36,7 +36,7 @@ export default function DoorPanel(props) {
       "#DoorPanel"
     );
 
-    return () => {
+    return function cleanup() {
       $(document).off("keypress");
     };
   }, [props.playerData]);

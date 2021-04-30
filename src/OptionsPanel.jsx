@@ -14,9 +14,28 @@ import styles from "./css/OptionsPanel.module.css";
 export default function OptionsPanel(props) {
   console.log("((OptionsPanel))");
 
+  useEffect(() => {
+    $(document).on("click", function () {
+      if (
+        !(
+          $("#OptionsPanel").is(":focus") ||
+          $("#OptionsPanel").find(":focus").length
+        )
+      ) {
+        props.setShowOptionsPanel(false);
+      }
+    });
+
+    return function cleanup() {
+      $(document).off("click");
+    };
+  }, []);
+
   return (
     <div
-      className={`${g.box1} ${panelStyles.panelSize2a} ${panelStyles.panelColorB1a}`}
+      tabindex="0"
+      id="OptionsPanel"
+      className={`${g.box1} ${panelStyles.panelSize2a} ${panelStyles.panelColorB1a} ${s.noOutline}`}
     >
       {" "}
       <button

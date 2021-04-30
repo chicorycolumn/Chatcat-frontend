@@ -27,7 +27,7 @@ export default function LobbyPanel(props) {
       "#LobbyPanel"
     );
 
-    return () => {
+    return function cleanup() {
       $(document).off("keypress");
     };
   }, [props.playerData]);

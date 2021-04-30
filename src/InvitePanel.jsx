@@ -15,7 +15,6 @@ const copyText = (inputId) => {
   let titleId = `${inputId[0]}Title`;
   const inputEl = document.getElementById(inputId);
   const titleEl = document.getElementById(titleId);
-  const originalTitleText = titleEl.innerText;
 
   let textToCopy = inputEl.value || inputEl.textContent;
 
@@ -27,8 +26,11 @@ const copyText = (inputId) => {
       inputEl.select();
       inputEl.setSelectionRange(0, 99999);
       setTimeout(() => {
-        titleEl.innerText = originalTitleText;
-      }, 400);
+        titleEl.innerText = {
+          p: "Room is password protected",
+          u: "Share this url with your friends",
+        }[inputId[0]];
+      }, 850);
     })
     .catch((error) => {
       console.log(`Sorry, failed to copy text. ${error}`);
@@ -44,14 +46,31 @@ export default function InvitePanel(props) {
   const [roomPassword, setRoomPassword] = useState(rpw && rpw.split("-")[0]);
 
   useEffect(() => {
+    $(document).on("click", function () {
+      if (
+        !(
+          $("#InvitePanel").is(":focus") ||
+          $("#InvitePanel").find(":focus").length
+        )
+      ) {
+        props.setShowInvitePanel(false);
+      }
+    });
+
     setTimeout(() => {
       copyText("uInput");
-    }, 200);
+    }, 350);
+
+    return function cleanup() {
+      $(document).off("click");
+    };
   }, []);
 
   return (
     <div
-      className={`${g.box1} ${panelStyles.panelSize2a} ${panelStyles.panelColorB1a}`}
+      tabindex="0"
+      id="InvitePanel"
+      className={`${g.box1} ${panelStyles.panelSize2a} ${panelStyles.panelColorB1a} ${s.noOutline}`}
     >
       <button
         onClick={(e) => {
