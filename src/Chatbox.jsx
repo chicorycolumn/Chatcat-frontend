@@ -24,8 +24,8 @@ export default function Chatbox(props) {
 
     displayUtils.addListenerForEnterToSend(
       $,
-      "chatboxInput_Chatbox",
-      "chatboxSendButton_Chatbox"
+      "#chatboxInput_Chatbox",
+      "#chatboxSendButton_Chatbox"
     );
 
     if (props.socket) {

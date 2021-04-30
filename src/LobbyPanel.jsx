@@ -22,25 +22,26 @@ export default function LobbyPanel(props) {
 
     displayUtils.addListenerForEnterToSend(
       $,
-      "roomNameInput_LobbyPanel",
-      "enterButton_LobbyPanel"
+      document,
+      "#enterButton_LobbyPanel",
+      "#LobbyPanel"
     );
 
-    displayUtils.addListenerForEnterToSend(
-      $,
-      "playerNameInput_LobbyPanel",
-      "enterButton_LobbyPanel"
-    );
+    return () => {
+      $(document).off("keypress");
+    };
   }, [props.playerData]);
 
   console.log("((LobbyPanel))");
   return (
     <div
-      className={`${g.box1} ${panelStyles.panelSize1} ${panelStyles.panelColorY1}`}
+      tabindex="0"
+      id="LobbyPanel"
+      className={`${g.box1} ${panelStyles.panelSize1} ${panelStyles.panelColorY1} ${s.noOutline}`}
     >
       <div className={`${panelStyles.innerBox1}`}>
         <h2
-          className={`${g.noselect} ${panelStyles.title1}`}
+          className={`${s.noSelect} ${panelStyles.title1}`}
           onClick={() => {
             props.setRoomNameInput(roomUtils.createRoomName());
           }}

@@ -80,7 +80,7 @@
 .textarea1 {
   width: 75%;
   font-size: 18px;
-  height: 24px;
+  height: 28px;
   text-align: center;
   overflow: hidden;
 }
@@ -97,6 +97,7 @@
 }
 
 .exitButton1 {
+  outline: none;
   font-size: 20px;
   position: absolute;
   width: 35px;
@@ -117,10 +118,23 @@
   border: var(--pBlue_L1) solid 2px;
 }
 
-.copyButton {
+.littleButtonRight {
   border-radius: 5px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
+  width: 35px;
+  height: 30px;
+  background: none;
+  border: none;
+  color: var(--pPink);
+  border: var(--pBlue_L1) solid 2px;
+  padding-bottom: 5px;
+}
+
+.littleButtonLeft {
+  border-radius: 5px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
   width: 35px;
   height: 30px;
   background: none;

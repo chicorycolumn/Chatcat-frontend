@@ -28,14 +28,27 @@ export default function DoorPanel(props) {
     if (props.playerData.playerName) {
       setPlayerNameInput(props.playerData.playerName);
     }
+
+    displayUtils.addListenerForEnterToSend(
+      $,
+      document,
+      "#enterButton_DoorPanel",
+      "#DoorPanel"
+    );
+
+    return () => {
+      $(document).off("keypress");
+    };
   }, [props.playerData]);
 
   return (
     <div
-      className={`${g.box1} ${panelStyles.panelSize1} ${panelStyles.panelColorP1}`}
+      tabindex="0"
+      id="DoorPanel"
+      className={`${g.box1} ${panelStyles.panelSize1} ${panelStyles.panelColorP1} ${s.noOutline}`}
     >
       <div className={`${panelStyles.innerBox1}`}>
-        <h2 className={`${g.noselect} ${panelStyles.title1}`}>Your name</h2>
+        <h2 className={`${s.noSelect} ${panelStyles.title1}`}>Your name</h2>
         <textarea
           id="playerNameInput_DoorPanel"
           value={playerNameInput}
@@ -50,7 +63,7 @@ export default function DoorPanel(props) {
         ></textarea>
       </div>
       <div className={`${panelStyles.innerBox1}`}>
-        <h2 className={`${g.noselect} ${panelStyles.title1}`}>Password</h2>
+        <h2 className={`${s.noSelect} ${panelStyles.title1}`}>Password</h2>
         <textarea
           id="roomPasswordInput_DoorPanel"
           value={roomPasswordInput}
@@ -67,6 +80,7 @@ export default function DoorPanel(props) {
 
       <div className={`${panelStyles.innerBox1}`}>
         <button
+          id="enterButton_DoorPanel"
           disabled={!props.playerData.playerName}
           className={`${g.button1} ${panelStyles.button1}`}
           onClick={(e) => {
