@@ -10,27 +10,33 @@ exports.addListenerForEnterToSend = ($, input, button, itemWithFocus) => {
         $(itemWithFocus).is(":focus") ||
         $(itemWithFocus).find(":focus").length
       ) {
-        if ((e.which === 13 || e.keyCode === 13) && !e.shiftKey) {
+        if (
+          !$("#Alert").length &&
+          (e.which === 13 || e.keyCode === 13) &&
+          !e.shiftKey
+        ) {
           e.preventDefault();
           $(button).click();
         }
       }
     });
-
-    // $(`#${inputId}`).focus("keypress", function (e) {
-    //   console.log(e.which, e.keyCode);
-    //   if ((e.which === 13 || e.keyCode === 13) && !e.shiftKey) {
-    //     e.preventDefault();
-    //     $(`#${buttonId}`).click();
-    //   }
-    // });
   } else {
     $(input).on("keypress", function (e) {
       console.log(e.which, e.keyCode);
-      if ((e.which === 13 || e.keyCode === 13) && !e.shiftKey) {
+      if (
+        !$("#Alert").length &&
+        (e.which === 13 || e.keyCode === 13) &&
+        !e.shiftKey
+      ) {
         e.preventDefault();
         $(button).click();
       }
     });
   }
+};
+
+exports.selectText = (document, id) => {
+  const el = document.getElementById(id);
+  el.select();
+  el.setSelectionRange(0, 99999);
 };

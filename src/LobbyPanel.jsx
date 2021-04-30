@@ -49,6 +49,9 @@ export default function LobbyPanel(props) {
           Create room
         </h2>
         <textarea
+          onClick={(e) => {
+            displayUtils.selectText(document, "roomNameInput_LobbyPanel");
+          }}
           id="roomNameInput_LobbyPanel"
           value={props.roomNameInput}
           className={`${panelStyles.textarea1}`}
@@ -62,6 +65,9 @@ export default function LobbyPanel(props) {
       <div className={`${panelStyles.innerBox1}`}>
         <h2>Your name</h2>
         <textarea
+          onClick={(e) => {
+            displayUtils.selectText(document, "playerNameInput_LobbyPanel");
+          }}
           id="playerNameInput_LobbyPanel"
           value={playerNameInput}
           className={`${panelStyles.textarea1}`}

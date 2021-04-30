@@ -16,7 +16,7 @@ let devSwitch = false;
 
 const Navbar = (props) => {
   return (
-    <div className={`${styles.navbar}`}>
+    <div id="navbar" className={`${styles.navbar}`}>
       <Link
         className={`${styles.navbarInnerBoxLeft} ${styles.hoverable1}`}
         to="/"

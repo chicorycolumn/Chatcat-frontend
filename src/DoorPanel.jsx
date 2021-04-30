@@ -52,6 +52,9 @@ export default function DoorPanel(props) {
       <div className={`${panelStyles.innerBox1}`}>
         <h2 className={`${s.noSelect} ${panelStyles.title1}`}>Your name</h2>
         <textarea
+          onClick={(e) => {
+            displayUtils.selectText(document, "playerNameInput_DoorPanel");
+          }}
           id="playerNameInput_DoorPanel"
           value={playerNameInput}
           className={`${panelStyles.textarea1}`}
@@ -67,6 +70,9 @@ export default function DoorPanel(props) {
       <div className={`${panelStyles.innerBox1}`}>
         <h2 className={`${s.noSelect} ${panelStyles.title1}`}>Password</h2>
         <textarea
+          onClick={(e) => {
+            displayUtils.selectText(document, "roomPasswordInput_DoorPanel");
+          }}
           id="roomPasswordInput_DoorPanel"
           value={roomPasswordInput}
           className={`${panelStyles.textarea1}`}

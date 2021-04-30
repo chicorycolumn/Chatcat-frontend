@@ -69,7 +69,6 @@ export default function App() {
       setPlayerData(data.player);
 
       if (data.msg) {
-        console.log("data.msg", data.msg);
         setShowAlert(data.msg);
       }
 

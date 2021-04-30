@@ -11,20 +11,39 @@ import g from "./css/Generic.module.css";
 import panelStyles from "./css/Panel.module.css";
 import styles from "./css/Alert.module.css";
 
-import alertcat from "./images/witchcat_sad_exclam.png";
+import alertimage from "./images/witchcat_sad_exclam.png";
 
 export default function Alert(props) {
   console.log("((Alert))");
 
   useEffect(() => {
-    $(document).on("click", function () {
+    function JQF_clickOutsideToClose() {
       if (!($("#Alert").is(":focus") || $("#Alert").find(":focus").length)) {
         props.setShowAlert(false);
       }
+    }
+
+    function JQF_keypressToClose(e) {
+      console.log(e.keyCode, e.which);
+
+      let exitKeyCodes = [13, 27, 32];
+
+      if (exitKeyCodes.includes(e.keyCode) || exitKeyCodes.includes(e.which)) {
+        props.setShowAlert(false);
+      }
+    }
+
+    $(document).on("keypress", (e) => {
+      JQF_keypressToClose(e);
     });
 
+    $(document).on("click", JQF_clickOutsideToClose);
+
     return function cleanup() {
-      $(document).off("click");
+      $(document).off("click", JQF_clickOutsideToClose);
+      $(document).off("keypress", (e) => {
+        JQF_keypressToClose(e);
+      });
     };
   }, []);
 
@@ -34,7 +53,7 @@ export default function Alert(props) {
       id="Alert"
       className={`${g.box1} ${panelStyles.panelSize3} ${panelStyles.panelColorP2} ${s.noOutline} ${s.posRel}`}
     >
-      <img src={alertcat} className={`${styles.bg_img}`} />
+      <img src={alertimage} className={`${styles.bg_img}`} />
       <button
         onClick={(e) => {
           props.setShowAlert(false);
