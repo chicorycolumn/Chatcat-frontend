@@ -1,16 +1,22 @@
-import React, { useState, useEffect, useRef } from "react";
-import styles from "./css/App.module.css";
-import g from "./css/Generic.module.css";
+import React, { useEffect, useState } from "react";
 import { Router, navigate, Link, useLocation } from "@reach/router";
+import roomUtils from "./utils/roomUtils.js";
+import browserUtils from "./utils/browserUtils.js";
+import displayUtils from "./utils/displayUtils.js";
+import gameUtils from "./utils/gameUtils.js";
+import $ from "jquery";
+
+import s from "./css/s.module.css";
+import g from "./css/Generic.module.css";
+import panelStyles from "./css/Panel.module.css";
+import styles from "./css/App.module.css";
+
 import LobbyPanel from "./LobbyPanel.jsx";
 import ContactPage from "./ContactPage.jsx";
 import RoomWrapper from "./RoomWrapper.jsx";
 import Navbar from "./Navbar.jsx";
 import InvitePanel from "./InvitePanel.jsx";
 import OptionsPanel from "./OptionsPanel.jsx";
-import roomUtils from "./utils/roomUtils.js";
-import gameUtils from "./utils/gameUtils.js";
-import browserUtils, { getCookie } from "./utils/browserUtils.js";
 
 import socketIOClient from "socket.io-client";
 const ENDPOINT = "http://127.0.0.1:4002";

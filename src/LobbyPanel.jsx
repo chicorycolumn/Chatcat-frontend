@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Router, navigate } from "@reach/router";
-import g from "./css/Generic.module.css";
-import panelStyles from "./css/Panel.module.css";
+import { Router, navigate, Link, useLocation } from "@reach/router";
 import roomUtils from "./utils/roomUtils.js";
 import browserUtils from "./utils/browserUtils.js";
+import displayUtils from "./utils/displayUtils.js";
+import gameUtils from "./utils/gameUtils.js";
+import $ from "jquery";
+
+import s from "./css/s.module.css";
+import g from "./css/Generic.module.css";
+import panelStyles from "./css/Panel.module.css";
 
 export default function LobbyPanel(props) {
   const [playerNameInput, setPlayerNameInput] = useState(
@@ -14,6 +19,18 @@ export default function LobbyPanel(props) {
     if (props.playerData.playerName) {
       setPlayerNameInput(props.playerData.playerName);
     }
+
+    displayUtils.addListenerForEnterToSend(
+      $,
+      "roomNameInput_LobbyPanel",
+      "enterButton_LobbyPanel"
+    );
+
+    displayUtils.addListenerForEnterToSend(
+      $,
+      "playerNameInput_LobbyPanel",
+      "enterButton_LobbyPanel"
+    );
   }, [props.playerData]);
 
   console.log("((LobbyPanel))");
@@ -56,6 +73,7 @@ export default function LobbyPanel(props) {
 
       <div className={`${panelStyles.innerBox1}`}>
         <button
+          id="enterButton_LobbyPanel"
           disabled={!props.playerData.playerName || !props.roomNameInput}
           className={`${g.button1} ${panelStyles.button1}`}
           onClick={(e) => {
