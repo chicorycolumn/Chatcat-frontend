@@ -66,10 +66,12 @@ export default function App() {
     });
 
     socket.on("Player loaded", function (data) {
-      console.log(">>>> data.player:", data.player);
-      console.log(">>>> playerData before set:", playerData);
       setPlayerData(data.player);
-      console.log(">>>> playerData after set:", playerData);
+
+      if (data.msg) {
+        console.log("data.msg", data.msg);
+        setShowAlert(data.msg);
+      }
 
       if (!data.player.playerName) {
         socket.emit("Update player data", {
@@ -86,6 +88,7 @@ export default function App() {
 
     socket.on("Entry granted", function (data) {
       console.log("Ø Entry granted");
+      setPlayerData(data.player);
       setSuccessfullyEnteredRoomName(data.room.roomName);
       navigate(`/${data.room.roomName}`);
     });
@@ -139,6 +142,7 @@ export default function App() {
         <div className={`${g.obscurus}`}>
           <InvitePanel
             socket={socket}
+            playerData={playerData}
             setShowInvitePanel={setShowInvitePanel}
             successfullyEnteredRoomName={successfullyEnteredRoomName}
           />

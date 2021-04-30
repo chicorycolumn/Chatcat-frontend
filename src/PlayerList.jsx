@@ -27,6 +27,7 @@ export default function PlayerList(props) {
                 </span>
                 <span className={`${styles.name}`}>
                   {roomPlayer.playerName}
+                  {roomPlayer.isRoomboss ? " 🎩" : ""}
                 </span>
                 <span className={`${styles.stars}`}>
                   {`00${roomPlayer.stars.toString()}⭐`}

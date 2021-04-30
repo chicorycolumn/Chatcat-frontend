@@ -10,6 +10,7 @@ import s from "./css/s.module.css";
 import g from "./css/Generic.module.css";
 import panelStyles from "./css/Panel.module.css";
 import styles from "./css/InvitePanel.module.css";
+import PlayerList from "./PlayerList.jsx";
 
 const copyText = (inputId) => {
   let titleId = `${inputId[0]}Title`;
@@ -110,6 +111,7 @@ export default function InvitePanel(props) {
           </h4>
           <div className={`${styles.box2}`}>
             <button
+              disabled={!props.playerData.isRoomboss}
               className={`${panelStyles.littleButtonLeft}`}
               onClick={() => {
                 let newRoomPassword = roomUtils.fourLetterWord(roomPassword);
