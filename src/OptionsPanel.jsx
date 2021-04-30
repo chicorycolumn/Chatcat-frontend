@@ -15,7 +15,7 @@ export default function OptionsPanel(props) {
   console.log("((OptionsPanel))");
 
   useEffect(() => {
-    $(document).on("click", function () {
+    function JQF_clickOutsideToClose() {
       if (
         !(
           $("#OptionsPanel").is(":focus") ||
@@ -24,10 +24,12 @@ export default function OptionsPanel(props) {
       ) {
         props.setShowOptionsPanel(false);
       }
-    });
+    }
+
+    $(document).on("click", JQF_clickOutsideToClose);
 
     return function cleanup() {
-      $(document).off("click");
+      $(document).off("click", JQF_clickOutsideToClose);
     };
   }, []);
 

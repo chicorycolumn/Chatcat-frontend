@@ -47,7 +47,7 @@ export default function InvitePanel(props) {
   const [roomPassword, setRoomPassword] = useState(rpw && rpw.split("-")[0]);
 
   useEffect(() => {
-    $(document).on("click", function () {
+    function JQF_clickOutsideToClose() {
       if (
         !(
           $("#InvitePanel").is(":focus") ||
@@ -56,14 +56,16 @@ export default function InvitePanel(props) {
       ) {
         props.setShowInvitePanel(false);
       }
-    });
+    }
+
+    $(document).on("click", JQF_clickOutsideToClose);
 
     setTimeout(() => {
       copyText("uInput");
     }, 350);
 
     return function cleanup() {
-      $(document).off("click");
+      $(document).off("click", JQF_clickOutsideToClose);
     };
   }, []);
 
