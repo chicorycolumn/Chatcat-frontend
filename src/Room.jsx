@@ -37,7 +37,12 @@ export default function Room(props) {
     <div className={`${styles.Room}`}>
       <div className={`${styles.superContainer}`}>
         <div className={`${styles.mainContainer}`}>
-          <PlayerList playerList={props.roomData.players} />
+          <PlayerList
+            playerData={props.playerData}
+            roomData={props.roomData}
+            playerList={props.roomData.players}
+            socket={props.socket}
+          />
           <Instructions />
         </div>
         <div className={`${styles.mainContainer}`}></div>

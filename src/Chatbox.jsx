@@ -38,12 +38,6 @@ export default function Chatbox(props) {
       });
 
       props.socket.on("Player left your room", function (data) {
-        if (data.player.truePlayerName === props.playerData.truePlayerName) {
-          navigate("/");
-          alert(
-            `You're being booted from this room. Perhaps you entered this room in another window and then closed it?`
-          );
-        }
         addToChatArray(`${data.player.playerName} has left`);
       });
     }
@@ -62,6 +56,7 @@ export default function Chatbox(props) {
 
   function sendChat() {
     if (!chatMsg) {
+      console.log("No chat message");
       return;
     }
 

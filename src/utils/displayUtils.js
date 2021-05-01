@@ -6,15 +6,16 @@ exports.updateScroll = (elementId) => {
 exports.addListenerForEnterToSend = ($, input, button, itemWithFocus) => {
   if (itemWithFocus) {
     $(input).on("keypress", function (e) {
+      if ($("#Alert").length) {
+        e.preventDefault();
+        return;
+      }
+
       if (
         $(itemWithFocus).is(":focus") ||
         $(itemWithFocus).find(":focus").length
       ) {
-        if (
-          !$("#Alert").length &&
-          (e.which === 13 || e.keyCode === 13) &&
-          !e.shiftKey
-        ) {
+        if ((e.which === 13 || e.keyCode === 13) && !e.shiftKey) {
           e.preventDefault();
           $(button).click();
         }
@@ -22,12 +23,12 @@ exports.addListenerForEnterToSend = ($, input, button, itemWithFocus) => {
     });
   } else {
     $(input).on("keypress", function (e) {
-      console.log(e.which, e.keyCode);
-      if (
-        !$("#Alert").length &&
-        (e.which === 13 || e.keyCode === 13) &&
-        !e.shiftKey
-      ) {
+      if ($("#Alert").length) {
+        e.preventDefault();
+        return;
+      }
+
+      if ((e.which === 13 || e.keyCode === 13) && !e.shiftKey) {
         e.preventDefault();
         $(button).click();
       }

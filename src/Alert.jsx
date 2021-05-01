@@ -24,7 +24,7 @@ export default function Alert(props) {
     }
 
     function JQF_keypressToClose(e) {
-      console.log(e.keyCode, e.which);
+      console.log("Alert:JQF_keypressToClose", e.keyCode, e.which);
 
       let exitKeyCodes = [13, 27, 32];
 

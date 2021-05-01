@@ -63,15 +63,27 @@ export default function RoomWrapper(props) {
       });
 
       props.socket.on("Player left your room", function (data) {
+        if (data.player.truePlayerName === props.playerData.truePlayerName) {
+          navigate("/");
+          alert(
+            `You're being booted from this room. Perhaps you entered this room in another window and then closed it?`
+          );
+        }
         setRoomData(data.room);
       });
 
       props.socket.on("You're booted", function (data) {
         console.log(`Ø You're booted from ${data.roomName}.`);
-        props.setSuccessfullyEnteredRoomName(null);
         if (roomData && roomData.roomName === data.roomName) {
           navigate("/");
+          props.setSuccessfullyEnteredRoomName(null);
           alert(data.msg);
+          props.socket.emit("I was booted", data);
+        } else {
+          console.log(
+            `N49 The server wants to boot me from room ${data.roomName} but I'm not in that room, I think?`
+          );
+          throw "N49";
         }
       });
     }

@@ -14,6 +14,8 @@ import styles from "./css/PlayerList.module.css";
 export default function PlayerList(props) {
   console.log("((PlayerList))");
 
+  const [bootTabPlayerName, setBootTabPlayerName] = useState();
+
   return (
     <div className={`${g.minipanel1} ${s.overflowHidden}`}>
       <h2>Players</h2>
@@ -21,7 +23,50 @@ export default function PlayerList(props) {
         {props.playerList &&
           props.playerList.map((roomPlayer) => {
             return (
-              <div className={`${styles.nameItem}`}>
+              <div
+                onClick={(e) => {
+                  if (!props.playerData.isRoomboss || roomPlayer.isRoomboss) {
+                    return;
+                  }
+                  console.log({ bootTabPlayerName });
+                  if (bootTabPlayerName !== roomPlayer.playerName) {
+                    setBootTabPlayerName(roomPlayer.playerName);
+                    setTimeout(() => {
+                      setBootTabPlayerName(null);
+                    }, 2000);
+                  } else {
+                    setBootTabPlayerName(null);
+                  }
+                }}
+                className={`${styles.nameItem} ${s.noSelect}`}
+              >
+                {bootTabPlayerName === roomPlayer.playerName ? (
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (!props.playerData.isRoomboss) {
+                        return;
+                      }
+                      props.socket.emit("Boot player", {
+                        playerName: roomPlayer.playerName,
+                        roomName: props.roomData.roomName,
+                      });
+
+                      let rpw = browserUtils.getCookie("roomPassword");
+                      let currentRoomPassword = rpw ? rpw.split("-")[0] : "";
+                      let newRoomPassword = roomUtils.fourLetterWord(
+                        currentRoomPassword
+                      );
+                      props.socket.emit("Update room password", {
+                        roomName: props.successfullyEnteredRoomName,
+                        roomPassword: newRoomPassword,
+                      });
+                    }}
+                    className={`${styles.bootTab}`}
+                  >{`Boot?`}</button>
+                ) : (
+                  ""
+                )}
                 <span className={`${styles.awards}`}>
                   {Math.floor(Math.random() * 10) % 2 ? "👑" : ""}
                 </span>

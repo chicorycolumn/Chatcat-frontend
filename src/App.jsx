@@ -113,6 +113,8 @@ export default function App() {
           .toUTCString()
           .slice(17, -4)}.`
       );
+      navigate("/");
+      setShowAlert("The server disconnected you.");
     });
 
     return function cleanup() {
