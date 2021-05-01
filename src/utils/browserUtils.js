@@ -24,3 +24,10 @@ exports.getCookie = (cookieName) => {
 
   return cookie ? cookie.split("=")[1] : null;
 };
+
+exports.alphanumerise = (str) => {
+  return str
+    .split("")
+    .filter((char) => /[a-z0-9_]/i.test(char))
+    .join("");
+};

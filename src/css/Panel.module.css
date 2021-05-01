@@ -172,6 +172,10 @@
   padding-bottom: 5px;
 }
 
+.littleButtonRight:hover {
+  background-color: var(--pBlue_L3);
+}
+
 .littleButtonLeft {
   border-radius: 5px;
   border-top-right-radius: 0px;
@@ -183,6 +187,10 @@
   color: var(--pPink);
   border: var(--pBlue_L1) solid 2px;
   padding-bottom: 5px;
+}
+
+.littleButtonLeft:hover {
+  background-color: var(--pBlue_L3);
 }
 
 .copyButton:hover {
