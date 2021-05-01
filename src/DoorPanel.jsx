@@ -68,7 +68,7 @@ export default function DoorPanel(props) {
         ></textarea>
       </div>
       <div className={`${panelStyles.innerBox1}`}>
-        <h2 className={`${s.noSelect} ${panelStyles.title1}`}>Password</h2>
+        <h2 className={`${s.noSelect} ${panelStyles.title1}`}>Room password</h2>
         <textarea
           onClick={(e) => {
             displayUtils.selectText(document, "roomPasswordInput_DoorPanel");
@@ -100,7 +100,6 @@ export default function DoorPanel(props) {
               );
               props.socket.emit("Update player data", {
                 player: {
-                  truePlayerName: props.playerData.truePlayerName, //swde unnec
                   playerName: playerNameInput,
                 },
               });

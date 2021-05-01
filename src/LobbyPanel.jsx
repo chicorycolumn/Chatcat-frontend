@@ -96,7 +96,6 @@ export default function LobbyPanel(props) {
                 `Hey! € Update player data with playerName:${playerNameInput}.`
               );
               props.socket.emit("Update player data", {
-                truePlayerName: props.playerData.truePlayerName, //swde unnec
                 player: { playerName: playerNameInput },
               });
             }
@@ -111,7 +110,6 @@ export default function LobbyPanel(props) {
             props.socket.emit("Create room", {
               roomName: props.roomNameInput,
               roomPassword,
-              truePlayerName: props.playerData.truePlayerName, //swde unnec
             });
           }}
         >

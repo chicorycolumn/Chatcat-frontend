@@ -42,6 +42,7 @@ export default function Room(props) {
             roomData={props.roomData}
             playerList={props.roomData.players}
             socket={props.socket}
+            successfullyEnteredRoomName={props.successfullyEnteredRoomName}
           />
           <Instructions />
         </div>

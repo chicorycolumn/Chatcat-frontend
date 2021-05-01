@@ -75,7 +75,6 @@ export default function App() {
       if (!data.player.playerName) {
         socket.emit("Update player data", {
           player: {
-            truePlayerName: playerData.truePlayerName, //swde unnec
             playerName: roomUtils.makeDummyName(socket.id),
           },
         });
@@ -175,6 +174,7 @@ export default function App() {
           successfullyEnteredRoomName={successfullyEnteredRoomName}
           setSuccessfullyEnteredRoomName={setSuccessfullyEnteredRoomName}
           playerData={playerData}
+          setShowAlert={setShowAlert}
         />
       </Router>
     </div>

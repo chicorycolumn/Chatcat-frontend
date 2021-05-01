@@ -5,18 +5,17 @@ exports.requestEntry = (socket, playerData, roomName, roomPassword) => {
   socket.emit("Request entry", {
     roomName,
     roomPassword,
-    truePlayerName: playerData.truePlayerName,
   });
 };
 
 exports.createRoomName = () => {
   const roomAdjs = ["red", "green", "blue", "yellow", "purple", "orange"].slice(
-    2,
-    4
+    4,
+    6
   );
-  const roomNouns = ["alligator", "bison", "cat", "duck", "eel", "fox"].slice(
-    2,
-    4
+  const roomNouns = ["alligator", "bison", "cat", "duck", "elk", "fox"].slice(
+    4,
+    6
   );
   let adj = roomAdjs[Math.floor(Math.random() * roomAdjs.length)];
   let noun = roomNouns[Math.floor(Math.random() * roomNouns.length)];
