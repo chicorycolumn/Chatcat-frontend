@@ -83,7 +83,7 @@ export default function RoomWrapper(props) {
 
         navigate("/");
         props.setSuccessfullyEnteredRoomName(null);
-        alert(data.msg);
+        props.setShowAlert(data.msg);
         props.socket.emit("I was booted", data);
       });
     }
