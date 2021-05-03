@@ -129,7 +129,7 @@ export default function App() {
     <div className={`${styles.App}`}>
       <header></header>
       <div id="background" className={styles.background}></div>
-      <div id="backgroundShroud" className={styles.backgroundShroud}></div>
+      <div id="backgroundShroud" className={`${styles.backgroundShroud}`}></div>
 
       <Navbar
         socket={socket}
@@ -141,7 +141,7 @@ export default function App() {
       />
 
       {showInvitePanel && (
-        <div className={`${g.obscurus}`}>
+        <div className={`${g.obscurus} ${s.fadeIn}`}>
           <InvitePanel
             socket={socket}
             playerData={playerData}
@@ -151,12 +151,12 @@ export default function App() {
         </div>
       )}
       {showOptionsPanel && (
-        <div className={`${g.obscurus}`}>
+        <div className={`${g.obscurus} ${s.fadeIn}`}>
           <OptionsPanel setShowOptionsPanel={setShowOptionsPanel} />
         </div>
       )}
       {showAlert && (
-        <div className={`${g.obscurus}`}>
+        <div className={`${g.obscurus} ${s.fadeIn}`}>
           <Alert showAlert={showAlert} setShowAlert={setShowAlert} />
         </div>
       )}

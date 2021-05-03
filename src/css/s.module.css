@@ -73,3 +73,39 @@
 .posRel {
   position: relative;
 }
+
+.fadeIn {
+  -webkit-animation: fadeIn 0.2s linear forwards;
+  animation: fadeIn 0.2s linear forwards;
+  opacity: 0;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeOut {
+  -webkit-animation: fadeOut 0.1s linear forwards;
+  animation: fadeOut 0.1s linear forwards;
+  opacity: 1;
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  100% {
+    opacity: 0;
+  }
+}

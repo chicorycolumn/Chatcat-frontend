@@ -26,7 +26,7 @@ const Navbar = (props) => {
       </Link>
 
       <div className={`${styles.navbarInnerBoxRight}`}>
-        {props.successfullyEnteredRoomName && (
+        {("swde" || props.successfullyEnteredRoomName) && (
           <Link
             className={`${styles.navbarItem} ${styles.hoverable1} ${
               props.showOptionsPanel ? styles.hoverable1hovered : ""
