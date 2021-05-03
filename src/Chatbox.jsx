@@ -96,7 +96,7 @@ export default function Chatbox(props) {
       <h2>Chatbox: You are {props.playerData.playerName}</h2>
       <div
         id="chatOutputContainer"
-        className={`${g.minipanel2} ${s.overflowScroll} ${styles.chatOutputContainer}`}
+        className={`${s.overflowScroll} ${styles.chatOutputContainer}`}
       >
         {chatArray.map((chatItem) => {
           return typeof chatItem === "string" ? (

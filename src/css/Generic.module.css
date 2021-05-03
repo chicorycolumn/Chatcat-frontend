@@ -1,39 +1,8 @@
-.genericBox1 {
-  border: var(--pPink_D3) solid 2px;
-  background-color: whitesmoke;
-  margin: 10px;
-}
-
 .box1 {
   margin-left: auto;
   margin-right: auto;
   border-radius: 10px;
   box-shadow: 2px 2px 6px black;
-}
-
-.minipanel1 {
-  margin-top: 30px;
-  border-radius: 10px;
-  box-shadow: 2px 2px 6px black;
-  text-align: center;
-  background-color: var(--pBlue_L3);
-  height: 240px;
-  width: 220px;
-
-  background-image: url(../images/tile_leaf6.png);
-  background-size: 350px;
-  /* background-position: -10px 0px; */
-  background-repeat: no-repeat;
-}
-
-.minipanel2 {
-  margin-top: 30px;
-  border-radius: 10px;
-  box-shadow: 2px 2px 6px black;
-  text-align: center;
-  background-color: var(--pBlue_L3);
-  height: 240px;
-  width: 220px;
 }
 
 .paddedBox1 {

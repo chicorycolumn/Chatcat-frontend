@@ -53,25 +53,30 @@ const Navbar = (props) => {
         >
           Options
         </Link>
-        <button
-          className={`${g.devButton} ${styles.navbarItem} ${styles.hoverable1}`}
-          onClick={(e) => {
-            e.preventDefault();
-            props.socket.emit("Dev query");
-          }}
-        >
-          dQ
-        </button>
-        <button
-          className={`${g.devButton} ${styles.navbarItem} ${styles.hoverable1}`}
-          onDoubleClick={(e) => {
-            e.preventDefault();
-            console.log("DESTROY");
-            props.socket.emit("Dev destroy all");
-          }}
-        >
-          dD
-        </button>
+
+        {props.showDevButtons && (
+          <>
+            <button
+              className={`${g.devButton} ${styles.navbarItem} ${styles.hoverable1}`}
+              onClick={(e) => {
+                e.preventDefault();
+                props.socket.emit("Dev query");
+              }}
+            >
+              dQ
+            </button>
+            <button
+              className={`${g.devButton} ${styles.navbarItem} ${styles.hoverable1}`}
+              onDoubleClick={(e) => {
+                e.preventDefault();
+                console.log("DESTROY");
+                props.socket.emit("Dev destroy all");
+              }}
+            >
+              dD
+            </button>
+          </>
+        )}
       </div>
       {devSwitch && (
         <>

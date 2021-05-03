@@ -49,7 +49,7 @@ export default function Room(props) {
           <Instructions />
         </div>
         <div className={`${styles.mainContainer}`}></div>
-        <div className={`${styles.box2}`}>
+        <div className={`${styles.box}`}>
           <Chatbox
             socket={props.socket}
             playerData={props.playerData}

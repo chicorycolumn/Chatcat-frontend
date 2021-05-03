@@ -37,6 +37,7 @@ export default function App() {
   const [showInvitePanel, setShowInvitePanel] = useState();
   const [showOptionsPanel, setShowOptionsPanel] = useState();
   const [showAlert, setShowAlert] = useState();
+  const [showDevButtons, setShowDevButtons] = useState(false);
 
   // const refContainer = useRef(null);
 
@@ -144,6 +145,7 @@ export default function App() {
         setShowOptionsPanel={setShowOptionsPanel}
         showOptionsPanel={showOptionsPanel}
         successfullyEnteredRoomName={successfullyEnteredRoomName}
+        showDevButtons={showDevButtons}
       />
 
       {showInvitePanel && (

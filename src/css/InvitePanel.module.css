@@ -20,7 +20,7 @@
   margin-left: 5px;
 }
 
-.pseudoInput1 {
+.inviteInput1 {
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
   text-align: center;
@@ -31,7 +31,7 @@
   outline: none;
 }
 
-.pseudoInput2 {
+.inviteInput2 {
   border-radius: 0;
   text-align: center;
   width: 100px;

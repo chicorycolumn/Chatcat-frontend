@@ -1,4 +1,4 @@
-.panelSize1 {
+.bigPortraitPanel {
   height: 400px;
   width: 300px;
   margin-top: 50px;
@@ -8,18 +8,7 @@
   justify-content: space-around;
 }
 
-.panelSize2 {
-  height: 250px;
-  width: 300px;
-  margin-top: 50px;
-  padding-bottom: 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.panelSize2a {
+.mediumLandscapePanel {
   position: absolute;
   left: 50%;
   margin-left: -190px !important;
@@ -38,7 +27,7 @@
   background-position: 0px 0px;
 }
 
-.panelSize3 {
+.smallLandscapePanel {
   height: 150px;
   width: 220px;
   padding: 25px;
@@ -50,7 +39,21 @@
   text-align: center;
 }
 
-.panelColorY1 {
+.smallPortraitPanel {
+  margin-top: 30px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 6px black;
+  text-align: center;
+  background-color: var(--pBlue_L3);
+  height: 240px;
+  width: 220px;
+
+  background-image: url(../images/tile_leaf6.png);
+  background-size: 350px;
+  background-repeat: no-repeat;
+}
+
+.panelYellow1 {
   background-color: var(--pYellow);
   box-shadow: 2px 2px 6px black;
   border: var(--pYellow_D2) solid 1px;
@@ -61,7 +64,7 @@
   background-repeat: no-repeat;
 }
 
-.panelColorP1 {
+.panelPink1 {
   background-color: var(--pPink_L2);
   box-shadow: 2px 2px 6px black;
   border: var(--pPink) solid 1px;
@@ -73,20 +76,20 @@
   background-repeat: no-repeat;
 }
 
-.panelColorP2 {
+.panelPink2 {
   background-color: var(--pPink_L2);
   border: var(--pPink) solid 2px;
   color: var(--pPink_D3);
 }
 
-.panelColorB1 {
+.panelBlue1 {
   background-color: var(--pBlue_L2);
   box-shadow: 2px 2px 6px var(--pBlue);
   border: var(--pBlue) solid 2px;
   color: var(--pBlue_D3);
 }
 
-.panelColorB1a {
+.panelBlue2 {
   background-color: var(--pBlue_L2);
   box-shadow: 0px 0px 10px var(--pBlue);
   border: var(--pBlue_L1) solid 1px;
@@ -172,7 +175,7 @@
   border: var(--pPink_L1) solid 2px;
 }
 
-.littleButtonRight {
+.tinyButtonRight {
   border-radius: 5px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
@@ -185,11 +188,11 @@
   padding-bottom: 5px;
 }
 
-.littleButtonRight:hover {
+.tinyButtonRight:hover {
   background-color: var(--pBlue_L3);
 }
 
-.littleButtonLeft {
+.tinyButtonLeft {
   border-radius: 5px;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
@@ -202,7 +205,7 @@
   padding-bottom: 5px;
 }
 
-.littleButtonLeft:hover {
+.tinyButtonLeft:hover {
   background-color: var(--pBlue_L3);
 }
 

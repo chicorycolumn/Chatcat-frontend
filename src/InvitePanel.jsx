@@ -69,7 +69,7 @@ export default function InvitePanel(props) {
     <div
       tabindex="0"
       id="InvitePanel"
-      className={`${g.box1} ${panelStyles.panelSize2a} ${panelStyles.panelColorB1a} ${s.noOutline}`}
+      className={`${g.box1} ${panelStyles.mediumLandscapePanel} ${panelStyles.panelBlue2} ${s.noOutline}`}
     >
       <button
         onClick={(e) => {
@@ -86,7 +86,7 @@ export default function InvitePanel(props) {
           </h4>
           <div className={`${styles.box2a}`}>
             <textarea
-              className={`${styles.pseudoInput1}`}
+              className={`${styles.inviteInput1}`}
               type="text"
               value={
                 window.location.href && window.location.href.split("http://")[1]
@@ -94,7 +94,7 @@ export default function InvitePanel(props) {
               id="uInput"
             />
             <button
-              className={`${panelStyles.littleButtonRight}`}
+              className={`${panelStyles.tinyButtonRight}`}
               onClick={() => {
                 copyText("uInput");
               }}
@@ -110,7 +110,7 @@ export default function InvitePanel(props) {
           <div className={`${styles.box2}`}>
             <button
               disabled={!props.playerData.isRoomboss}
-              className={`${panelStyles.littleButtonLeft}`}
+              className={`${panelStyles.tinyButtonLeft}`}
               onClick={() => {
                 let newRoomPassword = roomUtils.fourLetterWord(roomPassword);
 
@@ -125,13 +125,13 @@ export default function InvitePanel(props) {
               🆕
             </button>
             <textarea
-              className={`${styles.pseudoInput2}`}
+              className={`${styles.inviteInput2}`}
               type="text"
               value={roomPassword}
               id="pInput"
             />
             <button
-              className={`${panelStyles.littleButtonRight}`}
+              className={`${panelStyles.tinyButtonRight}`}
               onClick={() => {
                 copyText("pInput");
               }}

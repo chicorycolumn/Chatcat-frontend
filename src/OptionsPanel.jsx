@@ -37,7 +37,7 @@ export default function OptionsPanel(props) {
     <div
       tabindex="0"
       id="OptionsPanel"
-      className={`${s.fadeIn} ${g.box1} ${panelStyles.panelSize2a} ${panelStyles.panelColorB1a} ${s.noOutline}`}
+      className={`${s.fadeIn} ${g.box1} ${panelStyles.mediumLandscapePanel} ${panelStyles.panelBlue2} ${s.noOutline}`}
     >
       <button
         onClick={(e) => {

@@ -13,7 +13,7 @@ import styles from "./css/PlayerList.module.css";
 
 export default function Instructions(props) {
   return (
-    <div className={`${g.minipanel1} ${s.overflowHidden} `}>
+    <div className={`${panelStyles.smallPortraitPanel} ${s.overflowHidden} `}>
       <h2>Instructions</h2>
       <div
         className={`${styles.innerBox2} ${s.overflowScroll} ${g.paddedBox1}`}
