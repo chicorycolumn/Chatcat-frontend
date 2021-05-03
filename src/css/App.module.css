@@ -90,7 +90,8 @@ h5 {
 }
 
 .background {
-  background-image: url(../images/tile_cat1c.png);
+  background-image: url(../images/tile_leaf4.png);
+  opacity: 0.25;
   background-size: 250px;
   background-repeat: repeat;
   position: fixed;

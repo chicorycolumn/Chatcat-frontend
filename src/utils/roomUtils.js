@@ -9,11 +9,26 @@ exports.requestEntry = (socket, playerData, roomName, roomPassword) => {
 };
 
 exports.createRoomName = () => {
-  const roomAdjs = ["red", "green", "blue", "yellow", "purple", "orange"].slice(
-    4,
-    6
-  );
-  const roomNouns = ["ant", "bison", "cat", "duck", "elk", "fox"].slice(4, 6);
+  const roomAdjs = [
+    "red",
+    "green",
+    "blue",
+    "yellow",
+    "purple",
+    "orange",
+    "white",
+    "black",
+  ].slice(4, 6);
+  const roomNouns = [
+    "ant",
+    "bison",
+    "cat",
+    "duck",
+    "elk",
+    "fox",
+    "goose",
+    "hawk",
+  ].slice(4, 6);
   let adj = roomAdjs[Math.floor(Math.random() * roomAdjs.length)];
   let noun = roomNouns[Math.floor(Math.random() * roomNouns.length)];
   return `${adj}${noun}`;
