@@ -110,9 +110,11 @@ export default function Chatbox(props) {
               ${s.overflowSplit}
               `}
               >
-                {chatItem[0]}:
+                {chatItem[0]}
               </p>
-              <p className={`${styles.chatDialogue}`}>{chatItem[1]}</p>
+              <p className={`${styles.chatDialogue} ${s.overflowSplit}`}>
+                {chatItem[1]}
+              </p>
             </div>
           );
         })}
