@@ -27,6 +27,7 @@ export default function Room(props) {
         props.socket.off("Player left your room");
         let rooName = props.roomData.roomName;
         props.setRoomData(null);
+        props.setSuccessfullyEnteredRoomName(null);
         props.socket.emit("Leave room", {
           roomName: rooName,
         });

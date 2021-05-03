@@ -26,20 +26,6 @@ const Navbar = (props) => {
       </Link>
 
       <div className={`${styles.navbarInnerBoxRight}`}>
-        {("swde" || props.successfullyEnteredRoomName) && (
-          <Link
-            className={`${styles.navbarItem} ${styles.hoverable1} ${
-              props.showOptionsPanel ? styles.hoverable1hovered : ""
-            }`}
-            onClick={(e) => {
-              e.preventDefault();
-              props.setShowOptionsPanel(true);
-            }}
-            to=""
-          >
-            Options
-          </Link>
-        )}
         {props.successfullyEnteredRoomName && (
           <Link
             id="Invite_Navbar"
@@ -55,6 +41,18 @@ const Navbar = (props) => {
             Invite
           </Link>
         )}
+        <Link
+          className={`${styles.navbarItem} ${styles.hoverable1} ${
+            props.showOptionsPanel ? styles.hoverable1hovered : ""
+          }`}
+          onClick={(e) => {
+            e.preventDefault();
+            props.setShowOptionsPanel(true);
+          }}
+          to=""
+        >
+          Options
+        </Link>
         <button
           className={`${g.devButton} ${styles.navbarItem} ${styles.hoverable1}`}
           onClick={(e) => {

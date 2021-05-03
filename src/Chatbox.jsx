@@ -39,15 +39,22 @@ export default function Chatbox(props) {
 
       props.socket.on("Player left your room", function (data) {
         if (data.isBoot) {
-          addToChatArray(`${data.player.playerName} was booted`);
+          addToChatArray(
+            `${data.player.playerName} was booted`,
+            `The password has changed`
+          );
         } else {
           addToChatArray(`${data.player.playerName} has left`);
         }
       });
     }
-    function addToChatArray(chatItem) {
+    function addToChatArray(...chatItems) {
       let newChatArray = chatArray.slice(chatArray.length - 50);
-      newChatArray.push(chatItem);
+
+      chatItems.forEach((chatItem) => {
+        newChatArray.push(chatItem);
+      });
+
       setChatArray(newChatArray);
       displayUtils.updateScroll("chatOutputContainer");
     }

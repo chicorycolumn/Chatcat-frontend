@@ -50,7 +50,10 @@ export default function RoomWrapper(props) {
           //We created this room and am loading it for the first time.
           setTimeout(() => {
             $("#Invite_Navbar").addClass(`${g.flashPink}`);
-          }, 1000);
+            setTimeout(() => {
+              $("#Invite_Navbar").removeClass(`${g.flashPink}`);
+            }, 5000);
+          }, 100);
         }
 
         setRoomData(data.room);
@@ -113,6 +116,7 @@ export default function RoomWrapper(props) {
       roomData={roomData}
       setRoomData={setRoomData}
       successfullyEnteredRoomName={props.successfullyEnteredRoomName}
+      setSuccessfullyEnteredRoomName={props.setSuccessfullyEnteredRoomName}
     />
   ) : (
     <DoorPanel socket={props.socket} playerData={props.playerData} />

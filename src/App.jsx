@@ -88,21 +88,12 @@ export default function App() {
       console.log("Ø Entry granted");
       setPlayerData(data.player);
       setSuccessfullyEnteredRoomName(data.room.roomName);
-
-      // $("#transitionObscurus").css({ visibility: "visible" });
-
-      // $("#transitionObscurus").css({ visibility: "visible", opacity: "0.2" });
       $("#transitionObscurus").removeClass(`${s.fadeOut}`);
       $("#transitionObscurus").addClass(`${s.fadeIn}`);
 
-      // setTimeout(() => {
-      //   $("#transitionObscurus").removeClass(`${s.fadeIn}`);
-      //   $("#transitionObscurus").addClass(`${s.fadeOut}`);
-      // }, 2000);
-
       setTimeout(() => {
         navigate(`/${data.room.roomName}`);
-      }, 300);
+      }, 100);
     });
 
     socket.on("Room not created", function (data) {
