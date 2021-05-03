@@ -22,10 +22,10 @@
 .panelSize2a {
   position: absolute;
   left: 50%;
-  margin-left: -200px;
-  width: 400px;
+  margin-left: -190px !important;
+  width: 380px;
   height: 250px;
-  margin-top: 50px;
+  margin-top: 45px;
   padding-bottom: 15px;
   display: flex;
   flex-direction: column;
@@ -83,7 +83,7 @@
 
 .panelColorB1a {
   background-color: var(--pBlue_L2);
-  box-shadow: 2.5px 2.5px 2.5px var(--pBlue);
+  box-shadow: 0px 0px 10px var(--pBlue);
   border: var(--pBlue_L1) solid 1px;
   color: var(--pBlue_D3);
 }

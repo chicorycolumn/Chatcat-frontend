@@ -42,18 +42,19 @@
 
 .innerBox {
   height: 72.5%;
+  box-shadow: 0px 0px 200px var(--pBlue_L2);
 }
 
 .innerBox2 {
   height: 72.5%;
-  border-top: var(--pBlue_L2) solid 2px;
+  box-shadow: 0px 0px 200px var(--pBlue_L2);
 }
 
 .bootTab {
   border: none;
   background-color: none;
   height: 25px;
-  box-shadow: 1px 1px 1px var(--pPink_D2);
+  box-shadow: 1px 1px 2px black;
   position: absolute;
   margin-left: -10px;
   margin-top: -4px;

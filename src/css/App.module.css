@@ -94,6 +94,7 @@ h5 {
   opacity: 0.25;
   background-size: 250px;
   background-repeat: repeat;
+
   position: fixed;
   width: 100%;
   z-index: -2;
