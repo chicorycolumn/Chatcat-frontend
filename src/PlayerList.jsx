@@ -67,16 +67,27 @@ export default function PlayerList(props) {
                 ) : (
                   ""
                 )}
-                <span className={`${styles.awards}`}>
+                <span className={`${styles.awards} ${styles.smallEmoji1}`}>
                   {Math.floor(Math.random() * 10) % 2 ? "👑" : ""}
                 </span>
-                <span className={`${styles.name}`}>
-                  {roomPlayer.playerName}
-                  {roomPlayer.isRoomboss ? " 🎩" : ""}
-                </span>
-                <span className={`${styles.stars}`}>
-                  {`00${roomPlayer.stars.toString()}⭐`}
-                </span>
+
+                <div className={`${styles.name} ${s.overflowSplit}`}>
+                  <span
+                    className={`${
+                      roomPlayer.isRoomboss ? styles.marginAdjust : ""
+                    }`}
+                  >
+                    {roomPlayer.playerName}
+                  </span>
+                  <span className={`${styles.awards} ${styles.smallEmoji2}`}>
+                    {roomPlayer.isRoomboss ? " 🎩" : ""}
+                  </span>
+                </div>
+
+                <div className={`${styles.stars}`}>
+                  <span>{`00${roomPlayer.stars.toString()}`}</span>
+                  <span className={`${styles.smallEmoji2}`}>⭐</span>
+                </div>
               </div>
             );
           })}

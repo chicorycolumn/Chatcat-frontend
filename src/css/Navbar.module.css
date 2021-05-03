@@ -61,3 +61,7 @@
 .hoverable1:hover {
   background-color: var(--pPink_D1);
 }
+
+.hoverable1hovered {
+  background-color: var(--pPink_D1);
+}

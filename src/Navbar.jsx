@@ -28,7 +28,9 @@ const Navbar = (props) => {
       <div className={`${styles.navbarInnerBoxRight}`}>
         {props.successfullyEnteredRoomName && (
           <Link
-            className={`${styles.navbarItem} ${styles.hoverable1}`}
+            className={`${styles.navbarItem} ${styles.hoverable1} ${
+              props.showOptionsPanel ? styles.hoverable1hovered : ""
+            }`}
             onClick={(e) => {
               e.preventDefault();
               props.setShowOptionsPanel(true);
@@ -40,7 +42,9 @@ const Navbar = (props) => {
         )}
         {props.successfullyEnteredRoomName && (
           <Link
-            className={`${styles.navbarItem} ${styles.hoverable1}`}
+            className={`${styles.navbarItem} ${styles.hoverable1} ${
+              props.showInvitePanel ? styles.hoverable1hovered : ""
+            }`}
             onClick={(e) => {
               e.preventDefault();
               props.setShowInvitePanel(true);
@@ -50,12 +54,6 @@ const Navbar = (props) => {
             Invite
           </Link>
         )}
-        <Link
-          className={`${styles.navbarItem} ${styles.hoverable1}`}
-          to="/contact"
-        >
-          Contact
-        </Link>
         <button
           className={`${g.devButton} ${styles.navbarItem} ${styles.hoverable1}`}
           onClick={(e) => {

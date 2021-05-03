@@ -40,6 +40,13 @@ export default function RoomWrapper(props) {
       }
 
       props.socket.on("Room data", function (data) {
+        if (props.playerData.isRoomboss && !roomData && data.room) {
+          //We created this room and am loading it for the first time.
+          setTimeout(() => {
+            props.setShowInvitePanel(true);
+          }, 1000);
+        }
+
         setRoomData(data.room);
       });
 

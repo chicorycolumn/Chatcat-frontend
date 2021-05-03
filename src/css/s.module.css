@@ -7,6 +7,12 @@
   overflow: hidden;
 }
 
+.overflowSplit {
+  overflow-x: hidden;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
 .invisible {
   opacity: 0;
 }

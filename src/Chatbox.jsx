@@ -98,7 +98,13 @@ export default function Chatbox(props) {
             </div>
           ) : (
             <div className={`${styles.chatItem}`}>
-              <p className={`${styles.chatName}`}>{chatItem[0]}:</p>
+              <p
+                className={`${styles.chatName}
+              ${s.overflowSplit}
+              `}
+              >
+                {chatItem[0]}:
+              </p>
               <p className={`${styles.chatDialogue}`}>{chatItem[1]}</p>
             </div>
           );

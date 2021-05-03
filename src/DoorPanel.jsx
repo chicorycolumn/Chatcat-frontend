@@ -58,7 +58,7 @@ export default function DoorPanel(props) {
           id="playerNameInput_DoorPanel"
           value={playerNameInput}
           className={`${panelStyles.textarea1}`}
-          maxLength={16}
+          maxLength={12}
           onChange={(e) => {
             setPlayerNameInput(browserUtils.alphanumerise(e.target.value));
             console.log(

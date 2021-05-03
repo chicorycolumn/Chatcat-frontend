@@ -13,10 +13,7 @@ exports.createRoomName = () => {
     4,
     6
   );
-  const roomNouns = ["alligator", "bison", "cat", "duck", "elk", "fox"].slice(
-    4,
-    6
-  );
+  const roomNouns = ["ant", "bison", "cat", "duck", "elk", "fox"].slice(4, 6);
   let adj = roomAdjs[Math.floor(Math.random() * roomAdjs.length)];
   let noun = roomNouns[Math.floor(Math.random() * roomNouns.length)];
   return `${adj}${noun}`;

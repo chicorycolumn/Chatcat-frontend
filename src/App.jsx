@@ -134,7 +134,9 @@ export default function App() {
       <Navbar
         socket={socket}
         setShowInvitePanel={setShowInvitePanel}
+        showInvitePanel={showInvitePanel}
         setShowOptionsPanel={setShowOptionsPanel}
+        showOptionsPanel={showOptionsPanel}
         successfullyEnteredRoomName={successfullyEnteredRoomName}
       />
 
@@ -175,6 +177,7 @@ export default function App() {
           setSuccessfullyEnteredRoomName={setSuccessfullyEnteredRoomName}
           playerData={playerData}
           setShowAlert={setShowAlert}
+          setShowInvitePanel={setShowInvitePanel}
         />
       </Router>
     </div>

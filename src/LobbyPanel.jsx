@@ -55,7 +55,7 @@ export default function LobbyPanel(props) {
           id="roomNameInput_LobbyPanel"
           value={props.roomNameInput}
           className={`${panelStyles.textarea1}`}
-          maxLength={16}
+          maxLength={12}
           onChange={(e) => {
             props.setRoomNameInput(browserUtils.alphanumerise(e.target.value));
           }}
@@ -71,7 +71,7 @@ export default function LobbyPanel(props) {
           id="playerNameInput_LobbyPanel"
           value={playerNameInput}
           className={`${panelStyles.textarea1}`}
-          maxLength={16}
+          maxLength={12}
           onChange={(e) => {
             setPlayerNameInput(browserUtils.alphanumerise(e.target.value));
           }}
