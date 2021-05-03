@@ -25,6 +25,10 @@ export default function DoorPanel(props) {
   const location = useLocation();
 
   useEffect(() => {
+    setTimeout(() => {
+      $("#playerNameInput_DoorPanel").select();
+    }, 100);
+
     if (props.playerData.playerName) {
       setPlayerNameInput(props.playerData.playerName);
     }

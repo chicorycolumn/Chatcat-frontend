@@ -88,12 +88,26 @@ export default function App() {
       console.log("Ø Entry granted");
       setPlayerData(data.player);
       setSuccessfullyEnteredRoomName(data.room.roomName);
-      navigate(`/${data.room.roomName}`);
+
+      // $("#transitionObscurus").css({ visibility: "visible" });
+
+      // $("#transitionObscurus").css({ visibility: "visible", opacity: "0.2" });
+      $("#transitionObscurus").removeClass(`${s.fadeOut}`);
+      $("#transitionObscurus").addClass(`${s.fadeIn}`);
+
+      // setTimeout(() => {
+      //   $("#transitionObscurus").removeClass(`${s.fadeIn}`);
+      //   $("#transitionObscurus").addClass(`${s.fadeOut}`);
+      // }, 2000);
+
+      setTimeout(() => {
+        navigate(`/${data.room.roomName}`);
+      }, 300);
     });
 
     socket.on("Room not created", function (data) {
       navigate("/");
-      alert(data.msg);
+      setShowAlert(data.msg);
     });
 
     socket.on("Dev queried", function (data) {
@@ -130,6 +144,7 @@ export default function App() {
       <header></header>
       <div id="background" className={styles.background}></div>
       <div id="backgroundShroud" className={`${styles.backgroundShroud}`}></div>
+      <div id="transitionObscurus" className={`${g.transitionObscurus}`}></div>
 
       <Navbar
         socket={socket}

@@ -6,6 +6,7 @@ import displayUtils from "./utils/displayUtils.js";
 import gameUtils from "./utils/gameUtils.js";
 import $ from "jquery";
 
+import s from "./css/s.module.css";
 import g from "./css/Generic.module.css";
 import styles from "./css/Room.module.css";
 import panelStyles from "./css/Panel.module.css";
@@ -23,6 +24,11 @@ export default function RoomWrapper(props) {
 
   useEffect(() => {
     console.log(`~~RoomWrapper~~ props.socketNudge:${props.socketNudge}`);
+
+    if (props.successfullyEnteredRoomName) {
+      $("#transitionObscurus").removeClass(`${s.fadeIn}`);
+      $("#transitionObscurus").addClass(`${s.fadeOut}`);
+    }
 
     if (props.socket && props.socketNudge) {
       if (!props.playerData.playerName) {
@@ -43,7 +49,7 @@ export default function RoomWrapper(props) {
         if (props.playerData.isRoomboss && !roomData && data.room) {
           //We created this room and am loading it for the first time.
           setTimeout(() => {
-            props.setShowInvitePanel(true);
+            $("#Invite_Navbar").addClass(`${g.flashPink}`);
           }, 1000);
         }
 

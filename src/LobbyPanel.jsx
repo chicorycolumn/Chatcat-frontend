@@ -16,6 +16,8 @@ export default function LobbyPanel(props) {
   );
 
   useEffect(() => {
+    $("#roomNameInput_LobbyPanel").select();
+
     if (props.playerData.playerName) {
       setPlayerNameInput(props.playerData.playerName);
     }

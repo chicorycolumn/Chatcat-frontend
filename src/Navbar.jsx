@@ -42,6 +42,7 @@ const Navbar = (props) => {
         )}
         {props.successfullyEnteredRoomName && (
           <Link
+            id="Invite_Navbar"
             className={`${styles.navbarItem} ${styles.hoverable1} ${
               props.showInvitePanel ? styles.hoverable1hovered : ""
             }`}

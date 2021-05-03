@@ -78,34 +78,44 @@
   -webkit-animation: fadeIn 0.2s linear forwards;
   animation: fadeIn 0.2s linear forwards;
   opacity: 0;
+  visibility: hidden;
 }
 
 @-webkit-keyframes fadeIn {
   0% {
     opacity: 0;
+    visibility: hidden;
   }
 }
 
 @keyframes fadeIn {
   100% {
     opacity: 1;
+    visibility: visible;
   }
 }
 
 .fadeOut {
-  -webkit-animation: fadeOut 0.1s linear forwards;
-  animation: fadeOut 0.1s linear forwards;
+  -webkit-animation: fadeOut 0.2s linear forwards;
+  animation: fadeOut 0.2s linear forwards;
   opacity: 1;
+  visibility: visible;
 }
 
 @-webkit-keyframes fadeOut {
   0% {
     opacity: 1;
+    visibility: visible;
   }
 }
 
 @keyframes fadeOut {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
   100% {
     opacity: 0;
+    visibility: hidden;
   }
 }

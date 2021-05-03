@@ -7,6 +7,7 @@ import displayUtils from "./utils/displayUtils.js";
 import gameUtils from "./utils/gameUtils.js";
 import $ from "jquery";
 
+import s from "./css/s.module.css";
 import g from "./css/Generic.module.css";
 import styles from "./css/Room.module.css";
 
