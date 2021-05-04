@@ -175,6 +175,7 @@ export default function App() {
           roomNameInput={roomNameInput}
           setRoomNameInput={setRoomNameInput}
           playerData={playerData}
+          setShowDevButtons={setShowDevButtons}
         />
         <ContactPage path="/contact" />
         <RoomWrapper

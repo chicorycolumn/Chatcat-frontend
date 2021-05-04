@@ -54,6 +54,13 @@ export default function LobbyPanel(props) {
           onClick={(e) => {
             displayUtils.selectText(document, "roomNameInput_LobbyPanel");
           }}
+          onDoubleClick={(e) => {
+            e.preventDefault();
+            if (props.roomNameInput === "ved") {
+              console.log("Enabling dev buttons");
+              props.setShowDevButtons(true);
+            }
+          }}
           id="roomNameInput_LobbyPanel"
           value={props.roomNameInput}
           className={`${panelStyles.textarea1}`}
