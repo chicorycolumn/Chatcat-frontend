@@ -16,7 +16,12 @@ let devSwitch = false;
 
 const Navbar = (props) => {
   return (
-    <div id="navbar" className={`${styles.navbar}`}>
+    <div
+      id="navbar"
+      className={`${styles.navbar} ${
+        props.showNavbarAlert && styles.errorColor
+      }`}
+    >
       <Link
         className={`${styles.navbarInnerBoxLeft} ${styles.hoverable1}`}
         to="/"
@@ -24,6 +29,10 @@ const Navbar = (props) => {
         <img className={`${styles.navbarLogo}`} src={navlogo} />
         <h1 className={`${styles.navbarTitle}`}>Chatcat</h1>{" "}
       </Link>
+
+      <div className={`${styles.navbarInnerBoxMiddle}`}>
+        {props.showNavbarAlert}
+      </div>
 
       <div className={`${styles.navbarInnerBoxRight}`}>
         {props.successfullyEnteredRoomName && (

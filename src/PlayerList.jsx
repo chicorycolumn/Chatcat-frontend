@@ -21,78 +21,76 @@ export default function PlayerList(props) {
       <h2>Players</h2>
       <div className={`${styles.innerBox} ${s.overflowScroll}`}>
         {props.playerList &&
-          [...props.playerList, ...props.playerList, ...props.playerList].map(
-            (roomPlayer) => {
-              return (
-                <div
-                  onClick={(e) => {
-                    if (!props.playerData.isRoomboss || roomPlayer.isRoomboss) {
-                      return;
-                    }
-                    console.log({ bootTabPlayerName });
-                    if (bootTabPlayerName !== roomPlayer.playerName) {
-                      setBootTabPlayerName(roomPlayer.playerName);
-                      setTimeout(() => {
-                        setBootTabPlayerName(null);
-                      }, 2000);
-                    } else {
+          props.playerList.map((roomPlayer) => {
+            return (
+              <div
+                onClick={(e) => {
+                  if (!props.playerData.isRoomboss || roomPlayer.isRoomboss) {
+                    return;
+                  }
+                  console.log({ bootTabPlayerName });
+                  if (bootTabPlayerName !== roomPlayer.playerName) {
+                    setBootTabPlayerName(roomPlayer.playerName);
+                    setTimeout(() => {
                       setBootTabPlayerName(null);
-                    }
-                  }}
-                  className={`${styles.nameItem} ${s.noSelect}`}
-                >
-                  {bootTabPlayerName === roomPlayer.playerName ? (
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        if (!props.playerData.isRoomboss) {
-                          return;
-                        }
-                        props.socket.emit("Boot player", {
-                          playerName: roomPlayer.playerName,
-                          roomName: props.roomData.roomName,
-                        });
+                    }, 2000);
+                  } else {
+                    setBootTabPlayerName(null);
+                  }
+                }}
+                className={`${styles.nameItem} ${s.noSelect}`}
+              >
+                {bootTabPlayerName === roomPlayer.playerName ? (
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (!props.playerData.isRoomboss) {
+                        return;
+                      }
+                      props.socket.emit("Boot player", {
+                        playerName: roomPlayer.playerName,
+                        roomName: props.roomData.roomName,
+                      });
 
-                        let rpw = browserUtils.getCookie("roomPassword");
-                        let currentRoomPassword = rpw ? rpw.split("-")[0] : "";
-                        let newRoomPassword = roomUtils.fourLetterWord(
-                          currentRoomPassword
-                        );
-                        props.socket.emit("Update room password", {
-                          roomName: props.successfullyEnteredRoomName,
-                          roomPassword: newRoomPassword,
-                        });
-                      }}
-                      className={`${styles.bootTab}`}
-                    >{`Boot?`}</button>
-                  ) : (
-                    ""
-                  )}
-                  <span className={`${styles.awards} ${styles.smallEmoji1}`}>
-                    {Math.floor(Math.random() * 10) % 2 ? "👑" : ""}
+                      let rpw = browserUtils.getCookie("roomPassword");
+                      let currentRoomPassword = rpw ? rpw.split("-")[0] : "";
+                      let newRoomPassword = roomUtils.fourLetterWord(
+                        currentRoomPassword
+                      );
+                      props.socket.emit("Update room password", {
+                        roomName: props.successfullyEnteredRoomName,
+                        roomPassword: newRoomPassword,
+                      });
+                    }}
+                    className={`${styles.bootTab}`}
+                  >{`Boot?`}</button>
+                ) : (
+                  ""
+                )}
+                <span className={`${styles.awards} ${styles.smallEmoji1}`}>
+                  {Math.floor(Math.random() * 10) % 2 ? "👑" : ""}
+                </span>
+
+                <div className={`${styles.name} ${s.overflowSplit}`}>
+                  <span
+                    className={`${
+                      roomPlayer.isRoomboss ? styles.marginAdjust : ""
+                    }`}
+                  >
+                    {roomPlayer.playerName}
                   </span>
-
-                  <div className={`${styles.name} ${s.overflowSplit}`}>
-                    <span
-                      className={`${
-                        roomPlayer.isRoomboss ? styles.marginAdjust : ""
-                      }`}
-                    >
-                      {roomPlayer.playerName}
-                    </span>
-                    <span className={`${styles.awards} ${styles.smallEmoji2}`}>
-                      {roomPlayer.isRoomboss ? " 🎩" : ""}
-                    </span>
-                  </div>
-
-                  <div className={`${styles.stars}`}>
-                    <span>{`00${roomPlayer.stars.toString()}`}</span>
-                    <span className={`${styles.smallEmoji2}`}>⭐</span>
-                  </div>
+                  <span className={`${styles.awards} ${styles.smallEmoji2}`}>
+                    {roomPlayer.isRoomboss ? " 🎩" : ""}
+                  </span>
                 </div>
-              );
-            }
-          )}
+
+                <div className={`${styles.stars}`}>
+                  <span>{`00${roomPlayer.stars.toString()}`}</span>
+                  <span className={`${styles.smallEmoji2}`}>⭐</span>
+                </div>
+              </div>
+            );
+          })}
       </div>
     </div>
   );

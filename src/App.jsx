@@ -37,6 +37,7 @@ export default function App() {
   const [showInvitePanel, setShowInvitePanel] = useState();
   const [showOptionsPanel, setShowOptionsPanel] = useState();
   const [showAlert, setShowAlert] = useState();
+  const [showNavbarAlert, setShowNavbarAlert] = useState();
   const [showDevButtons, setShowDevButtons] = useState(false);
 
   // const refContainer = useRef(null);
@@ -49,6 +50,8 @@ export default function App() {
     console.log(`~~App~~ socket.id:${socket.id}`);
 
     socket.on("connect", (data) => {
+      setShowNavbarAlert(null);
+
       socket.emit("Load player", {
         truePlayerName: browserUtils.getCookie("truePlayerName"),
         playerName: browserUtils.getCookie("playerName"),
@@ -111,6 +114,14 @@ export default function App() {
       setShowAlert(data.msg);
     });
 
+    socket.on("connect_error", function () {
+      setShowNavbarAlert("Trying to connect to server...");
+    });
+
+    socket.on("You should refresh", function (data) {
+      window.location.reload();
+    });
+
     socket.on("disconnect", (data) => {
       setSuccessfullyEnteredRoomName(null);
       console.log(
@@ -119,7 +130,10 @@ export default function App() {
           .slice(17, -4)}.`
       );
       navigate("/");
-      setShowAlert("The server disconnected you.");
+      setShowAlert("Your connection was reset.");
+      setTimeout(() => {
+        setShowAlert(null);
+      }, 2500);
     });
 
     return function cleanup() {
@@ -146,6 +160,7 @@ export default function App() {
         showOptionsPanel={showOptionsPanel}
         successfullyEnteredRoomName={successfullyEnteredRoomName}
         showDevButtons={showDevButtons}
+        showNavbarAlert={showNavbarAlert}
       />
 
       {showInvitePanel && (

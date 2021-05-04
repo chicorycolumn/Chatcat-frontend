@@ -66,3 +66,11 @@
 .hoverable1hovered {
   background-color: var(--pPink_D1);
 }
+
+.errorColor {
+  background-color: var(--pPink) !important;
+}
+
+.navbarInnerBoxMiddle {
+  padding-top: 10px;
+}
