@@ -43,7 +43,7 @@ export default function DoorPanel(props) {
     );
 
     return function cleanup() {
-      $(document).off("keypress");
+      $(document).off("keydown");
     };
   }, [props.playerData]);
 

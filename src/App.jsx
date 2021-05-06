@@ -115,7 +115,7 @@ export default function App() {
     });
 
     socket.on("connect_error", function () {
-      setShowNavbarAlert("Trying to connect to server...");
+      setShowNavbarAlert("Connecting...");
     });
 
     socket.on("You should refresh", function (data) {

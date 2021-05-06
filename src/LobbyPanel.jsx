@@ -30,7 +30,7 @@ export default function LobbyPanel(props) {
     );
 
     return function cleanup() {
-      $(document).off("keypress");
+      $(document).off("keydown");
     };
   }, [props.playerData]);
 

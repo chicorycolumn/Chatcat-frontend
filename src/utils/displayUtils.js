@@ -5,7 +5,7 @@ exports.updateScroll = (elementId) => {
 
 exports.addListenerForEnterToSend = ($, input, button, itemWithFocus) => {
   if (itemWithFocus) {
-    $(input).on("keypress", function (e) {
+    $(input).on("keydown", function (e) {
       if ($("#Alert").length) {
         e.preventDefault();
         return;
@@ -22,7 +22,7 @@ exports.addListenerForEnterToSend = ($, input, button, itemWithFocus) => {
       }
     });
   } else {
-    $(input).on("keypress", function (e) {
+    $(input).on("keydown", function (e) {
       if ($("#Alert").length) {
         e.preventDefault();
         return;

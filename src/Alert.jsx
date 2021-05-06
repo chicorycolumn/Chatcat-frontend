@@ -23,8 +23,8 @@ export default function Alert(props) {
       }
     }
 
-    function JQF_keypressToClose(e) {
-      console.log("Alert:JQF_keypressToClose", e.keyCode, e.which);
+    function JQF_keydownToClose(e) {
+      console.log("Alert:JQF_keydownToClose", e.keyCode, e.which);
 
       let exitKeyCodes = [13, 27, 32];
 
@@ -33,17 +33,15 @@ export default function Alert(props) {
       }
     }
 
-    $(document).on("keypress", (e) => {
-      JQF_keypressToClose(e);
+    $(document).on("keydown.Alert", (e) => {
+      JQF_keydownToClose(e);
     });
 
-    $(document).on("click", JQF_clickOutsideToClose);
+    $(document).on("click.Alert", JQF_clickOutsideToClose);
 
     return function cleanup() {
-      $(document).off("click", JQF_clickOutsideToClose);
-      $(document).off("keypress", (e) => {
-        JQF_keypressToClose(e);
-      });
+      $(document).off("click.Alert");
+      $(document).off("keydown.Alert");
     };
   }, []);
 
