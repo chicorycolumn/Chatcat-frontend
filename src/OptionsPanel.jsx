@@ -15,21 +15,15 @@ export default function OptionsPanel(props) {
   console.log("((OptionsPanel))");
 
   useEffect(() => {
-    function JQF_clickOutsideToClose() {
-      if (
-        !(
-          $("#OptionsPanel").is(":focus") ||
-          $("#OptionsPanel").find(":focus").length
-        )
-      ) {
-        props.setShowOptionsPanel(false);
-      }
-    }
-
-    $(document).on("click", JQF_clickOutsideToClose);
+    $(document).on("click.OptionsPanel", () => {
+      displayUtils.clickOutsideToClose(
+        "#OptionsPanel",
+        props.setShowOptionsPanel
+      );
+    });
 
     return function cleanup() {
-      $(document).off("click", JQF_clickOutsideToClose);
+      $(document).off("click.OptionsPanel");
     };
   }, []);
 

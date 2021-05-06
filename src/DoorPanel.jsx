@@ -36,7 +36,6 @@ export default function DoorPanel(props) {
     $("#DoorPanel").focus();
 
     displayUtils.addListenerForKeydownEnterToSend(
-      $,
       document,
       "#enterButton_DoorPanel",
       "#DoorPanel"

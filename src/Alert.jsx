@@ -17,31 +17,17 @@ export default function Alert(props) {
   console.log("((Alert))");
 
   useEffect(() => {
-    function JQF_clickOutsideToClose() {
-      if (!($("#Alert").is(":focus") || $("#Alert").find(":focus").length)) {
-        props.setShowAlert(false);
-      }
-    }
-
-    function JQF_keydownToClose(e) {
-      console.log("Alert:JQF_keydownToClose", e.keyCode, e.which);
-
-      let exitKeyCodes = [13, 27, 32];
-
-      if (exitKeyCodes.includes(e.keyCode) || exitKeyCodes.includes(e.which)) {
-        props.setShowAlert(false);
-      }
-    }
-
     $(document).on("keydown.Alert", (e) => {
-      JQF_keydownToClose(e);
+      displayUtils.keydownToClose(e, props.setShowAlert, "Alert");
     });
 
-    $(document).on("click.Alert", JQF_clickOutsideToClose);
+    $(document).on("click.Alert", () => {
+      displayUtils.clickOutsideToClose("#Alert", props.setShowAlert);
+    });
 
     return function cleanup() {
-      $(document).off("click.Alert");
       $(document).off("keydown.Alert");
+      $(document).off("click.Alert");
     };
   }, []);
 

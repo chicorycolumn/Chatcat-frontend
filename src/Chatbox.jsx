@@ -23,7 +23,6 @@ export default function Chatbox(props) {
     console.log("~~Chatbox~~");
 
     displayUtils.addListenerForKeydownEnterToSend(
-      $,
       "#chatboxInput_Chatbox",
       "#chatboxSendButton_Chatbox"
     );

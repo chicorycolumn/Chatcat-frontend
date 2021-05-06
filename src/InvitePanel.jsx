@@ -47,21 +47,15 @@ export default function InvitePanel(props) {
   const [roomPassword, setRoomPassword] = useState(rpw && rpw.split("-")[0]);
 
   useEffect(() => {
-    function JQF_clickOutsideToClose() {
-      if (
-        !(
-          $("#InvitePanel").is(":focus") ||
-          $("#InvitePanel").find(":focus").length
-        )
-      ) {
-        props.setShowInvitePanel(false);
-      }
-    }
-
-    $(document).on("click", JQF_clickOutsideToClose);
+    $(document).on("click.InvitePanel", () => {
+      displayUtils.clickOutsideToClose(
+        "#InvitePanel",
+        props.setShowInvitePanel
+      );
+    });
 
     return function cleanup() {
-      $(document).off("click", JQF_clickOutsideToClose);
+      $(document).off("click.InvitePanel");
     };
   }, []);
 

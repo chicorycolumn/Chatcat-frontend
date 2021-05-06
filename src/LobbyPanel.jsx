@@ -23,7 +23,6 @@ export default function LobbyPanel(props) {
     }
 
     displayUtils.addListenerForKeydownEnterToSend(
-      $,
       document,
       "#enterButton_LobbyPanel",
       "#LobbyPanel"
