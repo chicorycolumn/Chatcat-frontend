@@ -22,7 +22,7 @@ export default function LobbyPanel(props) {
       setPlayerNameInput(props.playerData.playerName);
     }
 
-    displayUtils.addListenerForEnterToSend(
+    displayUtils.addListenerForKeydownEnterToSend(
       $,
       document,
       "#enterButton_LobbyPanel",

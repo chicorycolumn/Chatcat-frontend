@@ -22,30 +22,32 @@ export default function Chatbox(props) {
   useEffect(() => {
     console.log("~~Chatbox~~");
 
-    displayUtils.addListenerForEnterToSend(
+    displayUtils.addListenerForKeydownEnterToSend(
       $,
       "#chatboxInput_Chatbox",
       "#chatboxSendButton_Chatbox"
     );
 
+    function SH_playerEntered(data) {
+      console.log(333);
+      addToChatArray(`${data.player.playerName} entered`);
+    }
+    function SH_playerLeft(data) {
+      if (data.isBoot) {
+        addToChatArray(
+          `${data.player.playerName} was booted`,
+          `The password has changed`
+        );
+      } else {
+        addToChatArray(`${data.player.playerName} has left`);
+      }
+    }
+
     if (props.socket) {
+      props.socket.on("Player entered your room", SH_playerEntered);
+      props.socket.on("Player left your room", SH_playerLeft);
       props.socket.on("Chat message", function (data) {
         addToChatArray([data.sender.playerName, data.chatMsg]);
-      });
-
-      props.socket.on("Player entered your room", function (data) {
-        addToChatArray(`${data.player.playerName} entered`);
-      });
-
-      props.socket.on("Player left your room", function (data) {
-        if (data.isBoot) {
-          addToChatArray(
-            `${data.player.playerName} was booted`,
-            `The password has changed`
-          );
-        } else {
-          addToChatArray(`${data.player.playerName} has left`);
-        }
       });
     }
     function addToChatArray(...chatItems) {
@@ -60,8 +62,10 @@ export default function Chatbox(props) {
     }
     return function cleanup() {
       console.log("##Chatbox##");
+      props.socket.off("Player entered your room", SH_playerEntered);
+      props.socket.off("Player left your room", SH_playerLeft);
       props.socket.off("Chat message");
-      $("#chatboxInput_Chatbox").off("keypress");
+      $("#chatboxInput_Chatbox").off("keydown");
     };
   }, [props.socket, chatArray]);
 

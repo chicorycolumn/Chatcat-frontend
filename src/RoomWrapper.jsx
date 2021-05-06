@@ -112,6 +112,15 @@ export default function RoomWrapper(props) {
 
     return function cleanup() {
       console.log("##RoomWrapper##");
+
+      if (props.socket) {
+        props.socket.off("Entry denied");
+        props.socket.off("Room data");
+        props.socket.off("Room password updated");
+        props.socket.off("Player entered your room");
+        props.socket.off("Player left your room");
+        props.socket.off("You're booted");
+      }
     };
   }, [props.successfullyEnteredRoomName]);
 

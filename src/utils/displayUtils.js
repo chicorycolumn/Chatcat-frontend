@@ -3,37 +3,29 @@ exports.updateScroll = (elementId) => {
   element.scrollTop = element.scrollHeight;
 };
 
-exports.addListenerForEnterToSend = ($, input, button, itemWithFocus) => {
-  if (itemWithFocus) {
-    $(input).on("keydown", function (e) {
-      if ($("#Alert").length) {
-        e.preventDefault();
-        return;
-      }
+exports.addListenerForKeydownEnterToSend = (
+  $,
+  input,
+  button,
+  itemToHaveFocus
+) => {
+  $(input).on("keydown", function (e) {
+    if ($("#Alert").length) {
+      e.preventDefault();
+      return;
+    }
 
-      if (
-        $(itemWithFocus).is(":focus") ||
-        $(itemWithFocus).find(":focus").length
-      ) {
-        if ((e.which === 13 || e.keyCode === 13) && !e.shiftKey) {
-          e.preventDefault();
-          $(button).click();
-        }
-      }
-    });
-  } else {
-    $(input).on("keydown", function (e) {
-      if ($("#Alert").length) {
-        e.preventDefault();
-        return;
-      }
-
+    if (
+      !itemToHaveFocus ||
+      $(itemToHaveFocus).is(":focus") ||
+      $(itemToHaveFocus).find(":focus").length
+    ) {
       if ((e.which === 13 || e.keyCode === 13) && !e.shiftKey) {
         e.preventDefault();
         $(button).click();
       }
-    });
-  }
+    }
+  });
 };
 
 exports.selectText = (document, id) => {

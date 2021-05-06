@@ -26,7 +26,7 @@ export default function DoorPanel(props) {
 
   useEffect(() => {
     setTimeout(() => {
-      $("#playerNameInput_DoorPanel").select();
+      $("#roomPasswordInput_DoorPanel").select();
     }, 100);
 
     if (props.playerData.playerName) {
@@ -35,7 +35,7 @@ export default function DoorPanel(props) {
 
     $("#DoorPanel").focus();
 
-    displayUtils.addListenerForEnterToSend(
+    displayUtils.addListenerForKeydownEnterToSend(
       $,
       document,
       "#enterButton_DoorPanel",
