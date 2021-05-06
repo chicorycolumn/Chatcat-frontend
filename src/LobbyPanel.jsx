@@ -38,7 +38,7 @@ export default function LobbyPanel(props) {
     <div
       tabindex="0"
       id="LobbyPanel"
-      className={`${g.box1} ${panelStyles.bigPortraitPanel} ${panelStyles.panelYellow1} ${s.noOutline}`}
+      className={`${g.boxStyle1} ${panelStyles.bigPortraitPanel} ${panelStyles.panelYellow1} ${s.noOutline}`}
     >
       <div className={`${panelStyles.innerBox1}`}>
         <h2

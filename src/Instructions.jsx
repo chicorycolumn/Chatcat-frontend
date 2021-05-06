@@ -16,7 +16,7 @@ export default function Instructions(props) {
     <div className={`${panelStyles.smallPortraitPanel} ${s.overflowHidden} `}>
       <h2>Instructions</h2>
       <div
-        className={`${styles.innerBox2} ${s.overflowScroll} ${g.paddedBox1}`}
+        className={`${styles.innerBox2} ${s.overflowScroll} ${g.paddingRight}`}
       >
         <p>
           This is a chat app where you can converse with your friends.

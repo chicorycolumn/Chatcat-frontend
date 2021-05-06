@@ -1,5 +1,7 @@
 .chatboxSuper {
-  width: 500px;
+  width: 95vw;
+  min-width: 300px;
+  max-width: 500px;
   height: 300px;
   background-color: var(--pBlue_L3);
   display: flex;
@@ -32,7 +34,7 @@
   text-align: left;
 }
 
-.chatItem:nth-child(odd) {
+.chatItem:nth-child(even) {
   background-color: var(--pBlue_L2a);
 }
 
@@ -87,4 +89,8 @@
 
 .sendButton:hover {
   background-color: var(--pYellow_L3);
+}
+
+.chatHeader {
+  text-align: center;
 }

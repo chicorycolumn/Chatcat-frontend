@@ -35,7 +35,7 @@ export default function Alert(props) {
     <div
       tabindex="0"
       id="Alert"
-      className={`${g.box1} ${panelStyles.smallLandscapePanel} ${panelStyles.panelPink2} ${s.noOutline} ${s.posRel}`}
+      className={`${g.boxStyle1} ${panelStyles.smallLandscapePanel} ${panelStyles.panelPink2} ${s.noOutline} ${s.posRel}`}
     >
       <img src={alertimage} className={`${styles.bg_img}`} />
       <button

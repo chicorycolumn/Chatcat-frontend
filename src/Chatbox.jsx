@@ -95,8 +95,10 @@ export default function Chatbox(props) {
   }
 
   return (
-    <div className={`${g.box1} ${styles.chatboxSuper}`}>
-      <h2>Chatbox: You are {props.playerData.playerName}</h2>
+    <div className={`${g.boxStyle1} ${styles.chatboxSuper}`}>
+      <h2 className={`${styles.chatHeader}`}>
+        Chatbox: You are {props.playerData.playerName}
+      </h2>
       <div
         id="chatOutputContainer"
         className={`${s.overflowScroll} ${styles.chatOutputContainer}`}

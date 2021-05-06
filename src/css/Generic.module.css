@@ -1,11 +1,11 @@
-.box1 {
+.boxStyle1 {
   margin-left: auto;
   margin-right: auto;
   border-radius: 10px;
   box-shadow: 2px 2px 6px black;
 }
 
-.paddedBox1 {
+.paddingRight {
   padding: 0px 10px;
 }
 

@@ -43,6 +43,12 @@ export default function RoomWrapper(props) {
         props.socket.emit("Request room data", {
           roomName: props.successfullyEnteredRoomName,
         });
+        setTimeout(() => {
+          $("#Invite_Navbar").addClass(`${g.flashPink}`);
+          setTimeout(() => {
+            $("#Invite_Navbar").removeClass(`${g.flashPink}`);
+          }, 5000);
+        }, 1000);
       }
 
       props.socket.on("Entry denied", function () {
@@ -52,16 +58,6 @@ export default function RoomWrapper(props) {
       });
 
       props.socket.on("Room data", function (data) {
-        if (props.playerData.isRoomboss && !roomData && data.room) {
-          //We created this room and am loading it for the first time.
-          setTimeout(() => {
-            $("#Invite_Navbar").addClass(`${g.flashPink}`);
-            setTimeout(() => {
-              $("#Invite_Navbar").removeClass(`${g.flashPink}`);
-            }, 5000);
-          }, 100);
-        }
-
         setRoomData(data.room);
       });
 

@@ -63,7 +63,7 @@ export default function InvitePanel(props) {
     <div
       tabindex="0"
       id="InvitePanel"
-      className={`${g.box1} ${panelStyles.mediumLandscapePanel} ${panelStyles.panelBlue2} ${s.noOutline}`}
+      className={`${g.boxStyle1} ${panelStyles.mediumLandscapePanel} ${panelStyles.panelBlue2} ${s.noOutline}`}
     >
       <button
         onClick={(e) => {
