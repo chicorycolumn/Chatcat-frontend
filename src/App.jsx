@@ -110,7 +110,6 @@ export default function App() {
     });
 
     socket.on("Entry denied", function (data) {
-      // navigate("/");
       setShowAlert(data.msg);
     });
 
