@@ -51,16 +51,16 @@ const Navbar = (props) => {
           </Link>
         )}
         <Link
-          className={`${styles.navbarItem} ${styles.hoverable1} ${
-            props.showOptionsPanel ? styles.hoverable1hovered : ""
-          }`}
+          className={`${styles.navbarItem} ${styles.navbarItemSmall}  ${
+            styles.hoverable1
+          } ${props.showOptionsPanel ? styles.hoverable1hovered : ""}`}
           onClick={(e) => {
             e.preventDefault();
             props.setShowOptionsPanel(true);
           }}
           to=""
         >
-          Options
+          ⚙
         </Link>
 
         {props.showDevButtons && (

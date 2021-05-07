@@ -34,7 +34,7 @@ export default function App() {
   ] = useState(null);
   const [socket, setSocket] = useState(null);
   const [socketNudge, setSocketNudge] = useState();
-  const [showInvitePanel, setShowInvitePanel] = useState(true);
+  const [showInvitePanel, setShowInvitePanel] = useState();
   const [showOptionsPanel, setShowOptionsPanel] = useState();
   const [showAlert, setShowAlert] = useState();
   const [showNavbarAlert, setShowNavbarAlert] = useState();

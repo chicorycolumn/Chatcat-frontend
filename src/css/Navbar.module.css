@@ -52,11 +52,13 @@
   flex-direction: column;
   justify-content: flex-end;
   padding-bottom: 0px;
-  width: 70px;
+  /* width: 70px; */
+  padding: 0px 12.5px;
   text-align: center;
   height: 100%;
   text-decoration: none;
   color: var(--pYellow_L1);
+  /* border: white solid 1px; */
 }
 
 .hoverable1:hover {
@@ -72,5 +74,6 @@
 }
 
 .navbarInnerBoxMiddle {
-  padding-top: 10px;
+  padding-top: 17.5px;
+  margin-left: -45px;
 }
