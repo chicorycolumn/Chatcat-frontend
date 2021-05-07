@@ -32,6 +32,7 @@
 }
 
 .inviteInput {
+  padding: 0px 15px 2.5px; /* mobile */
   border-radius: 5px;
   height: 100%;
   background-color: var(--pBlue_L3);
@@ -39,7 +40,6 @@
   outline: none;
   overflow: hidden;
   word-break: break-all;
-  padding: 0px 10px 2.5px;
   font-family: monospace;
   display: flex;
   flex-direction: column;
@@ -56,4 +56,12 @@
 .inviteInput2 {
   border-radius: 0;
   width: 100px;
+}
+
+/* nonmobile */
+@media only screen and (min-device-width: 540px) {
+  .inviteInput {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }

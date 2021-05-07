@@ -1,7 +1,11 @@
 .Room {
+  margin-top: 5px; /* mobile */
+  min-width: 280px; /* mobile */
+  padding-bottom: 10px; /* mobile */
+  min-width: 280px; /* mobile */
+
   height: 100%;
   width: 95vw;
-  min-width: 475px;
   max-width: 550px;
   margin-left: auto;
   margin-right: auto;
@@ -9,28 +13,29 @@
   flex-direction: column;
   justify-content: space-around;
   /* border: white dotted 5px; */
-  margin-top: 30px;
   padding-left: 5px;
   padding-right: 5px;
 }
 
 .roomHeaders {
+  font-size: 18px; /* mobile */
+  margin: 10px 0px 0px; /* mobile */
+
+  padding: 0px 10px;
   color: var(--pBlue_D2);
   position: relative;
   text-align: center;
-  padding-left: 10px;
-  padding-right: 10px;
 }
 
 .topContainer {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  /* border: fuchsia solid 3px; */
+  flex-direction: column-reverse; /* mobile */
+  align-items: center; /* mobile */
+  justify-content: space-between; /* mobile */
 }
 
 .bottomContainer {
-  margin-top: 40px;
+  margin-top: 20px; /* mobile */
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -38,34 +43,36 @@
   width: 100%;
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 539px) {
+#playerList {
+  margin-top: 20px; /* mobile */
+}
+
+/* nonmobile */
+@media only screen and (min-device-width: 540px) {
   .topContainer {
-    flex-direction: column-reverse;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: row !important;
+    justify-content: space-evenly !important;
   }
 
   .Room {
-    margin-top: 5px;
-    min-width: 280px;
+    margin-top: 30px !important;
+    min-width: 475px !important;
   }
 
   #playerList {
-    margin-top: 20px;
+    margin-top: 0px !important;
   }
 
   .bottomContainer {
-    margin-top: 20px;
+    margin-top: 40px !important;
   }
 
   .Room {
-    padding-bottom: 10px;
-    min-width: 280px;
+    padding-bottom: 0px !important;
   }
 
   .roomHeaders {
-    font-size: 18px;
-    margin-bottom: 0px;
-    margin-top: 10px;
+    font-size: 24px !important;
+    margin: 20px 0px 7.5px !important;
   }
 }

@@ -94,7 +94,11 @@ export default function DoorPanel(props) {
       <div className={`${panelStyles.innerBox1}`}>
         <button
           id="enterButton_DoorPanel"
-          disabled={!playerNameInput || !roomPasswordInput}
+          disabled={
+            $("#connectErrorAlert").length ||
+            !playerNameInput ||
+            !roomPasswordInput
+          }
           className={`${g.button1} ${panelStyles.button1}`}
           onClick={(e) => {
             e.preventDefault();
@@ -125,7 +129,7 @@ export default function DoorPanel(props) {
             );
           }}
         >
-          ENTER
+          {$("#connectErrorAlert").length ? "Waiting for server..." : "ENTER"}
         </button>
       </div>
     </div>

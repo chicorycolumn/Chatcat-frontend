@@ -70,10 +70,17 @@
 }
 
 .errorColor {
-  background-color: var(--pPink) !important;
+  background-color: var(--pYellow_D3) !important;
 }
 
 .navbarInnerBoxMiddle {
   padding-top: 17.5px;
-  margin-left: -45px;
+  margin-left: 0px; /*mobile*/
+}
+
+/* nonmobile */
+@media only screen and (min-device-width: 540px) {
+  .navbarInnerBoxMiddle {
+    margin-left: -90px !important;
+  }
 }

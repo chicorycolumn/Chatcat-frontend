@@ -37,7 +37,7 @@ export default function App() {
   const [showInvitePanel, setShowInvitePanel] = useState();
   const [showOptionsPanel, setShowOptionsPanel] = useState();
   const [showAlert, setShowAlert] = useState();
-  const [showNavbarAlert, setShowNavbarAlert] = useState();
+  const [connectErrorAlert, setConnectErrorAlert] = useState();
   const [showDevButtons, setShowDevButtons] = useState(false);
 
   // const refContainer = useRef(null);
@@ -50,7 +50,7 @@ export default function App() {
     console.log(`~~App~~ socket.id:${socket.id}`);
 
     socket.on("connect", (data) => {
-      setShowNavbarAlert(null);
+      setConnectErrorAlert(null);
 
       socket.emit("Load player", {
         truePlayerName: browserUtils.getCookie("truePlayerName"),
@@ -115,7 +115,7 @@ export default function App() {
     });
 
     socket.on("connect_error", function () {
-      setShowNavbarAlert("Connecting...");
+      setConnectErrorAlert(true);
     });
 
     socket.on("You should refresh", function (data) {
@@ -160,7 +160,7 @@ export default function App() {
         showOptionsPanel={showOptionsPanel}
         successfullyEnteredRoomName={successfullyEnteredRoomName}
         showDevButtons={showDevButtons}
-        showNavbarAlert={showNavbarAlert}
+        connectErrorAlert={connectErrorAlert}
       />
 
       {showInvitePanel && (

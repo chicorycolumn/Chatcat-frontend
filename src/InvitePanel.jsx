@@ -24,8 +24,8 @@ const copyText = (inputId) => {
   navigator.clipboard
     .writeText(textToCopy)
     .then(() => {
-      $(`#${inputId}`).css({ color: "var(--pBlue)" });
-      $(`#${titleId}`).css({ color: "var(--pBlue)" });
+      $(`#${inputId}`).css({ color: "var(--pYellow_D2)" });
+      $(`#${titleId}`).css({ color: "var(--pYellow_D2)" });
       titleEl.innerText = "Copied!";
 
       setTimeout(() => {
@@ -35,7 +35,7 @@ const copyText = (inputId) => {
           p: "Room is password protected",
           u: "Share this url with your friends",
         }[inputId[0]];
-      }, 650);
+      }, 450);
     })
     .catch((error) => {
       console.log(`Sorry, failed to copy text. ${error}`);

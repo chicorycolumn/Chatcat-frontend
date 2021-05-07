@@ -89,7 +89,11 @@ export default function LobbyPanel(props) {
       <div className={`${panelStyles.innerBox1}`}>
         <button
           id="enterButton_LobbyPanel"
-          disabled={!props.playerData.playerName || !props.roomNameInput}
+          disabled={
+            $("#connectErrorAlert").length ||
+            !props.playerData.playerName ||
+            !props.roomNameInput
+          }
           className={`${g.button1} ${panelStyles.button1}`}
           onClick={(e) => {
             e.preventDefault();
@@ -121,7 +125,7 @@ export default function LobbyPanel(props) {
             });
           }}
         >
-          GO
+          {$("#connectErrorAlert").length ? "Waiting for server..." : "GO"}
         </button>
       </div>
     </div>

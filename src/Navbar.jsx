@@ -12,6 +12,7 @@ import g from "./css/Generic.module.css";
 import styles from "./css/Navbar.module.css";
 
 import navlogo from "./images/logo_cat3b_pY1.png";
+import navlogoBroken from "./images/logo_cat3b_pY1_broken.png";
 let devSwitch = false;
 
 const Navbar = (props) => {
@@ -19,20 +20,33 @@ const Navbar = (props) => {
     <div
       id="navbar"
       className={`${styles.navbar} ${
-        props.showNavbarAlert && styles.errorColor
+        props.connectErrorAlert && styles.errorColor
       }`}
     >
       <Link
         className={`${styles.navbarInnerBoxLeft} ${styles.hoverable1}`}
         to="/"
       >
-        <img className={`${styles.navbarLogo}`} src={navlogo} />
+        {props.connectErrorAlert ? (
+          <img
+            id="connectErrorAlert"
+            className={`${styles.navbarLogo}`}
+            src={navlogoBroken}
+          />
+        ) : (
+          <img className={`${styles.navbarLogo}`} src={navlogo} />
+        )}
         <h1 className={`${styles.navbarTitle}`}>Chatcat</h1>{" "}
       </Link>
 
-      <div className={`${styles.navbarInnerBoxMiddle}`}>
-        {props.showNavbarAlert}
-      </div>
+      {/* {props.connectErrorAlert && (
+        <div
+          id="connectErrorAlert"
+          className={`${styles.navbarInnerBoxMiddle}`}
+        >
+          {props.connectErrorAlert}
+        </div>
+      )} */}
 
       <div className={`${styles.navbarInnerBoxRight}`}>
         {props.successfullyEnteredRoomName && (
