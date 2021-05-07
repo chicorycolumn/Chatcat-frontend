@@ -16,7 +16,7 @@
   width: 380px;
   height: 250px;
   margin-top: 45px;
-  padding-bottom: 15px;
+  padding: 30px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -176,42 +176,46 @@
   border: var(--pPink_L1) solid 2px;
 }
 
-.tinyButtonRight {
+.copyButton {
+  outline: none;
+  font-size: 14px;
+  width: 37.5px;
+  height: 100%;
+  background: none;
+  border: none;
+  color: var(--pPink);
+  border: var(--pBlue_L1) solid 2px;
+  padding-bottom: 5px;
   border-radius: 5px;
+}
+
+.copyButtonRight {
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  width: 35px;
-  height: 30px;
-  background: none;
-  border: none;
-  color: var(--pPink);
-  border: var(--pBlue_L1) solid 2px;
-  padding-bottom: 5px;
+  border-left: none;
 }
 
-.tinyButtonRight:hover {
-  background-color: var(--pBlue_L3);
-}
-
-.tinyButtonLeft {
-  border-radius: 5px;
+.copyButtonLeft {
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
-  width: 35px;
-  height: 30px;
-  background: none;
-  border: none;
-  color: var(--pPink);
-  border: var(--pBlue_L1) solid 2px;
-  padding-bottom: 5px;
-}
-
-.tinyButtonLeft:hover {
-  background-color: var(--pBlue_L3);
+  border-right: none;
 }
 
 .copyButton:hover {
   background-color: var(--pBlue_L3);
-  color: var(--pPink_D3);
-  border: var(--pBlue_D1) solid 2px;
+}
+
+.title1 {
+}
+
+.title2 {
+  margin: 0px;
+  margin-bottom: 10px;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 539px) {
+  .mediumLandscapePanel {
+    width: 280px !important;
+    margin-left: -140px !important;
+  }
 }

@@ -17,21 +17,25 @@ const copyText = (inputId) => {
   const inputEl = document.getElementById(inputId);
   const titleEl = document.getElementById(titleId);
 
-  let textToCopy = inputEl.value || inputEl.textContent;
+  let textToCopy = inputEl.textContent;
+
+  console.log(textToCopy);
 
   navigator.clipboard
     .writeText(textToCopy)
     .then(() => {
+      $(`#${inputId}`).css({ color: "var(--pBlue)" });
+      $(`#${titleId}`).css({ color: "var(--pBlue)" });
       titleEl.innerText = "Copied!";
 
-      inputEl.select();
-      inputEl.setSelectionRange(0, 99999);
       setTimeout(() => {
+        $(`#${inputId}`).css({ color: "var(--pBlue_D3)" });
+        $(`#${titleId}`).css({ color: "var(--pBlue_D3)" });
         titleEl.innerText = {
           p: "Room is password protected",
           u: "Share this url with your friends",
         }[inputId[0]];
-      }, 850);
+      }, 650);
     })
     .catch((error) => {
       console.log(`Sorry, failed to copy text. ${error}`);
@@ -73,66 +77,67 @@ export default function InvitePanel(props) {
       >
         &times;
       </button>
-      <div className={`${panelStyles.innerBox1}`}>
-        <div className={`${styles.box1}`}>
-          <h4 id="uTitle" className={`${s.noSelect} ${panelStyles.title1}`}>
-            Share this url with your friends
-          </h4>
-          <div className={`${styles.box2a}`}>
-            <textarea
-              className={`${styles.inviteInput1}`}
-              type="text"
-              value={
-                window.location.href && window.location.href.split("http://")[1]
-              }
+      <div className={`${styles.box}`}>
+        <h4 id="uTitle" className={`${s.noSelect} ${panelStyles.title2}`}>
+          Share this url with your friends
+        </h4>
+        <div className={`${styles.inputContainer2}`}>
+          <div className={`${styles.inviteInput} ${styles.inviteInput1}`}>
+            <p
               id="uInput"
-            />
-            <button
-              className={`${panelStyles.tinyButtonRight}`}
-              onClick={() => {
-                copyText("uInput");
-              }}
+              className={`${styles.inputText} ${s.noMargin} ${s.noPadding}`}
             >
-              📋
-            </button>
+              {/* {window.location.href && window.location.href.split("http://")[1]} */}
+              {"guesstomate.netlify.app/WMWMWMWMWMWW"}
+            </p>
           </div>
+          <button
+            className={`${panelStyles.copyButton} ${panelStyles.copyButtonRight}`}
+            onClick={() => {
+              copyText("uInput");
+            }}
+          >
+            📋
+          </button>
         </div>
-        <div className={`${styles.box1}`}>
-          <h4 id="pTitle" className={`${s.noSelect} ${panelStyles.title1}`}>
-            Room is password protected
-          </h4>
-          <div className={`${styles.box2}`}>
-            <button
-              disabled={!props.playerData.isRoomboss}
-              className={`${panelStyles.tinyButtonLeft}`}
-              onClick={() => {
-                let newRoomPassword = roomUtils.fourLetterWord(roomPassword);
+      </div>
+      <div className={`${styles.box}`}>
+        <h4 id="pTitle" className={`${s.noSelect} ${panelStyles.title2}`}>
+          Room is password protected
+        </h4>
+        <div className={`${styles.inputContainer1}`}>
+          <button
+            disabled={!props.playerData.isRoomboss}
+            className={`${panelStyles.copyButton} ${panelStyles.copyButtonLeft}`}
+            onClick={() => {
+              let newRoomPassword = roomUtils.fourLetterWord(roomPassword);
 
-                setRoomPassword(newRoomPassword);
+              setRoomPassword(newRoomPassword);
 
-                props.socket.emit("Update room password", {
-                  roomName: props.successfullyEnteredRoomName,
-                  roomPassword: newRoomPassword,
-                });
-              }}
-            >
-              🆕
-            </button>
-            <textarea
-              className={`${styles.inviteInput2}`}
-              type="text"
-              value={roomPassword}
+              props.socket.emit("Update room password", {
+                roomName: props.successfullyEnteredRoomName,
+                roomPassword: newRoomPassword,
+              });
+            }}
+          >
+            🆕
+          </button>
+          <div className={`${styles.inviteInput} ${styles.inviteInput2}`}>
+            <p
               id="pInput"
-            />
-            <button
-              className={`${panelStyles.tinyButtonRight}`}
-              onClick={() => {
-                copyText("pInput");
-              }}
+              className={`${styles.inputText} ${s.noMargin} ${s.noPadding}`}
             >
-              📋
-            </button>
+              {roomPassword}
+            </p>
           </div>
+          <button
+            className={`${panelStyles.copyButton} ${panelStyles.copyButtonRight}`}
+            onClick={() => {
+              copyText("pInput");
+            }}
+          >
+            📋
+          </button>
         </div>
       </div>
     </div>

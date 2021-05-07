@@ -30,6 +30,14 @@
   outline: none;
 }
 
+.noMargin {
+  margin: 0px;
+}
+
+.noPadding {
+  padding: 0px;
+}
+
 .borderR {
   border: red solid 2px !important;
 }
