@@ -40,13 +40,17 @@
   background-color: var(--pYellow_L3);
 }
 
-.innerBox {
-  height: 72.5%;
+.innerBox01 {
+  /* border: greenyellow dotted 10px; */
+  height: 100%;
+  margin-bottom: 5px;
   box-shadow: 0px 0px 200px var(--pBlue_L2);
 }
 
-.innerBox2 {
-  height: 72.5%;
+.innerBox02 {
+  /* border: blue dotted 10px; */
+  height: 100%;
+  margin-bottom: 5px;
   box-shadow: 0px 0px 200px var(--pBlue_L2);
 }
 

@@ -10,6 +10,7 @@ import s from "./css/s.module.css";
 import g from "./css/Generic.module.css";
 import panelStyles from "./css/Panel.module.css";
 import styles from "./css/PlayerList.module.css";
+import roomStyles from "./css/Room.module.css";
 
 export default function PlayerList(props) {
   console.log("((PlayerList))");
@@ -17,9 +18,12 @@ export default function PlayerList(props) {
   const [bootTabPlayerName, setBootTabPlayerName] = useState();
 
   return (
-    <div className={`${panelStyles.smallPortraitPanel} ${s.overflowHidden}`}>
-      <h2>Players</h2>
-      <div className={`${styles.innerBox} ${s.overflowScroll}`}>
+    <div
+      id={`${roomStyles.playerList}`}
+      className={`${panelStyles.smallPortraitPanel} ${s.overflowHidden} ${s.flexCol}`}
+    >
+      <h2 className={`${roomStyles.roomHeaders}`}>Players</h2>
+      <div className={`${styles.innerBox01} ${s.overflowScroll}`}>
         {props.playerList &&
           props.playerList.map((roomPlayer) => {
             return (

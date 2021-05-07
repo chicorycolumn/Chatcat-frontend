@@ -1,26 +1,71 @@
 .Room {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.superContainer {
   height: 100%;
-  width: 500px;
+  width: 95vw;
+  min-width: 475px;
+  max-width: 550px;
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  /* border: white dotted 5px; */
+  margin-top: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-.mainContainer {
+.roomHeaders {
+  color: var(--pBlue_D2);
+  position: relative;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.topContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  /* border: fuchsia solid 3px; */
 }
 
-.box {
+.bottomContainer {
   margin-top: 40px;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  /* border: greenyellow dashed 3px; */
+  width: 100%;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 539px) {
+  .topContainer {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .Room {
+    margin-top: 5px;
+    min-width: 280px;
+  }
+
+  #playerList {
+    margin-top: 20px;
+  }
+
+  .bottomContainer {
+    margin-top: 20px;
+  }
+
+  .Room {
+    padding-bottom: 10px;
+    min-width: 280px;
+  }
+
+  .roomHeaders {
+    font-size: 18px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+  }
 }

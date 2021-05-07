@@ -1,7 +1,5 @@
 .chatboxSuper {
-  width: 95vw;
-  min-width: 300px;
-  max-width: 500px;
+  width: 100%;
   height: 300px;
   background-color: var(--pBlue_L3);
   display: flex;
@@ -49,7 +47,7 @@
 .chatName {
   font-style: italic;
   text-align: center;
-  opacity: 0.6;
+  color: var(--pBlue_D2);
   padding: 0px;
   margin: 0px;
   /* margin-right: 5px; */
@@ -89,8 +87,4 @@
 
 .sendButton:hover {
   background-color: var(--pYellow_L3);
-}
-
-.chatHeader {
-  text-align: center;
 }

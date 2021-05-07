@@ -10,6 +10,7 @@ import s from "./css/s.module.css";
 import g from "./css/Generic.module.css";
 import panelStyles from "./css/Panel.module.css";
 import styles from "./css/Chatbox.module.css";
+import roomStyles from "./css/Room.module.css";
 
 import PlayerList from "./PlayerList";
 
@@ -96,7 +97,7 @@ export default function Chatbox(props) {
 
   return (
     <div className={`${g.boxStyle1} ${styles.chatboxSuper}`}>
-      <h2 className={`${styles.chatHeader}`}>
+      <h2 className={`${roomStyles.roomHeaders}`}>
         Chatbox: You are {props.playerData.playerName}
       </h2>
       <div

@@ -37,25 +37,22 @@ export default function Room(props) {
 
   return (
     <div className={`${styles.Room}`}>
-      <div className={`${styles.superContainer}`}>
-        <div className={`${styles.mainContainer}`}>
-          <PlayerList
-            playerData={props.playerData}
-            roomData={props.roomData}
-            playerList={props.roomData.players}
-            socket={props.socket}
-            successfullyEnteredRoomName={props.successfullyEnteredRoomName}
-          />
-          <Instructions />
-        </div>
-        <div className={`${styles.mainContainer}`}></div>
-        <div className={`${styles.box}`}>
-          <Chatbox
-            socket={props.socket}
-            playerData={props.playerData}
-            playerList={props.roomData.players}
-          />
-        </div>
+      <div className={`${styles.topContainer}`}>
+        <PlayerList
+          playerData={props.playerData}
+          roomData={props.roomData}
+          playerList={props.roomData.players}
+          socket={props.socket}
+          successfullyEnteredRoomName={props.successfullyEnteredRoomName}
+        />
+        <Instructions />
+      </div>
+      <div className={`${styles.bottomContainer}`}>
+        <Chatbox
+          socket={props.socket}
+          playerData={props.playerData}
+          playerList={props.roomData.players}
+        />
       </div>
     </div>
   );

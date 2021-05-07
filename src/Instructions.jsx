@@ -10,13 +10,16 @@ import s from "./css/s.module.css";
 import g from "./css/Generic.module.css";
 import panelStyles from "./css/Panel.module.css";
 import styles from "./css/PlayerList.module.css";
+import roomStyles from "./css/Room.module.css";
 
 export default function Instructions(props) {
   return (
-    <div className={`${panelStyles.smallPortraitPanel} ${s.overflowHidden} `}>
-      <h2>Instructions</h2>
+    <div
+      className={`${panelStyles.smallPortraitPanel} ${s.overflowHidden} ${s.flexCol}`}
+    >
+      <h2 className={`${roomStyles.roomHeaders}`}>Instructions</h2>
       <div
-        className={`${styles.innerBox2} ${s.overflowScroll} ${g.paddingRight}`}
+        className={`${styles.innerBox02} ${s.overflowScroll} ${g.paddingRight}`}
       >
         <p>
           This is a chat app where you can converse with your friends.
