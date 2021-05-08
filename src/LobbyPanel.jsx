@@ -18,9 +18,12 @@ export default function LobbyPanel(props) {
   );
 
   useEffect(() => {
-    console.log("useEffect Lobby");
     $("#roomNameInput_LobbyPanel").select();
+
     displayUtils.unsplash(a, "#enterButton_LobbyPanel");
+    $("#enterButton_LobbyPanel").on("click", function (e) {
+      displayUtils.splash(a, e, 2, 1);
+    });
 
     if (props.playerData.playerName) {
       setPlayerNameInput(props.playerData.playerName);
@@ -101,8 +104,6 @@ export default function LobbyPanel(props) {
           className={`${g.button1} ${panelStyles.button1}`}
           onClick={(e) => {
             e.preventDefault();
-
-            displayUtils.splash(a, "#enterButton_LobbyPanel", 2, 1);
 
             console.log("N17", {
               playerNameInput,

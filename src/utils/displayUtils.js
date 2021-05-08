@@ -53,13 +53,13 @@ export const selectText = (document, id) => {
   el.setSelectionRange(0, 99999);
 };
 
-export const splash = (a, id, size, time, color = "blue") => {
+export const splash = (a, e, size, time, color = "blue") => {
   let splashColor = color[0].toUpperCase() + color.slice(1);
   let splashClass = `splash${splashColor}S${size}T${time}`;
 
-  $(id).addClass(`${a[splashClass]}`);
+  $(e.target).addClass(`${a[splashClass]}`);
   setTimeout(() => {
-    $(id).removeClass(`${a[splashClass]}`);
+    $(e.target).removeClass(`${a[splashClass]}`);
   }, { 1: 250, 2: 500, 3: 1000 }[time]);
 };
 

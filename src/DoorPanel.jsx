@@ -27,6 +27,11 @@ export default function DoorPanel(props) {
   const location = useLocation();
 
   useEffect(() => {
+    displayUtils.unsplash(a, "#enterButton_DoorPanel");
+    $("#enterButton_DoorPanel").on("click", function (e) {
+      displayUtils.splash(a, e, 2, 1);
+    });
+
     setTimeout(() => {
       $("#roomPasswordInput_DoorPanel").select();
     }, 100);
