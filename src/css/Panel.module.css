@@ -160,8 +160,8 @@
 }
 
 .exitButtonBlue:hover {
-  background-color: var(--pBlue_L3);
-  border: var(--pBlue_L1) solid 2px;
+  background-color: var(--pBlue_L1);
+  /* border: var(--pBlue_L1) solid 2px; */
 }
 
 .exitButtonPink {
@@ -204,7 +204,7 @@
 }
 
 .copyButton:hover {
-  background-color: var(--pBlue_L3);
+  background-color: var(--pBlue_L1);
 }
 
 .title1 {
