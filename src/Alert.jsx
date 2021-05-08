@@ -8,10 +8,10 @@ import panelStyles from "./css/Panel.module.css";
 import styles from "./css/Alert.module.css";
 import alertimage from "./images/witchcat_sad_exclam.png";
 
-import { roomUtils } from "./utils/roomUtils.js";
-import { browserUtils } from "./utils/browserUtils.js";
-import { displayUtils } from "./utils/displayUtils.js";
-import { gameUtils } from "./utils/gameUtils.js";
+import * as roomUtils from "./utils/roomUtils.js";
+import * as browserUtils from "./utils/browserUtils.js";
+import * as displayUtils from "./utils/displayUtils.js";
+import * as gameUtils from "./utils/gameUtils.js";
 
 export default function Alert(props) {
   console.log("((Alert))");
@@ -33,7 +33,7 @@ export default function Alert(props) {
 
   return (
     <div
-      tabindex="0"
+      tabIndex="0"
       id="Alert"
       className={`${g.boxStyle1} ${panelStyles.smallLandscapePanel} ${panelStyles.panelPink2} ${s.noOutline} ${s.posRel}`}
     >

@@ -10,10 +10,10 @@ import styles from "./css/Navbar.module.css";
 import navlogo from "./images/logo_cat3b_pY1.png";
 import navlogoBroken from "./images/logo_cat3b_pY1_broken.png";
 
-import { roomUtils } from "./utils/roomUtils.js";
-import { browserUtils } from "./utils/browserUtils.js";
-import { displayUtils } from "./utils/displayUtils.js";
-import { gameUtils } from "./utils/gameUtils.js";
+import * as roomUtils from "./utils/roomUtils.js";
+import * as browserUtils from "./utils/browserUtils.js";
+import * as displayUtils from "./utils/displayUtils.js";
+import * as gameUtils from "./utils/gameUtils.js";
 
 let devSwitch = false;
 

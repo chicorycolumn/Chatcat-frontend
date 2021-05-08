@@ -1,4 +1,4 @@
-exports.firstNames = [
+export const firstNames = [
   "alexandra",
   "billy",
   "cameron",
@@ -27,7 +27,7 @@ exports.firstNames = [
   "zachary",
 ];
 
-exports.fourLetterWords = [
+export const fourLetterWords = [
   "AANI",
   "AARU",
   "ABAC",

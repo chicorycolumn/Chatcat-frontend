@@ -7,10 +7,10 @@ import g from "./css/Generic.module.css";
 import panelStyles from "./css/Panel.module.css";
 import styles from "./css/OptionsPanel.module.css";
 
-import { roomUtils } from "./utils/roomUtils.js";
-import { browserUtils } from "./utils/browserUtils.js";
-import { displayUtils } from "./utils/displayUtils.js";
-import { gameUtils } from "./utils/gameUtils.js";
+import * as roomUtils from "./utils/roomUtils.js";
+import * as browserUtils from "./utils/browserUtils.js";
+import * as displayUtils from "./utils/displayUtils.js";
+import * as gameUtils from "./utils/gameUtils.js";
 
 export default function OptionsPanel(props) {
   console.log("((OptionsPanel))");
@@ -30,7 +30,7 @@ export default function OptionsPanel(props) {
 
   return (
     <div
-      tabindex="0"
+      tabIndex="0"
       id="OptionsPanel"
       className={`${s.fadeIn} ${g.boxStyle1} ${panelStyles.mediumLandscapePanel} ${panelStyles.panelBlue2} ${s.noOutline}`}
     >

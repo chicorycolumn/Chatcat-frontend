@@ -8,10 +8,10 @@ import panelStyles from "./css/Panel.module.css";
 import styles from "./css/InvitePanel.module.css";
 import PlayerList from "./PlayerList.jsx";
 
-import { roomUtils } from "./utils/roomUtils.js";
-import { browserUtils } from "./utils/browserUtils.js";
-import { displayUtils } from "./utils/displayUtils.js";
-import { gameUtils } from "./utils/gameUtils.js";
+import * as roomUtils from "./utils/roomUtils.js";
+import * as browserUtils from "./utils/browserUtils.js";
+import * as displayUtils from "./utils/displayUtils.js";
+import * as gameUtils from "./utils/gameUtils.js";
 
 const copyText = (inputId) => {
   let titleId = `${inputId[0]}Title`;
@@ -66,7 +66,7 @@ export default function InvitePanel(props) {
 
   return (
     <div
-      tabindex="0"
+      tabIndex="0"
       id="InvitePanel"
       className={`${g.boxStyle1} ${panelStyles.mediumLandscapePanel} ${panelStyles.panelBlue2} ${s.noOutline}`}
     >

@@ -1,4 +1,4 @@
-exports.setCookie = (cookieName, cookieValue, expiryDays = 365) => {
+export const setCookie = (cookieName, cookieValue, expiryDays = 365) => {
   let expiryTime;
 
   if (expiryDays < 0) {
@@ -12,7 +12,7 @@ exports.setCookie = (cookieName, cookieValue, expiryDays = 365) => {
   document.cookie = `${cookieName}=${cookieValue}; expires=${expiryTime}; path=/;`;
 };
 
-exports.getCookie = (cookieName) => {
+export const getCookie = (cookieName) => {
   let cookieArr = decodeURIComponent(document.cookie).split(";");
 
   let cookie = cookieArr.find((cooki) => {
@@ -25,7 +25,7 @@ exports.getCookie = (cookieName) => {
   return cookie ? cookie.split("=")[1] : null;
 };
 
-exports.alphanumerise = (str) => {
+export const alphanumerise = (str) => {
   return str
     .split("")
     .filter((char) => /[a-z0-9_]/i.test(char))

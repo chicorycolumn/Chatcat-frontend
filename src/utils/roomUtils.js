@@ -1,6 +1,6 @@
 const { firstNames, fourLetterWords } = require("./text.js");
 
-exports.requestEntry = (socket, playerData, roomName, roomPassword) => {
+export const requestEntry = (socket, playerData, roomName, roomPassword) => {
   console.log(`€ Request entry with socket: ${socket.id}`);
   socket.emit("Request entry", {
     roomName,
@@ -8,7 +8,7 @@ exports.requestEntry = (socket, playerData, roomName, roomPassword) => {
   });
 };
 
-exports.createRoomName = () => {
+export const createRoomName = () => {
   const roomAdjs = [
     "red",
     "green",
@@ -34,7 +34,7 @@ exports.createRoomName = () => {
   return `${adj}${noun}`;
 };
 
-exports.makeDummyName = (id) => {
+export const makeDummyName = (id) => {
   return id.slice(0, 3);
 
   if (!id) {
@@ -63,7 +63,7 @@ exports.makeDummyName = (id) => {
   return `${prefix}${firstName.join("")}_${id.slice(lastIndex, lastIndex + 2)}`;
 };
 
-exports.fourLetterWord = (currentWord) => {
+export const fourLetterWord = (currentWord) => {
   let newWord =
     fourLetterWords[Math.floor(Math.random() * fourLetterWords.length)];
 
