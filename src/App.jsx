@@ -22,7 +22,7 @@ import * as browserUtils from "./utils/browserUtils.js";
 import * as displayUtils from "./utils/displayUtils.js";
 import * as gameUtils from "./utils/gameUtils.js";
 
-import navlogoCentred from "./images/logo_cat3b_pY1_centred.png";
+import logoCentred from "./images/logo_cat_centred.png";
 
 const localEnv = false;
 const ENDPOINT = localEnv
@@ -164,7 +164,7 @@ export default function App() {
         <div id="transitionObscurusImage">
           <img
             className={`${a.spin} ${g.transitionObscurusImage}`}
-            src={navlogoCentred}
+            src={logoCentred}
           />
         </div>
       </div>
