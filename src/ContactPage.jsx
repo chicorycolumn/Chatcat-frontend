@@ -7,10 +7,10 @@ import g from "./css/Generic.module.css";
 import panelStyles from "./css/Panel.module.css";
 import styles from "./css/ContactPage.module.css";
 
-const roomUtils = require("./utils/roomUtils.js");
-const browserUtils = require("./utils/browserUtils.js");
-const displayUtils = require("./utils/displayUtils.js");
-const gameUtils = require("./utils/gameUtils.js");
+import roomUtils from "./utils/roomUtils.js";
+import browserUtils from "./utils/browserUtils.js";
+import displayUtils from "./utils/displayUtils.js";
+import gameUtils from "./utils/gameUtils.js";
 
 export default function ContactPage() {
   return (

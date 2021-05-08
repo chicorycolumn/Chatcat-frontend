@@ -10,10 +10,10 @@ import roomStyles from "./css/Room.module.css";
 
 import PlayerList from "./PlayerList";
 
-const roomUtils = require("./utils/roomUtils.js");
-const browserUtils = require("./utils/browserUtils.js");
-const displayUtils = require("./utils/displayUtils.js");
-const gameUtils = require("./utils/gameUtils.js");
+import roomUtils from "./utils/roomUtils.js";
+import browserUtils from "./utils/browserUtils.js";
+import displayUtils from "./utils/displayUtils.js";
+import gameUtils from "./utils/gameUtils.js";
 
 export default function Chatbox(props) {
   console.log("((Chatbox))");
