@@ -4,6 +4,7 @@ import $ from "jquery";
 
 import s from "./css/s.module.css";
 import g from "./css/Generic.module.css";
+import a from "./css/Animations.module.css";
 import panelStyles from "./css/Panel.module.css";
 
 import * as roomUtils from "./utils/roomUtils.js";
@@ -18,6 +19,8 @@ export default function LobbyPanel(props) {
 
   useEffect(() => {
     $("#roomNameInput_LobbyPanel").select();
+
+    displayUtils.splash(a, "#enterButton_LobbyPanel");
 
     if (props.playerData.playerName) {
       setPlayerNameInput(props.playerData.playerName);

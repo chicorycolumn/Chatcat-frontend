@@ -5,6 +5,7 @@ import $ from "jquery";
 
 import s from "./css/s.module.css";
 import g from "./css/Generic.module.css";
+import a from "./css/Animations.module.css";
 import panelStyles from "./css/Panel.module.css";
 import styles from "./css/App.module.css";
 
@@ -21,10 +22,12 @@ import * as browserUtils from "./utils/browserUtils.js";
 import * as displayUtils from "./utils/displayUtils.js";
 import * as gameUtils from "./utils/gameUtils.js";
 
-const production = true;
-const ENDPOINT = production
-  ? "https://chattercat-server.herokuapp.com/"
-  : "http://127.0.0.1:4002";
+import logoCentred from "./images/logo_cat_centred.png";
+
+const localEnv = false;
+const ENDPOINT = localEnv
+  ? "http://127.0.0.1:4002"
+  : "https://chattercat-server.herokuapp.com/";
 
 export default function App() {
   console.log("((App))");
@@ -96,12 +99,16 @@ export default function App() {
       console.log("Ø Entry granted");
       setPlayerData(data.player);
       setSuccessfullyEnteredRoomName(data.room.roomName);
-      $("#transitionObscurus").removeClass(`${s.fadeOut}`);
-      $("#transitionObscurus").addClass(`${s.fadeIn}`);
+
+      $("#transitionObscurusImage").removeClass(`${a.fadeOutFast}`);
+      $("#transitionObscurusImage").addClass(`${a.fadeInFast}`);
+
+      $("#transitionObscurus").removeClass(`${a.fadeOut}`);
+      $("#transitionObscurus").addClass(`${a.fadeIn}`);
 
       setTimeout(() => {
         navigate(`/${data.room.roomName}`);
-      }, 100);
+      }, 200);
     });
 
     socket.on("Room not created", function (data) {
@@ -153,7 +160,14 @@ export default function App() {
       <header></header>
       <div id="background" className={styles.background}></div>
       <div id="backgroundShroud" className={`${styles.backgroundShroud}`}></div>
-      <div id="transitionObscurus" className={`${g.transitionObscurus}`}></div>
+      <div id="transitionObscurus" className={`${g.transitionObscurus}`}>
+        <div id="transitionObscurusImage">
+          <img
+            className={`${a.spin} ${g.transitionObscurusImage}`}
+            src={logoCentred}
+          />
+        </div>
+      </div>
 
       <Navbar
         socket={socket}
@@ -167,7 +181,7 @@ export default function App() {
       />
 
       {showInvitePanel && (
-        <div className={`${g.obscurus} ${s.fadeIn}`}>
+        <div className={`${g.obscurus} ${a.fadeIn}`}>
           <InvitePanel
             socket={socket}
             playerData={playerData}
@@ -177,12 +191,12 @@ export default function App() {
         </div>
       )}
       {showOptionsPanel && (
-        <div className={`${g.obscurus} ${s.fadeIn}`}>
+        <div className={`${g.obscurus} ${a.fadeIn}`}>
           <OptionsPanel setShowOptionsPanel={setShowOptionsPanel} />
         </div>
       )}
       {showAlert && (
-        <div className={`${g.obscurus} ${s.fadeIn}`}>
+        <div className={`${g.obscurus} ${a.fadeIn}`}>
           <Alert showAlert={showAlert} setShowAlert={setShowAlert} />
         </div>
       )}

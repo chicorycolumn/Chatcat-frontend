@@ -52,3 +52,27 @@ export const selectText = (document, id) => {
   el.select();
   el.setSelectionRange(0, 99999);
 };
+
+export const splash = (a, IDs, size = 2, time = 1, color = "blue") => {
+  let splashColor = color[0].toUpperCase() + color.slice(1);
+  let splashClass = `splash${splashColor}S${size}T${time}`;
+
+  if (typeof IDs === "string") {
+    IDs = [IDs];
+  }
+
+  IDs.forEach((id) => {
+    $(id).removeClass(`${a[splashClass]}`);
+
+    $(id).on("click", function (e) {
+      putSplash(a, e, splashClass, time);
+    });
+  });
+};
+
+export const putSplash = (a, e, splashClass, time) => {
+  $(e.target).addClass(`${a[splashClass]}`);
+  setTimeout(() => {
+    $(e.target).removeClass(`${a[splashClass]}`);
+  }, { 1: 250, 2: 500, 3: 1000 }[time]);
+};

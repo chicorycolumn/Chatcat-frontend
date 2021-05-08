@@ -4,6 +4,7 @@ import $ from "jquery";
 
 import s from "./css/s.module.css";
 import g from "./css/Generic.module.css";
+import a from "./css/Animations.module.css";
 import styles from "./css/Room.module.css";
 import panelStyles from "./css/Panel.module.css";
 
@@ -27,8 +28,15 @@ export default function RoomWrapper(props) {
     console.log(`~~RoomWrapper~~ props.socketNudge:${props.socketNudge}`);
 
     if (props.successfullyEnteredRoomName) {
-      $("#transitionObscurus").removeClass(`${s.fadeIn}`);
-      $("#transitionObscurus").addClass(`${s.fadeOut}`);
+      setTimeout(() => {
+        $("#transitionObscurusImage").addClass(`${a.fadeOutFast}`);
+        $("#transitionObscurusImage").removeClass(`${a.fadeInFast}`);
+
+        // setTimeout(() => {
+        $("#transitionObscurus").removeClass(`${a.fadeIn}`);
+        $("#transitionObscurus").addClass(`${a.fadeOut}`);
+        // }, 350);
+      }, 400);
     }
 
     if (props.socket && props.socketNudge) {
@@ -45,18 +53,12 @@ export default function RoomWrapper(props) {
           roomName: props.successfullyEnteredRoomName,
         });
         setTimeout(() => {
-          $("#Invite_Navbar").addClass(`${g.flashPink}`);
+          $("#Invite_Navbar").addClass(`${a.flashPink}`);
           setTimeout(() => {
-            $("#Invite_Navbar").removeClass(`${g.flashPink}`);
+            $("#Invite_Navbar").removeClass(`${a.flashPink}`);
           }, 5000);
         }, 1000);
       }
-
-      props.socket.on("Entry denied", function () {
-        console.log(
-          "***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************"
-        );
-      });
 
       props.socket.on("Room data", function (data) {
         setRoomData(data.room);
@@ -111,7 +113,6 @@ export default function RoomWrapper(props) {
       console.log("##RoomWrapper##");
 
       if (props.socket) {
-        props.socket.off("Entry denied");
         props.socket.off("Room data");
         props.socket.off("Room password updated");
         props.socket.off("Player entered your room");

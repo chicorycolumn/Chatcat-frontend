@@ -126,6 +126,7 @@
   width: 100px;
   height: 50px;
   border: var(--pPink_D2) solid 2px;
+  outline: none;
 }
 
 .textarea1:hover,
@@ -159,8 +160,7 @@
 }
 
 .exitButtonBlue:hover {
-  background-color: var(--pBlue_L3);
-  border: var(--pBlue_L1) solid 2px;
+  background-color: var(--pBlue_L1);
 }
 
 .exitButtonPink {
@@ -203,7 +203,7 @@
 }
 
 .copyButton:hover {
-  background-color: var(--pBlue_L3);
+  background-color: var(--pBlue_L1);
 }
 
 .title1 {

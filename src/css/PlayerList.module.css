@@ -8,18 +8,14 @@
 }
 
 .awards {
-  /* flex: 1; */
   flex-basis: 20%;
   text-align: left;
 }
 .name {
-  /* flex: 5; */
   flex-basis: 65%;
-  /* border: blue solid 1px; */
 }
 
 .stars {
-  /* flex: 1; */
   flex-basis: 20%;
   color: var(--pBlue);
   text-align: right;
@@ -41,14 +37,12 @@
 }
 
 .innerBox01 {
-  /* border: greenyellow dotted 10px; */
   height: 100%;
   margin-bottom: 5px;
   box-shadow: 0px 0px 200px var(--pBlue_L2);
 }
 
 .innerBox02 {
-  /* border: blue dotted 10px; */
   height: 100%;
   margin-bottom: 5px;
   box-shadow: 0px 0px 200px var(--pBlue_L2);

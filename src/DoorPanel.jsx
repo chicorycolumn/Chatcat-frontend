@@ -4,6 +4,7 @@ import $ from "jquery";
 
 import s from "./css/s.module.css";
 import g from "./css/Generic.module.css";
+import a from "./css/Animations.module.css";
 import panelStyles from "./css/Panel.module.css";
 
 import * as roomUtils from "./utils/roomUtils.js";
@@ -26,6 +27,8 @@ export default function DoorPanel(props) {
   const location = useLocation();
 
   useEffect(() => {
+    displayUtils.splash(a, "#enterButton_DoorPanel", 2, 1);
+
     setTimeout(() => {
       $("#roomPasswordInput_DoorPanel").select();
     }, 100);

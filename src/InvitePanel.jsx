@@ -4,6 +4,7 @@ import $ from "jquery";
 
 import s from "./css/s.module.css";
 import g from "./css/Generic.module.css";
+import a from "./css/Animations.module.css";
 import panelStyles from "./css/Panel.module.css";
 import styles from "./css/InvitePanel.module.css";
 import PlayerList from "./PlayerList.jsx";
@@ -25,8 +26,8 @@ const copyText = (inputId) => {
   navigator.clipboard
     .writeText(textToCopy)
     .then(() => {
-      $(`#${inputId}`).css({ color: "var(--pYellow_D2)" });
-      $(`#${titleId}`).css({ color: "var(--pYellow_D2)" });
+      $(`#${inputId}`).css({ color: "var(--pBlue)" });
+      $(`#${titleId}`).css({ color: "var(--pBlue)" });
       titleEl.innerText = "Copied!";
 
       setTimeout(() => {
@@ -52,6 +53,8 @@ export default function InvitePanel(props) {
   const [roomPassword, setRoomPassword] = useState(rpw && rpw.split("-")[0]);
 
   useEffect(() => {
+    displayUtils.splash(a, ["#copyButtonP", "#copyButtonU", "#newButton"], 1);
+
     $(document).on("click.InvitePanel", () => {
       displayUtils.clickOutsideToClose(
         "#InvitePanel",
@@ -88,11 +91,11 @@ export default function InvitePanel(props) {
               id="uInput"
               className={`${styles.inputText} ${s.noMargin} ${s.noPadding}`}
             >
-              {/* {window.location.href && window.location.href.split("http://")[1]} */}
-              {"guesstomate.netlify.app/WMWMWMWMWMWW"}
+              {window.location.href && window.location.href.split("http://")[1]}
             </p>
           </div>
           <button
+            id="copyButtonU"
             className={`${panelStyles.copyButton} ${panelStyles.copyButtonRight}`}
             onClick={() => {
               copyText("uInput");
@@ -108,6 +111,7 @@ export default function InvitePanel(props) {
         </h4>
         <div className={`${styles.inputContainer1}`}>
           <button
+            id="newButton"
             disabled={!props.playerData.isRoomboss}
             className={`${panelStyles.copyButton} ${panelStyles.copyButtonLeft}`}
             onClick={() => {
@@ -121,7 +125,7 @@ export default function InvitePanel(props) {
               });
             }}
           >
-            🆕
+            🔄
           </button>
           <div className={`${styles.inviteInput} ${styles.inviteInput2}`}>
             <p
@@ -132,6 +136,7 @@ export default function InvitePanel(props) {
             </p>
           </div>
           <button
+            id="copyButtonP"
             className={`${panelStyles.copyButton} ${panelStyles.copyButtonRight}`}
             onClick={() => {
               copyText("pInput");

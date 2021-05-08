@@ -5,6 +5,7 @@ import $ from "jquery";
 
 import s from "./css/s.module.css";
 import g from "./css/Generic.module.css";
+import a from "./css/Animations.module.css";
 import styles from "./css/Room.module.css";
 
 import DoorPanel from "./DoorPanel";

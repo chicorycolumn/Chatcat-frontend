@@ -5,10 +5,11 @@ import $ from "jquery";
 
 import s from "./css/s.module.css";
 import g from "./css/Generic.module.css";
+import a from "./css/Animations.module.css";
 import styles from "./css/Navbar.module.css";
 
-import navlogo from "./images/logo_cat3b_pY1.png";
-import navlogoBroken from "./images/logo_cat3b_pY1_broken.png";
+import navlogo from "./images/logo_cat.png";
+import navlogoBroken from "./images/logo_cat_broken.png";
 
 import * as roomUtils from "./utils/roomUtils.js";
 import * as browserUtils from "./utils/browserUtils.js";
@@ -40,15 +41,6 @@ const Navbar = (props) => {
         )}
         <h1 className={`${styles.navbarTitle}`}>Chattercat</h1>{" "}
       </Link>
-
-      {/* {props.connectErrorAlert && (
-        <div
-          id="connectErrorAlert"
-          className={`${styles.navbarInnerBoxMiddle}`}
-        >
-          {props.connectErrorAlert}
-        </div>
-      )} */}
 
       <div className={`${styles.navbarInnerBoxRight}`}>
         {props.successfullyEnteredRoomName && (
