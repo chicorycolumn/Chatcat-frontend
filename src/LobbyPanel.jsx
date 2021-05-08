@@ -20,10 +20,7 @@ export default function LobbyPanel(props) {
   useEffect(() => {
     $("#roomNameInput_LobbyPanel").select();
 
-    displayUtils.unsplash(a, "#enterButton_LobbyPanel");
-    $("#enterButton_LobbyPanel").on("click", function (e) {
-      displayUtils.splash(a, e, 2, 1);
-    });
+    displayUtils.splash(a, "#enterButton_LobbyPanel");
 
     if (props.playerData.playerName) {
       setPlayerNameInput(props.playerData.playerName);
