@@ -21,7 +21,7 @@ const browserUtils = require("./utils/browserUtils.js");
 const displayUtils = require("./utils/displayUtils.js");
 const gameUtils = require("./utils/gameUtils.js");
 
-const production = false;
+const production = true;
 const ENDPOINT = production
   ? "https://chatcat-backend-server.herokuapp.com/"
   : "http://127.0.0.1:4002";
