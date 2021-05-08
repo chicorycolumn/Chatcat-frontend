@@ -42,15 +42,6 @@ const Navbar = (props) => {
         <h1 className={`${styles.navbarTitle}`}>Chattercat</h1>{" "}
       </Link>
 
-      {/* {props.connectErrorAlert && (
-        <div
-          id="connectErrorAlert"
-          className={`${styles.navbarInnerBoxMiddle}`}
-        >
-          {props.connectErrorAlert}
-        </div>
-      )} */}
-
       <div className={`${styles.navbarInnerBoxRight}`}>
         {props.successfullyEnteredRoomName && (
           <Link

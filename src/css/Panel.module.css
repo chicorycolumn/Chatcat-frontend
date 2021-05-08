@@ -161,7 +161,6 @@
 
 .exitButtonBlue:hover {
   background-color: var(--pBlue_L1);
-  /* border: var(--pBlue_L1) solid 2px; */
 }
 
 .exitButtonPink {

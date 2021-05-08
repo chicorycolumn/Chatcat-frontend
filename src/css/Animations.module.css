@@ -170,7 +170,6 @@
   1% {
     outline: var(--pBlue_D1) solid 1.5px;
     border-radius: 0px;
-    /* border: var(--pBlue_D1) solid 1.5px; */
   }
   100% {
     outline: transparent solid 7.5px;
@@ -184,7 +183,6 @@
   1% {
     outline: var(--pBlue_D1) solid 1.5px;
     border-radius: 0px;
-    /* border: var(--pBlue_D1) solid 1.5px; */
   }
   100% {
     outline: transparent solid 7.5px;
@@ -198,7 +196,6 @@
   1% {
     outline: var(--pBlue_D1) solid 3px;
     border-radius: 0px;
-    /* border: var(--pBlue_D1) solid 3px; */
   }
   100% {
     outline: transparent solid 15px;
@@ -212,7 +209,6 @@
   1% {
     outline: var(--pBlue_D1) solid 3px;
     border-radius: 0px;
-    /* border: var(--pBlue_D1) solid 3px; */
   }
   100% {
     outline: transparent solid 15px;
@@ -226,7 +222,6 @@
   1% {
     outline: var(--pBlue_D1) solid 6px;
     border-radius: 0px;
-    /* border: var(--pBlue_D1) solid 6px; */
   }
   100% {
     outline: transparent solid 30px;
@@ -240,7 +235,6 @@
   1% {
     outline: var(--pBlue_D1) solid 6px;
     border-radius: 0px;
-    /* border: var(--pBlue_D1) solid 6px; */
   }
   100% {
     outline: transparent solid 30px;

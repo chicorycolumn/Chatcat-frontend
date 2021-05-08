@@ -12,7 +12,6 @@
 .button1 {
   background-color: var(--pYellow_L3);
   border-radius: 5px;
-  /* border: none; */
 }
 
 .devButton {
@@ -47,9 +46,6 @@
 }
 
 .transitionObscurusImage {
-  /* border: black solid 1px; */
-  /* visibility: hidden; */
-
   height: 150px;
   margin-bottom: 150%;
   filter: blur(1px);
