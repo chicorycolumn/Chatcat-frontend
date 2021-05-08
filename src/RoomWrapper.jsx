@@ -4,6 +4,7 @@ import $ from "jquery";
 
 import s from "./css/s.module.css";
 import g from "./css/Generic.module.css";
+import a from "./css/Animations.module.css";
 import styles from "./css/Room.module.css";
 import panelStyles from "./css/Panel.module.css";
 
@@ -28,12 +29,12 @@ export default function RoomWrapper(props) {
 
     if (props.successfullyEnteredRoomName) {
       setTimeout(() => {
-        $("#transitionObscurusImage").addClass(`${s.fadeOutFast}`);
-        $("#transitionObscurusImage").removeClass(`${s.fadeInFast}`);
+        $("#transitionObscurusImage").addClass(`${a.fadeOutFast}`);
+        $("#transitionObscurusImage").removeClass(`${a.fadeInFast}`);
 
         // setTimeout(() => {
-        $("#transitionObscurus").removeClass(`${s.fadeIn}`);
-        $("#transitionObscurus").addClass(`${s.fadeOut}`);
+        $("#transitionObscurus").removeClass(`${a.fadeIn}`);
+        $("#transitionObscurus").addClass(`${a.fadeOut}`);
         // }, 350);
       }, 400);
     }
@@ -52,9 +53,9 @@ export default function RoomWrapper(props) {
           roomName: props.successfullyEnteredRoomName,
         });
         setTimeout(() => {
-          $("#Invite_Navbar").addClass(`${g.flashPink}`);
+          $("#Invite_Navbar").addClass(`${a.flashPink}`);
           setTimeout(() => {
-            $("#Invite_Navbar").removeClass(`${g.flashPink}`);
+            $("#Invite_Navbar").removeClass(`${a.flashPink}`);
           }, 5000);
         }, 1000);
       }

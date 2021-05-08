@@ -5,6 +5,7 @@ import $ from "jquery";
 
 import s from "./css/s.module.css";
 import g from "./css/Generic.module.css";
+import a from "./css/Animations.module.css";
 import styles from "./css/Navbar.module.css";
 
 import navlogo from "./images/logo_cat3b_pY1.png";

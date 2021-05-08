@@ -4,6 +4,7 @@ import $ from "jquery";
 
 import s from "./css/s.module.css";
 import g from "./css/Generic.module.css";
+import a from "./css/Animations.module.css";
 import panelStyles from "./css/Panel.module.css";
 
 import * as roomUtils from "./utils/roomUtils.js";
@@ -19,7 +20,7 @@ export default function LobbyPanel(props) {
   useEffect(() => {
     console.log("useEffect Lobby");
     $("#roomNameInput_LobbyPanel").select();
-    $("#enterButton_LobbyPanel").removeClass(`${g.splashBlue}`);
+    $("#enterButton_LobbyPanel").removeClass(`${a.splashBlue}`);
 
     if (props.playerData.playerName) {
       setPlayerNameInput(props.playerData.playerName);
@@ -101,9 +102,9 @@ export default function LobbyPanel(props) {
           onClick={(e) => {
             e.preventDefault();
 
-            $("#enterButton_LobbyPanel").addClass(`${g.splashBlue}`);
+            $("#enterButton_LobbyPanel").addClass(`${a.splashBlue}`);
             setTimeout(() => {
-              $("#enterButton_LobbyPanel").removeClass(`${g.splashBlue}`);
+              $("#enterButton_LobbyPanel").removeClass(`${a.splashBlue}`);
             }, 200);
             console.log("N17", {
               playerNameInput,
