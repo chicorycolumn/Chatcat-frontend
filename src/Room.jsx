@@ -12,10 +12,10 @@ import PlayerList from "./PlayerList";
 import Instructions from "./Instructions";
 import Chatbox from "./Chatbox";
 
-import roomUtils from "./utils/roomUtils.js";
-import browserUtils from "./utils/browserUtils.js";
-import displayUtils from "./utils/displayUtils.js";
-import gameUtils from "./utils/gameUtils.js";
+import { roomUtils } from "./utils/roomUtils.js";
+import { browserUtils } from "./utils/browserUtils.js";
+import { displayUtils } from "./utils/displayUtils.js";
+import { gameUtils } from "./utils/gameUtils.js";
 
 export default function Room(props) {
   console.log("((Room))");

@@ -8,10 +8,10 @@ import panelStyles from "./css/Panel.module.css";
 import styles from "./css/PlayerList.module.css";
 import roomStyles from "./css/Room.module.css";
 
-import roomUtils from "./utils/roomUtils.js";
-import browserUtils from "./utils/browserUtils.js";
-import displayUtils from "./utils/displayUtils.js";
-import gameUtils from "./utils/gameUtils.js";
+import { roomUtils } from "./utils/roomUtils.js";
+import { browserUtils } from "./utils/browserUtils.js";
+import { displayUtils } from "./utils/displayUtils.js";
+import { gameUtils } from "./utils/gameUtils.js";
 
 export default function PlayerList(props) {
   console.log("((PlayerList))");

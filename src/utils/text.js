@@ -1,4 +1,4 @@
-module.exports.firstNames = [
+exports.firstNames = [
   "alexandra",
   "billy",
   "cameron",
@@ -27,7 +27,7 @@ module.exports.firstNames = [
   "zachary",
 ];
 
-module.exports.fourLetterWords = [
+exports.fourLetterWords = [
   "AANI",
   "AARU",
   "ABAC",

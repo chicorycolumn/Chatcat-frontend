@@ -1,4 +1,4 @@
-module.exports.setProperties = (newProperties, data, setData) => {
+exports.setProperties = (newProperties, data, setData) => {
   let dataNew = { ...data };
 
   Object.keys(newProperties).forEach((k) => {

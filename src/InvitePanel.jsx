@@ -8,10 +8,10 @@ import panelStyles from "./css/Panel.module.css";
 import styles from "./css/InvitePanel.module.css";
 import PlayerList from "./PlayerList.jsx";
 
-import roomUtils from "./utils/roomUtils.js";
-import browserUtils from "./utils/browserUtils.js";
-import displayUtils from "./utils/displayUtils.js";
-import gameUtils from "./utils/gameUtils.js";
+import { roomUtils } from "./utils/roomUtils.js";
+import { browserUtils } from "./utils/browserUtils.js";
+import { displayUtils } from "./utils/displayUtils.js";
+import { gameUtils } from "./utils/gameUtils.js";
 
 const copyText = (inputId) => {
   let titleId = `${inputId[0]}Title`;

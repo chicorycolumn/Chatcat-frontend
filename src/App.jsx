@@ -16,10 +16,10 @@ import InvitePanel from "./InvitePanel.jsx";
 import OptionsPanel from "./OptionsPanel.jsx";
 import Alert from "./Alert.jsx";
 
-import roomUtils from "./utils/roomUtils.js";
-import browserUtils from "./utils/browserUtils.js";
-import displayUtils from "./utils/displayUtils.js";
-import gameUtils from "./utils/gameUtils.js";
+import { roomUtils } from "./utils/roomUtils.js";
+import { browserUtils } from "./utils/browserUtils.js";
+import { displayUtils } from "./utils/displayUtils.js";
+import { gameUtils } from "./utils/gameUtils.js";
 
 const production = true;
 const ENDPOINT = production
