@@ -38,7 +38,7 @@ const Navbar = (props) => {
         ) : (
           <img className={`${styles.navbarLogo}`} src={navlogo} />
         )}
-        <h1 className={`${styles.navbarTitle}`}>Chatcat</h1>{" "}
+        <h1 className={`${styles.navbarTitle}`}>Chattercat</h1>{" "}
       </Link>
 
       {/* {props.connectErrorAlert && (

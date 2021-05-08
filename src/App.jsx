@@ -23,7 +23,7 @@ import * as gameUtils from "./utils/gameUtils.js";
 
 const production = true;
 const ENDPOINT = production
-  ? "https://chatcat-backend-server.herokuapp.com/"
+  ? "https://chattercat-server.herokuapp.com/"
   : "http://127.0.0.1:4002";
 
 export default function App() {
