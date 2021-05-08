@@ -91,7 +91,8 @@ export default function InvitePanel(props) {
               id="uInput"
               className={`${styles.inputText} ${s.noMargin} ${s.noPadding}`}
             >
-              {window.location.href && window.location.href.split("http://")[1]}
+              {/* {window.location.href && window.location.href.split("http://")[1]} */}
+              {document.URL && document.URL.split("http://")[1]}
             </p>
           </div>
           <button
