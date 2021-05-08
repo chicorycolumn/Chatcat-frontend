@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Router, navigate, Link, useLocation } from "@reach/router";
 import panelStyles from "./css/Panel.module.css";
-import roomUtils from "./utils/roomUtils.js";
-import browserUtils from "./utils/browserUtils.js";
-import displayUtils from "./utils/displayUtils.js";
-import gameUtils from "./utils/gameUtils.js";
 import $ from "jquery";
 
 import s from "./css/s.module.css";
@@ -15,6 +11,11 @@ import DoorPanel from "./DoorPanel";
 import PlayerList from "./PlayerList";
 import Instructions from "./Instructions";
 import Chatbox from "./Chatbox";
+
+const roomUtils = require("./utils/roomUtils.js");
+const browserUtils = require("./utils/browserUtils.js");
+const displayUtils = require("./utils/displayUtils.js");
+const gameUtils = require("./utils/gameUtils.js");
 
 export default function Room(props) {
   console.log("((Room))");

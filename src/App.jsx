@@ -3,11 +3,6 @@ import { Router, navigate, Link, useLocation } from "@reach/router";
 import socketIOClient from "socket.io-client";
 import $ from "jquery";
 
-import roomUtils from "./utils/roomUtils.js";
-import browserUtils from "./utils/browserUtils.js";
-import displayUtils from "./utils/displayUtils.js";
-import gameUtils from "./utils/gameUtils.js";
-
 import s from "./css/s.module.css";
 import g from "./css/Generic.module.css";
 import panelStyles from "./css/Panel.module.css";
@@ -21,8 +16,15 @@ import InvitePanel from "./InvitePanel.jsx";
 import OptionsPanel from "./OptionsPanel.jsx";
 import Alert from "./Alert.jsx";
 
-const ENDPOINT = "https://chatcat-backend-server.herokuapp.com/";
-// const ENDPOINT = "http://127.0.0.1:4002";
+const roomUtils = require("./utils/roomUtils.js");
+const browserUtils = require("./utils/browserUtils.js");
+const displayUtils = require("./utils/displayUtils.js");
+const gameUtils = require("./utils/gameUtils.js");
+
+const production = false;
+const ENDPOINT = production
+  ? "https://chatcat-backend-server.herokuapp.com/"
+  : "http://127.0.0.1:4002";
 
 export default function App() {
   console.log("((App))");

@@ -1,11 +1,11 @@
-import $ from "jquery";
+const $ = require("jquery");
 
-const updateScroll = (elementId) => {
+exports.updateScroll = (elementId) => {
   let element = document.getElementById(elementId);
   element.scrollTop = element.scrollHeight;
 };
 
-const clickOutsideToClose = (id, setShowCallback) => {
+exports.clickOutsideToClose = (id, setShowCallback) => {
   console.log(`${id.slice(1)} clickOutsideToClose`);
 
   if (!($(id).is(":focus") || $(id).find(":focus").length)) {
@@ -13,7 +13,7 @@ const clickOutsideToClose = (id, setShowCallback) => {
   }
 };
 
-const keydownToClose = (e, setShowCallback, label) => {
+exports.keydownToClose = (e, setShowCallback, label) => {
   console.log(`${label} keydownToClose`, e.keyCode, e.which);
 
   let exitKeyCodes = [13, 27, 32];
@@ -23,7 +23,7 @@ const keydownToClose = (e, setShowCallback, label) => {
   }
 };
 
-const addListenerForKeydownEnterToSend = (input, button, itemToHaveFocus) => {
+exports.addListenerForKeydownEnterToSend = (input, button, itemToHaveFocus) => {
   $(input).on("keydown", function (e) {
     if ($("#Alert").length) {
       e.preventDefault();
@@ -43,16 +43,8 @@ const addListenerForKeydownEnterToSend = (input, button, itemToHaveFocus) => {
   });
 };
 
-const selectText = (document, id) => {
+exports.selectText = (document, id) => {
   const el = document.getElementById(id);
   el.select();
   el.setSelectionRange(0, 99999);
-};
-
-export default {
-  updateScroll,
-  clickOutsideToClose,
-  keydownToClose,
-  addListenerForKeydownEnterToSend,
-  selectText,
 };

@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Router, navigate, Link, useLocation } from "@reach/router";
-import roomUtils from "./utils/roomUtils.js";
-import browserUtils from "./utils/browserUtils.js";
-import displayUtils from "./utils/displayUtils.js";
-import gameUtils from "./utils/gameUtils.js";
 import $ from "jquery";
 
 import s from "./css/s.module.css";
@@ -13,6 +9,11 @@ import styles from "./css/Chatbox.module.css";
 import roomStyles from "./css/Room.module.css";
 
 import PlayerList from "./PlayerList";
+
+const roomUtils = require("./utils/roomUtils.js");
+const browserUtils = require("./utils/browserUtils.js");
+const displayUtils = require("./utils/displayUtils.js");
+const gameUtils = require("./utils/gameUtils.js");
 
 export default function Chatbox(props) {
   console.log("((Chatbox))");
