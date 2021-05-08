@@ -21,10 +21,12 @@ import * as browserUtils from "./utils/browserUtils.js";
 import * as displayUtils from "./utils/displayUtils.js";
 import * as gameUtils from "./utils/gameUtils.js";
 
-const production = true;
-const ENDPOINT = production
-  ? "https://chattercat-server.herokuapp.com/"
-  : "http://127.0.0.1:4002";
+import navlogoCentred from "./images/logo_cat3b_pY1_centred.png";
+
+const localEnv = false;
+const ENDPOINT = localEnv
+  ? "http://127.0.0.1:4002"
+  : "https://chattercat-server.herokuapp.com/";
 
 export default function App() {
   console.log("((App))");
@@ -96,12 +98,16 @@ export default function App() {
       console.log("Ø Entry granted");
       setPlayerData(data.player);
       setSuccessfullyEnteredRoomName(data.room.roomName);
+
+      $("#transitionObscurusImage").removeClass(`${s.fadeOutFast}`);
+      $("#transitionObscurusImage").addClass(`${s.fadeInFast}`);
+
       $("#transitionObscurus").removeClass(`${s.fadeOut}`);
       $("#transitionObscurus").addClass(`${s.fadeIn}`);
 
       setTimeout(() => {
         navigate(`/${data.room.roomName}`);
-      }, 100);
+      }, 200);
     });
 
     socket.on("Room not created", function (data) {
@@ -153,7 +159,14 @@ export default function App() {
       <header></header>
       <div id="background" className={styles.background}></div>
       <div id="backgroundShroud" className={`${styles.backgroundShroud}`}></div>
-      <div id="transitionObscurus" className={`${g.transitionObscurus}`}></div>
+      <div id="transitionObscurus" className={`${g.transitionObscurus}`}>
+        <div id="transitionObscurusImage">
+          <img
+            className={`${s.spinning} ${g.transitionObscurusImage}`}
+            src={navlogoCentred}
+          />
+        </div>
+      </div>
 
       <Navbar
         socket={socket}

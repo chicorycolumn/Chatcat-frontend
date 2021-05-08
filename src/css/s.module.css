@@ -89,6 +89,34 @@
   visibility: hidden;
 }
 
+.fadeInFast {
+  -webkit-animation: fadeIn 0.1s linear forwards;
+  animation: fadeIn 0.1s linear forwards;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.fadeInSlow {
+  -webkit-animation: fadeIn 0.4s linear forwards;
+  animation: fadeIn 0.4s linear forwards;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.spinning {
+  animation: spin 0.5s infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 @-webkit-keyframes fadeIn {
   0% {
     opacity: 0;
@@ -106,6 +134,20 @@
 .fadeOut {
   -webkit-animation: fadeOut 0.2s linear forwards;
   animation: fadeOut 0.2s linear forwards;
+  opacity: 1;
+  visibility: visible;
+}
+
+.fadeOutFast {
+  -webkit-animation: fadeOut 0.1s linear forwards;
+  animation: fadeOut 0.1s linear forwards;
+  opacity: 1;
+  visibility: visible;
+}
+
+.fadeOutSlow {
+  -webkit-animation: fadeOut 0.4s linear forwards;
+  animation: fadeOut 0.4s linear forwards;
   opacity: 1;
   visibility: visible;
 }
@@ -136,4 +178,8 @@
 .flexRow {
   display: flex;
   flex-direction: row;
+}
+
+.visHidden {
+  visibility: hidden;
 }

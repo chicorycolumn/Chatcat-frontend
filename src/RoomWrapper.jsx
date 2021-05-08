@@ -27,8 +27,15 @@ export default function RoomWrapper(props) {
     console.log(`~~RoomWrapper~~ props.socketNudge:${props.socketNudge}`);
 
     if (props.successfullyEnteredRoomName) {
-      $("#transitionObscurus").removeClass(`${s.fadeIn}`);
-      $("#transitionObscurus").addClass(`${s.fadeOut}`);
+      setTimeout(() => {
+        $("#transitionObscurusImage").addClass(`${s.fadeOutFast}`);
+        $("#transitionObscurusImage").removeClass(`${s.fadeInFast}`);
+
+        // setTimeout(() => {
+        $("#transitionObscurus").removeClass(`${s.fadeIn}`);
+        $("#transitionObscurus").addClass(`${s.fadeOut}`);
+        // }, 350);
+      }, 400);
     }
 
     if (props.socket && props.socketNudge) {
@@ -51,12 +58,6 @@ export default function RoomWrapper(props) {
           }, 5000);
         }, 1000);
       }
-
-      props.socket.on("Entry denied", function () {
-        console.log(
-          "***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************"
-        );
-      });
 
       props.socket.on("Room data", function (data) {
         setRoomData(data.room);
@@ -111,7 +112,6 @@ export default function RoomWrapper(props) {
       console.log("##RoomWrapper##");
 
       if (props.socket) {
-        props.socket.off("Entry denied");
         props.socket.off("Room data");
         props.socket.off("Room password updated");
         props.socket.off("Player entered your room");

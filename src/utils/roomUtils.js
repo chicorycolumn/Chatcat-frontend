@@ -18,7 +18,7 @@ export const createRoomName = () => {
     "orange",
     "white",
     "black",
-  ].slice(4, 6);
+  ];
   const roomNouns = [
     "ant",
     "bison",
@@ -28,7 +28,7 @@ export const createRoomName = () => {
     "fox",
     "goose",
     "hawk",
-  ].slice(4, 6);
+  ];
   let adj = roomAdjs[Math.floor(Math.random() * roomAdjs.length)];
   let noun = roomNouns[Math.floor(Math.random() * roomNouns.length)];
   return `${adj}${noun}`;
