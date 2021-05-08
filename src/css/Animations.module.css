@@ -126,30 +126,112 @@
   }
 }
 
-.splashBlue {
-  -webkit-animation: splashBlue 0.1s;
-  animation: splashBlue 0.1s;
+.splashBlueS1T1 {
+  -webkit-animation: splashBlueS1 0.25s;
+  animation: splashBlueS1 0.25s;
 }
-@-webkit-keyframes splashBlue {
+.splashBlueS1T2 {
+  -webkit-animation: splashBlueS1 0.5s;
+  animation: splashBlueS1 0.5s;
+}
+.splashBlueS1T3 {
+  -webkit-animation: splashBlueS1 1s;
+  animation: splashBlueS1 1s;
+}
+.splashBlueS2T1 {
+  -webkit-animation: splashBlueS2 0.25s;
+  animation: splashBlueS2 0.25s;
+}
+.splashBlueS2T2 {
+  -webkit-animation: splashBlueS2 0.5s;
+  animation: splashBlueS2 0.5s;
+}
+.splashBlueS2T3 {
+  -webkit-animation: splashBlueS2 1s;
+  animation: splashBlueS2 1s;
+}
+.splashBlueS3T1 {
+  -webkit-animation: splashBlueS3 0.25s;
+  animation: splashBlueS3 0.25s;
+}
+.splashBlueS3T2 {
+  -webkit-animation: splashBlueS3 0.5s;
+  animation: splashBlueS3 0.5s;
+}
+.splashBlueS3T3 {
+  -webkit-animation: splashBlueS3 1s;
+  animation: splashBlueS3 1s;
+}
+@-webkit-keyframes splashBlueS1 {
   0% {
     outline: inherit;
   }
-  50% {
-    outline: var(--pBlue_D1) solid 5px;
+  1% {
+    outline: var(--pBlue_D1) solid 1.5px;
+    border: var(--pBlue_D1) solid 1.5px;
   }
   100% {
-    outline: transparent solid 10px;
+    outline: transparent solid 7.5px;
   }
 }
-@keyframes splashBlue {
+@keyframes splashBlueS1 {
   0% {
     outline: inherit;
   }
-  50% {
-    outline: var(--pBlue_D1) solid 5px;
+  1% {
+    outline: var(--pBlue_D1) solid 1.5px;
+    border: var(--pBlue_D1) solid 1.5px;
   }
   100% {
-    outline: transparent solid 10px;
+    outline: transparent solid 7.5px;
+  }
+}
+@-webkit-keyframes splashBlueS2 {
+  0% {
+    outline: inherit;
+  }
+  1% {
+    outline: var(--pBlue_D1) solid 3px;
+    border: var(--pBlue_D1) solid 3px;
+  }
+  100% {
+    outline: transparent solid 15px;
+  }
+}
+@keyframes splashBlueS2 {
+  0% {
+    outline: inherit;
+  }
+  1% {
+    outline: var(--pBlue_D1) solid 3px;
+    border: var(--pBlue_D1) solid 3px;
+  }
+  100% {
+    outline: transparent solid 15px;
+  }
+}
+@-webkit-keyframes splashBlueS3 {
+  0% {
+    outline: inherit;
+  }
+  1% {
+    outline: var(--pBlue_D1) solid 6px;
+    border: var(--pBlue_D1) solid 6px;
+  }
+  100% {
+    outline: transparent solid 30px;
+  }
+}
+@keyframes splashBlueS3 {
+  0% {
+    outline: inherit;
+  }
+  1% {
+    outline: var(--pBlue_D1) solid 6px;
+    border: var(--pBlue_D1) solid 6px;
+  }
+  100% {
+    outline: transparent solid 30px;
   }
 }
 
