@@ -82,13 +82,7 @@ export default function PlayerList(props) {
                     roomPlayer.playerName.length > 10 ? g.nameSmaller : ""
                   }`}
                 >
-                  <span
-                    className={`${
-                      roomPlayer.isRoomboss ? styles.marginAdjust : ""
-                    }`}
-                  >
-                    {roomPlayer.playerName}
-                  </span>
+                  <span>{roomPlayer.playerName}</span>
                 </div>
 
                 <div className={`${styles.stars}`}>
