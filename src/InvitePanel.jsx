@@ -54,19 +54,6 @@ export default function InvitePanel(props) {
   useEffect(() => {
     displayUtils.splash(a, ["#copyButtonP", "#copyButtonU", "#newButton"], 1);
 
-    console.log("window.location.href", window.location.href);
-    console.log("document.URL", document.URL);
-
-    setTimeout(() => {
-      if (window.location.href.toString()) {
-        console.log("clause1");
-        $("#uInput").text(window.location.href.toString().split("http://")[1]);
-      } else if (document.URL.toString()) {
-        console.log("clause2");
-        $("#uInput").text(document.URL.toString().split("http://")[1]);
-      }
-    }, 2000);
-
     $(document).on("click.InvitePanel", () => {
       displayUtils.clickOutsideToClose(
         "#InvitePanel",
@@ -103,8 +90,7 @@ export default function InvitePanel(props) {
               id="uInput"
               className={`${styles.inputText} ${s.noMargin} ${s.noPadding}`}
             >
-              {window.location.href.toString() &&
-                window.location.href.toString().split("http://")[1]}
+              {window.location.href && window.location.href.split("//")[1]}
             </p>
           </div>
           <button
