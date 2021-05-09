@@ -13,7 +13,6 @@ import LobbyPanel from "./LobbyPanel.jsx";
 import ContactPage from "./ContactPage.jsx";
 import RoomWrapper from "./RoomWrapper.jsx";
 import Navbar from "./Navbar.jsx";
-import InviteNavpanel from "./InviteNavpanel.jsx";
 import OptionsNavpanel from "./OptionsNavpanel.jsx";
 import Alert from "./Alert.jsx";
 
@@ -188,17 +187,6 @@ export default function App() {
         showDevButtons={showDevButtons}
         connectErrorAlert={connectErrorAlert}
       />
-
-      {showInviteNavpanel && (
-        <div className={`${g.obscurus} ${a.fadeIn}`}>
-          <InviteNavpanel
-            socket={socket}
-            playerData={playerData}
-            setShowInviteNavpanel={setShowInviteNavpanel}
-            successfullyEnteredRoomName={successfullyEnteredRoomName}
-          />
-        </div>
-      )}
       {showOptionsNavpanel && (
         <div className={`${g.obscurus} ${a.fadeIn}`}>
           <OptionsNavpanel
@@ -232,6 +220,7 @@ export default function App() {
           setSuccessfullyEnteredRoomName={setSuccessfullyEnteredRoomName}
           playerData={playerData}
           setShowAlert={setShowAlert}
+          showInviteNavpanel={showInviteNavpanel}
           setShowInviteNavpanel={setShowInviteNavpanel}
         />
       </Router>

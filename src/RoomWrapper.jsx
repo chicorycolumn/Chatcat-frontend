@@ -11,6 +11,7 @@ import panelStyles from "./css/Panel.module.css";
 import DoorPanel from "./DoorPanel";
 import PlayerList from "./PlayerList";
 import Room from "./Room";
+import InviteNavpanel from "./InviteNavpanel.jsx";
 import Instructions from "./Instructions";
 import Chatbox from "./Chatbox";
 
@@ -121,14 +122,27 @@ export default function RoomWrapper(props) {
   }, [props.successfullyEnteredRoomName]);
 
   return roomData ? (
-    <Room
-      socket={props.socket}
-      playerData={props.playerData}
-      roomData={roomData}
-      setRoomData={setRoomData}
-      successfullyEnteredRoomName={props.successfullyEnteredRoomName}
-      setSuccessfullyEnteredRoomName={props.setSuccessfullyEnteredRoomName}
-    />
+    <>
+      {props.showInviteNavpanel && (
+        <div className={`${g.obscurus} ${a.fadeIn}`}>
+          <InviteNavpanel
+            socket={props.socket}
+            playerData={props.playerData}
+            roomData={roomData}
+            setShowInviteNavpanel={props.setShowInviteNavpanel}
+            successfullyEnteredRoomName={props.successfullyEnteredRoomName}
+          />
+        </div>
+      )}
+      <Room
+        socket={props.socket}
+        playerData={props.playerData}
+        roomData={roomData}
+        setRoomData={setRoomData}
+        successfullyEnteredRoomName={props.successfullyEnteredRoomName}
+        setSuccessfullyEnteredRoomName={props.setSuccessfullyEnteredRoomName}
+      />
+    </>
   ) : (
     <DoorPanel socket={props.socket} playerData={props.playerData} />
   );
