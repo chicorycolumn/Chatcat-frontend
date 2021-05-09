@@ -86,8 +86,8 @@ export default function PlayerList(props) {
                 </div>
 
                 <div className={`${styles.stars}`}>
+                  <span>{`${roomPlayer.stars.toString()}`}</span>
                   <span className={`${styles.smallEmoji2}`}>⭐</span>
-                  <span>{`00${roomPlayer.stars.toString()}`}</span>
                 </div>
               </div>
             );

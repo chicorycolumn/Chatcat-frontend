@@ -1,9 +1,8 @@
 .Room {
   margin-top: 5px; /* mobile */
   min-width: 280px; /* mobile */
-  padding-bottom: 10px; /* mobile */
-  min-width: 280px; /* mobile */
 
+  padding-bottom: 10px;
   height: 100%;
   width: 95vw;
   max-width: 550px;
@@ -63,10 +62,6 @@
 
   .bottomContainer {
     margin-top: 40px !important;
-  }
-
-  .Room {
-    padding-bottom: 0px !important;
   }
 
   .roomHeaders {

@@ -26,7 +26,7 @@
 }
 
 .smallEmoji1 {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .smallEmoji2 {
@@ -65,8 +65,4 @@
 
 .bootTab:hover {
   background-color: var(--pPink);
-}
-
-.marginAdjust {
-  margin-left: 6px;
 }
