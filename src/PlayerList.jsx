@@ -74,7 +74,7 @@ export default function PlayerList(props) {
                   ""
                 )}
                 <span className={`${styles.awards} ${styles.smallEmoji1}`}>
-                  {Math.floor(Math.random() * 10) % 2 ? "👑" : ""}
+                  {roomPlayer.isRoomboss ? " 🎩" : ""}
                 </span>
 
                 <div
@@ -88,9 +88,6 @@ export default function PlayerList(props) {
                     }`}
                   >
                     {roomPlayer.playerName}
-                  </span>
-                  <span className={`${styles.awards} ${styles.smallEmoji2}`}>
-                    {roomPlayer.isRoomboss ? " 🎩" : ""}
                   </span>
                 </div>
 

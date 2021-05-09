@@ -62,6 +62,7 @@
 }
 
 .chatInputContainer {
+  height: 40px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -72,6 +73,7 @@
   width: 80%;
   height: 100%;
   background-color: var(--pBlue_L3);
+  padding: 10px 10px 0px 10px;
 }
 
 .chatboxInput:hover {

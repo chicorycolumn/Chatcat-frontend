@@ -24,7 +24,7 @@ import * as gameUtils from "./utils/gameUtils.js";
 
 import logoCentred from "./images/logo_cat_centred.png";
 
-const localEnv = true;
+const localEnv = false;
 const ENDPOINT = localEnv
   ? "http://127.0.0.1:4002"
   : "https://chattercat-server.herokuapp.com/";
@@ -97,16 +97,14 @@ export default function App() {
 
     socket.on("Entry granted", function (data) {
       console.log("Ø Entry granted");
-      setPlayerData(data.player);
-      setSuccessfullyEnteredRoomName(data.room.roomName);
-
       $("#transitionObscurusImage").removeClass(`${a.fadeOutFast}`);
       $("#transitionObscurusImage").addClass(`${a.fadeInFast}`);
-
       $("#transitionObscurus").removeClass(`${a.fadeOut}`);
       $("#transitionObscurus").addClass(`${a.fadeIn}`);
 
       setTimeout(() => {
+        setPlayerData(data.player);
+        setSuccessfullyEnteredRoomName(data.room.roomName);
         navigate(`/${data.room.roomName}`);
       }, 200);
     });

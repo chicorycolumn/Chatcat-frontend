@@ -135,7 +135,7 @@ export default function Chatbox(props) {
           id="chatboxInput_Chatbox"
           className={`${styles.chatboxInput}`}
           value={chatMsg}
-          maxLength="60"
+          maxLength="50"
           type="text"
           onChange={(e) => {
             setChatMsg(e.target.value);

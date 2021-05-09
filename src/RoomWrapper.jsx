@@ -31,11 +31,8 @@ export default function RoomWrapper(props) {
       setTimeout(() => {
         $("#transitionObscurusImage").addClass(`${a.fadeOutFast}`);
         $("#transitionObscurusImage").removeClass(`${a.fadeInFast}`);
-
-        // setTimeout(() => {
         $("#transitionObscurus").removeClass(`${a.fadeIn}`);
         $("#transitionObscurus").addClass(`${a.fadeOut}`);
-        // }, 350);
       }, 400);
     }
 

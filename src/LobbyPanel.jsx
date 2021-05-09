@@ -45,6 +45,22 @@ export default function LobbyPanel(props) {
       className={`${g.boxStyle1} ${panelStyles.bigPortraitPanel} ${panelStyles.panelYellow1} ${s.noOutline}`}
     >
       <div className={`${panelStyles.innerBox1}`}>
+        <h2>Your name</h2>
+        <textarea
+          onClick={(e) => {
+            displayUtils.selectText(document, "playerNameInput_LobbyPanel");
+          }}
+          id="playerNameInput_LobbyPanel"
+          value={playerNameInput}
+          className={`${panelStyles.entryInput}`}
+          maxLength={12}
+          onChange={(e) => {
+            setPlayerNameInput(browserUtils.alphanumerise(e.target.value));
+          }}
+        ></textarea>
+      </div>
+
+      <div className={`${panelStyles.innerBox1}`}>
         <h2
           className={`${s.noSelect} ${panelStyles.title1}`}
           onClick={() => {
@@ -70,22 +86,6 @@ export default function LobbyPanel(props) {
           maxLength={12}
           onChange={(e) => {
             props.setRoomNameInput(browserUtils.alphanumerise(e.target.value));
-          }}
-        ></textarea>
-      </div>
-
-      <div className={`${panelStyles.innerBox1}`}>
-        <h2>Your name</h2>
-        <textarea
-          onClick={(e) => {
-            displayUtils.selectText(document, "playerNameInput_LobbyPanel");
-          }}
-          id="playerNameInput_LobbyPanel"
-          value={playerNameInput}
-          className={`${panelStyles.entryInput}`}
-          maxLength={12}
-          onChange={(e) => {
-            setPlayerNameInput(browserUtils.alphanumerise(e.target.value));
           }}
         ></textarea>
       </div>

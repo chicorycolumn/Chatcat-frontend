@@ -27,7 +27,7 @@ export default function Instructions(props) {
           This is a chat app where you can converse with your friends.
           <br /> <br /> Enter your message in the chatbox and send.
           <br /> <br /> Star your friends by typing "star" and then their name.
-          <br /> <br /> This is built with SocketIO 4.
+          <br /> <br /> Built with SocketIO 4.
         </p>
       </div>
     </div>
