@@ -77,7 +77,11 @@ export default function PlayerList(props) {
                   {Math.floor(Math.random() * 10) % 2 ? "👑" : ""}
                 </span>
 
-                <div className={`${styles.name} ${s.overflowSplit}`}>
+                <div
+                  className={`${styles.name} ${s.overflowSplit} ${
+                    roomPlayer.playerName.length > 10 ? g.nameSmaller : ""
+                  }`}
+                >
                   <span
                     className={`${
                       roomPlayer.isRoomboss ? styles.marginAdjust : ""

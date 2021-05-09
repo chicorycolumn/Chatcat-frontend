@@ -51,13 +51,14 @@
   padding: 0px;
   margin: 0px;
   padding-right: 10px;
-  width: 130px;
+  width: 140px;
+  min-width: 140px;
 }
 
 .chatDialogue {
   padding: 0px;
   margin: 0px;
-  width: 65%;
+  width: 72.5%;
 }
 
 .chatInputContainer {

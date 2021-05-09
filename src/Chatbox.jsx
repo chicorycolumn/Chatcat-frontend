@@ -107,6 +107,9 @@ export default function Chatbox(props) {
         className={`${s.overflowScroll} ${styles.chatOutputContainer}`}
       >
         {chatArray.map((chatItem) => {
+          let chatName = chatItem[0];
+          let chatDialogue = chatItem[1];
+
           return typeof chatItem === "string" ? (
             <div className={`${styles.chatItem}`}>
               <p className={`${styles.chatAnnouncement}`}>{chatItem}</p>
@@ -115,13 +118,13 @@ export default function Chatbox(props) {
             <div className={`${styles.chatItem}`}>
               <p
                 className={`${styles.chatName}
-              ${s.overflowSplit}
+              ${s.overflowSplit} ${chatName.length > 10 ? g.nameSmaller : ""}
               `}
               >
-                {chatItem[0]}
+                {chatName}
               </p>
               <p className={`${styles.chatDialogue} ${s.overflowSplit}`}>
-                {chatItem[1]}
+                {chatDialogue}
               </p>
             </div>
           );

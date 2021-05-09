@@ -24,7 +24,7 @@ import * as gameUtils from "./utils/gameUtils.js";
 
 import logoCentred from "./images/logo_cat_centred.png";
 
-const localEnv = false;
+const localEnv = true;
 const ENDPOINT = localEnv
   ? "http://127.0.0.1:4002"
   : "https://chattercat-server.herokuapp.com/";
