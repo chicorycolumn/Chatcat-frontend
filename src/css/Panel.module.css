@@ -6,7 +6,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  padding-top: 15px;
+  padding-top: 35px; /*mobile*/
 }
 
 .mediumLandscapePanel {
@@ -104,6 +104,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.innerBox1 > h2 {
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.innerBox1 > button {
+  margin-top: 5px; /* mobile */
+  margin-bottom: 10px;
 }
 
 .innerBox2 {
@@ -225,5 +235,10 @@
   .bigPortraitPanel {
     height: 400px !important;
     width: 300px !important;
+    padding-top: 45px !important;
+  }
+
+  .innerBox1 > button {
+    margin-top: 0px;
   }
 }
