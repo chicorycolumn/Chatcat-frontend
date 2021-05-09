@@ -27,13 +27,14 @@ export default function LobbyPanel(props) {
     }
 
     displayUtils.addListenerForKeydownEnterToSend(
+      "lobby",
       document,
       "#enterButton_LobbyPanel",
       "#LobbyPanel"
     );
 
     return function cleanup() {
-      $(document).off("keydown");
+      $(document).off("keydown.lobby");
     };
   }, [props.playerData]);
 

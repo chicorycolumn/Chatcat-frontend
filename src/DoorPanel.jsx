@@ -40,13 +40,14 @@ export default function DoorPanel(props) {
     $("#DoorPanel").focus();
 
     displayUtils.addListenerForKeydownEnterToSend(
+      "door",
       document,
       "#enterButton_DoorPanel",
       "#DoorPanel"
     );
 
     return function cleanup() {
-      $(document).off("keydown");
+      $(document).off("keydown.door");
     };
   }, [props.playerData]);
 

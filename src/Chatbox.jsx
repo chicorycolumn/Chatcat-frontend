@@ -26,6 +26,7 @@ export default function Chatbox(props) {
     console.log("~~Chatbox~~");
 
     displayUtils.addListenerForKeydownEnterToSend(
+      "chatbox",
       "#chatboxInput_Chatbox",
       "#chatboxSendButton_Chatbox"
     );
@@ -67,7 +68,7 @@ export default function Chatbox(props) {
       props.socket.off("Player entered your room", SH_playerEntered);
       props.socket.off("Player left your room", SH_playerLeft);
       props.socket.off("Chat message");
-      $("#chatboxInput_Chatbox").off("keydown");
+      $("#chatboxInput_Chatbox").off("keydown.chatbox");
     };
   }, [props.socket, chatArray]);
 
