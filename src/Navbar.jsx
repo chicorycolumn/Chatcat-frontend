@@ -47,11 +47,11 @@ const Navbar = (props) => {
           <Link
             id="Invite_Navbar"
             className={`${styles.navbarItem} ${styles.hoverable1} ${
-              props.showInvitePanel ? styles.hoverable1hovered : ""
+              props.showInviteNavpanel ? styles.hoverable1hovered : ""
             }`}
             onClick={(e) => {
               e.preventDefault();
-              props.setShowInvitePanel(true);
+              props.setShowInviteNavpanel(true);
             }}
             to=""
           >
@@ -61,10 +61,10 @@ const Navbar = (props) => {
         <Link
           className={`${styles.navbarItem} ${styles.navbarItemSmall}  ${
             styles.hoverable1
-          } ${props.showOptionsPanel ? styles.hoverable1hovered : ""}`}
+          } ${props.showOptionsNavpanel ? styles.hoverable1hovered : ""}`}
           onClick={(e) => {
             e.preventDefault();
-            props.setShowOptionsPanel(true);
+            props.setShowOptionsNavpanel(true);
           }}
           to=""
         >
