@@ -50,7 +50,11 @@ export default function Chatbox(props) {
       props.socket.on("Player entered your room", SH_playerEntered);
       props.socket.on("Player left your room", SH_playerLeft);
       props.socket.on("Chat message", function (data) {
-        addToChatArray([data.sender.playerName, data.chatMsg]);
+        if (data.sender) {
+          addToChatArray([data.sender.playerName, data.chatMsg]);
+        } else {
+          addToChatArray(data.chatMsg);
+        }
       });
     }
     function addToChatArray(...chatItems) {

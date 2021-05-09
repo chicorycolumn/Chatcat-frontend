@@ -13,8 +13,8 @@ import LobbyPanel from "./LobbyPanel.jsx";
 import ContactPage from "./ContactPage.jsx";
 import RoomWrapper from "./RoomWrapper.jsx";
 import Navbar from "./Navbar.jsx";
-import InvitePanel from "./InvitePanel.jsx";
-import OptionsPanel from "./OptionsPanel.jsx";
+import InviteNavpanel from "./InviteNavpanel.jsx";
+import OptionsNavpanel from "./OptionsNavpanel.jsx";
 import Alert from "./Alert.jsx";
 
 import * as roomUtils from "./utils/roomUtils.js";
@@ -24,7 +24,7 @@ import * as gameUtils from "./utils/gameUtils.js";
 
 import logoCentred from "./images/logo_cat_centred.png";
 
-const localEnv = true;
+const localEnv = false;
 const ENDPOINT = localEnv
   ? "http://127.0.0.1:4002"
   : "https://chattercat-server.herokuapp.com/";
@@ -41,8 +41,8 @@ export default function App() {
   ] = useState(null);
   const [socket, setSocket] = useState(null);
   const [socketNudge, setSocketNudge] = useState();
-  const [showInvitePanel, setShowInvitePanel] = useState();
-  const [showOptionsPanel, setShowOptionsPanel] = useState();
+  const [showInviteNavpanel, setShowInviteNavpanel] = useState();
+  const [showOptionsNavpanel, setShowOptionsNavpanel] = useState();
   const [showAlert, setShowAlert] = useState();
   const [connectErrorAlert, setConnectErrorAlert] = useState();
   const [showDevButtons, setShowDevButtons] = useState(false);
@@ -169,28 +169,33 @@ export default function App() {
 
       <Navbar
         socket={socket}
-        setShowInvitePanel={setShowInvitePanel}
-        showInvitePanel={showInvitePanel}
-        setShowOptionsPanel={setShowOptionsPanel}
-        showOptionsPanel={showOptionsPanel}
+        setShowInviteNavpanel={setShowInviteNavpanel}
+        showInviteNavpanel={showInviteNavpanel}
+        setShowOptionsNavpanel={setShowOptionsNavpanel}
+        showOptionsNavpanel={showOptionsNavpanel}
         successfullyEnteredRoomName={successfullyEnteredRoomName}
         showDevButtons={showDevButtons}
         connectErrorAlert={connectErrorAlert}
       />
 
-      {showInvitePanel && (
+      {showInviteNavpanel && (
         <div className={`${g.obscurus} ${a.fadeIn}`}>
-          <InvitePanel
+          <InviteNavpanel
             socket={socket}
             playerData={playerData}
-            setShowInvitePanel={setShowInvitePanel}
+            setShowInviteNavpanel={setShowInviteNavpanel}
             successfullyEnteredRoomName={successfullyEnteredRoomName}
           />
         </div>
       )}
-      {showOptionsPanel && (
+      {showOptionsNavpanel && (
         <div className={`${g.obscurus} ${a.fadeIn}`}>
-          <OptionsPanel setShowOptionsPanel={setShowOptionsPanel} />
+          <OptionsNavpanel
+            socket={socket}
+            playerData={playerData}
+            setShowOptionsNavpanel={setShowOptionsNavpanel}
+            successfullyEnteredRoomName={successfullyEnteredRoomName}
+          />
         </div>
       )}
       {showAlert && (
@@ -216,7 +221,7 @@ export default function App() {
           setSuccessfullyEnteredRoomName={setSuccessfullyEnteredRoomName}
           playerData={playerData}
           setShowAlert={setShowAlert}
-          setShowInvitePanel={setShowInvitePanel}
+          setShowInviteNavpanel={setShowInviteNavpanel}
         />
       </Router>
     </div>

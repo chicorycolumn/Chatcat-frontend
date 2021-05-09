@@ -64,7 +64,7 @@ export default function RoomWrapper(props) {
       props.socket.on("Room password updated", function (data) {
         if (data.roomName !== props.successfullyEnteredRoomName) {
           console.log(
-            `D55 Why do these roomnames not match? data.roomName:"${data.roomName}", props.successfullyEnteredRoomName:"${props.successfullyEnteredRoomName}".`
+            `D55 Why do these roomNames not match? data.roomName:"${data.roomName}", props.successfullyEnteredRoomName:"${props.successfullyEnteredRoomName}".`
           );
           return;
         }

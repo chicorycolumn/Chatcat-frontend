@@ -6,7 +6,7 @@ import s from "./css/s.module.css";
 import g from "./css/Generic.module.css";
 import a from "./css/Animations.module.css";
 import panelStyles from "./css/Panel.module.css";
-import styles from "./css/InvitePanel.module.css";
+import styles from "./css/Navpanel.module.css";
 import PlayerList from "./PlayerList.jsx";
 
 import * as roomUtils from "./utils/roomUtils.js";
@@ -44,8 +44,8 @@ const copyText = (inputId) => {
     });
 };
 
-export default function InvitePanel(props) {
-  console.log("((InvitePanel))");
+export default function InviteNavpanel(props) {
+  console.log("((InviteNavpanel))");
 
   let rpw = browserUtils.getCookie("roomPassword");
 
@@ -54,27 +54,27 @@ export default function InvitePanel(props) {
   useEffect(() => {
     displayUtils.splash(a, ["#copyButtonP", "#copyButtonU", "#newButton"], 1);
 
-    $(document).on("click.InvitePanel", () => {
+    $(document).on("click.InviteNavpanel", () => {
       displayUtils.clickOutsideToClose(
-        "#InvitePanel",
-        props.setShowInvitePanel
+        "#InviteNavpanel",
+        props.setShowInviteNavpanel
       );
     });
 
     return function cleanup() {
-      $(document).off("click.InvitePanel");
+      $(document).off("click.InviteNavpanel");
     };
   }, []);
 
   return (
     <div
       tabIndex="0"
-      id="InvitePanel"
+      id="InviteNavpanel"
       className={`${g.boxStyle1} ${panelStyles.mediumLandscapePanel} ${panelStyles.panelBlue2} ${s.noOutline}`}
     >
       <button
         onClick={(e) => {
-          props.setShowInvitePanel(false);
+          props.setShowInviteNavpanel(false);
         }}
         className={`${panelStyles.exitButton} ${panelStyles.exitButtonBlue}`}
       >
