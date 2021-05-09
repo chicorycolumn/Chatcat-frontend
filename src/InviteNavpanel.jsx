@@ -114,8 +114,18 @@ export default function InviteNavpanel(props) {
         </div>
       </div>
       <div className={`${styles.box}`}>
-        <h4 id="pTitle" className={`${s.noSelect} ${panelStyles.title2}`}>
+        <h4
+          onClick={() => {
+            props.socket.emit("Update room password", {
+              roomName: props.roomData.roomName,
+              flipPasswordProtection: true,
+            });
+          }}
+          id="pTitle"
+          className={`${s.noSelect} ${panelStyles.title2}`}
+        >
           Room is password protected
+          {props.roomData.isPasswordProtected ? " YES" : " NO"}
         </h4>
         <div className={`${styles.inputContainer1}`}>
           <button
