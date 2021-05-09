@@ -40,7 +40,7 @@ export default function RoomWrapper(props) {
       if (!props.playerData.playerName) {
         props.socket.emit("Update player data", {
           player: {
-            playerName: roomUtils.makeDummyName(props.socket.id),
+            playerName: props.socket.id.slice(0, 3),
           },
         });
       }
@@ -69,6 +69,7 @@ export default function RoomWrapper(props) {
           return;
         }
 
+        console.log("Setting cookie:", `${data.roomPassword}-${data.roomName}`);
         browserUtils.setCookie(
           "roomPassword",
           `${data.roomPassword}-${data.roomName}`

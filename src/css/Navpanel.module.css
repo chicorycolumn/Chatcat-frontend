@@ -4,6 +4,8 @@
   justify-content: center;
   text-align: center;
   width: 100%;
+  flex-grow: 1;
+  border: red solid 1px;
 }
 
 .inputContainer1 {

@@ -117,16 +117,8 @@ export default function LobbyPanel(props) {
               });
             }
 
-            let roomPassword = roomUtils.fourLetterWord();
-
-            browserUtils.setCookie(
-              "roomPassword",
-              `${roomPassword}-${props.roomNameInput}`
-            );
-
             props.socket.emit("Create room", {
               roomName: props.roomNameInput,
-              roomPassword,
             });
           }}
         >

@@ -121,6 +121,7 @@ export default function DoorPanel(props) {
 
             let roomName = location.pathname.slice(1);
 
+            console.log("Setting cookie:", `${roomPasswordInput}-${roomName}`);
             browserUtils.setCookie(
               "roomPassword",
               `${roomPasswordInput}-${roomName}`

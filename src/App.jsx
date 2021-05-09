@@ -24,7 +24,7 @@ import * as gameUtils from "./utils/gameUtils.js";
 
 import logoCentred from "./images/logo_cat_centred.png";
 
-const localEnv = false;
+const localEnv = true;
 const ENDPOINT = localEnv
   ? "http://127.0.0.1:4002"
   : "https://chattercat-server.herokuapp.com/";
@@ -32,7 +32,7 @@ const ENDPOINT = localEnv
 export default function App() {
   console.log("((App))");
 
-  const [roomNameInput, setRoomNameInput] = useState(null);
+  const [roomNameInput, setRoomNameInput] = useState("");
   const [playerData, setPlayerData] = useState({});
   console.log("((So playerData is)))", playerData);
   const [
@@ -86,7 +86,7 @@ export default function App() {
       if (!data.player.playerName) {
         socket.emit("Update player data", {
           player: {
-            playerName: roomUtils.makeDummyName(socket.id),
+            playerName: socket.id.slice(0, 3),
           },
         });
       }
@@ -96,6 +96,17 @@ export default function App() {
     });
 
     socket.on("Entry granted", function (data) {
+      if (data.roomPassword) {
+        console.log(
+          "Setting cookie:",
+          `${data.roomPassword}-${successfullyEnteredRoomName}`
+        );
+        browserUtils.setCookie(
+          "roomPassword",
+          `${data.roomPassword}-${successfullyEnteredRoomName}`
+        );
+      }
+
       console.log("Ø Entry granted");
       $("#transitionObscurusImage").removeClass(`${a.fadeOutFast}`);
       $("#transitionObscurusImage").addClass(`${a.fadeInFast}`);

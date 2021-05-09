@@ -60,12 +60,9 @@ export default function PlayerList(props) {
 
                       let rpw = browserUtils.getCookie("roomPassword");
                       let currentRoomPassword = rpw ? rpw.split("-")[0] : "";
-                      let newRoomPassword = roomUtils.fourLetterWord(
-                        currentRoomPassword
-                      );
+
                       props.socket.emit("Update room password", {
                         roomName: props.successfullyEnteredRoomName,
-                        roomPassword: newRoomPassword,
                       });
                     }}
                     className={`${styles.bootTab}`}

@@ -54,6 +54,14 @@ export default function InviteNavpanel(props) {
   useEffect(() => {
     displayUtils.splash(a, ["#copyButtonP", "#copyButtonU", "#newButton"], 1);
 
+    function updatePasswordInput() {
+      setTimeout(() => {
+        setRoomPassword(browserUtils.getCookie("roomPassword").split("-")[0]);
+      }, 50);
+    }
+
+    props.socket.on("Room password updated", updatePasswordInput);
+
     $(document).on("click.InviteNavpanel", () => {
       displayUtils.clickOutsideToClose(
         "#InviteNavpanel",
@@ -63,6 +71,7 @@ export default function InviteNavpanel(props) {
 
     return function cleanup() {
       $(document).off("click.InviteNavpanel");
+      props.socket.off("Room password updated", updatePasswordInput);
     };
   }, []);
 
@@ -114,13 +123,8 @@ export default function InviteNavpanel(props) {
             disabled={!props.playerData.isRoomboss}
             className={`${panelStyles.copyButton} ${panelStyles.copyButtonLeft}`}
             onClick={() => {
-              let newRoomPassword = roomUtils.fourLetterWord(roomPassword);
-
-              setRoomPassword(newRoomPassword);
-
               props.socket.emit("Update room password", {
                 roomName: props.successfullyEnteredRoomName,
-                roomPassword: newRoomPassword,
               });
             }}
           >
