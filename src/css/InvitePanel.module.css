@@ -28,7 +28,7 @@
   font-size: 13px;
 }
 
-.inviteInput {
+.inviteInputBox {
   padding: 0px 15px 2.5px; /* mobile */
   border-radius: 5px;
   height: 100%;
@@ -37,27 +37,30 @@
   outline: none;
   overflow: hidden;
   word-break: break-all;
-  font-family: var(--fontInput);
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
 }
 
-.inviteInput1 {
+.inviteInputBox > p {
+  font-family: var(--fontInput);
+}
+
+.inviteInputBox1 {
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
   width: 83.5%;
 }
 
-.inviteInput2 {
+.inviteInputBox2 {
   border-radius: 0;
   width: 100px;
 }
 
 /* nonmobile */
 @media only screen and (min-device-width: 540px) {
-  .inviteInput {
+  .inviteInputBox {
     padding-left: 10px;
     padding-right: 10px;
   }

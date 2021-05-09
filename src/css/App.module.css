@@ -29,9 +29,9 @@
 
   /*FONTS*/
 
-  --fontBasic: Arial, sans-serif;
+  --fontBasic: "Rubik", Roboto, Arial, sans-serif;
 
-  --fontTitle: "Cambay", sans-serif;
+  --fontHeading: "Cambay", sans-serif;
 
   /* --fontLogo: "Sail", cursive; */
   /* --fontLogo: "Darker Grotesque", sans-serif; */
@@ -39,7 +39,8 @@
 
   --fontInput: monospace;
 
-  --fontInputFancy: "Courgette", cursive;
+  /* --fontBigInput: "Courgette", cursive; */
+  --fontBigInput: monospace;
 
   --fontButton: "Open Sans", sans-serif;
 }
@@ -47,6 +48,10 @@
 * {
   box-sizing: border-box;
   font-family: var(--fontBasic);
+}
+
+textarea {
+  font-family: var(--fontInput);
 }
 
 p {
@@ -87,7 +92,7 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: var(--fontTitle);
+  font-family: var(--fontHeading);
   font-weight: 700;
 }
 

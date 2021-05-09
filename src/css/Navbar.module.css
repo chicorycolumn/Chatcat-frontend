@@ -46,7 +46,7 @@
 }
 
 .navbarItem {
-  font-family: var(--fontTitle);
+  font-family: var(--fontHeading);
   font-weight: 700;
   display: flex;
   flex-direction: column;

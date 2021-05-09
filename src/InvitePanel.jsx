@@ -98,7 +98,7 @@ export default function InvitePanel(props) {
           Share this url with your friends
         </h4>
         <div className={`${styles.inputContainer2}`}>
-          <div className={`${styles.inviteInput} ${styles.inviteInput1}`}>
+          <div className={`${styles.inviteInputBox} ${styles.inviteInputBox1}`}>
             <p
               id="uInput"
               className={`${styles.inputText} ${s.noMargin} ${s.noPadding}`}
@@ -140,7 +140,7 @@ export default function InvitePanel(props) {
           >
             🔄
           </button>
-          <div className={`${styles.inviteInput} ${styles.inviteInput2}`}>
+          <div className={`${styles.inviteInputBox} ${styles.inviteInputBox2}`}>
             <p
               id="pInput"
               className={`${styles.inputText} ${s.noMargin} ${s.noPadding}`}

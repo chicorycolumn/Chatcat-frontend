@@ -64,7 +64,7 @@ export default function DoorPanel(props) {
           }}
           id="playerNameInput_DoorPanel"
           value={playerNameInput}
-          className={`${panelStyles.textarea1}`}
+          className={`${panelStyles.entryInput}`}
           maxLength={12}
           onChange={(e) => {
             setPlayerNameInput(browserUtils.alphanumerise(e.target.value));
@@ -82,7 +82,7 @@ export default function DoorPanel(props) {
           }}
           id="roomPasswordInput_DoorPanel"
           value={roomPasswordInput}
-          className={`${panelStyles.textarea1}`}
+          className={`${panelStyles.entryInput}`}
           maxLength={4}
           onChange={(e) => {
             setRoomPasswordInput(
