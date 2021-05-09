@@ -24,11 +24,14 @@ export const keydownToClose = (e, setShowCallback, label) => {
 };
 
 export const addListenerForKeydownEnterToSend = (
+  label,
   input,
   button,
   itemToHaveFocus
 ) => {
-  $(input).on("keydown", function (e) {
+  let inputEvent = `keydown.${label}`;
+
+  $(input).on(inputEvent, function (e) {
     if ($("#Alert").length) {
       e.preventDefault();
       return;

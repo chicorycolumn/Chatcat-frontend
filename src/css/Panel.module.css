@@ -114,7 +114,8 @@
   align-items: center;
 }
 
-.textarea1 {
+.entryInput {
+  font-family: var(--fontBigInput);
   width: 75%;
   font-size: 18px;
   height: 28px;
@@ -129,7 +130,7 @@
   outline: none;
 }
 
-.textarea1:hover,
+.entryInput:hover,
 .button1:hover {
   background-color: var(--pBlue_L3);
 }

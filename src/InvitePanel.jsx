@@ -41,7 +41,6 @@ const copyText = (inputId) => {
     })
     .catch((error) => {
       console.log(`Sorry, failed to copy text. ${error}`);
-      // alert(`Sorry, failed to copy text. ${error}`);
     });
 };
 
@@ -54,17 +53,6 @@ export default function InvitePanel(props) {
 
   useEffect(() => {
     displayUtils.splash(a, ["#copyButtonP", "#copyButtonU", "#newButton"], 1);
-
-    console.log("window.location.href", window.location.href);
-    console.log("document.URL", document.URL);
-
-    if (window.location.href) {
-      $("#uInput").text(window.location.href.split("http://")[1]);
-    }
-
-    if (document.URL) {
-      $("#uInput").text(document.URL.split("http://")[1]);
-    }
 
     $(document).on("click.InvitePanel", () => {
       displayUtils.clickOutsideToClose(
@@ -97,12 +85,12 @@ export default function InvitePanel(props) {
           Share this url with your friends
         </h4>
         <div className={`${styles.inputContainer2}`}>
-          <div className={`${styles.inviteInput} ${styles.inviteInput1}`}>
+          <div className={`${styles.inviteInputBox} ${styles.inviteInputBox1}`}>
             <p
               id="uInput"
               className={`${styles.inputText} ${s.noMargin} ${s.noPadding}`}
             >
-              {window.location.href && window.location.href.split("http://")[1]}
+              {window.location.href && window.location.href.split("//")[1]}
             </p>
           </div>
           <button
@@ -138,7 +126,7 @@ export default function InvitePanel(props) {
           >
             🔄
           </button>
-          <div className={`${styles.inviteInput} ${styles.inviteInput2}`}>
+          <div className={`${styles.inviteInputBox} ${styles.inviteInputBox2}`}>
             <p
               id="pInput"
               className={`${styles.inputText} ${s.noMargin} ${s.noPadding}`}

@@ -51,16 +51,18 @@
   padding: 0px;
   margin: 0px;
   padding-right: 10px;
-  width: 130px;
+  width: 140px;
+  min-width: 140px;
 }
 
 .chatDialogue {
   padding: 0px;
   margin: 0px;
-  width: 65%;
+  width: 72.5%;
 }
 
 .chatInputContainer {
+  height: 40px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -71,6 +73,7 @@
   width: 80%;
   height: 100%;
   background-color: var(--pBlue_L3);
+  padding: 10px 10px 0px 10px;
 }
 
 .chatboxInput:hover {

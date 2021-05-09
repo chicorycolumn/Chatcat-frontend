@@ -26,6 +26,7 @@ export default function Chatbox(props) {
     console.log("~~Chatbox~~");
 
     displayUtils.addListenerForKeydownEnterToSend(
+      "chatbox",
       "#chatboxInput_Chatbox",
       "#chatboxSendButton_Chatbox"
     );
@@ -67,7 +68,7 @@ export default function Chatbox(props) {
       props.socket.off("Player entered your room", SH_playerEntered);
       props.socket.off("Player left your room", SH_playerLeft);
       props.socket.off("Chat message");
-      $("#chatboxInput_Chatbox").off("keydown");
+      $("#chatboxInput_Chatbox").off("keydown.chatbox");
     };
   }, [props.socket, chatArray]);
 
@@ -107,6 +108,9 @@ export default function Chatbox(props) {
         className={`${s.overflowScroll} ${styles.chatOutputContainer}`}
       >
         {chatArray.map((chatItem) => {
+          let chatName = chatItem[0];
+          let chatDialogue = chatItem[1];
+
           return typeof chatItem === "string" ? (
             <div className={`${styles.chatItem}`}>
               <p className={`${styles.chatAnnouncement}`}>{chatItem}</p>
@@ -115,13 +119,13 @@ export default function Chatbox(props) {
             <div className={`${styles.chatItem}`}>
               <p
                 className={`${styles.chatName}
-              ${s.overflowSplit}
+              ${s.overflowSplit} ${chatName.length > 10 ? g.nameSmaller : ""}
               `}
               >
-                {chatItem[0]}
+                {chatName}
               </p>
               <p className={`${styles.chatDialogue} ${s.overflowSplit}`}>
-                {chatItem[1]}
+                {chatDialogue}
               </p>
             </div>
           );
@@ -132,7 +136,7 @@ export default function Chatbox(props) {
           id="chatboxInput_Chatbox"
           className={`${styles.chatboxInput}`}
           value={chatMsg}
-          maxLength="60"
+          maxLength="50"
           type="text"
           onChange={(e) => {
             setChatMsg(e.target.value);

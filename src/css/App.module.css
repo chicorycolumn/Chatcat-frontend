@@ -1,4 +1,6 @@
 :root {
+  /* COLORING */
+
   /*Base*/
   --pPink: #ff1b8d;
   --pYellow: #ffda00;
@@ -24,12 +26,33 @@
   --pYellow_L3: #fffcea;
   --pBlue_L3: #dbf0fa;
   --pBlue_L2a: #cfebf8;
+
+  /*FONTS*/
+
+  /* --fontBasic: "Dosis", Roboto, Arial, sans-serif; */
+  --fontBasic: "Rubik", Roboto, Arial, sans-serif;
+
+  --fontHeading: "Cambay", sans-serif;
+
+  /* --fontLogo: "Sail", cursive; */
+  /* --fontLogo: "Darker Grotesque", sans-serif; */
+  --fontLogo: "Courgette", cursive;
+
+  --fontInput: monospace;
+
+  /* --fontBigInput: "Courgette", cursive; */
+  --fontBigInput: monospace;
+
+  --fontButton: "Open Sans", sans-serif;
 }
 
 * {
   box-sizing: border-box;
-  /* font-family: "Roboto" sans-serif; */
-  font-family: "Open Sans" sans-serif;
+  font-family: var(--fontBasic);
+}
+
+textarea {
+  font-family: var(--fontInput);
 }
 
 p {
@@ -70,15 +93,12 @@ h2,
 h3,
 h4,
 h5 {
-  /* font-family: "Sail", cursive; */
-  /* font-family: "Courgette", cursive; */
-  /* font-family: "Darker Grotesque", sans-serif; */
-  font-family: "Cambay", sans-serif;
+  font-family: var(--fontHeading);
   font-weight: 700;
 }
 
 button {
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--fontButton);
 }
 
 h1,

@@ -27,13 +27,14 @@ export default function LobbyPanel(props) {
     }
 
     displayUtils.addListenerForKeydownEnterToSend(
+      "lobby",
       document,
       "#enterButton_LobbyPanel",
       "#LobbyPanel"
     );
 
     return function cleanup() {
-      $(document).off("keydown");
+      $(document).off("keydown.lobby");
     };
   }, [props.playerData]);
 
@@ -44,6 +45,22 @@ export default function LobbyPanel(props) {
       id="LobbyPanel"
       className={`${g.boxStyle1} ${panelStyles.bigPortraitPanel} ${panelStyles.panelYellow1} ${s.noOutline}`}
     >
+      <div className={`${panelStyles.innerBox1}`}>
+        <h2>Your name</h2>
+        <textarea
+          onClick={(e) => {
+            displayUtils.selectText(document, "playerNameInput_LobbyPanel");
+          }}
+          id="playerNameInput_LobbyPanel"
+          value={playerNameInput}
+          className={`${panelStyles.entryInput}`}
+          maxLength={12}
+          onChange={(e) => {
+            setPlayerNameInput(browserUtils.alphanumerise(e.target.value));
+          }}
+        ></textarea>
+      </div>
+
       <div className={`${panelStyles.innerBox1}`}>
         <h2
           className={`${s.noSelect} ${panelStyles.title1}`}
@@ -66,26 +83,10 @@ export default function LobbyPanel(props) {
           }}
           id="roomNameInput_LobbyPanel"
           value={props.roomNameInput}
-          className={`${panelStyles.textarea1}`}
+          className={`${panelStyles.entryInput}`}
           maxLength={12}
           onChange={(e) => {
             props.setRoomNameInput(browserUtils.alphanumerise(e.target.value));
-          }}
-        ></textarea>
-      </div>
-
-      <div className={`${panelStyles.innerBox1}`}>
-        <h2>Your name</h2>
-        <textarea
-          onClick={(e) => {
-            displayUtils.selectText(document, "playerNameInput_LobbyPanel");
-          }}
-          id="playerNameInput_LobbyPanel"
-          value={playerNameInput}
-          className={`${panelStyles.textarea1}`}
-          maxLength={12}
-          onChange={(e) => {
-            setPlayerNameInput(browserUtils.alphanumerise(e.target.value));
           }}
         ></textarea>
       </div>

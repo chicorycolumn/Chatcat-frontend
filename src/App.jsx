@@ -97,16 +97,14 @@ export default function App() {
 
     socket.on("Entry granted", function (data) {
       console.log("Ø Entry granted");
-      setPlayerData(data.player);
-      setSuccessfullyEnteredRoomName(data.room.roomName);
-
       $("#transitionObscurusImage").removeClass(`${a.fadeOutFast}`);
       $("#transitionObscurusImage").addClass(`${a.fadeInFast}`);
-
       $("#transitionObscurus").removeClass(`${a.fadeOut}`);
       $("#transitionObscurus").addClass(`${a.fadeIn}`);
 
       setTimeout(() => {
+        setPlayerData(data.player);
+        setSuccessfullyEnteredRoomName(data.room.roomName);
         navigate(`/${data.room.roomName}`);
       }, 200);
     });
