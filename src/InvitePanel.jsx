@@ -90,7 +90,8 @@ export default function InvitePanel(props) {
               id="uInput"
               className={`${styles.inputText} ${s.noMargin} ${s.noPadding}`}
             >
-              {window.location.href && window.location.href.split("//")[1]}
+              chattercat.netlify.app/purpleant
+              {/* {window.location.href && window.location.href.split("//")[1]} */}
             </p>
           </div>
           <button
