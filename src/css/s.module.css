@@ -92,6 +92,6 @@
   flex-direction: row;
 }
 
-.visHidden {
-  visibility: hidden;
+.dispNone {
+  display: none;
 }
