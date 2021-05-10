@@ -119,7 +119,7 @@ export default function App() {
       }, 200);
     });
 
-    socket.on("Room not created", function (data) {
+    socket.on("Room not created or found", function (data) {
       navigate("/");
       setShowAlert(data.msg);
     });

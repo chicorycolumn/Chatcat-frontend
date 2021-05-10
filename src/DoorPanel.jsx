@@ -29,9 +29,35 @@ export default function DoorPanel(props) {
   useEffect(() => {
     displayUtils.splash(a, "#enterButton_DoorPanel", 2, 1);
 
-    setTimeout(() => {
-      $("#roomPasswordInput_DoorPanel").select();
-    }, 100);
+    if (props.socket) {
+      console.log("€ Query room password protection");
+      props.socket.emit("Query room password protection", {
+        roomName: location.pathname.slice(1),
+      });
+
+      props.socket.on("Queried room password protection", function (data) {
+        console.log("Ø Queried room password protection", data);
+        if (data.isPasswordProtected) {
+          setTimeout(() => {
+            $("#passwordOverbox").removeClass(s.opacity5);
+            $("#roomPasswordInput_DoorPanel").prop("disabled", false);
+            $("#roomPasswordInput_DoorPanel").removeClass(
+              panelStyles.entryInputNoHover
+            );
+            $("#roomPasswordInput_DoorPanel").addClass(panelStyles.entryInput);
+
+            $("#roomPasswordInput_DoorPanel").select();
+          }, 100);
+        } else {
+          $("#passwordOverbox").addClass(s.opacity5);
+          $("#roomPasswordInput_DoorPanel").prop("disabled", true);
+          $("#roomPasswordInput_DoorPanel").addClass(
+            panelStyles.entryInputNoHover
+          );
+          $("#roomPasswordInput_DoorPanel").removeClass(panelStyles.entryInput);
+        }
+      });
+    }
 
     if (props.playerData.playerName) {
       setPlayerNameInput(props.playerData.playerName);
@@ -75,7 +101,7 @@ export default function DoorPanel(props) {
           }}
         ></textarea>
       </div>
-      <div className={`${panelStyles.innerBox1}`}>
+      <div id="passwordOverbox" className={`${panelStyles.innerBox1}`}>
         <h2 className={`${s.noSelect} ${panelStyles.title1}`}>Room password</h2>
         <textarea
           onClick={(e) => {
@@ -83,7 +109,7 @@ export default function DoorPanel(props) {
           }}
           id="roomPasswordInput_DoorPanel"
           value={roomPasswordInput}
-          className={`${panelStyles.entryInput}`}
+          className={`${panelStyles.entryInput} ${panelStyles.entryInputNoHover}`}
           maxLength={4}
           onChange={(e) => {
             setRoomPasswordInput(
