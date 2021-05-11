@@ -54,6 +54,9 @@ export default function OptionsNavpanel(props) {
               props.socket.emit("Wipe game stats", {
                 roomName: props.successfullyEnteredRoomName,
               });
+              setTimeout(() => {
+                props.setShowOptionsNavpanel(false);
+              }, 500);
             }}
             id="buttonRestart"
             className={`${panelStyles.copyButton}`}
