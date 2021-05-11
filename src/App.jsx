@@ -34,10 +34,8 @@ export default function App() {
   const [roomNameInput, setRoomNameInput] = useState("");
   const [playerData, setPlayerData] = useState({});
   console.log("((So playerData is)))", playerData);
-  const [
-    successfullyEnteredRoomName,
-    setSuccessfullyEnteredRoomName,
-  ] = useState(null);
+  const [successfullyEnteredRoomName, setSuccessfullyEnteredRoomName] =
+    useState(null);
   const [socket, setSocket] = useState(null);
   const [socketNudge, setSocketNudge] = useState();
   const [showInviteNavpanel, setShowInviteNavpanel] = useState();
@@ -148,7 +146,7 @@ export default function App() {
           .slice(17, -4)}.`
       );
       navigate("/");
-      setShowAlert("Your connection was reset.");
+      setShowAlert({ text: "Your connection was reset.", emotion: "sad" });
       setTimeout(() => {
         setShowAlert(null);
       }, 2500);

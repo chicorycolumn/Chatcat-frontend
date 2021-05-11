@@ -99,7 +99,7 @@ export default function DoorPanel(props) {
     <div
       tabIndex="0"
       id="DoorPanel"
-      className={`${g.boxStyle1} ${panelStyles.bigPortraitPanel} ${panelStyles.panelPink1} ${s.noOutline}`}
+      className={`${g.boxStyle1} ${panelStyles.bigPortraitPanel} ${panelStyles.panelPinkFancy} ${s.noOutline}`}
     >
       <div className={`${panelStyles.innerBox1}`}>
         <h2 className={`${s.noSelect} ${panelStyles.title1}`}>Your name</h2>

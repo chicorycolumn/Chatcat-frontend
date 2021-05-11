@@ -1,8 +1,16 @@
-.bg_img {
+.bg_img_left {
   width: 65px;
   position: absolute;
   bottom: 0;
   left: 0;
+  opacity: 0.1;
+}
+
+.bg_img_right {
+  width: 65px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
   opacity: 0.1;
 }
 

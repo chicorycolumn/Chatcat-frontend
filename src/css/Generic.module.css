@@ -55,3 +55,18 @@
   padding-top: 1.5px !important;
   font-size: 13px !important;
 }
+
+.tooltip {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: absolute;
+  z-index: 3;
+  visibility: hidden;
+  left: 25px;
+}
+
+.tooltipHolder:hover .tooltip {
+  visibility: visible;
+}

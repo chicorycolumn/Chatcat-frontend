@@ -76,7 +76,7 @@ export default function InviteNavpanel(props) {
     <div
       tabIndex="0"
       id="InviteNavpanel"
-      className={`${g.boxStyle1} ${panelStyles.mediumLandscapePanel} ${panelStyles.panelBlue2} ${s.noOutline}`}
+      className={`${g.boxStyle1} ${panelStyles.mediumLandscapePanel} ${panelStyles.panelBlue1} ${s.noOutline}`}
     >
       <button
         onClick={(e) => {
@@ -106,6 +106,7 @@ export default function InviteNavpanel(props) {
             </p>
           </div>
           <button
+            title="Copy URL"
             id="copyButtonU"
             className={`${panelStyles.copyButton} ${panelStyles.copyButtonRight}`}
             onClick={() => {
@@ -124,6 +125,7 @@ export default function InviteNavpanel(props) {
           Copied!
         </h4>
         <h4
+          title="Toggle password protection"
           onClick={() => {
             if (!props.playerData.isRoomboss) {
               return;
@@ -137,7 +139,7 @@ export default function InviteNavpanel(props) {
           id="pTitle"
           className={`${s.noSelect} ${panelStyles.title2}`}
         >
-          Password protect room
+          Password protection
           {props.playerData.isRoomboss &&
             (props.roomData.isPasswordProtected ? " ☑️" : " ⬜")}
         </h4>
@@ -147,6 +149,7 @@ export default function InviteNavpanel(props) {
           }`}
         >
           <button
+            title="Refresh room password"
             id="newButton"
             disabled={
               !props.playerData.isRoomboss ||
@@ -176,6 +179,7 @@ export default function InviteNavpanel(props) {
             )}
           </div>
           <button
+            title="Copy room password"
             disabled={!props.roomData.isPasswordProtected}
             id="copyButtonP"
             className={`${panelStyles.copyButton} ${panelStyles.copyButtonRight}`}
