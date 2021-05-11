@@ -7,10 +7,7 @@ import a from "./css/Animations.module.css";
 import panelStyles from "./css/Panel.module.css";
 import styles from "./css/Navpanel.module.css";
 
-import * as roomUtils from "./utils/roomUtils.js";
-import * as browserUtils from "./utils/browserUtils.js";
-import * as displayUtils from "./utils/displayUtils.js";
-import * as gameUtils from "./utils/gameUtils.js";
+const utils = require("./utils/utils.js");
 
 const copyText = (inputId) => {
   let titleId = `${inputId[0]}Title`;
@@ -41,23 +38,23 @@ const copyText = (inputId) => {
 export default function InviteNavpanel(props) {
   console.log("((InviteNavpanel))");
 
-  let rpw = browserUtils.getCookie("roomPassword");
+  let rpw = utils.browser.getCookie("roomPassword");
 
   const [roomPassword, setRoomPassword] = useState(rpw && rpw.split("-")[0]);
 
   useEffect(() => {
-    displayUtils.splash(a, ["#copyButtonP", "#copyButtonU", "#newButton"], 1);
+    utils.display.splash(a, ["#copyButtonP", "#copyButtonU", "#newButton"], 1);
 
     function updatePasswordInput() {
       setTimeout(() => {
-        setRoomPassword(browserUtils.getCookie("roomPassword").split("-")[0]);
+        setRoomPassword(utils.browser.getCookie("roomPassword").split("-")[0]);
       }, 50);
     }
 
     props.socket.on("Room password updated", updatePasswordInput);
 
     $(document).on("click.InviteNavpanel", () => {
-      displayUtils.clickOutsideToClose(
+      utils.display.clickOutsideToClose(
         "#InviteNavpanel",
         props.setShowInviteNavpanel
       );

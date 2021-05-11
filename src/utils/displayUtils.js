@@ -1,11 +1,11 @@
 const $ = require("jquery");
 
-export const updateScroll = (elementId) => {
+exports.updateScroll = (elementId) => {
   let element = document.getElementById(elementId);
   element.scrollTop = element.scrollHeight;
 };
 
-export const clickOutsideToClose = (id, setShowCallback) => {
+exports.clickOutsideToClose = (id, setShowCallback) => {
   console.log(`${id.slice(1)} clickOutsideToClose`);
 
   if (!($(id).is(":focus") || $(id).find(":focus").length)) {
@@ -13,7 +13,7 @@ export const clickOutsideToClose = (id, setShowCallback) => {
   }
 };
 
-export const keydownToClose = (e, setShowCallback, label) => {
+exports.keydownToClose = (e, setShowCallback, label) => {
   console.log(`${label} keydownToClose`, e.keyCode, e.which);
 
   let exitKeyCodes = [13, 27, 32];
@@ -23,7 +23,7 @@ export const keydownToClose = (e, setShowCallback, label) => {
   }
 };
 
-export const addListenerForKeydownEnterToSend = (
+exports.addListenerForKeydownEnterToSend = (
   label,
   input,
   button,
@@ -50,13 +50,20 @@ export const addListenerForKeydownEnterToSend = (
   });
 };
 
-export const selectText = (document, id) => {
+exports.selectText = (document, id) => {
   const el = document.getElementById(id);
   el.select();
   el.setSelectionRange(0, 99999);
 };
 
-export const splash = (a, IDs, size = 2, time = 1, color = "blue") => {
+exports.putSplash = (a, e, splashClass, time) => {
+  $(e.target).addClass(`${a[splashClass]}`);
+  setTimeout(() => {
+    $(e.target).removeClass(`${a[splashClass]}`);
+  }, { 1: 250, 2: 500, 3: 1000 }[time]);
+};
+
+exports.splash = (a, IDs, size = 2, time = 1, color = "blue") => {
   let splashColor = color[0].toUpperCase() + color.slice(1);
   let splashClass = `splash${splashColor}S${size}T${time}`;
 
@@ -68,14 +75,7 @@ export const splash = (a, IDs, size = 2, time = 1, color = "blue") => {
     $(id).removeClass(`${a[splashClass]}`);
 
     $(id).on("click", function (e) {
-      putSplash(a, e, splashClass, time);
+      exports.putSplash(a, e, splashClass, time);
     });
   });
-};
-
-export const putSplash = (a, e, splashClass, time) => {
-  $(e.target).addClass(`${a[splashClass]}`);
-  setTimeout(() => {
-    $(e.target).removeClass(`${a[splashClass]}`);
-  }, { 1: 250, 2: 500, 3: 1000 }[time]);
 };

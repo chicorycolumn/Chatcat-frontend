@@ -17,10 +17,7 @@ import Navbar from "./Navbar.jsx";
 import OptionsNavpanel from "./OptionsNavpanel.jsx";
 import Alert from "./Alert.jsx";
 
-import * as roomUtils from "./utils/roomUtils.js";
-import * as browserUtils from "./utils/browserUtils.js";
-import * as displayUtils from "./utils/displayUtils.js";
-import * as gameUtils from "./utils/gameUtils.js";
+const utils = require("./utils/utils.js");
 
 const localEnv = false;
 const ENDPOINT = localEnv
@@ -56,8 +53,8 @@ export default function App() {
       setConnectErrorAlert(null);
 
       socket.emit("Load player", {
-        truePlayerName: browserUtils.getCookie("truePlayerName"),
-        playerName: browserUtils.getCookie("playerName"),
+        truePlayerName: utils.browser.getCookie("truePlayerName"),
+        playerName: utils.browser.getCookie("playerName"),
       });
 
       setSocketNudge(true);
@@ -87,8 +84,8 @@ export default function App() {
         });
       }
 
-      browserUtils.setCookie("playerName", data.player.playerName);
-      browserUtils.setCookie("truePlayerName", data.player.truePlayerName);
+      utils.browser.setCookie("playerName", data.player.playerName);
+      utils.browser.setCookie("truePlayerName", data.player.truePlayerName);
     });
 
     socket.on("Entry granted", function (data) {
@@ -97,7 +94,7 @@ export default function App() {
           "Setting cookie:",
           `${data.roomPassword}-${successfullyEnteredRoomName}`
         );
-        browserUtils.setCookie(
+        utils.browser.setCookie(
           "roomPassword",
           `${data.roomPassword}-${successfullyEnteredRoomName}`
         );

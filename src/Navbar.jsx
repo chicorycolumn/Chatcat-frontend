@@ -9,10 +9,7 @@ import styles from "./css/Navbar.module.css";
 import navlogo from "./images/logo_cat.png";
 import navlogoBroken from "./images/logo_cat_broken.png";
 
-import * as roomUtils from "./utils/roomUtils.js";
-import * as browserUtils from "./utils/browserUtils.js";
-import * as displayUtils from "./utils/displayUtils.js";
-import * as gameUtils from "./utils/gameUtils.js";
+const utils = require("./utils/utils.js");
 
 let devSwitch = false;
 

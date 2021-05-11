@@ -10,21 +10,18 @@ import styles from "./css/Alert.module.css";
 import sadImage from "./images/witchcat_sad_exclam.png";
 import happyImage from "./images/witchcat_happy.png";
 
-import * as roomUtils from "./utils/roomUtils.js";
-import * as browserUtils from "./utils/browserUtils.js";
-import * as displayUtils from "./utils/displayUtils.js";
-import * as gameUtils from "./utils/gameUtils.js";
+const utils = require("./utils/utils.js");
 
 export default function Alert(props) {
   console.log("((Alert))");
 
   useEffect(() => {
     $(document).on("keydown.Alert", (e) => {
-      displayUtils.keydownToClose(e, props.setShowAlert, "Alert");
+      utils.display.keydownToClose(e, props.setShowAlert, "Alert");
     });
 
     $(document).on("click.Alert", () => {
-      displayUtils.clickOutsideToClose("#Alert", props.setShowAlert);
+      utils.display.clickOutsideToClose("#Alert", props.setShowAlert);
     });
 
     return function cleanup() {
