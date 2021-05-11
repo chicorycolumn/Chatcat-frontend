@@ -125,6 +125,10 @@ export default function InviteNavpanel(props) {
         </h4>
         <h4
           onClick={() => {
+            if (!props.playerData.isRoomboss) {
+              return;
+            }
+
             props.socket.emit("Update room password", {
               roomName: props.roomData.roomName,
               flipPasswordProtection: true,
@@ -134,7 +138,8 @@ export default function InviteNavpanel(props) {
           className={`${s.noSelect} ${panelStyles.title2}`}
         >
           Password protect room
-          {props.roomData.isPasswordProtected ? " ☑️" : " ⬜"}
+          {props.playerData.isRoomboss &&
+            (props.roomData.isPasswordProtected ? " ☑️" : " ⬜")}
         </h4>
         <div
           className={`${styles.inputContainer1} ${

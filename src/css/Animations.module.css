@@ -55,19 +55,19 @@
     background-color: inherit;
   }
   10% {
-    background-color: var(--pPink_D1);
+    background-color: var(--pPink);
   }
   20% {
     background-color: inherit;
   }
   30% {
-    background-color: var(--pPink_D1);
+    background-color: var(--pPink);
   }
   40% {
     background-color: inherit;
   }
   50% {
-    background-color: var(--pPink_D1);
+    background-color: var(--pPink);
   }
   100% {
     background-color: inherit;
@@ -78,19 +78,19 @@
     background-color: inherit;
   }
   10% {
-    background-color: var(--pPink_D1);
+    background-color: var(--pPink);
   }
   20% {
     background-color: inherit;
   }
   30% {
-    background-color: var(--pPink_D1);
+    background-color: var(--pPink);
   }
   40% {
     background-color: inherit;
   }
   50% {
-    background-color: var(--pPink_D1);
+    background-color: var(--pPink);
   }
   100% {
     background-color: inherit;

@@ -32,7 +32,6 @@ export default function Chatbox(props) {
     );
 
     function SH_playerEntered(data) {
-      console.log(333);
       addToChatArray(`${data.player.playerName} entered`);
     }
     function SH_playerLeft(data) {

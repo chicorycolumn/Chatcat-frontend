@@ -50,12 +50,19 @@ export default function RoomWrapper(props) {
         props.socket.emit("Request room data", {
           roomName: props.successfullyEnteredRoomName,
         });
-        setTimeout(() => {
-          $("#Invite_Navbar").addClass(`${a.flashPink}`);
+
+        if (props.playerData.isRoomboss) {
           setTimeout(() => {
-            $("#Invite_Navbar").removeClass(`${a.flashPink}`);
-          }, 5000);
-        }, 1000);
+            props.setShowInviteNavpanel(true);
+          }, 1000);
+        } else {
+          setTimeout(() => {
+            $("#Invite_Navbar").addClass(`${a.flashPink}`);
+            setTimeout(() => {
+              $("#Invite_Navbar").removeClass(`${a.flashPink}`);
+            }, 5000);
+          }, 1000);
+        }
       }
 
       props.socket.on("Room data", function (data) {
