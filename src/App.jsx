@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Router, navigate, Link, useLocation } from "@reach/router";
+import { Router, navigate } from "@reach/router";
 import socketIOClient from "socket.io-client";
 import $ from "jquery";
 
@@ -8,6 +8,8 @@ import g from "./css/Generic.module.css";
 import a from "./css/Animations.module.css";
 import panelStyles from "./css/Panel.module.css";
 import styles from "./css/App.module.css";
+
+import logoCentred from "./images/logo_cat_centred.png";
 
 import LobbyPanel from "./LobbyPanel.jsx";
 import ContactPage from "./ContactPage.jsx";
@@ -20,8 +22,6 @@ import * as roomUtils from "./utils/roomUtils.js";
 import * as browserUtils from "./utils/browserUtils.js";
 import * as displayUtils from "./utils/displayUtils.js";
 import * as gameUtils from "./utils/gameUtils.js";
-
-import logoCentred from "./images/logo_cat_centred.png";
 
 const localEnv = true;
 const ENDPOINT = localEnv

@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Router, navigate, Link, useLocation } from "@reach/router";
-import panelStyles from "./css/Panel.module.css";
-import $ from "jquery";
+import React from "react";
+import { Link } from "@reach/router";
 
 import s from "./css/s.module.css";
 import g from "./css/Generic.module.css";

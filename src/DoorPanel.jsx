@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Router, navigate, Link, useLocation } from "@reach/router";
+import { useLocation } from "@reach/router";
 import $ from "jquery";
 
 import s from "./css/s.module.css";

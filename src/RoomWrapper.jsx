@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Router, navigate, Link, useLocation } from "@reach/router";
+import { navigate, useLocation } from "@reach/router";
 import $ from "jquery";
 
 import s from "./css/s.module.css";
@@ -9,11 +9,8 @@ import styles from "./css/Room.module.css";
 import panelStyles from "./css/Panel.module.css";
 
 import DoorPanel from "./DoorPanel";
-import PlayerList from "./PlayerList";
 import Room from "./Room";
 import InviteNavpanel from "./InviteNavpanel.jsx";
-import Instructions from "./Instructions";
-import Chatbox from "./Chatbox";
 
 import * as roomUtils from "./utils/roomUtils.js";
 import * as browserUtils from "./utils/browserUtils.js";

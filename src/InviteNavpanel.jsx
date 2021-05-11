@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Router, navigate, Link, useLocation } from "@reach/router";
 import $ from "jquery";
 
 import s from "./css/s.module.css";
@@ -7,7 +6,6 @@ import g from "./css/Generic.module.css";
 import a from "./css/Animations.module.css";
 import panelStyles from "./css/Panel.module.css";
 import styles from "./css/Navpanel.module.css";
-import PlayerList from "./PlayerList.jsx";
 
 import * as roomUtils from "./utils/roomUtils.js";
 import * as browserUtils from "./utils/browserUtils.js";

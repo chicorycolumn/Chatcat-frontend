@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Router, navigate, Link, useLocation } from "@reach/router";
+import React, { useEffect } from "react";
 import $ from "jquery";
 
 import s from "./css/s.module.css";
@@ -7,6 +6,7 @@ import g from "./css/Generic.module.css";
 import a from "./css/Animations.module.css";
 import panelStyles from "./css/Panel.module.css";
 import styles from "./css/Alert.module.css";
+
 import sadImage from "./images/witchcat_sad_exclam.png";
 import happyImage from "./images/witchcat_happy.png";
 
