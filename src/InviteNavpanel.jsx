@@ -133,7 +133,7 @@ export default function InviteNavpanel(props) {
           id="pTitle"
           className={`${s.noSelect} ${panelStyles.title2}`}
         >
-          Room is password protected
+          Password protect room
           {props.roomData.isPasswordProtected ? " ☑️" : " ⬜"}
         </h4>
         <div

@@ -140,6 +140,7 @@
   height: 28px;
   text-align: center;
   overflow: hidden;
+  color: transparent;
 }
 
 .button1 {
