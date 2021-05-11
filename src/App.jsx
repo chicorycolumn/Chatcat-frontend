@@ -22,7 +22,7 @@ import * as browserUtils from "./utils/browserUtils.js";
 import * as displayUtils from "./utils/displayUtils.js";
 import * as gameUtils from "./utils/gameUtils.js";
 
-const localEnv = true;
+const localEnv = false;
 const ENDPOINT = localEnv
   ? "http://127.0.0.1:4002"
   : "https://chattercat-server.herokuapp.com/";
