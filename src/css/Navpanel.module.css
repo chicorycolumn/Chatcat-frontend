@@ -4,6 +4,7 @@
   justify-content: center;
   text-align: center;
   width: 100%;
+  flex-grow: 1;
 }
 
 .inputContainer1 {
@@ -13,6 +14,14 @@
   justify-content: center;
   text-align: center;
   height: 35px;
+}
+
+.faded {
+  opacity: 0.5;
+}
+
+.copiedTitle {
+  color: var(--pBlue);
 }
 
 .inputContainer2 {

@@ -17,6 +17,10 @@
   opacity: 0;
 }
 
+.opacity5 {
+  opacity: 0.5;
+}
+
 .noSelect {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -92,6 +96,6 @@
   flex-direction: row;
 }
 
-.visHidden {
-  visibility: hidden;
+.dispNone {
+  display: none;
 }

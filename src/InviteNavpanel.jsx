@@ -27,16 +27,13 @@ const copyText = (inputId) => {
     .writeText(textToCopy)
     .then(() => {
       $(`#${inputId}`).css({ color: "var(--pBlue)" });
-      $(`#${titleId}`).css({ color: "var(--pBlue)" });
-      titleEl.innerText = "Copied!";
+      $(`#${titleId}`).addClass(s.dispNone);
+      $(`#${titleId}2`).removeClass(s.dispNone);
 
       setTimeout(() => {
         $(`#${inputId}`).css({ color: "var(--pBlue_D3)" });
-        $(`#${titleId}`).css({ color: "var(--pBlue_D3)" });
-        titleEl.innerText = {
-          p: "Room is password protected",
-          u: "Share this url with your friends",
-        }[inputId[0]];
+        $(`#${titleId}`).removeClass(s.dispNone);
+        $(`#${titleId}2`).addClass(s.dispNone);
       }, 450);
     })
     .catch((error) => {
@@ -54,6 +51,14 @@ export default function InviteNavpanel(props) {
   useEffect(() => {
     displayUtils.splash(a, ["#copyButtonP", "#copyButtonU", "#newButton"], 1);
 
+    function updatePasswordInput() {
+      setTimeout(() => {
+        setRoomPassword(browserUtils.getCookie("roomPassword").split("-")[0]);
+      }, 50);
+    }
+
+    props.socket.on("Room password updated", updatePasswordInput);
+
     $(document).on("click.InviteNavpanel", () => {
       displayUtils.clickOutsideToClose(
         "#InviteNavpanel",
@@ -63,6 +68,7 @@ export default function InviteNavpanel(props) {
 
     return function cleanup() {
       $(document).off("click.InviteNavpanel");
+      props.socket.off("Room password updated", updatePasswordInput);
     };
   }, []);
 
@@ -81,6 +87,12 @@ export default function InviteNavpanel(props) {
         &times;
       </button>
       <div className={`${styles.box}`}>
+        <h4
+          id="uTitle2"
+          className={`${s.noSelect} ${panelStyles.title2} ${styles.copiedTitle} ${s.dispNone}`}
+        >
+          Copied!
+        </h4>
         <h4 id="uTitle" className={`${s.noSelect} ${panelStyles.title2}`}>
           Share this url with your friends
         </h4>
@@ -105,36 +117,61 @@ export default function InviteNavpanel(props) {
         </div>
       </div>
       <div className={`${styles.box}`}>
-        <h4 id="pTitle" className={`${s.noSelect} ${panelStyles.title2}`}>
-          Room is password protected
+        <h4
+          id="pTitle2"
+          className={`${s.noSelect} ${panelStyles.title2} ${styles.copiedTitle} ${s.dispNone}`}
+        >
+          Copied!
         </h4>
-        <div className={`${styles.inputContainer1}`}>
+        <h4
+          onClick={() => {
+            props.socket.emit("Update room password", {
+              roomName: props.roomData.roomName,
+              flipPasswordProtection: true,
+            });
+          }}
+          id="pTitle"
+          className={`${s.noSelect} ${panelStyles.title2}`}
+        >
+          Password protect room
+          {props.roomData.isPasswordProtected ? " ☑️" : " ⬜"}
+        </h4>
+        <div
+          className={`${styles.inputContainer1} ${
+            !props.roomData.isPasswordProtected ? styles.faded : ""
+          }`}
+        >
           <button
             id="newButton"
-            disabled={!props.playerData.isRoomboss}
+            disabled={
+              !props.playerData.isRoomboss ||
+              !props.roomData.isPasswordProtected
+            }
             className={`${panelStyles.copyButton} ${panelStyles.copyButtonLeft}`}
             onClick={() => {
-              let newRoomPassword = roomUtils.fourLetterWord(roomPassword);
-
-              setRoomPassword(newRoomPassword);
-
               props.socket.emit("Update room password", {
                 roomName: props.successfullyEnteredRoomName,
-                roomPassword: newRoomPassword,
               });
             }}
           >
             🔄
           </button>
-          <div className={`${styles.inviteInputBox} ${styles.inviteInputBox2}`}>
-            <p
-              id="pInput"
-              className={`${styles.inputText} ${s.noMargin} ${s.noPadding}`}
-            >
-              {roomPassword}
-            </p>
+          <div
+            className={`${styles.inviteInputBox} ${styles.inviteInputBox2} ${
+              !props.roomData.isPasswordProtected ? s.noSelect : ""
+            }`}
+          >
+            {props.roomData.isPasswordProtected && (
+              <p
+                id="pInput"
+                className={`${styles.inputText} ${s.noMargin} ${s.noPadding}`}
+              >
+                {roomPassword && roomPassword}
+              </p>
+            )}
           </div>
           <button
+            disabled={!props.roomData.isPasswordProtected}
             id="copyButtonP"
             className={`${panelStyles.copyButton} ${panelStyles.copyButtonRight}`}
             onClick={() => {

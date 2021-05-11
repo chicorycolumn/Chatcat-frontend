@@ -133,6 +133,16 @@
   overflow: hidden;
 }
 
+.entryInputNoHover {
+  font-family: var(--fontBigInput);
+  width: 75%;
+  font-size: 18px;
+  height: 28px;
+  text-align: center;
+  overflow: hidden;
+  color: transparent;
+}
+
 .button1 {
   width: 100px;
   height: 50px;

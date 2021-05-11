@@ -24,9 +24,9 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.65);
   z-index: 1;
-  position: fixed;
+  position: absolute;
+  top: 30px;
   height: 110%;
-  margin-top: -20px;
 }
 
 .transitionObscurus {

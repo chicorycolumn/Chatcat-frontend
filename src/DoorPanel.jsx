@@ -29,9 +29,46 @@ export default function DoorPanel(props) {
   useEffect(() => {
     displayUtils.splash(a, "#enterButton_DoorPanel", 2, 1);
 
-    setTimeout(() => {
-      $("#roomPasswordInput_DoorPanel").select();
-    }, 100);
+    if (props.socket) {
+      console.log("€ Query room password protection");
+      props.socket.emit("Query room password protection", {
+        roomName: location.pathname.slice(1),
+      });
+
+      props.socket.on("Queried room password protection", function (data) {
+        console.log("Ø Queried room password protection", data);
+
+        if (data.roomName !== location.pathname.slice(1)) {
+          console.log(
+            `But the roomNames don't match? We received password status for ${
+              data.roomName
+            } but we're at ${location.pathname.slice(1)}.`
+          );
+          return;
+        }
+
+        if (data.isPasswordProtected) {
+          setTimeout(() => {
+            $("#passwordOverbox").removeClass(s.opacity5);
+            $("#roomPasswordInput_DoorPanel").prop("disabled", false);
+            $("#roomPasswordInput_DoorPanel").removeClass(
+              panelStyles.entryInputNoHover
+            );
+            $("#roomPasswordInput_DoorPanel").addClass(panelStyles.entryInput);
+
+            $("#roomPasswordInput_DoorPanel").select();
+          }, 100);
+        } else {
+          $("#roomPasswordInput_DoorPanel").select(false);
+          $("#passwordOverbox").addClass(s.opacity5);
+          $("#roomPasswordInput_DoorPanel").prop("disabled", true);
+          $("#roomPasswordInput_DoorPanel").addClass(
+            panelStyles.entryInputNoHover
+          );
+          $("#roomPasswordInput_DoorPanel").removeClass(panelStyles.entryInput);
+        }
+      });
+    }
 
     if (props.playerData.playerName) {
       setPlayerNameInput(props.playerData.playerName);
@@ -48,6 +85,13 @@ export default function DoorPanel(props) {
 
     return function cleanup() {
       $(document).off("keydown.door");
+      if (props.socket) {
+        props.socket.emit("Query room password protection", {
+          roomName: location.pathname.slice(1),
+          amLeaving: true,
+        });
+        props.socket.off("Queried room password protection");
+      }
     };
   }, [props.playerData]);
 
@@ -75,7 +119,7 @@ export default function DoorPanel(props) {
           }}
         ></textarea>
       </div>
-      <div className={`${panelStyles.innerBox1}`}>
+      <div id="passwordOverbox" className={`${panelStyles.innerBox1}`}>
         <h2 className={`${s.noSelect} ${panelStyles.title1}`}>Room password</h2>
         <textarea
           onClick={(e) => {
@@ -83,7 +127,7 @@ export default function DoorPanel(props) {
           }}
           id="roomPasswordInput_DoorPanel"
           value={roomPasswordInput}
-          className={`${panelStyles.entryInput}`}
+          className={`${panelStyles.entryInput} ${panelStyles.entryInputNoHover}`}
           maxLength={4}
           onChange={(e) => {
             setRoomPasswordInput(
@@ -99,11 +143,7 @@ export default function DoorPanel(props) {
       <div className={`${panelStyles.innerBox1}`}>
         <button
           id="enterButton_DoorPanel"
-          disabled={
-            $("#connectErrorAlert").length ||
-            !playerNameInput ||
-            !roomPasswordInput
-          }
+          disabled={$("#connectErrorAlert").length || !playerNameInput}
           className={`${g.button1} ${panelStyles.button1}`}
           onClick={(e) => {
             e.preventDefault();
@@ -121,6 +161,7 @@ export default function DoorPanel(props) {
 
             let roomName = location.pathname.slice(1);
 
+            console.log("Setting cookie:", `${roomPasswordInput}-${roomName}`);
             browserUtils.setCookie(
               "roomPassword",
               `${roomPasswordInput}-${roomName}`
