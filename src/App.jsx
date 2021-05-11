@@ -3,7 +3,7 @@ import { Router, navigate } from "@reach/router";
 import socketIOClient from "socket.io-client";
 import $ from "jquery";
 
-import s from "./css/s.module.css";
+import s from "./css/Simple.module.css";
 import g from "./css/Generic.module.css";
 import a from "./css/Animations.module.css";
 import panelStyles from "./css/Panel.module.css";
@@ -12,7 +12,6 @@ import styles from "./css/App.module.css";
 import logoCentred from "./images/logo_cat_centred.png";
 
 import LobbyPanel from "./LobbyPanel.jsx";
-import ContactPage from "./ContactPage.jsx";
 import RoomWrapper from "./RoomWrapper.jsx";
 import Navbar from "./Navbar.jsx";
 import OptionsNavpanel from "./OptionsNavpanel.jsx";
@@ -209,7 +208,6 @@ export default function App() {
           playerData={playerData}
           setShowDevButtons={setShowDevButtons}
         />
-        <ContactPage path="/contact" />
         <RoomWrapper
           path="/*"
           socket={socket}

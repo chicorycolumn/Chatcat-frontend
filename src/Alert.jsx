@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import $ from "jquery";
 
-import s from "./css/s.module.css";
+import s from "./css/Simple.module.css";
 import g from "./css/Generic.module.css";
 import a from "./css/Animations.module.css";
 import panelStyles from "./css/Panel.module.css";
@@ -41,7 +41,7 @@ export default function Alert(props) {
           id="Alert"
           className={`${g.boxStyle1} ${panelStyles.smallLandscapePanel} ${panelStyles.panelPink1} ${s.noOutline} ${s.posRel}`}
         >
-          <img src={sadImage} className={`${styles.bg_img_left}`} />
+          <img src={sadImage} className={`${styles.backgroundImageLeft}`} />
           <button
             onClick={(e) => {
               props.setShowAlert(false);
@@ -60,7 +60,7 @@ export default function Alert(props) {
           id="Alert"
           className={`${g.boxStyle1} ${panelStyles.smallLandscapePanel} ${panelStyles.panelYellow1} ${s.noOutline} ${s.posRel}`}
         >
-          <img src={happyImage} className={`${styles.bg_img_right}`} />
+          <img src={happyImage} className={`${styles.backgroundImageRight}`} />
           <button
             onClick={(e) => {
               props.setShowAlert(false);

@@ -5,6 +5,7 @@
   --pPink: #ff1b8d;
   --pYellow: #ffda00;
   --pBlue: #1bb3ff;
+
   /*Dark*/
   --pPink_D1: #bd1468;
   --pYellow_D1: #caac00;
@@ -15,6 +16,7 @@
   --pPink_D3: #460626;
   --pYellow_D3: #4d4100;
   --pBlue_D3: #093d57;
+
   /*Light*/
   --pPink_L1: #fa56a8;
   --pYellow_L1: #fae35e;
@@ -29,19 +31,19 @@
 
   /*FONTS*/
 
-  /* --fontBasic: "Dosis", Roboto, Arial, sans-serif; */
   --fontBasic: "Rubik", Roboto, Arial, sans-serif;
+  /* --fontBasic: "Dosis", Roboto, Arial, sans-serif; */
 
   --fontHeading: "Cambay", sans-serif;
 
+  --fontLogo: "Courgette", cursive;
   /* --fontLogo: "Sail", cursive; */
   /* --fontLogo: "Darker Grotesque", sans-serif; */
-  --fontLogo: "Courgette", cursive;
 
   --fontInput: monospace;
 
-  /* --fontBigInput: "Courgette", cursive; */
   --fontBigInput: monospace;
+  /* --fontBigInput: "Courgette", cursive; */
 
   --fontButton: "Open Sans", sans-serif;
 }
@@ -77,15 +79,6 @@ textarea {
 .App {
   padding-top: 50px;
   position: relative;
-  /* text-align: center;
-  background-color: var(--light-lilac);
-  margin: auto;
-  width: auto;
-  height: auto;
-  min-height: 87vh;
-  padding-top: 100px;
-  padding-bottom: 1px;
-  border-radius: 0px; */
 }
 
 h1,
@@ -114,7 +107,6 @@ h5 {
   opacity: 0.25;
   background-size: 250px;
   background-repeat: repeat;
-
   position: fixed;
   width: 100%;
   z-index: -2;

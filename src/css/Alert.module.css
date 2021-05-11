@@ -1,4 +1,4 @@
-.bg_img_left {
+.backgroundImageLeft {
   width: 65px;
   position: absolute;
   bottom: 0;
@@ -6,7 +6,7 @@
   opacity: 0.1;
 }
 
-.bg_img_right {
+.backgroundImageRight {
   width: 65px;
   position: absolute;
   bottom: 0;
