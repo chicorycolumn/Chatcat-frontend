@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Router, navigate, Link, useLocation } from "@reach/router";
 import $ from "jquery";
 
-import s from "./css/s.module.css";
+import s from "./css/Simple.module.css";
 import g from "./css/Generic.module.css";
 import a from "./css/Animations.module.css";
 import panelStyles from "./css/Panel.module.css";
 import styles from "./css/Chatbox.module.css";
 import roomStyles from "./css/Room.module.css";
-
-import PlayerList from "./PlayerList";
 
 import * as roomUtils from "./utils/roomUtils.js";
 import * as browserUtils from "./utils/browserUtils.js";
@@ -32,7 +29,6 @@ export default function Chatbox(props) {
     );
 
     function SH_playerEntered(data) {
-      console.log(333);
       addToChatArray(`${data.player.playerName} entered`);
     }
     function SH_playerLeft(data) {
@@ -105,7 +101,7 @@ export default function Chatbox(props) {
   return (
     <div className={`${g.boxStyle1} ${styles.chatboxSuper}`}>
       <h2 className={`${roomStyles.roomHeaders}`}>
-        {props.playerData.playerName}'s Chatbox
+        {props.playerData.playerName}'s chatbox
       </h2>
       <div
         id="chatOutputContainer"

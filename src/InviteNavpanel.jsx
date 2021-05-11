@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Router, navigate, Link, useLocation } from "@reach/router";
 import $ from "jquery";
 
-import s from "./css/s.module.css";
+import s from "./css/Simple.module.css";
 import g from "./css/Generic.module.css";
 import a from "./css/Animations.module.css";
 import panelStyles from "./css/Panel.module.css";
 import styles from "./css/Navpanel.module.css";
-import PlayerList from "./PlayerList.jsx";
 
 import * as roomUtils from "./utils/roomUtils.js";
 import * as browserUtils from "./utils/browserUtils.js";
@@ -17,7 +15,6 @@ import * as gameUtils from "./utils/gameUtils.js";
 const copyText = (inputId) => {
   let titleId = `${inputId[0]}Title`;
   const inputEl = document.getElementById(inputId);
-  const titleEl = document.getElementById(titleId);
 
   let textToCopy = inputEl.textContent;
 
@@ -76,7 +73,7 @@ export default function InviteNavpanel(props) {
     <div
       tabIndex="0"
       id="InviteNavpanel"
-      className={`${g.boxStyle1} ${panelStyles.mediumLandscapePanel} ${panelStyles.panelBlue2} ${s.noOutline}`}
+      className={`${g.boxStyle1} ${panelStyles.mediumLandscapePanel} ${panelStyles.panelBlue1} ${s.noOutline}`}
     >
       <button
         onClick={(e) => {
@@ -106,6 +103,7 @@ export default function InviteNavpanel(props) {
             </p>
           </div>
           <button
+            title="Copy URL"
             id="copyButtonU"
             className={`${panelStyles.copyButton} ${panelStyles.copyButtonRight}`}
             onClick={() => {
@@ -124,7 +122,12 @@ export default function InviteNavpanel(props) {
           Copied!
         </h4>
         <h4
+          title="Toggle password protection"
           onClick={() => {
+            if (!props.playerData.isRoomboss) {
+              return;
+            }
+
             props.socket.emit("Update room password", {
               roomName: props.roomData.roomName,
               flipPasswordProtection: true,
@@ -133,8 +136,9 @@ export default function InviteNavpanel(props) {
           id="pTitle"
           className={`${s.noSelect} ${panelStyles.title2}`}
         >
-          Password protect room
-          {props.roomData.isPasswordProtected ? " ☑️" : " ⬜"}
+          Password protection
+          {props.playerData.isRoomboss &&
+            (props.roomData.isPasswordProtected ? " ☑️" : " ⬜")}
         </h4>
         <div
           className={`${styles.inputContainer1} ${
@@ -142,6 +146,7 @@ export default function InviteNavpanel(props) {
           }`}
         >
           <button
+            title="Refresh room password"
             id="newButton"
             disabled={
               !props.playerData.isRoomboss ||
@@ -171,6 +176,7 @@ export default function InviteNavpanel(props) {
             )}
           </div>
           <button
+            title="Copy room password"
             disabled={!props.roomData.isPasswordProtected}
             id="copyButtonP"
             className={`${panelStyles.copyButton} ${panelStyles.copyButtonRight}`}

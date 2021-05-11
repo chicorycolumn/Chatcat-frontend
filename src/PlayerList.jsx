@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Router, navigate, Link, useLocation } from "@reach/router";
-import $ from "jquery";
+import React, { useState } from "react";
 
-import s from "./css/s.module.css";
+import s from "./css/Simple.module.css";
 import g from "./css/Generic.module.css";
 import a from "./css/Animations.module.css";
 import panelStyles from "./css/Panel.module.css";
@@ -57,9 +55,6 @@ export default function PlayerList(props) {
                         playerName: roomPlayer.playerName,
                         roomName: props.roomData.roomName,
                       });
-
-                      let rpw = browserUtils.getCookie("roomPassword");
-                      let currentRoomPassword = rpw ? rpw.split("-")[0] : "";
 
                       props.socket.emit("Update room password", {
                         roomName: props.successfullyEnteredRoomName,

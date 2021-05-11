@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Router, navigate, Link, useLocation } from "@reach/router";
-import panelStyles from "./css/Panel.module.css";
-import $ from "jquery";
+import React from "react";
+import { Link } from "@reach/router";
 
-import s from "./css/s.module.css";
+import s from "./css/Simple.module.css";
 import g from "./css/Generic.module.css";
 import a from "./css/Animations.module.css";
 import styles from "./css/Navbar.module.css";
@@ -32,12 +30,13 @@ const Navbar = (props) => {
       >
         {props.connectErrorAlert ? (
           <img
+            alt="logo in a broken style"
             id="connectErrorAlert"
             className={`${styles.navbarLogo}`}
             src={navlogoBroken}
           />
         ) : (
-          <img className={`${styles.navbarLogo}`} src={navlogo} />
+          <img alt="logo" className={`${styles.navbarLogo}`} src={navlogo} />
         )}
         <h1 className={`${styles.navbarTitle}`}>Chattercat</h1>{" "}
       </Link>

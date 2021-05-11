@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Router, navigate, Link, useLocation } from "@reach/router";
 import $ from "jquery";
 
-import s from "./css/s.module.css";
+import s from "./css/Simple.module.css";
 import g from "./css/Generic.module.css";
 import a from "./css/Animations.module.css";
 import panelStyles from "./css/Panel.module.css";
@@ -43,7 +42,7 @@ export default function LobbyPanel(props) {
     <div
       tabIndex="0"
       id="LobbyPanel"
-      className={`${g.boxStyle1} ${panelStyles.bigPortraitPanel} ${panelStyles.panelYellow1} ${s.noOutline}`}
+      className={`${g.boxStyle1} ${panelStyles.bigPortraitPanel} ${panelStyles.panelYellowFancy} ${s.noOutline}`}
     >
       <div className={`${panelStyles.innerBox1}`}>
         <h2>Your name</h2>

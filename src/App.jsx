@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Router, navigate, Link, useLocation } from "@reach/router";
+import { Router, navigate } from "@reach/router";
 import socketIOClient from "socket.io-client";
 import $ from "jquery";
 
-import s from "./css/s.module.css";
+import s from "./css/Simple.module.css";
 import g from "./css/Generic.module.css";
 import a from "./css/Animations.module.css";
 import panelStyles from "./css/Panel.module.css";
 import styles from "./css/App.module.css";
 
+import logoCentred from "./images/logo_cat_centred.png";
+
 import LobbyPanel from "./LobbyPanel.jsx";
-import ContactPage from "./ContactPage.jsx";
 import RoomWrapper from "./RoomWrapper.jsx";
 import Navbar from "./Navbar.jsx";
 import OptionsNavpanel from "./OptionsNavpanel.jsx";
@@ -20,8 +21,6 @@ import * as roomUtils from "./utils/roomUtils.js";
 import * as browserUtils from "./utils/browserUtils.js";
 import * as displayUtils from "./utils/displayUtils.js";
 import * as gameUtils from "./utils/gameUtils.js";
-
-import logoCentred from "./images/logo_cat_centred.png";
 
 const localEnv = true;
 const ENDPOINT = localEnv
@@ -34,10 +33,8 @@ export default function App() {
   const [roomNameInput, setRoomNameInput] = useState("");
   const [playerData, setPlayerData] = useState({});
   console.log("((So playerData is)))", playerData);
-  const [
-    successfullyEnteredRoomName,
-    setSuccessfullyEnteredRoomName,
-  ] = useState(null);
+  const [successfullyEnteredRoomName, setSuccessfullyEnteredRoomName] =
+    useState(null);
   const [socket, setSocket] = useState(null);
   const [socketNudge, setSocketNudge] = useState();
   const [showInviteNavpanel, setShowInviteNavpanel] = useState();
@@ -148,7 +145,7 @@ export default function App() {
           .slice(17, -4)}.`
       );
       navigate("/");
-      setShowAlert("Your connection was reset.");
+      setShowAlert({ text: "Your connection was reset.", emotion: "sad" });
       setTimeout(() => {
         setShowAlert(null);
       }, 2500);
@@ -171,6 +168,7 @@ export default function App() {
       <div id="transitionObscurus" className={`${g.transitionObscurus}`}>
         <div id="transitionObscurusImage">
           <img
+            alt="logo"
             className={`${a.spin} ${g.transitionObscurusImage}`}
             src={logoCentred}
           />
@@ -211,7 +209,6 @@ export default function App() {
           playerData={playerData}
           setShowDevButtons={setShowDevButtons}
         />
-        <ContactPage path="/contact" />
         <RoomWrapper
           path="/*"
           socket={socket}

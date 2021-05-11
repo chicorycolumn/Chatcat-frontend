@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Router, navigate, Link, useLocation } from "@reach/router";
-import panelStyles from "./css/Panel.module.css";
-import $ from "jquery";
+import React, { useEffect } from "react";
 
-import s from "./css/s.module.css";
+import s from "./css/Simple.module.css";
 import g from "./css/Generic.module.css";
 import a from "./css/Animations.module.css";
 import styles from "./css/Room.module.css";
 
-import DoorPanel from "./DoorPanel";
 import PlayerList from "./PlayerList";
 import Instructions from "./Instructions";
 import Chatbox from "./Chatbox";

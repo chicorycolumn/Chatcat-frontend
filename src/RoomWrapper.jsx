@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Router, navigate, Link, useLocation } from "@reach/router";
+import { navigate } from "@reach/router";
 import $ from "jquery";
 
-import s from "./css/s.module.css";
+import s from "./css/Simple.module.css";
 import g from "./css/Generic.module.css";
 import a from "./css/Animations.module.css";
 import styles from "./css/Room.module.css";
 import panelStyles from "./css/Panel.module.css";
 
 import DoorPanel from "./DoorPanel";
-import PlayerList from "./PlayerList";
 import Room from "./Room";
 import InviteNavpanel from "./InviteNavpanel.jsx";
-import Instructions from "./Instructions";
-import Chatbox from "./Chatbox";
 
 import * as roomUtils from "./utils/roomUtils.js";
 import * as browserUtils from "./utils/browserUtils.js";
@@ -22,7 +19,6 @@ import * as gameUtils from "./utils/gameUtils.js";
 
 export default function RoomWrapper(props) {
   console.log("((RoomWrapper))");
-  const location = useLocation();
   const [roomData, setRoomData] = useState();
 
   useEffect(() => {
@@ -50,12 +46,19 @@ export default function RoomWrapper(props) {
         props.socket.emit("Request room data", {
           roomName: props.successfullyEnteredRoomName,
         });
-        setTimeout(() => {
-          $("#Invite_Navbar").addClass(`${a.flashPink}`);
+
+        if (props.playerData.isRoomboss) {
           setTimeout(() => {
-            $("#Invite_Navbar").removeClass(`${a.flashPink}`);
-          }, 5000);
-        }, 1000);
+            props.setShowInviteNavpanel(true);
+          }, 1000);
+        } else {
+          setTimeout(() => {
+            $("#Invite_Navbar").addClass(`${a.flashPink}`);
+            setTimeout(() => {
+              $("#Invite_Navbar").removeClass(`${a.flashPink}`);
+            }, 5000);
+          }, 1000);
+        }
       }
 
       props.socket.on("Room data", function (data) {
@@ -98,7 +101,6 @@ export default function RoomWrapper(props) {
           console.log(
             `N49 The server wants to boot me from room ${data.roomName} but I'm not in that room, I think?`
           );
-          throw "N49";
         }
 
         navigate("/");

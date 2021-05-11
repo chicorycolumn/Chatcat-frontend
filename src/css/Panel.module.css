@@ -1,12 +1,14 @@
 .bigPortraitPanel {
   height: 360px; /* mobile */
   width: 270px; /* mobile */
+  padding-top: 30px; /*mobile*/
+  padding-bottom: 10px; /*mobile*/
+
   margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  padding-top: 35px; /*mobile*/
 }
 
 .mediumLandscapePanel {
@@ -31,7 +33,7 @@
 
 .smallLandscapePanel {
   height: 150px;
-  width: 220px;
+  width: 180px;
   padding: 25px;
   margin-top: 100px;
   display: flex;
@@ -55,18 +57,25 @@
   background-repeat: no-repeat;
 }
 
-.panelYellow1 {
+.panelYellowFancy {
   background-color: var(--pYellow);
   box-shadow: 2px 2px 6px black;
   border: var(--pYellow_D2) solid 1px;
   color: var(--pPink_D2);
-  background-image: url(../images/bgtile_leaf3.png);
+  background-image: url(../images/bgtile_leaf3a.png);
   background-size: 330px;
   background-position: -10px 0px;
   background-repeat: no-repeat;
 }
 
-.panelPink1 {
+.panelYellow1 {
+  background-color: var(--pYellow_L1);
+  box-shadow: 2px 2px 6px black;
+  border: var(--pYellow_D1) solid 1px;
+  color: var(--pBlue_D3);
+}
+
+.panelPinkFancy {
   background-color: var(--pPink_L2);
   box-shadow: 2px 2px 6px black;
   border: var(--pPink) solid 1px;
@@ -78,20 +87,13 @@
   background-repeat: no-repeat;
 }
 
-.panelPink2 {
+.panelPink1 {
   background-color: var(--pPink_L2);
   border: var(--pPink) solid 2px;
   color: var(--pPink_D3);
 }
 
 .panelBlue1 {
-  background-color: var(--pBlue_L2);
-  box-shadow: 2px 2px 6px var(--pBlue);
-  border: var(--pBlue) solid 2px;
-  color: var(--pBlue_D3);
-}
-
-.panelBlue2 {
   background-color: var(--pBlue_L2);
   box-shadow: 0px 0px 10px var(--pBlue);
   border: var(--pBlue_L1) solid 1px;
@@ -113,6 +115,7 @@
 
 .innerBox1 > button {
   margin-top: 5px; /* mobile */
+
   margin-bottom: 10px;
 }
 
@@ -194,8 +197,20 @@
 }
 
 .exitButtonPink:hover {
-  background-color: var(--pPink_L3);
-  border: var(--pPink_L1) solid 2px;
+  background-color: var(--pPink_L1);
+}
+
+.exitButtonYellow {
+  background: none;
+  border: none;
+  border-top-right-radius: inherit;
+  border-top: none;
+  border-right: none;
+  color: var(--pPink_D1);
+}
+
+.exitButtonYellow:hover {
+  background-color: var(--pYellow_D1);
 }
 
 .copyButton {
@@ -235,7 +250,6 @@
   margin-bottom: 10px;
 }
 
-/* nonmobile */
 @media only screen and (min-device-width: 540px) {
   .mediumLandscapePanel {
     margin-left: -190px !important;
@@ -245,10 +259,11 @@
   .bigPortraitPanel {
     height: 400px !important;
     width: 300px !important;
-    padding-top: 45px !important;
+    padding-bottom: 50px !important;
+    padding-top: 50px !important;
   }
 
   .innerBox1 > button {
-    margin-top: 0px;
+    margin-top: 30px;
   }
 }

@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Router, navigate, Link, useLocation } from "@reach/router";
+import React, { useEffect } from "react";
 import $ from "jquery";
 
-import s from "./css/s.module.css";
+import s from "./css/Simple.module.css";
 import g from "./css/Generic.module.css";
 import a from "./css/Animations.module.css";
 import panelStyles from "./css/Panel.module.css";
@@ -35,7 +34,7 @@ export default function OptionsNavpanel(props) {
     <div
       tabIndex="0"
       id="OptionsNavpanel"
-      className={`${a.fadeIn} ${g.boxStyle1} ${panelStyles.mediumLandscapePanel} ${panelStyles.panelBlue2} ${s.noOutline}`}
+      className={`${a.fadeIn} ${g.boxStyle1} ${panelStyles.mediumLandscapePanel} ${panelStyles.panelBlue1} ${s.noOutline}`}
     >
       <button
         onClick={(e) => {
@@ -54,6 +53,9 @@ export default function OptionsNavpanel(props) {
               props.socket.emit("Wipe game stats", {
                 roomName: props.successfullyEnteredRoomName,
               });
+              setTimeout(() => {
+                props.setShowOptionsNavpanel(false);
+              }, 500);
             }}
             id="buttonRestart"
             className={`${panelStyles.copyButton}`}

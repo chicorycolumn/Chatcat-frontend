@@ -24,9 +24,8 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.65);
   z-index: 1;
-  position: absolute;
+  position: fixed;
   top: 30px;
-  height: 110%;
 }
 
 .transitionObscurus {
@@ -55,4 +54,19 @@
 .nameSmaller {
   padding-top: 1.5px !important;
   font-size: 13px !important;
+}
+
+.tooltip {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: absolute;
+  z-index: 3;
+  visibility: hidden;
+  left: 25px;
+}
+
+.tooltipHolder:hover .tooltip {
+  visibility: visible;
 }
