@@ -56,9 +56,6 @@ export default function PlayerList(props) {
                         roomName: props.roomData.roomName,
                       });
 
-                      let rpw = browserUtils.getCookie("roomPassword");
-                      let currentRoomPassword = rpw ? rpw.split("-")[0] : "";
-
                       props.socket.emit("Update room password", {
                         roomName: props.successfullyEnteredRoomName,
                       });

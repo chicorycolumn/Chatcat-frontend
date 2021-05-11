@@ -15,7 +15,6 @@ import * as gameUtils from "./utils/gameUtils.js";
 const copyText = (inputId) => {
   let titleId = `${inputId[0]}Title`;
   const inputEl = document.getElementById(inputId);
-  const titleEl = document.getElementById(titleId);
 
   let textToCopy = inputEl.textContent;
 

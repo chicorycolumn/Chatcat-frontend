@@ -30,12 +30,13 @@ const Navbar = (props) => {
       >
         {props.connectErrorAlert ? (
           <img
+            alt="logo in a broken style"
             id="connectErrorAlert"
             className={`${styles.navbarLogo}`}
             src={navlogoBroken}
           />
         ) : (
-          <img className={`${styles.navbarLogo}`} src={navlogo} />
+          <img alt="logo" className={`${styles.navbarLogo}`} src={navlogo} />
         )}
         <h1 className={`${styles.navbarTitle}`}>Chattercat</h1>{" "}
       </Link>

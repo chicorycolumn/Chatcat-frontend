@@ -41,7 +41,11 @@ export default function Alert(props) {
           id="Alert"
           className={`${g.boxStyle1} ${panelStyles.smallLandscapePanel} ${panelStyles.panelPink1} ${s.noOutline} ${s.posRel}`}
         >
-          <img src={sadImage} className={`${styles.backgroundImageLeft}`} />
+          <img
+            alt="sad face"
+            src={sadImage}
+            className={`${styles.backgroundImageLeft}`}
+          />
           <button
             onClick={(e) => {
               props.setShowAlert(false);
@@ -60,7 +64,11 @@ export default function Alert(props) {
           id="Alert"
           className={`${g.boxStyle1} ${panelStyles.smallLandscapePanel} ${panelStyles.panelYellow1} ${s.noOutline} ${s.posRel}`}
         >
-          <img src={happyImage} className={`${styles.backgroundImageRight}`} />
+          <img
+            alt="happy face"
+            src={happyImage}
+            className={`${styles.backgroundImageRight}`}
+          />
           <button
             onClick={(e) => {
               props.setShowAlert(false);

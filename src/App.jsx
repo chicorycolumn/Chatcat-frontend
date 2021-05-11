@@ -168,6 +168,7 @@ export default function App() {
       <div id="transitionObscurus" className={`${g.transitionObscurus}`}>
         <div id="transitionObscurusImage">
           <img
+            alt="logo"
             className={`${a.spin} ${g.transitionObscurusImage}`}
             src={logoCentred}
           />

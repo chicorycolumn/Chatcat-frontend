@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { navigate, useLocation } from "@reach/router";
+import { navigate } from "@reach/router";
 import $ from "jquery";
 
 import s from "./css/Simple.module.css";
@@ -19,7 +19,6 @@ import * as gameUtils from "./utils/gameUtils.js";
 
 export default function RoomWrapper(props) {
   console.log("((RoomWrapper))");
-  const location = useLocation();
   const [roomData, setRoomData] = useState();
 
   useEffect(() => {
@@ -102,7 +101,6 @@ export default function RoomWrapper(props) {
           console.log(
             `N49 The server wants to boot me from room ${data.roomName} but I'm not in that room, I think?`
           );
-          throw "N49";
         }
 
         navigate("/");
