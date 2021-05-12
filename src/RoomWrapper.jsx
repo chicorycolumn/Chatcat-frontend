@@ -12,10 +12,7 @@ import DoorPanel from "./DoorPanel";
 import Room from "./Room";
 import InviteNavpanel from "./InviteNavpanel.jsx";
 
-import * as roomUtils from "./utils/roomUtils.js";
-import * as browserUtils from "./utils/browserUtils.js";
-import * as displayUtils from "./utils/displayUtils.js";
-import * as gameUtils from "./utils/gameUtils.js";
+const utils = require("./utils/utils.js");
 
 export default function RoomWrapper(props) {
   console.log("((RoomWrapper))");
@@ -50,7 +47,7 @@ export default function RoomWrapper(props) {
         if (props.playerData.isRoomboss) {
           setTimeout(() => {
             props.setShowInviteNavpanel(true);
-          }, 1000);
+          }, 800);
         } else {
           setTimeout(() => {
             $("#Invite_Navbar").addClass(`${a.flashPink}`);
@@ -74,7 +71,7 @@ export default function RoomWrapper(props) {
         }
 
         console.log("Setting cookie:", `${data.roomPassword}-${data.roomName}`);
-        browserUtils.setCookie(
+        utils.browser.setCookie(
           "roomPassword",
           `${data.roomPassword}-${data.roomName}`
         );

@@ -7,19 +7,16 @@ import a from "./css/Animations.module.css";
 import panelStyles from "./css/Panel.module.css";
 import styles from "./css/Navpanel.module.css";
 
-import * as roomUtils from "./utils/roomUtils.js";
-import * as browserUtils from "./utils/browserUtils.js";
-import * as displayUtils from "./utils/displayUtils.js";
-import * as gameUtils from "./utils/gameUtils.js";
+const utils = require("./utils/utils.js");
 
 export default function OptionsNavpanel(props) {
   console.log("((OptionsNavpanel))");
 
   useEffect(() => {
-    displayUtils.splash(a, ["#buttonRestart", "#buttonContact"], 1);
+    utils.display.splash(a, ["#buttonRestart", "#buttonContact"], 1);
 
     $(document).on("click.OptionsNavpanel", () => {
-      displayUtils.clickOutsideToClose(
+      utils.display.clickOutsideToClose(
         "#OptionsNavpanel",
         props.setShowOptionsNavpanel
       );

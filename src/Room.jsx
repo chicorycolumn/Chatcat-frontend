@@ -9,10 +9,7 @@ import PlayerList from "./PlayerList";
 import Instructions from "./Instructions";
 import Chatbox from "./Chatbox";
 
-import * as roomUtils from "./utils/roomUtils.js";
-import * as browserUtils from "./utils/browserUtils.js";
-import * as displayUtils from "./utils/displayUtils.js";
-import * as gameUtils from "./utils/gameUtils.js";
+const utils = require("./utils/utils.js");
 
 export default function Room(props) {
   console.log("((Room))");

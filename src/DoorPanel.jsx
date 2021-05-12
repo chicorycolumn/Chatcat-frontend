@@ -7,10 +7,7 @@ import g from "./css/Generic.module.css";
 import a from "./css/Animations.module.css";
 import panelStyles from "./css/Panel.module.css";
 
-import * as roomUtils from "./utils/roomUtils.js";
-import * as browserUtils from "./utils/browserUtils.js";
-import * as displayUtils from "./utils/displayUtils.js";
-import * as gameUtils from "./utils/gameUtils.js";
+const utils = require("./utils/utils.js");
 
 export default function DoorPanel(props) {
   console.log("((DoorPanel))");
@@ -18,7 +15,7 @@ export default function DoorPanel(props) {
     props.playerData.playerName
   );
 
-  let rpw = browserUtils.getCookie("roomPassword");
+  let rpw = utils.browser.getCookie("roomPassword");
 
   const [roomPasswordInput, setRoomPasswordInput] = useState(
     rpw ? rpw.split("-")[0] : ""
@@ -27,7 +24,7 @@ export default function DoorPanel(props) {
   const location = useLocation();
 
   useEffect(() => {
-    displayUtils.splash(a, "#enterButton_DoorPanel", 2, 1);
+    utils.display.splash(a, "#enterButton_DoorPanel", 2, 1);
 
     if (props.socket) {
       console.log("€ Query room password protection");
@@ -76,15 +73,15 @@ export default function DoorPanel(props) {
 
     $("#DoorPanel").focus();
 
-    displayUtils.addListenerForKeydownEnterToSend(
-      "door",
+    utils.display.addListenerForKeydownEnterToSend(
+      "Door",
       document,
       "#enterButton_DoorPanel",
       "#DoorPanel"
     );
 
     return function cleanup() {
-      $(document).off("keydown.door");
+      $(document).off("keydown.Door");
       if (props.socket) {
         props.socket.emit("Query room password protection", {
           roomName: location.pathname.slice(1),
@@ -105,14 +102,14 @@ export default function DoorPanel(props) {
         <h2 className={`${s.noSelect} ${panelStyles.title1}`}>Your name</h2>
         <textarea
           onClick={(e) => {
-            displayUtils.selectText(document, "playerNameInput_DoorPanel");
+            utils.display.selectText(document, "playerNameInput_DoorPanel");
           }}
           id="playerNameInput_DoorPanel"
           value={playerNameInput}
           className={`${panelStyles.entryInput}`}
           maxLength={12}
           onChange={(e) => {
-            setPlayerNameInput(browserUtils.alphanumerise(e.target.value));
+            setPlayerNameInput(utils.browser.alphanumerise(e.target.value));
             console.log(
               `playerNameInput_DoorPanel. playerNameInput:${playerNameInput}.`
             );
@@ -123,7 +120,7 @@ export default function DoorPanel(props) {
         <h2 className={`${s.noSelect} ${panelStyles.title1}`}>Room password</h2>
         <textarea
           onClick={(e) => {
-            displayUtils.selectText(document, "roomPasswordInput_DoorPanel");
+            utils.display.selectText(document, "roomPasswordInput_DoorPanel");
           }}
           id="roomPasswordInput_DoorPanel"
           value={roomPasswordInput}
@@ -131,7 +128,7 @@ export default function DoorPanel(props) {
           maxLength={4}
           onChange={(e) => {
             setRoomPasswordInput(
-              browserUtils.alphanumerise(e.target.value).toUpperCase()
+              utils.browser.alphanumerise(e.target.value).toUpperCase()
             );
             console.log(
               `roomPasswordInput_DoorPanel. roomPasswordInput:${roomPasswordInput}.`
@@ -162,12 +159,12 @@ export default function DoorPanel(props) {
             let roomName = location.pathname.slice(1);
 
             console.log("Setting cookie:", `${roomPasswordInput}-${roomName}`);
-            browserUtils.setCookie(
+            utils.browser.setCookie(
               "roomPassword",
               `${roomPasswordInput}-${roomName}`
             );
 
-            roomUtils.requestEntry(
+            utils.room.requestEntry(
               props.socket,
               props.playerData,
               roomName,

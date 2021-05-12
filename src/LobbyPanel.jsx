@@ -6,10 +6,7 @@ import g from "./css/Generic.module.css";
 import a from "./css/Animations.module.css";
 import panelStyles from "./css/Panel.module.css";
 
-import * as roomUtils from "./utils/roomUtils.js";
-import * as browserUtils from "./utils/browserUtils.js";
-import * as displayUtils from "./utils/displayUtils.js";
-import * as gameUtils from "./utils/gameUtils.js";
+const utils = require("./utils/utils.js");
 
 export default function LobbyPanel(props) {
   const [playerNameInput, setPlayerNameInput] = useState(
@@ -19,21 +16,21 @@ export default function LobbyPanel(props) {
   useEffect(() => {
     $("#roomNameInput_LobbyPanel").select();
 
-    displayUtils.splash(a, "#enterButton_LobbyPanel");
+    utils.display.splash(a, "#enterButton_LobbyPanel");
 
     if (props.playerData.playerName) {
       setPlayerNameInput(props.playerData.playerName);
     }
 
-    displayUtils.addListenerForKeydownEnterToSend(
-      "lobby",
+    utils.display.addListenerForKeydownEnterToSend(
+      "Lobby",
       document,
       "#enterButton_LobbyPanel",
       "#LobbyPanel"
     );
 
     return function cleanup() {
-      $(document).off("keydown.lobby");
+      $(document).off("keydown.Lobby");
     };
   }, [props.playerData]);
 
@@ -48,14 +45,14 @@ export default function LobbyPanel(props) {
         <h2>Your name</h2>
         <textarea
           onClick={(e) => {
-            displayUtils.selectText(document, "playerNameInput_LobbyPanel");
+            utils.display.selectText(document, "playerNameInput_LobbyPanel");
           }}
           id="playerNameInput_LobbyPanel"
           value={playerNameInput}
           className={`${panelStyles.entryInput}`}
           maxLength={12}
           onChange={(e) => {
-            setPlayerNameInput(browserUtils.alphanumerise(e.target.value));
+            setPlayerNameInput(utils.browser.alphanumerise(e.target.value));
           }}
         ></textarea>
       </div>
@@ -64,14 +61,14 @@ export default function LobbyPanel(props) {
         <h2
           className={`${s.noSelect} ${panelStyles.title1}`}
           onClick={() => {
-            props.setRoomNameInput(roomUtils.createRoomName());
+            props.setRoomNameInput(utils.room.createRoomName());
           }}
         >
           Create room
         </h2>
         <textarea
           onClick={(e) => {
-            displayUtils.selectText(document, "roomNameInput_LobbyPanel");
+            utils.display.selectText(document, "roomNameInput_LobbyPanel");
           }}
           onDoubleClick={(e) => {
             e.preventDefault();
@@ -85,7 +82,7 @@ export default function LobbyPanel(props) {
           className={`${panelStyles.entryInput}`}
           maxLength={12}
           onChange={(e) => {
-            props.setRoomNameInput(browserUtils.alphanumerise(e.target.value));
+            props.setRoomNameInput(utils.browser.alphanumerise(e.target.value));
           }}
         ></textarea>
       </div>

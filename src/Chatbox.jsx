@@ -8,10 +8,7 @@ import panelStyles from "./css/Panel.module.css";
 import styles from "./css/Chatbox.module.css";
 import roomStyles from "./css/Room.module.css";
 
-import * as roomUtils from "./utils/roomUtils.js";
-import * as browserUtils from "./utils/browserUtils.js";
-import * as displayUtils from "./utils/displayUtils.js";
-import * as gameUtils from "./utils/gameUtils.js";
+const utils = require("./utils/utils.js");
 
 export default function Chatbox(props) {
   console.log("((Chatbox))");
@@ -22,8 +19,8 @@ export default function Chatbox(props) {
   useEffect(() => {
     console.log("~~Chatbox~~");
 
-    displayUtils.addListenerForKeydownEnterToSend(
-      "chatbox",
+    utils.display.addListenerForKeydownEnterToSend(
+      "Chatbox",
       "#chatboxInput_Chatbox",
       "#chatboxSendButton_Chatbox"
     );
@@ -61,14 +58,14 @@ export default function Chatbox(props) {
       });
 
       setChatArray(newChatArray);
-      displayUtils.updateScroll("chatOutputContainer");
+      utils.display.updateScroll("chatOutputContainer");
     }
     return function cleanup() {
       console.log("##Chatbox##");
       props.socket.off("Player entered your room", SH_playerEntered);
       props.socket.off("Player left your room", SH_playerLeft);
       props.socket.off("Chat message");
-      $("#chatboxInput_Chatbox").off("keydown.chatbox");
+      $("#chatboxInput_Chatbox").off("keydown.Chatbox");
     };
   }, [props.socket, chatArray]);
 
@@ -94,6 +91,7 @@ export default function Chatbox(props) {
       }
     }
 
+    console.log("€ Chat message", chatMsg);
     props.socket.emit("Chat message", { chatMsg: chatMsg });
     setChatMsg("");
   }

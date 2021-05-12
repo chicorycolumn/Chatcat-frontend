@@ -7,10 +7,7 @@ import panelStyles from "./css/Panel.module.css";
 import styles from "./css/PlayerList.module.css";
 import roomStyles from "./css/Room.module.css";
 
-import * as roomUtils from "./utils/roomUtils.js";
-import * as browserUtils from "./utils/browserUtils.js";
-import * as displayUtils from "./utils/displayUtils.js";
-import * as gameUtils from "./utils/gameUtils.js";
+const utils = require("./utils/utils.js");
 
 export default function Instructions(props) {
   return (

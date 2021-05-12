@@ -1,4 +1,4 @@
-export const requestEntry = (socket, playerData, roomName, roomPassword) => {
+exports.requestEntry = (socket, playerData, roomName, roomPassword) => {
   console.log(`€ Request entry with socket: ${socket.id}`);
   socket.emit("Request entry", {
     roomName,
@@ -6,7 +6,7 @@ export const requestEntry = (socket, playerData, roomName, roomPassword) => {
   });
 };
 
-export const createRoomName = () => {
+exports.createRoomName = () => {
   const roomAdjs = [
     "red",
     "green",
