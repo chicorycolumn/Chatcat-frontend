@@ -2,16 +2,9 @@
 
 ## Description
 
-Wormplay is an online two-player word game that uses webcam for facial recognition. Upon entering the lobby, players can pull faces to represent four different emotions, and the emotion recognition API uses the webcam to detect which emotion is being expressed, and takes a photo at the correct moment. These photos of the player's own face are transferred onto the 'word worm' - a 2D physics object that crawls around the screen - onto which the player drops Scrabble tiles to spell out words and beat their opponent.
+Chattercat is a chatroom website which allows you to create rooms, password-protect them, invite others players via a unique URL, eject players as the room boss, transfer role of room boss, and award stars to players. It handles this effectively using Socket.IO, managing multiple player interactions responsively.
 
-The game provides:
-
-- A login and lobby system to find other users online to play against, built with React
-- An in-game chatroom , built with Socket.IO
-- A webcam feature with facial and emotion recognition, built with a facial recognition API
-- A 2D physics game, built with Phaser
-- Realtime connections to allow both players to see each other's in-game action instantly, via a backend server using Express and Socket.IO
-- Checking of valid words during gameplay, via the Oxford English Dictionary API
+It is intended as a jumping-off-point for creating online games. Players can create and join rooms, and award stars, which can be adapted into a points system for the game in question.
 
 ## Instructions
 
@@ -49,12 +42,13 @@ Now when you commit and push to Github, Netlify will deploy the latest version o
 
 - [JavaScript](https://www.javascript.com/) - The primary coding language
 - [VisualStudioCode](https://code.visualstudio.com/) - The code editor
-- [Babel](https://babeljs.io/) - The compiler
+- [Babel](https://expressjs.com/) - The compiler
 
 - [Heroku](https://www.heroku.com/) - The cloud application platform used for the backend
 - [Netlify](https://www.netlify.com/) - The hosting service used for the frontend
 
 - [Socket.IO](https://socket.io/) - The realtime library
+- [Reach Router](https://reach.tech/router/) - The router for React
 
 - [React](https://reactjs.org/) - The frontend framework
 - [CSS Modules](https://github.com/css-modules/css-modules) - The design organisation system
